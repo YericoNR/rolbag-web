@@ -36,10 +36,14 @@ get_header('landing');
                         $short_title = get_post_meta( $post_id, 'rolbag_short_title', true ) ?: get_the_title();
                         $image = get_post_meta( $post_id, 'rolbag_image', true );
                         $brands_models_json = get_post_meta( $post_id, 'rolbag_brands_models', true );
-                        $brands_models = $brands_models_json ? json_decode( $brands_models_json, true ) : array();
+                        $brands_models = ( $brands_models_json && is_array( json_decode( $brands_models_json, true ) ) ) ? json_decode( $brands_models_json, true ) : array();
                         $total_models = 0;
-                        foreach ( $brands_models as $b => $m ) {
-                            $total_models += count( $m );
+                        if ( is_array( $brands_models ) ) {
+                            foreach ( $brands_models as $b => $m ) {
+                                if ( is_array( $m ) ) {
+                                    $total_models += count( $m );
+                                }
+                            }
                         }
                         ?>
                         <article class="rb-catalog-card">
