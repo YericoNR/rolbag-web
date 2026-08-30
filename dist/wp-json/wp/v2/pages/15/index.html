@@ -1,0 +1,53 @@
+{"id":15,"date":"2026-08-26T00:45:33","date_gmt":"2026-08-25T22:45:33","guid":{"rendered":"\/design-system-preview\/"},"modified":"2026-08-26T00:45:33","modified_gmt":"2026-08-25T22:45:33","slug":"design-system-preview","status":"publish","type":"page","link":"\/design-system-preview\/","title":{"rendered":"Design System Preview"},"content":{"rendered":"","protected":false},"excerpt":{"rendered":"","protected":false},"author":0,"featured_media":0,"parent":0,"menu_order":0,"comment_status":"closed","ping_status":"closed","template":"page-design-system.php","meta":{"footnotes":""},"class_list":["post-15","page","type-page","status-publish","hentry"],"_links":{"self":[{"href":"\/wp-json\/wp\/v2\/pages\/15","targetHints":{"allow":["GET"]}}],"collection":[{"href":"\/wp-json\/wp\/v2\/pages"}],"about":[{"href":"\/wp-json\/wp\/v2\/types\/page"}],"replies":[{"embeddable":true,"href":"\/wp-json\/wp\/v2\/comments?post=15"}],"version-history":[{"count":0,"href":"\/wp-json\/wp\/v2\/pages\/15\/revisions"}],"wp:attachment":[{"href":"\/wp-json\/wp\/v2\/media?parent=15"}],"curies":[{"name":"wp","href":"https:\/\/api.w.org\/{rel}","templated":true}]}}
+    <!-- Static Deployment Enhancement Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Intercept form submissions for static hosting (contact/quote)
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            // Check if form doesn't have an external action
+            const action = form.getAttribute('action');
+            if (!action || action === '#' || action.includes('127.0.0.1') || action.includes('admin-post.php') || action.includes('admin-ajax.php')) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+                    const originalBtnText = submitBtn ? submitBtn.innerText : '';
+                    if (submitBtn) {
+                        submitBtn.innerText = 'Enviando...';
+                        submitBtn.disabled = true;
+                    }
+
+                    // Extract form data
+                    const formData = new FormData(form);
+                    let summary = [];
+                    for (let [key, val] of formData.entries()) {
+                        if (val && !key.startsWith('_wp') && key !== 'action') {
+                            summary.push(key + ': ' + val);
+                        }
+                    }
+
+                    setTimeout(function() {
+                        if (submitBtn) {
+                            submitBtn.innerText = '¡Mensaje Enviado con Éxito!';
+                            submitBtn.style.backgroundColor = '#16a34a';
+                        }
+                        
+                        // Show visual toast / notification
+                        let notification = document.createElement('div');
+                        notification.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#0f172a;color:#fff;padding:16px 24px;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,0.3);z-index:9999;font-family:sans-serif;font-size:14px;border-left:4px solid #f97316;display:flex;align-items:center;gap:12px;';
+                        notification.innerHTML = '<span>✓</span><div><strong>Solicitud Registrada</strong><br>Nos pondremos en contacto con usted a la brevedad.</div>';
+                        document.body.appendChild(notification);
+
+                        setTimeout(function() {
+                            notification.remove();
+                        }, 5000);
+
+                        form.reset();
+                    }, 600);
+                });
+            }
+        });
+    });
+    </script>
+    

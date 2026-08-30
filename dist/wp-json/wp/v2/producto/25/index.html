@@ -1,0 +1,53 @@
+{"id":25,"date":"2026-08-26T04:49:23","date_gmt":"2026-08-26T02:49:23","guid":{"rendered":"\/productos\/candados-especiales\/"},"modified":"2026-08-29T06:05:04","modified_gmt":"2026-08-29T04:05:04","slug":"candados-especiales","status":"publish","type":"producto","link":"\/productos\/candados-especiales\/","title":{"rendered":"Candados de Seguridad Igualados y Amaestrados"},"content":{"rendered":"<p>Sistemas de seguridad f\u00edsica industrial para custodia de valijas de seguridad, contenedores y bodegas. Proveemos candados de seguridad en sistemas igualados (una sola llave abre un conjunto de candados) y amaestrados (cada candado con su llave individual y una llave maestra para el supervisor).<\/p>\n","protected":false},"excerpt":{"rendered":"<p>Sistemas de candados de seguridad de combinaci\u00f3n y llave, configurables en sistemas igualados (misma llave para m\u00faltiples candados) y amaestrados (llave maestra para supervisi\u00f3n). Dise\u00f1ados como complemento de m\u00e1xima seguridad para nuestras valijas y lockers de transporte.<\/p>\n","protected":false},"featured_media":0,"menu_order":0,"template":"","categoria_producto":[6],"marca":[28],"class_list":["post-25","producto","type-producto","status-publish","hentry","categoria_producto-candados-especiales","marca-sistemas-disponibles"],"_links":{"self":[{"href":"\/wp-json\/wp\/v2\/producto\/25","targetHints":{"allow":["GET"]}}],"collection":[{"href":"\/wp-json\/wp\/v2\/producto"}],"about":[{"href":"\/wp-json\/wp\/v2\/types\/producto"}],"wp:attachment":[{"href":"\/wp-json\/wp\/v2\/media?parent=25"}],"wp:term":[{"taxonomy":"categoria_producto","embeddable":true,"href":"\/wp-json\/wp\/v2\/categoria_producto?post=25"},{"taxonomy":"marca","embeddable":true,"href":"\/wp-json\/wp\/v2\/marca?post=25"}],"curies":[{"name":"wp","href":"https:\/\/api.w.org\/{rel}","templated":true}]}}
+    <!-- Static Deployment Enhancement Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Intercept form submissions for static hosting (contact/quote)
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            // Check if form doesn't have an external action
+            const action = form.getAttribute('action');
+            if (!action || action === '#' || action.includes('127.0.0.1') || action.includes('admin-post.php') || action.includes('admin-ajax.php')) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+                    const originalBtnText = submitBtn ? submitBtn.innerText : '';
+                    if (submitBtn) {
+                        submitBtn.innerText = 'Enviando...';
+                        submitBtn.disabled = true;
+                    }
+
+                    // Extract form data
+                    const formData = new FormData(form);
+                    let summary = [];
+                    for (let [key, val] of formData.entries()) {
+                        if (val && !key.startsWith('_wp') && key !== 'action') {
+                            summary.push(key + ': ' + val);
+                        }
+                    }
+
+                    setTimeout(function() {
+                        if (submitBtn) {
+                            submitBtn.innerText = '¡Mensaje Enviado con Éxito!';
+                            submitBtn.style.backgroundColor = '#16a34a';
+                        }
+                        
+                        // Show visual toast / notification
+                        let notification = document.createElement('div');
+                        notification.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#0f172a;color:#fff;padding:16px 24px;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,0.3);z-index:9999;font-family:sans-serif;font-size:14px;border-left:4px solid #f97316;display:flex;align-items:center;gap:12px;';
+                        notification.innerHTML = '<span>✓</span><div><strong>Solicitud Registrada</strong><br>Nos pondremos en contacto con usted a la brevedad.</div>';
+                        document.body.appendChild(notification);
+
+                        setTimeout(function() {
+                            notification.remove();
+                        }, 5000);
+
+                        form.reset();
+                    }, 600);
+                });
+            }
+        });
+    });
+    </script>
+    

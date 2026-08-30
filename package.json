@@ -1,0 +1,20 @@
+{
+  "name": "rolbag-web",
+  "version": "1.0.0",
+  "description": "Sitio web corporativo y catálogo de fundas protectoras a medida ROLBAG",
+  "scripts": {
+    "export": "python scripts/export_static.py",
+    "deploy": "python scripts/export_static.py && vercel deploy dist --prod --yes --project rolbag-web",
+    "build": "node -e \"console.log('Build completed for Vercel static distribution')\""
+  },
+  "keywords": [
+    "rolbag",
+    "fundas",
+    "capturadores",
+    "tablets",
+    "impresoras",
+    "seguridad"
+  ],
+  "author": "ROLBAG",
+  "license": "UNLICENSED"
+}

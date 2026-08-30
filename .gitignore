@@ -1,0 +1,55 @@
+# Database files and local runtime data
+/data/
+*.log
+*.err
+*.pid
+*.ini
+*.pem
+ibdata*
+ib_logfile*
+aria_log*
+tc.log
+undo*
+
+# WordPress Core downloads & system files
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/xmlrpc.php
+/readme.html
+/license.txt
+/index.php
+/router.php
+/wp-cli.phar
+/wp.bat
+/front-page-phase4.php
+/reorder*.py
+
+# WordPress Core Themes & standard uploads
+/wp-content/themes/twenty*
+/wp-content/plugins/akismet/
+/wp-content/plugins/hello.php
+/wp-content/languages/
+/wp-content/upgrade/
+/wp-content/cache/
+/wp-content/wflogs/
+
+# Vercel & Node
+.vercel
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment and IDE
+.env
+.env.*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temp scratch & caches
+scratch/
+__pycache__/
+*.pyc

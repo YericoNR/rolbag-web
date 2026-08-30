@@ -1,0 +1,327 @@
+/*
+Theme Name: ROLBAG
+Theme URI: http://rolbag.local
+Author: Antigravity
+Author URI: http://rolbag.local
+Description: Tema personalizado para ROLBAG.
+Version: 1.0.0
+Text Domain: rolbag
+*/
+
+/* 
+ * CSS base goes here.
+ * For optimization, we will enqueue this file in functions.php.
+ */
+:root {
+    --primary-color: #0F172A; /* Corporate dark blue */
+    --secondary-color: #FACC15; /* Industrial yellow/gold */
+    --text-color: #334155;
+    --text-light: #94A3B8;
+    --bg-light: #F8FAFC;
+    --bg-white: #FFFFFF;
+    --font-main: 'Inter', sans-serif;
+    --border-radius: 4px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =======================================
+   UTILITIES
+======================================= */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+}
+
+.btn-primary:hover {
+    background-color: #1E293B;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: #EAB308;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+}
+
+/* =======================================
+   HEADER
+======================================= */
+.site-header {
+    background: var(--bg-white);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.site-branding {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.site-branding a {
+    color: var(--primary-color);
+}
+
+.main-navigation ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.main-navigation a {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.main-navigation a:hover {
+    color: var(--secondary-color);
+}
+
+.header-cta {
+    display: flex;
+    align-items: center;
+}
+
+/* =======================================
+   HERO
+======================================= */
+.hero-section {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 18px;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* =======================================
+   SECTION TITLES
+======================================= */
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* =======================================
+   GRID SYSTEM
+======================================= */
+.grid {
+    display: grid;
+    gap: 30px;
+}
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* =======================================
+   CARDS
+======================================= */
+.product-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.product-card-img {
+    height: 200px;
+    background: #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-brand {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.product-title {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.product-card .btn {
+    margin-top: auto;
+    width: 100%;
+    padding: 10px;
+}
+
+/* =======================================
+   FOOTER
+======================================= */
+.site-footer {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    padding: 60px 0 20px 0;
+}
+
+.footer-widgets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-widget h4 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.footer-widget ul {
+    list-style: none;
+}
+
+.footer-widget ul li {
+    margin-bottom: 10px;
+}
+
+.footer-widget a {
+    color: var(--text-light);
+}
+
+.footer-widget a:hover {
+    color: var(--bg-white);
+}
+
+.site-info {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+/* =======================================
+   RESPONSIVE
+======================================= */
+@media (max-width: 992px) {
+    .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .footer-widgets { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .main-navigation, .header-cta { display: none; } /* Add mobile menu JS later */
+    .hero-section h1 { font-size: 36px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .hero-buttons { flex-direction: column; }
+}
+
+@media (max-width: 576px) {
+    .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .footer-widgets { grid-template-columns: 1fr; }
+}
