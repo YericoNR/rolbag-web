@@ -282,7 +282,7 @@ get_header('landing');
 
                     <!-- Línea 03: Impresoras -->
                     <a href="/productos/fundas-para-impresoras" class="rb-bento-card rb-bento-card--side">
-                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/bento_impresora_1787700478886.jpg' ); ?>');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/funda_impresora_principal_01.webp' ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 03</span>
