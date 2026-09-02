@@ -1769,18 +1769,40 @@ body.rb-main {
     align-items: flex-start;
 }
 
+@media (max-width: 900px) {
+    .rb-product-hero__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
 .rb-product-main-img-wrap {
-    background-color: #071324;
-    border-radius: 12px;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 480px;
+    padding: 16px;
+}
+
+@media (max-width: 768px) {
+    .rb-product-main-img-wrap {
+        height: 360px;
+        padding: 12px;
+    }
 }
 
 .rb-product-main-img {
     width: 100%;
-    height: 420px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
     display: block;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .rb-product-thumbs {
@@ -1791,26 +1813,31 @@ body.rb-main {
 }
 
 .rb-thumb-btn {
-    width: 76px;
-    height: 76px;
-    border-radius: 8px;
-    border: 2px solid transparent;
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+    border: 2px solid #e2e8f0;
     overflow: hidden;
-    padding: 0;
-    background: transparent;
+    padding: 4px;
+    background: #ffffff;
     cursor: pointer;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .rb-thumb-btn.active, .rb-thumb-btn:hover {
     border-color: var(--color-brand-accent);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 163, 224, 0.2);
 }
 
 .rb-thumb-btn img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
 }
 
 .rb-product-title {
