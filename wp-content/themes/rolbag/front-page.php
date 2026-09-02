@@ -257,7 +257,7 @@ get_header('landing');
             <div class="rb-products-bento">
                 <!-- Línea 01: Capturadores (Dominante 55%) -->
                 <a href="/productos/fundas-para-capturadores" class="rb-bento-card rb-bento-card--main">
-                    <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/bento_capturador_1787700291965.jpg' ); ?>');"></div>
+                    <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/capturador_zebra_principal_portada.webp' ); ?>');"></div>
                     <div class="rb-bento-card__overlay"></div>
                     <div class="rb-bento-card__content">
                         <span class="rb-badge">Línea Principal (+120 modelos)</span>

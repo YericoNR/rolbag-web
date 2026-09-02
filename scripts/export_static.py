@@ -11,6 +11,7 @@ DIST_DIR = PROJECT_ROOT / "dist"
 
 INITIAL_ROUTES = [
     "/",
+    "/productos/",
     "/empresa/",
     "/soluciones/",
     "/soluciones-a-medida/",
