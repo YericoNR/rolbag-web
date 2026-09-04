@@ -35,8 +35,8 @@ get_header('landing');
                         $post_id = get_the_ID();
                         $short_title = get_post_meta( $post_id, 'rolbag_short_title', true ) ?: get_the_title();
                         $image = get_post_meta( $post_id, 'rolbag_image', true );
-                        $brands_models_json = get_post_meta( $post_id, 'rolbag_brands_models', true );
-                        $brands_models = ( $brands_models_json && is_array( json_decode( $brands_models_json, true ) ) ) ? json_decode( $brands_models_json, true ) : array();
+                        $brands_models_meta = get_post_meta( $post_id, 'rolbag_brands_models', true );
+                        $brands_models = is_array( $brands_models_meta ) ? $brands_models_meta : ( ( is_string( $brands_models_meta ) && json_decode( $brands_models_meta, true ) ) ? json_decode( $brands_models_meta, true ) : array() );
                         $total_models = 0;
                         if ( is_array( $brands_models ) ) {
                             foreach ( $brands_models as $b => $m ) {

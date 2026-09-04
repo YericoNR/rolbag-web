@@ -22,6 +22,7 @@ INITIAL_ROUTES = [
     "/productos/fundas-para-capturadores/",
     "/productos/fundas-para-tablets/",
     "/productos/fundas-para-impresoras/",
+    "/productos/fundas-para-pos-moviles/",
     "/productos/valijas-de-seguridad/",
     "/productos/candados-especiales/",
     "/design-system-preview/",

@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="/assets/images/brand/apple-touch-icon.png">
     <link rel="shortcut icon" href="/assets/images/brand/favicon.ico">
 
-	<title>Fundas para Capturadores de Datos y Terminales Móviles &#8211; ROLBAG</title>
+	<title>Fundas para Capturadores de Datos / Terminales Móviles &#8211; ROLBAG</title>
 <meta name='robots' content='max-image-preview:large' />
 <link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
 <link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -3594,6 +3594,560 @@ body.rb-main {
     }
 }
 
+/* ==========================================================================
+   MARCAS & COMPATIBILIDAD INDUSTRIAL (MARQUEE TICKER & ECOSISTEMA)
+   ========================================================================== */
+
+/* 1. SLIDER CONTINUO / MARQUEE TICKER */
+.rb-brand-ticker {
+    background-color: var(--color-brand-primary-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.rb-brand-ticker__inner {
+    display: flex;
+    align-items: center;
+    max-width: 100vw;
+}
+
+.rb-brand-ticker__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 24px;
+    background-color: var(--color-brand-primary-dark);
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.rb-ticker-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-brand-cyan);
+    box-shadow: 0 0 10px var(--color-brand-cyan);
+    animation: rbPulseDot 2s infinite ease-in-out;
+}
+
+@keyframes rbPulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.rb-ticker-label-text {
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-brand-cyan);
+    white-space: nowrap;
+}
+
+.rb-brand-ticker__viewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+
+.rb-brand-ticker__track {
+    display: flex;
+    width: max-content;
+    animation: rbTickerLoop 40s linear infinite;
+}
+
+.rb-brand-ticker:hover .rb-brand-ticker__track {
+    animation-play-state: paused;
+}
+
+@keyframes rbTickerLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.rb-ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding-right: 22px;
+    white-space: nowrap;
+}
+
+.rb-ticker-item {
+    font-family: var(--font-family-mono);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #e2e8f0;
+    transition: color 0.2s ease;
+}
+
+.rb-ticker-item:hover {
+    color: var(--color-brand-cyan);
+}
+
+.rb-ticker-sep {
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+/* 2. ECOSISTEMA DE MARCAS EN FRONT-PAGE */
+.rb-brands-ecosystem {
+    margin-top: 80px;
+    padding-top: 64px;
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+.rb-brands-ecosystem__header {
+    margin-bottom: 32px;
+}
+
+.rb-brands-filter-wrap {
+    margin-bottom: 24px;
+}
+
+.rb-brands-filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rb-brand-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 1.5px solid var(--color-border-subtle);
+    border-radius: 9999px;
+    font-family: var(--font-family-sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.rb-brand-tab:hover {
+    border-color: var(--color-brand-accent);
+    color: var(--color-brand-primary);
+    transform: translateY(-1px);
+}
+
+.rb-brand-tab.active {
+    background-color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 43, 73, 0.2);
+}
+
+.rb-brand-tab__count {
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    background-color: #f1f5f9;
+    color: var(--color-brand-accent);
+    padding: 2px 7px;
+    border-radius: 9999px;
+    transition: var(--transition-fast);
+}
+
+.rb-brand-tab.active .rb-brand-tab__count {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.rb-brands-search-wrap {
+    max-width: 580px;
+    margin: 0 auto 36px auto;
+}
+
+.rb-brands-search-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.rb-brands-search-inner .rb-search-icon {
+    position: absolute;
+    left: 16px;
+    color: var(--color-text-muted);
+    pointer-events: none;
+}
+
+.rb-brands-search-inner input {
+    width: 100%;
+    padding: 12px 18px 12px 46px;
+    font-size: 0.92rem;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+    background-color: #ffffff;
+    border: 1.5px solid var(--color-border-subtle);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: var(--transition-fast);
+}
+
+.rb-brands-search-inner input:focus {
+    outline: none;
+    border-color: var(--color-brand-accent);
+    box-shadow: 0 0 0 4px rgba(0, 163, 224, 0.12);
+}
+
+/* Grilla de Marcas */
+.rb-brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+}
+
+.rb-brand-card-item {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 14px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.rb-brand-card-item:hover {
+    transform: translateY(-4px);
+    border-color: #cbd5e1;
+    box-shadow: 0 12px 30px rgba(0, 43, 73, 0.08);
+}
+
+.rb-brand-card-item__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.rb-brand-badge-cat {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+}
+
+.rb-brand-models-badge {
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-brand-accent);
+    background-color: #e0f2fe;
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.rb-brand-card-item__title {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+
+.rb-brand-card-item__desc {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex: 1;
+}
+
+.rb-brand-card-item__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.rb-brand-card-item__tags .rb-tag {
+    font-family: var(--font-family-mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #334155;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+.rb-brand-card-item__action {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.rb-brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--color-brand-accent);
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.rb-brand-link:hover {
+    color: var(--color-brand-primary);
+    gap: 10px;
+}
+
+/* Banner de Prototipado 48 Horas */
+.rb-brands-custom-callout {
+    background: linear-gradient(135deg, #071324 0%, #0c1c33 100%);
+    border: 1px solid rgba(0, 196, 255, 0.2);
+    border-radius: 16px;
+    padding: 32px 36px;
+    box-shadow: 0 16px 40px rgba(7, 19, 36, 0.2);
+    color: #ffffff;
+}
+
+.rb-custom-callout-inner {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.rb-custom-callout-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background-color: rgba(0, 196, 255, 0.12);
+    border: 1px solid rgba(0, 196, 255, 0.25);
+    color: var(--color-brand-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.rb-custom-callout-content {
+    flex: 1;
+    min-width: 280px;
+}
+
+.rb-custom-callout-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.rb-custom-callout-desc {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.rb-custom-callout-desc strong {
+    color: var(--color-brand-cyan);
+}
+
+.rb-custom-callout-action {
+    flex-shrink: 0;
+}
+
+/* 3. PRODUCTOS SINGLE: PILLS Y BUSCADOR DE MODELOS */
+.rb-brand-filter-pills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 24px auto 20px auto;
+    max-width: 900px;
+}
+
+.rb-brand-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f8fafc;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 9999px;
+    font-family: var(--font-family-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.rb-brand-pill:hover {
+    border-color: var(--color-brand-accent);
+    color: var(--color-brand-primary);
+    background-color: #ffffff;
+}
+
+.rb-brand-pill.active {
+    background-color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 43, 73, 0.18);
+}
+
+.rb-model-search-wrap {
+    max-width: 520px;
+    margin: 0 auto 36px auto;
+}
+
+.rb-model-search-wrap .rb-search-input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-family: var(--font-family-sans);
+    border: 1.5px solid var(--color-border-subtle);
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: var(--transition-fast);
+}
+
+.rb-model-search-wrap .rb-search-input:focus {
+    outline: none;
+    border-color: var(--color-brand-accent);
+    box-shadow: 0 0 0 4px rgba(0, 163, 224, 0.12);
+}
+
+/* 4. PRODUCTOS SINGLE: VALIJAS DE SEGURIDAD (TABLA / CARDS DIMENSIONALES) */
+.rb-valijas-models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 36px;
+}
+
+.rb-valija-card-group {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.rb-valija-card-group__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.rb-valija-group-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    margin: 0;
+}
+
+.rb-valija-items-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.rb-valija-item-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 14px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.rb-valija-item-box:hover {
+    background-color: #f0f9ff;
+    border-color: var(--color-brand-accent);
+}
+
+.rb-valija-code {
+    font-family: var(--font-family-mono);
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    white-space: nowrap;
+}
+
+.rb-valija-specs {
+    font-size: 0.84rem;
+    color: #475569;
+    text-align: right;
+    line-height: 1.35;
+}
+
+/* RESPONSIVE AJUSTES PARA MARCAS Y VALIJAS */
+@media (max-width: 768px) {
+    .rb-brand-ticker__label {
+        padding: 0 16px;
+    }
+    .rb-ticker-label-text {
+        display: none;
+    }
+    .rb-brands-grid {
+        grid-template-columns: 1fr;
+    }
+    .rb-custom-callout-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .rb-custom-callout-action {
+        width: 100%;
+    }
+    .rb-custom-callout-action .rb-btn {
+        width: 100%;
+    }
+    .rb-valijas-models-grid {
+        grid-template-columns: 1fr;
+    }
+    .rb-valija-item-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .rb-valija-specs {
+        text-align: left;
+    }
+    .rb-brand-filter-pills-wrap {
+        gap: 6px;
+    }
+    .rb-brand-pill {
+        font-size: 0.78rem;
+        padding: 6px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rb-brand-ticker__track {
+        animation: none !important;
+        overflow-x: auto;
+    }
+}
+
+
 
 
 /* =======================================
@@ -3836,35 +4390,20 @@ body.rb-main {
                 <!-- Columna Izquierda: Galería -->
                 <div class="rb-product-gallery-col">
                     <div class="rb-product-main-img-wrap">
-                                                    <img id="rb-main-view" src="/assets/images/generated/capturador_zebra_principal_portada.webp" alt="Fundas para Capturadores de Datos y Terminales Móviles" class="rb-product-main-img" />
+                                                    <img id="rb-main-view" src="/assets/images/generated/bento_capturador_1787700291965.jpg" alt="Fundas para Capturadores de Datos / Terminales Móviles" class="rb-product-main-img" />
                                             </div>
                                             <div class="rb-product-thumbs">
-                                                            <button type="button" class="rb-thumb-btn active" data-img="/assets/images/generated/capturador_zebra_principal_portada.webp" aria-label="Ver vista 1">
-                                    <img src="/assets/images/generated/capturador_zebra_principal_portada.webp" alt="Fundas para Capturadores de Datos y Terminales Móviles vista 1" />
+                                                            <button type="button" class="rb-thumb-btn active" data-img="/assets/images/generated/bento_capturador_1787700291965.jpg" aria-label="Ver vista 1">
+                                    <img src="/assets/images/generated/bento_capturador_1787700291965.jpg" alt="Fundas para Capturadores de Datos / Terminales Móviles vista 1" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/capturador_galeria_02_A01.webp" aria-label="Ver vista 2">
-                                    <img src="/assets/images/generated/capturador_galeria_02_A01.webp" alt="Fundas para Capturadores de Datos y Terminales Móviles vista 2" />
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/capturador_detail.jpg" aria-label="Ver vista 2">
+                                    <img src="/assets/images/generated/capturador_detail.jpg" alt="Fundas para Capturadores de Datos / Terminales Móviles vista 2" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/capturador_galeria_03_A02.webp" aria-label="Ver vista 3">
-                                    <img src="/assets/images/generated/capturador_galeria_03_A02.webp" alt="Fundas para Capturadores de Datos y Terminales Móviles vista 3" />
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/custom_solution_1787698415328.jpg" aria-label="Ver vista 3">
+                                    <img src="/assets/images/generated/custom_solution_1787698415328.jpg" alt="Fundas para Capturadores de Datos / Terminales Móviles vista 3" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/capturador_galeria_04_A03.webp" aria-label="Ver vista 4">
-                                    <img src="/assets/images/generated/capturador_galeria_04_A03.webp" alt="Fundas para Capturadores de Datos y Terminales Móviles vista 4" />
-                                </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/capturador_galeria_05_A04.webp" aria-label="Ver vista 5">
-                                    <img src="/assets/images/generated/capturador_galeria_05_A04.webp" alt="Fundas para Capturadores de Datos y Terminales Móviles vista 5" />
-                                </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/capturador_galeria_06_A05.webp" aria-label="Ver vista 6">
-                                    <img src="/assets/images/generated/capturador_galeria_06_A05.webp" alt="Fundas para Capturadores de Datos y Terminales Móviles vista 6" />
-                                </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/capturador_galeria_07_A06.webp" aria-label="Ver vista 7">
-                                    <img src="/assets/images/generated/capturador_galeria_07_A06.webp" alt="Fundas para Capturadores de Datos y Terminales Móviles vista 7" />
-                                </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/capturador_galeria_08_b01_1.webp" aria-label="Ver vista 8">
-                                    <img src="/assets/images/generated/capturador_galeria_08_b01_1.webp" alt="Fundas para Capturadores de Datos y Terminales Móviles vista 8" />
-                                </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/capturador_galeria_09_b01_2.webp" aria-label="Ver vista 9">
-                                    <img src="/assets/images/generated/capturador_galeria_09_b01_2.webp" alt="Fundas para Capturadores de Datos y Terminales Móviles vista 9" />
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/fabricacion_1787702420725.jpg" aria-label="Ver vista 4">
+                                    <img src="/assets/images/generated/fabricacion_1787702420725.jpg" alt="Fundas para Capturadores de Datos / Terminales Móviles vista 4" />
                                 </button>
                                                     </div>
                                     </div>
@@ -3873,12 +4412,15 @@ body.rb-main {
                 <div class="rb-product-info-col">
                     <div style="display:flex; gap:8px; align-items:center; margin-bottom:12px;">
                         <span class="rb-badge">Línea Oficial ROLBAG</span>
+                                                    <span class="rb-badge" style="background-color:rgba(0,163,224,0.12); color:var(--color-brand-accent);">
+                                +156 Modelos / Sistemas
+                            </span>
                                             </div>
 
-                    <h1 class="rb-product-title">Fundas para Capturadores de Datos y Terminales Móviles</h1>
+                    <h1 class="rb-product-title">Fundas para Capturadores de Datos / Terminales Móviles</h1>
                     
                     <div class="rb-product-lead">
-                        <p>Funda protectora confeccionada en material impermeable de alta duración, adaptada a la forma exacta de cada equipo. Permite una adecuada manipulación de sus comandos, botones y puertos de conexión sin interferir con la lectura láser.</p>
+                        <p>Funda protectora de alta duración confeccionada en material impermeable a la medida exacta de cada equipo. Permite una adecuada manipulación de comandos, botones, cámaras, lectores láser y puertos de conexión. Disponible con correa cosida a la funda y configuraciones compatibles para equipos con o sin gatillo pistol grip.</p>
                     </div>
 
                     <div class="rb-product-highlights">
@@ -3895,7 +4437,7 @@ body.rb-main {
 
                     <div class="rb-product-actions">
                         <a href="#cotizar" class="rb-btn rb-btn--primary rb-btn--lg">Solicitar Cotización</a>
-                        <a href="https://wa.me/569318360416?text=Hola+ROLBAG%2C+quisiera+solicitar+asesor%C3%ADa+y+cotizaci%C3%B3n+para+la+l%C3%ADnea%3A+Fundas+para+Capturadores+de+Datos+y+Terminales+M%C3%B3viles" target="_blank" rel="noopener noreferrer" class="rb-btn rb-btn--whatsapp rb-btn--lg">
+                        <a href="https://wa.me/569318360416?text=Hola+ROLBAG%2C+quisiera+solicitar+asesor%C3%ADa+y+cotizaci%C3%B3n+para+la+l%C3%ADnea%3A+Fundas+para+Capturadores+de+Datos+%2F+Terminales+M%C3%B3viles" target="_blank" rel="noopener noreferrer" class="rb-btn rb-btn--whatsapp rb-btn--lg">
                             <svg viewBox="0 0 24 24" width="22" height="22" style="fill:currentColor; margin-right:8px; vertical-align:middle;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8.01 12.27C8.14 12.44 9.76 14.94 12.24 16C12.83 16.27 13.28 16.42 13.64 16.53C14.23 16.72 14.77 16.69 15.2 16.63C15.68 16.56 16.67 16.03 16.88 15.45C17.08 14.87 17.08 14.38 17.02 14.28C16.96 14.17 16.8 14.11 16.56 13.99C16.32 13.86 15.12 13.28 14.9 13.2C14.67 13.11 14.51 13.08 14.35 13.32C14.18 13.57 13.71 14.11 13.56 14.28C13.42 14.45 13.27 14.47 13.03 14.35C12.79 14.24 11.99 13.97 11.04 13.13C10.3 12.47 9.8 11.66 9.66 11.42C9.51 11.18 9.64 11.04 9.77 10.92C9.88 10.81 10.02 10.63 10.14 10.49C10.26 10.34 10.3 10.24 10.38 10.08C10.46 9.92 10.42 9.77 10.36 9.66C10.3 9.54 9.8 8.34 9.6 7.84C9.39 7.36 9.19 7.43 9.03 7.42C8.88 7.42 8.71 7.33 8.53 7.33Z"/></svg>
                             WhatsApp Comercial Directo
                         </a>
@@ -3913,12 +4455,12 @@ body.rb-main {
                                     <div class="rb-detail-card">
                         <h2 class="rb-h3 rb-text-primary">Características Técnicas</h2>
                         <ul class="rb-feature-list">
-                                                            <li>Confección a medida según el modelo exacto del equipo</li>
-                                                            <li>Correa cosida de alta tenacidad para manipulación y transporte</li>
-                                                            <li>Compatibilidad para versiones con gatillo (pistol grip) y sin pistol</li>
-                                                            <li>Ventana de PVC transparente de alta resistencia para pantalla táctil y teclado</li>
-                                                            <li>Colores a elección según identidad corporativa de la empresa</li>
-                                                            <li>Materiales resistentes al uso intensivo en el área logística y bodegas</li>
+                                                            <li>Confección a la medida exacta según la anatomía y comandos de cada equipo.</li>
+                                                            <li>Compatible para versiones con gatillo pistol grip y estándar sin pistol.</li>
+                                                            <li>Correas de tela tejida de nylon cosidas a la funda, regulables para cintura o bandolera.</li>
+                                                            <li>Materiales sintéticos impermeables resistentes al uso intensivo del área logística.</li>
+                                                            <li>Acceso total a pantalla táctil, teclado, gatillo y puertos de carga sin retirar la funda.</li>
+                                                            <li>Colores corporativos a elección del cliente.</li>
                                                     </ul>
                     </div>
                 
@@ -3926,10 +4468,10 @@ body.rb-main {
                                     <div class="rb-detail-card">
                         <h2 class="rb-h3 rb-text-primary">Beneficios Operacionales</h2>
                         <ul class="rb-feature-list rb-feature-list--benefits">
-                                                            <li>Máxima absorción de caídas e impactos directos en turnos operativos</li>
-                                                            <li>Prolongación sustancial de la vida útil de terminales de alto costo</li>
-                                                            <li>Ergonomía superior para operarios en jornadas continuas de 8 a 12 horas</li>
-                                                            <li>Reducción drástica de costos por recambio de carcasas y pantallas dañadas</li>
+                                                            <li>Protege equipos portátiles de alto costo frente a rayones, caídas y mala manipulación.</li>
+                                                            <li>Reduce drásticamente costos por reparaciones y reposición de pantallas o gatillos.</li>
+                                                            <li>Mejora la ergonomía y comodidad del operario durante turnos continuos de inventario y picking.</li>
+                                                            <li>Mayor durabilidad y calidad garantizada mediante patronaje exclusivo.</li>
                                                     </ul>
                     </div>
                             </div>
@@ -3937,12 +4479,803 @@ body.rb-main {
             <!-- Materiales -->
                             <div class="rb-materials-box">
                     <h3 class="rb-h4 rb-text-primary">Materiales y Confección</h3>
-                    <p>Materiales sintéticos de alto rendimiento: Nylon balístico/Cordura repelente al agua, capas amortiguadoras de goma EVA de alta densidad, láminas plásticas interiores para rigidez estructural, forros acolchados interiores y cintas tejidas con terminales y hebillas de alta resistencia.</p>
+                    <p>Materiales sintéticos impermeables de alta resistencia mecánica (Nylon balístico / Cordura), estructuras reforzadas con láminas plásticas semirrígidas para rigidez, amortiguación interna de goma EVA de alta densidad y forro acolchado. Cintas tejidas de nylon de alta tenacidad con terminales y herrajes metálicos o plásticos de alta resistencia para ajuste ergonómico a la cintura o al hombro.</p>
                 </div>
                     </div>
     </section>
 
-    <!-- Compatibilidad de Marcas y Modelos (Chips Técnicos) -->
+    <!-- Compatibilidad de Marcas y Modelos (Chips Técnicos y Dimensiones) -->
+            <section class="rb-section rb-compat-section" id="compatibilidad">
+            <div class="rb-container">
+                <div class="rb-section-header text-center">
+                    <span class="rb-eyebrow rb-text-mono rb-text-accent">PROFUNDIDAD DE CATÁLOGO</span>
+                                            <h2 class="rb-h2">Compatibilidad y Modelos Desarrollados</h2>
+                        <p class="rb-section-subtitle">Disponemos de patrones de confección probados para cada modelo y fabricante del mercado.</p>
+                    
+                                            <!-- Pills Rápidas de Filtrado por Marca -->
+                        <div class="rb-brand-filter-pills-wrap">
+                            <button type="button" class="rb-brand-pill active" data-brand-filter="all">
+                                Todas las Marcas (156)
+                            </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="zebra">
+                                    Zebra (15)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="honeywell">
+                                    Honeywell (14)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="unitech">
+                                    Unitech (16)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="datalogic">
+                                    Datalogic (17)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="urovo">
+                                    Urovo (14)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="newland">
+                                    Newland (12)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="cipherlab">
+                                    CipherLab (13)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="wepoy">
+                                    Wepoy (11)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="chainway">
+                                    Chainway (16)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="bluebird">
+                                    Bluebird (13)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="m3 mobile">
+                                    M3 Mobile (15)
+                                </button>
+                                                    </div>
+
+                        <!-- Buscador en tiempo real -->
+                        <div class="rb-model-search-wrap">
+                            <input type="text" id="rb-model-filter" placeholder="Buscar modelo o marca (ej. Zebra, TC58, Honeywell, CT45, Sunmi, ZQ630)..." aria-label="Filtrar modelos compatibles" class="rb-search-input" />
+                        </div>
+                                    </div>
+
+                                    <!-- Vista de Grilla de Marcas y Modelos (Chips Técnicos) -->
+                    <div class="rb-compat-brands-grid " id="rb-compat-grid">
+                                                    <div class="rb-brand-card" data-brand="zebra" id="marca-zebra">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Zebra</h3>
+                                    <span class="rb-brand-count">15 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="tc22 wi-fi 6e, pantalla 6&quot;, lector de códigos. es de los más nuevos y económicos." title="Wi-Fi 6E, pantalla 6&quot;, lector de códigos. Es de los más nuevos y económicos.">
+                                                <span class="rb-model-chip__code">TC22</span>
+                                                                                                    <span class="rb-model-chip__desc">Wi-Fi 6E, pantalla 6&quot;, lector de códigos. Es de los más nuevos y económicos.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="tc26 conectividad celular 4g/lte para terreno." title="Conectividad celular 4G/LTE para terreno.">
+                                                <span class="rb-model-chip__code">TC26</span>
+                                                                                                    <span class="rb-model-chip__desc">Conectividad celular 4G/LTE para terreno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="tc27 similar al tc22, pero con conectividad 5g." title="Similar al TC22, pero con conectividad 5G.">
+                                                <span class="rb-model-chip__code">TC27</span>
+                                                                                                    <span class="rb-model-chip__desc">Similar al TC22, pero con conectividad 5G.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="tc53 gama empresarial, wi-fi 6e." title="Gama empresarial, Wi-Fi 6E.">
+                                                <span class="rb-model-chip__code">TC53</span>
+                                                                                                    <span class="rb-model-chip__desc">Gama empresarial, Wi-Fi 6E.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="tc58 versión con 5g, orientada a trabajos exigentes." title="Versión con 5G, orientada a trabajos exigentes.">
+                                                <span class="rb-model-chip__code">TC58</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión con 5G, orientada a trabajos exigentes.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="tc53e evolución del tc53 con hardware avanzado." title="Evolución del TC53 con hardware avanzado.">
+                                                <span class="rb-model-chip__code">TC53e</span>
+                                                                                                    <span class="rb-model-chip__desc">Evolución del TC53 con hardware avanzado.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="tc58e evolución del tc58 con conectividad 5g." title="Evolución del TC58 con conectividad 5G.">
+                                                <span class="rb-model-chip__code">TC58e</span>
+                                                                                                    <span class="rb-model-chip__desc">Evolución del TC58 con conectividad 5G.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="tc53e rfid tc53e con funciones rfid integradas." title="TC53e con funciones RFID integradas.">
+                                                <span class="rb-model-chip__code">TC53e RFID</span>
+                                                                                                    <span class="rb-model-chip__desc">TC53e con funciones RFID integradas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="tc73 gama robusta/industrial ultra resistente." title="Gama robusta/industrial ultra resistente.">
+                                                <span class="rb-model-chip__code">TC73</span>
+                                                                                                    <span class="rb-model-chip__desc">Gama robusta/industrial ultra resistente.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="tc78 versión 5g de la familia robusta industrial." title="Versión 5G de la familia robusta industrial.">
+                                                <span class="rb-model-chip__code">TC78</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión 5G de la familia robusta industrial.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mc3300ax terminal con teclado para bodegas y logística." title="Terminal con teclado para bodegas y logística.">
+                                                <span class="rb-model-chip__code">MC3300ax</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal con teclado para bodegas y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mc3400 terminal industrial de almacén." title="Terminal industrial de almacén.">
+                                                <span class="rb-model-chip__code">MC3400</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal industrial de almacén.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mc3450 terminal industrial avanzado de almacén." title="Terminal industrial avanzado de almacén.">
+                                                <span class="rb-model-chip__code">MC3450</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal industrial avanzado de almacén.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mc9400 gama ultra robusta para logística pesada y bodegas." title="Gama ultra robusta para logística pesada y bodegas.">
+                                                <span class="rb-model-chip__code">MC9400</span>
+                                                                                                    <span class="rb-model-chip__desc">Gama ultra robusta para logística pesada y bodegas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mc9450 versión 5g ultra robusta para logística pesada." title="Versión 5G ultra robusta para logística pesada.">
+                                                <span class="rb-model-chip__code">MC9450</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión 5G ultra robusta para logística pesada.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="honeywell" id="marca-honeywell">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Honeywell</h3>
+                                    <span class="rb-brand-count">14 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="ct30 xp compacto, tipo smartphone empresarial." title="Compacto, tipo smartphone empresarial.">
+                                                <span class="rb-model-chip__code">CT30 XP</span>
+                                                                                                    <span class="rb-model-chip__desc">Compacto, tipo smartphone empresarial.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ct37 compacto para retail y logística." title="Compacto para retail y logística.">
+                                                <span class="rb-model-chip__code">CT37</span>
+                                                                                                    <span class="rb-model-chip__desc">Compacto para retail y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ct45 robusto, uso general." title="Robusto, uso general.">
+                                                <span class="rb-model-chip__code">CT45</span>
+                                                                                                    <span class="rb-model-chip__desc">Robusto, uso general.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ct45 xp robusto, versión más avanzada." title="Robusto, versión más avanzada.">
+                                                <span class="rb-model-chip__code">CT45 XP</span>
+                                                                                                    <span class="rb-model-chip__desc">Robusto, versión más avanzada.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ct47 ultra resistente + 5g." title="Ultra resistente + 5G.">
+                                                <span class="rb-model-chip__code">CT47</span>
+                                                                                                    <span class="rb-model-chip__desc">Ultra resistente + 5G.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ct60 xp robusto, captura intensiva de datos." title="Robusto, captura intensiva de datos.">
+                                                <span class="rb-model-chip__code">CT60 XP</span>
+                                                                                                    <span class="rb-model-chip__desc">Robusto, captura intensiva de datos.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="eda51 scanpal, gama intermedia." title="ScanPal, gama intermedia.">
+                                                <span class="rb-model-chip__code">EDA51</span>
+                                                                                                    <span class="rb-model-chip__desc">ScanPal, gama intermedia.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="eda52 scanpal, económico e intermedio." title="ScanPal, económico e intermedio.">
+                                                <span class="rb-model-chip__code">EDA52</span>
+                                                                                                    <span class="rb-model-chip__desc">ScanPal, económico e intermedio.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="eda56 scanpal, más moderno con wi-fi 6." title="ScanPal, más moderno con Wi-Fi 6.">
+                                                <span class="rb-model-chip__code">EDA56</span>
+                                                                                                    <span class="rb-model-chip__desc">ScanPal, más moderno con Wi-Fi 6.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ck62 industrial con teclado físico." title="Industrial con teclado físico.">
+                                                <span class="rb-model-chip__code">CK62</span>
+                                                                                                    <span class="rb-model-chip__desc">Industrial con teclado físico.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ck65 industrial con teclado ultra resistente para bodega." title="Industrial con teclado ultra resistente para bodega.">
+                                                <span class="rb-model-chip__code">CK65</span>
+                                                                                                    <span class="rb-model-chip__desc">Industrial con teclado ultra resistente para bodega.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ck75 industrial robusto para almacenes, logística y distribución." title="Industrial robusto para almacenes, logística y distribución.">
+                                                <span class="rb-model-chip__code">CK75</span>
+                                                                                                    <span class="rb-model-chip__desc">Industrial robusto para almacenes, logística y distribución.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="eda61k resistente a múltiples caídas, robusto con teclado." title="Resistente a múltiples caídas, robusto con teclado.">
+                                                <span class="rb-model-chip__code">EDA61K</span>
+                                                                                                    <span class="rb-model-chip__desc">Resistente a múltiples caídas, robusto con teclado.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cw45 wearable, se lleva ergonómicamente en el cuerpo." title="Wearable, se lleva ergonómicamente en el cuerpo.">
+                                                <span class="rb-model-chip__code">CW45</span>
+                                                                                                    <span class="rb-model-chip__desc">Wearable, se lleva ergonómicamente en el cuerpo.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="unitech" id="marca-unitech">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Unitech</h3>
+                                    <span class="rb-brand-count">16 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="ea530 smartphone industrial 6&quot;." title="Smartphone industrial 6&quot;.">
+                                                <span class="rb-model-chip__code">EA530</span>
+                                                                                                    <span class="rb-model-chip__desc">Smartphone industrial 6&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ea530uhf con módulo rfid uhf integrado." title="Con módulo RFID UHF integrado.">
+                                                <span class="rb-model-chip__code">EA530UHF</span>
+                                                                                                    <span class="rb-model-chip__desc">Con módulo RFID UHF integrado.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ea530 + rfid uhf inventario y lectura rfid." title="Inventario y lectura RFID.">
+                                                <span class="rb-model-chip__code">EA530 + RFID UHF</span>
+                                                                                                    <span class="rb-model-chip__desc">Inventario y lectura RFID.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ea660 smartphone industrial 6&quot; 5g." title="Smartphone industrial 6&quot; 5G.">
+                                                <span class="rb-model-chip__code">EA660</span>
+                                                                                                    <span class="rb-model-chip__desc">Smartphone industrial 6&quot; 5G.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="pa768 terminal robusto 6&quot; para trabajo en terreno." title="Terminal robusto 6&quot; para trabajo en terreno.">
+                                                <span class="rb-model-chip__code">PA768</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal robusto 6&quot; para trabajo en terreno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="pa768e evolución del pa768." title="Evolución del PA768.">
+                                                <span class="rb-model-chip__code">PA768e</span>
+                                                                                                    <span class="rb-model-chip__desc">Evolución del PA768.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="pa730 terminal portátil de mano." title="Terminal portátil de mano.">
+                                                <span class="rb-model-chip__code">PA730</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal portátil de mano.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="pa760 terminal robusto empresarial." title="Terminal robusto empresarial.">
+                                                <span class="rb-model-chip__code">PA760</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal robusto empresarial.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ht330 terminal con teclado para bodega e inventario." title="Terminal con teclado para bodega e inventario.">
+                                                <span class="rb-model-chip__code">HT330</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal con teclado para bodega e inventario.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ht380 terminal robusto con teclado para bodega." title="Terminal robusto con teclado para bodega.">
+                                                <span class="rb-model-chip__code">HT380</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal robusto con teclado para bodega.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ht730 terminal industrial para bodega y logística." title="Terminal industrial para bodega y logística.">
+                                                <span class="rb-model-chip__code">HT730</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal industrial para bodega y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ht730uhf terminal industrial con lectura rfid uhf." title="Terminal industrial con lectura RFID UHF.">
+                                                <span class="rb-model-chip__code">HT730UHF</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal industrial con lectura RFID UHF.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ht730 + rfid inventario y trazabilidad logística." title="Inventario y trazabilidad logística.">
+                                                <span class="rb-model-chip__code">HT730 + RFID</span>
+                                                                                                    <span class="rb-model-chip__desc">Inventario y trazabilidad logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ht730 plus nueva generación de alto rendimiento." title="Nueva generación de alto rendimiento.">
+                                                <span class="rb-model-chip__code">HT730 Plus</span>
+                                                                                                    <span class="rb-model-chip__desc">Nueva generación de alto rendimiento.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ea520 pda compacto para retail e inventario." title="PDA compacto para retail e inventario.">
+                                                <span class="rb-model-chip__code">EA520</span>
+                                                                                                    <span class="rb-model-chip__desc">PDA compacto para retail e inventario.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ea320 pda compacto para retail y captura de datos." title="PDA compacto para retail y captura de datos.">
+                                                <span class="rb-model-chip__code">EA320</span>
+                                                                                                    <span class="rb-model-chip__desc">PDA compacto para retail y captura de datos.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="datalogic" id="marca-datalogic">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Datalogic</h3>
+                                    <span class="rb-brand-count">17 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="memor 30 retail, inventario, logística y almacén." title="Retail, inventario, logística y almacén.">
+                                                <span class="rb-model-chip__code">Memor 30</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario, logística y almacén.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="memor 35 logística, almacén, retail y trabajo en terreno." title="Logística, almacén, retail y trabajo en terreno.">
+                                                <span class="rb-model-chip__code">Memor 35</span>
+                                                                                                    <span class="rb-model-chip__desc">Logística, almacén, retail y trabajo en terreno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="memor 20 retail, inventario y logística." title="Retail, inventario y logística.">
+                                                <span class="rb-model-chip__code">Memor 20</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="memor 11 picking, inventario, retail y almacén." title="Picking, inventario, retail y almacén.">
+                                                <span class="rb-model-chip__code">Memor 11</span>
+                                                                                                    <span class="rb-model-chip__desc">Picking, inventario, retail y almacén.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="memor k20 retail, tiendas e inventario." title="Retail, tiendas e inventario.">
+                                                <span class="rb-model-chip__code">Memor K20</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, tiendas e inventario.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="memor k retail, inventario y gestión de productos." title="Retail, inventario y gestión de productos.">
+                                                <span class="rb-model-chip__code">Memor K</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario y gestión de productos.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="memor 10 retail, inventario y logística." title="Retail, inventario y logística.">
+                                                <span class="rb-model-chip__code">Memor 10</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="memor 12 retail, logística e inventario." title="Retail, logística e inventario.">
+                                                <span class="rb-model-chip__code">Memor 12</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, logística e inventario.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="memor 17 retail, inventario y operaciones de tienda." title="Retail, inventario y operaciones de tienda.">
+                                                <span class="rb-model-chip__code">Memor 17</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario y operaciones de tienda.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="memor 1 retail, inventario y punto de venta." title="Retail, inventario y punto de venta.">
+                                                <span class="rb-model-chip__code">Memor 1</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario y punto de venta.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="skorpio x5 bodega, logística, picking y distribución." title="Bodega, logística, picking y distribución.">
+                                                <span class="rb-model-chip__code">Skorpio X5</span>
+                                                                                                    <span class="rb-model-chip__desc">Bodega, logística, picking y distribución.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="skorpio x4 almacén, manufactura, logística y retail." title="Almacén, manufactura, logística y retail.">
+                                                <span class="rb-model-chip__code">Skorpio X4</span>
+                                                                                                    <span class="rb-model-chip__desc">Almacén, manufactura, logística y retail.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="skorpio x3 bodega, inventario y distribución." title="Bodega, inventario y distribución.">
+                                                <span class="rb-model-chip__code">Skorpio X3</span>
+                                                                                                    <span class="rb-model-chip__desc">Bodega, inventario y distribución.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="falcon x4 manufactura, logística, almacén y distribución." title="Manufactura, logística, almacén y distribución.">
+                                                <span class="rb-model-chip__code">Falcon X4</span>
+                                                                                                    <span class="rb-model-chip__desc">Manufactura, logística, almacén y distribución.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="falcon x3+ bodega, picking, logística y distribución." title="Bodega, picking, logística y distribución.">
+                                                <span class="rb-model-chip__code">Falcon X3+</span>
+                                                                                                    <span class="rb-model-chip__desc">Bodega, picking, logística y distribución.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="lynx retail, inventario y logística." title="Retail, inventario y logística.">
+                                                <span class="rb-model-chip__code">Lynx</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="elf retail, inventario, transporte y logística." title="Retail, inventario, transporte y logística.">
+                                                <span class="rb-model-chip__code">Elf</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario, transporte y logística.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="urovo" id="marca-urovo">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Urovo</h3>
+                                    <span class="rb-brand-count">14 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="dt40 manufactura, almacenes y logística." title="Manufactura, almacenes y logística.">
+                                                <span class="rb-model-chip__code">DT40</span>
+                                                                                                    <span class="rb-model-chip__desc">Manufactura, almacenes y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="dt50 logística, retail, inventarios y distribución." title="Logística, retail, inventarios y distribución.">
+                                                <span class="rb-model-chip__code">DT50</span>
+                                                                                                    <span class="rb-model-chip__desc">Logística, retail, inventarios y distribución.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="dt50 5g logística, transporte, retail y operaciones en terreno." title="Logística, transporte, retail y operaciones en terreno.">
+                                                <span class="rb-model-chip__code">DT50 5G</span>
+                                                                                                    <span class="rb-model-chip__desc">Logística, transporte, retail y operaciones en terreno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="dt66 retail, logística, inventario y entregas." title="Retail, logística, inventario y entregas.">
+                                                <span class="rb-model-chip__code">DT66</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, logística, inventario y entregas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="dt630 transporte, logística, distribución y trabajo en terreno." title="Transporte, logística, distribución y trabajo en terreno.">
+                                                <span class="rb-model-chip__code">DT630</span>
+                                                                                                    <span class="rb-model-chip__desc">Transporte, logística, distribución y trabajo en terreno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ct48 retail, inventario, bodegas y picking." title="Retail, inventario, bodegas y picking.">
+                                                <span class="rb-model-chip__code">CT48</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario, bodegas y picking.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ct48c retail, inventario y gestión de productos." title="Retail, inventario y gestión de productos.">
+                                                <span class="rb-model-chip__code">CT48C</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario y gestión de productos.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="ct58s almacenes, logística, retail y delivery." title="Almacenes, logística, retail y delivery.">
+                                                <span class="rb-model-chip__code">CT58S</span>
+                                                                                                    <span class="rb-model-chip__desc">Almacenes, logística, retail y delivery.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="rt30 retail, inventario y operaciones de tienda." title="Retail, inventario y operaciones de tienda.">
+                                                <span class="rb-model-chip__code">RT30</span>
+                                                                                                    <span class="rb-model-chip__desc">Retail, inventario y operaciones de tienda.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="rt40s industria, almacenes, logística y ambientes exigentes." title="Industria, almacenes, logística y ambientes exigentes.">
+                                                <span class="rb-model-chip__code">RT40S</span>
+                                                                                                    <span class="rb-model-chip__desc">Industria, almacenes, logística y ambientes exigentes.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="dt610 inventario, logística, almacenes y gestión de activos (rfid)." title="Inventario, logística, almacenes y gestión de activos (RFID).">
+                                                <span class="rb-model-chip__code">DT610</span>
+                                                                                                    <span class="rb-model-chip__desc">Inventario, logística, almacenes y gestión de activos (RFID).</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="dt50p lite inventario, retail, almacenes y control de activos (rfid)." title="Inventario, retail, almacenes y control de activos (RFID).">
+                                                <span class="rb-model-chip__code">DT50P Lite</span>
+                                                                                                    <span class="rb-model-chip__desc">Inventario, retail, almacenes y control de activos (RFID).</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="dt50(p) logística, inventario y trazabilidad (rfid)." title="Logística, inventario y trazabilidad (RFID).">
+                                                <span class="rb-model-chip__code">DT50(P)</span>
+                                                                                                    <span class="rb-model-chip__desc">Logística, inventario y trazabilidad (RFID).</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="dt50(d) industria, almacenes y control de activo (rfid)." title="Industria, almacenes y control de activo (RFID).">
+                                                <span class="rb-model-chip__code">DT50(D)</span>
+                                                                                                    <span class="rb-model-chip__desc">Industria, almacenes y control de activo (RFID).</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="newland" id="marca-newland">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Newland</h3>
+                                    <span class="rb-brand-count">12 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="mt65 beluga iv terminal compacto pensado para retail y logística." title="Terminal compacto pensado para retail y logística.">
+                                                <span class="rb-model-chip__code">MT65 Beluga IV</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal compacto pensado para retail y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mt65 beluga lite versión sencilla portátil con teclado físico." title="Versión sencilla portátil con teclado físico.">
+                                                <span class="rb-model-chip__code">MT65 Beluga Lite</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión sencilla portátil con teclado físico.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mt65 beluga v adecuado para capturadores de datos en terreno." title="Adecuado para capturadores de datos en terreno.">
+                                                <span class="rb-model-chip__code">MT65 Beluga V</span>
+                                                                                                    <span class="rb-model-chip__desc">Adecuado para capturadores de datos en terreno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mt67 sei terminal móvil robusto para almacenes y retail." title="Terminal móvil robusto para almacenes y retail.">
+                                                <span class="rb-model-chip__code">MT67 Sei</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal móvil robusto para almacenes y retail.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mt90 orca iii pantalla táctil para ambiente de trabajo exigente." title="Pantalla táctil para ambiente de trabajo exigente.">
+                                                <span class="rb-model-chip__code">MT90 Orca III</span>
+                                                                                                    <span class="rb-model-chip__desc">Pantalla táctil para ambiente de trabajo exigente.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mt90 orca pro terminal pda industrial para captura de datos profesional." title="Terminal PDA industrial para captura de datos profesional.">
+                                                <span class="rb-model-chip__code">MT90 Orca Pro</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal PDA industrial para captura de datos profesional.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mt90 orca pro ii generación más avanzada con diseño robusto." title="Generación más avanzada con diseño robusto.">
+                                                <span class="rb-model-chip__code">MT90 Orca Pro II</span>
+                                                                                                    <span class="rb-model-chip__desc">Generación más avanzada con diseño robusto.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mt93 megattera pensado para logística, almacenes, retail y operaciones de campo." title="Pensado para logística, almacenes, retail y operaciones de campo.">
+                                                <span class="rb-model-chip__code">MT93 Megattera</span>
+                                                                                                    <span class="rb-model-chip__desc">Pensado para logística, almacenes, retail y operaciones de campo.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mt95 kambur pro diseñado para captura intensiva de datos y códigos uso industrial." title="Diseñado para captura intensiva de datos y códigos uso industrial.">
+                                                <span class="rb-model-chip__code">MT95 Kambur Pro</span>
+                                                                                                    <span class="rb-model-chip__desc">Diseñado para captura intensiva de datos y códigos uso industrial.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mt95 kambur pro ii hardware más moderno y conectividad mejorada." title="Hardware más moderno y conectividad mejorada.">
+                                                <span class="rb-model-chip__code">MT95 Kambur Pro II</span>
+                                                                                                    <span class="rb-model-chip__desc">Hardware más moderno y conectividad mejorada.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mt95 kambur pro iii terminal robusto con pantalla grande moderno." title="Terminal robusto con pantalla grande moderno.">
+                                                <span class="rb-model-chip__code">MT95 Kambur Pro III</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal robusto con pantalla grande moderno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="n7 cachalot pro ii terminal industrial formato pda para almacenamiento y distribución." title="Terminal industrial formato PDA para almacenamiento y distribución.">
+                                                <span class="rb-model-chip__code">N7 Cachalot Pro II</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal industrial formato PDA para almacenamiento y distribución.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="cipherlab" id="marca-cipherlab">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">CipherLab</h3>
+                                    <span class="rb-brand-count">13 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="cipherlab rk96 terminal industrial robusto para almacenes y logística." title="Terminal industrial robusto para almacenes y logística.">
+                                                <span class="rb-model-chip__code">CipherLab RK96</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal industrial robusto para almacenes y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab rs38 terminal móvil moderno 6&quot; para retail, logística y terreno." title="Terminal móvil moderno 6&quot; para retail, logística y terreno.">
+                                                <span class="rb-model-chip__code">CipherLab RS38</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal móvil moderno 6&quot; para retail, logística y terreno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab rs38h versión del rs38 enfocada en sector sanitario/salud." title="Versión del RS38 enfocada en sector sanitario/salud.">
+                                                <span class="rb-model-chip__code">CipherLab RS38H</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión del RS38 enfocada en sector sanitario/salud.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab rs36 terminal compacto 4,3&quot; para inventarios, retail y logística." title="Terminal compacto 4,3&quot; para inventarios, retail y logística.">
+                                                <span class="rb-model-chip__code">CipherLab RS36</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal compacto 4,3&quot; para inventarios, retail y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab rk26 terminal compacto táctil y teclado físico." title="Terminal compacto táctil y teclado físico.">
+                                                <span class="rb-model-chip__code">CipherLab RK26</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal compacto táctil y teclado físico.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab rk95 terminal industrial pantalla táctil y teclado para centros de distribución." title="Terminal industrial pantalla táctil y teclado para centros de distribución.">
+                                                <span class="rb-model-chip__code">CipherLab RK95</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal industrial pantalla táctil y teclado para centros de distribución.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab hera51 terminal robusto para movilidad empresarial y campo." title="Terminal robusto para movilidad empresarial y campo.">
+                                                <span class="rb-model-chip__code">CipherLab Hera51</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal robusto para movilidad empresarial y campo.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab rs51 pda robusto 4,7&quot; para transporte, entregas y logística." title="PDA robusto 4,7&quot; para transporte, entregas y logística.">
+                                                <span class="rb-model-chip__code">CipherLab RS51</span>
+                                                                                                    <span class="rb-model-chip__desc">PDA robusto 4,7&quot; para transporte, entregas y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab rs35 terminal táctil compacto para retail e inventarios." title="Terminal táctil compacto para retail e inventarios.">
+                                                <span class="rb-model-chip__code">CipherLab RS35</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal táctil compacto para retail e inventarios.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab rk25 terminal robusto con teclado numérico físico." title="Terminal robusto con teclado numérico físico.">
+                                                <span class="rb-model-chip__code">CipherLab RK25</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal robusto con teclado numérico físico.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab 9700 terminal industrial grande y resistente." title="Terminal industrial grande y resistente.">
+                                                <span class="rb-model-chip__code">CipherLab 9700</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal industrial grande y resistente.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab rs50 terminal móvil táctil para logística y movilidad empresarial." title="Terminal móvil táctil para logística y movilidad empresarial.">
+                                                <span class="rb-model-chip__code">CipherLab RS50</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal móvil táctil para logística y movilidad empresarial.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="cipherlab rs31 terminal móvil táctil para retail, inventarios y logística." title="Terminal móvil táctil para retail, inventarios y logística.">
+                                                <span class="rb-model-chip__code">CipherLab RS31</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal móvil táctil para retail, inventarios y logística.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="wepoy" id="marca-wepoy">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Wepoy</h3>
+                                    <span class="rb-brand-count">11 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="wepoy dt30 terminal móvil para captura de códigos, inventarios y retail." title="Terminal móvil para captura de códigos, inventarios y retail.">
+                                                <span class="rb-model-chip__code">Wepoy DT30</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal móvil para captura de códigos, inventarios y retail.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="wepoy dt40 terminal móvil robusto para operaciones de campo." title="Terminal móvil robusto para operaciones de campo.">
+                                                <span class="rb-model-chip__code">Wepoy DT40</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal móvil robusto para operaciones de campo.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="wepoy dt50b formato smartphone industrial para logística y terreno." title="Formato smartphone industrial para logística y terreno.">
+                                                <span class="rb-model-chip__code">Wepoy DT50B</span>
+                                                                                                    <span class="rb-model-chip__desc">Formato smartphone industrial para logística y terreno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="wepoy dt50s ultrarresistente para trabajadores dentro y fuera de almacén." title="Ultrarresistente para trabajadores dentro y fuera de almacén.">
+                                                <span class="rb-model-chip__code">Wepoy DT50S</span>
+                                                                                                    <span class="rb-model-chip__desc">Ultrarresistente para trabajadores dentro y fuera de almacén.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="wepoy ct48 diseñado para captura intensiva de datos." title="Diseñado para captura intensiva de datos.">
+                                                <span class="rb-model-chip__code">Wepoy CT48</span>
+                                                                                                    <span class="rb-model-chip__desc">Diseñado para captura intensiva de datos.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="wepoy dt50u especializado en rfid uhf para lectura masiva de etiquetas." title="Especializado en RFID UHF para lectura masiva de etiquetas.">
+                                                <span class="rb-model-chip__code">Wepoy DT50U</span>
+                                                                                                    <span class="rb-model-chip__desc">Especializado en RFID UHF para lectura masiva de etiquetas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="wepoy ct58s terminal móvil de mano con formato pda industrial." title="Terminal móvil de mano con formato PDA industrial.">
+                                                <span class="rb-model-chip__code">Wepoy CT58S</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal móvil de mano con formato PDA industrial.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="wepoy rt40 terminal industrial para manufactura y operaciones exigentes." title="Terminal industrial para manufactura y operaciones exigentes.">
+                                                <span class="rb-model-chip__code">Wepoy RT40</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal industrial para manufactura y operaciones exigentes.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="wepoy dt630 pensado para movilidad y captura de datos." title="Pensado para movilidad y captura de datos.">
+                                                <span class="rb-model-chip__code">Wepoy DT630</span>
+                                                                                                    <span class="rb-model-chip__desc">Pensado para movilidad y captura de datos.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="wepoy dt610 diseñado para lectura y gestión de etiquetas uhf rfid." title="Diseñado para lectura y gestión de etiquetas UHF RFID.">
+                                                <span class="rb-model-chip__code">Wepoy DT610</span>
+                                                                                                    <span class="rb-model-chip__desc">Diseñado para lectura y gestión de etiquetas UHF RFID.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="wepoy dt66 pantalla grande para tareas de captura de datos." title="Pantalla grande para tareas de captura de datos.">
+                                                <span class="rb-model-chip__code">Wepoy DT66</span>
+                                                                                                    <span class="rb-model-chip__desc">Pantalla grande para tareas de captura de datos.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="chainway" id="marca-chainway">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Chainway</h3>
+                                    <span class="rb-brand-count">16 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="chainway c61 terminal robusto con teclado físico para almacén." title="Terminal robusto con teclado físico para almacén.">
+                                                <span class="rb-model-chip__code">Chainway C61</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal robusto con teclado físico para almacén.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway c63 captura de datos profesional." title="Captura de datos profesional.">
+                                                <span class="rb-model-chip__code">Chainway C63</span>
+                                                                                                    <span class="rb-model-chip__desc">Captura de datos profesional.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway c66 terminal móvil táctil versátil." title="Terminal móvil táctil versátil.">
+                                                <span class="rb-model-chip__code">Chainway C66</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal móvil táctil versátil.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway c70 compacto para inventarios." title="Compacto para inventarios.">
+                                                <span class="rb-model-chip__code">Chainway C70</span>
+                                                                                                    <span class="rb-model-chip__desc">Compacto para inventarios.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway c71 terminal multifunción." title="Terminal multifunción.">
+                                                <span class="rb-model-chip__code">Chainway C71</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal multifunción.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway c72 terminal robusto con lector rfid." title="Terminal robusto con lector RFID.">
+                                                <span class="rb-model-chip__code">Chainway C72</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal robusto con lector RFID.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway c75 con impresora térmica integrada." title="Con impresora térmica integrada.">
+                                                <span class="rb-model-chip__code">Chainway C75</span>
+                                                                                                    <span class="rb-model-chip__desc">Con impresora térmica integrada.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway c90 smartphone industrial." title="Smartphone industrial.">
+                                                <span class="rb-model-chip__code">Chainway C90</span>
+                                                                                                    <span class="rb-model-chip__desc">Smartphone industrial.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway c6000 terminal compacto con teclado." title="Terminal compacto con teclado.">
+                                                <span class="rb-model-chip__code">Chainway C6000</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal compacto con teclado.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway mc21 terminal móvil ligero." title="Terminal móvil ligero.">
+                                                <span class="rb-model-chip__code">Chainway MC21</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal móvil ligero.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway mc50 5g conectividad 5g de alta velocidad." title="Conectividad 5G de alta velocidad.">
+                                                <span class="rb-model-chip__code">Chainway MC50 5G</span>
+                                                                                                    <span class="rb-model-chip__desc">Conectividad 5G de alta velocidad.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway mc51 5g gama 5g para trabajo en terreno." title="Gama 5G para trabajo en terreno.">
+                                                <span class="rb-model-chip__code">Chainway MC51 5G</span>
+                                                                                                    <span class="rb-model-chip__desc">Gama 5G para trabajo en terreno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway mc51s movilidad empresarial." title="Movilidad empresarial.">
+                                                <span class="rb-model-chip__code">Chainway MC51S</span>
+                                                                                                    <span class="rb-model-chip__desc">Movilidad empresarial.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway mc62 terminal de almacén." title="Terminal de almacén.">
+                                                <span class="rb-model-chip__code">Chainway MC62</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal de almacén.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway mc95 industrial de alto rendimiento." title="Industrial de alto rendimiento.">
+                                                <span class="rb-model-chip__code">Chainway MC95</span>
+                                                                                                    <span class="rb-model-chip__desc">Industrial de alto rendimiento.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="chainway c90a versión avanzada." title="Versión avanzada.">
+                                                <span class="rb-model-chip__code">Chainway C90A</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión avanzada.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="bluebird" id="marca-bluebird">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Bluebird</h3>
+                                    <span class="rb-brand-count">13 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="bluebird s70 terminal táctil empresarial." title="Terminal táctil empresarial.">
+                                                <span class="rb-model-chip__code">Bluebird S70</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal táctil empresarial.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird s70 explosion protection certificación anti-explosión para ambientes especiales." title="Certificación anti-explosión para ambientes especiales.">
+                                                <span class="rb-model-chip__code">Bluebird S70 Explosion Protection</span>
+                                                                                                    <span class="rb-model-chip__desc">Certificación anti-explosión para ambientes especiales.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird ef551 smartphone industrial de alto rendimiento." title="Smartphone industrial de alto rendimiento.">
+                                                <span class="rb-model-chip__code">Bluebird EF551</span>
+                                                                                                    <span class="rb-model-chip__desc">Smartphone industrial de alto rendimiento.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird ef550r versión rugerizada." title="Versión rugerizada.">
+                                                <span class="rb-model-chip__code">Bluebird EF550R</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión rugerizada.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird ef550 terminal táctil para retail y logística." title="Terminal táctil para retail y logística.">
+                                                <span class="rb-model-chip__code">Bluebird EF550</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal táctil para retail y logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird ef501 pda compacto." title="PDA compacto.">
+                                                <span class="rb-model-chip__code">Bluebird EF501</span>
+                                                                                                    <span class="rb-model-chip__desc">PDA compacto.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird ef501r robusto de campo." title="Robusto de campo.">
+                                                <span class="rb-model-chip__code">Bluebird EF501R</span>
+                                                                                                    <span class="rb-model-chip__desc">Robusto de campo.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird bp30 terminal de cobro e inventario." title="Terminal de cobro e inventario.">
+                                                <span class="rb-model-chip__code">Bluebird BP30</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal de cobro e inventario.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird ek430 terminal de mano para captura." title="Terminal de mano para captura.">
+                                                <span class="rb-model-chip__code">Bluebird EK430</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal de mano para captura.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird vx500 pantalla de alta resolución." title="Pantalla de alta resolución.">
+                                                <span class="rb-model-chip__code">Bluebird VX500</span>
+                                                                                                    <span class="rb-model-chip__desc">Pantalla de alta resolución.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird vx500 ptt con botón push-to-talk." title="Con botón Push-To-Talk.">
+                                                <span class="rb-model-chip__code">Bluebird VX500 PTT</span>
+                                                                                                    <span class="rb-model-chip__desc">Con botón Push-To-Talk.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird vf550 diseño ergonómico." title="Diseño ergonómico.">
+                                                <span class="rb-model-chip__code">Bluebird VF550</span>
+                                                                                                    <span class="rb-model-chip__desc">Diseño ergonómico.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="bluebird hf550x terminal de alto rendimiento." title="Terminal de alto rendimiento.">
+                                                <span class="rb-model-chip__code">Bluebird HF550X</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal de alto rendimiento.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="m3 mobile" id="marca-m3-mobile">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">M3 Mobile</h3>
+                                    <span class="rb-brand-count">15 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="m3 mobile sm30 smartphone empresarial moderno." title="Smartphone empresarial moderno.">
+                                                <span class="rb-model-chip__code">M3 Mobile SM30</span>
+                                                                                                    <span class="rb-model-chip__desc">Smartphone empresarial moderno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile sm20 terminal móvil compacto." title="Terminal móvil compacto.">
+                                                <span class="rb-model-chip__code">M3 Mobile SM20</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal móvil compacto.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile sm20f versión para ambientes fríos y congelados." title="Versión para ambientes fríos y congelados.">
+                                                <span class="rb-model-chip__code">M3 Mobile SM20F</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión para ambientes fríos y congelados.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile sm15x modelo industrial de captura." title="Modelo industrial de captura.">
+                                                <span class="rb-model-chip__code">M3 Mobile SM15X</span>
+                                                                                                    <span class="rb-model-chip__desc">Modelo industrial de captura.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile sl20 terminal ligero." title="Terminal ligero.">
+                                                <span class="rb-model-chip__code">M3 Mobile SL20</span>
+                                                                                                    <span class="rb-model-chip__desc">Terminal ligero.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile sl20k con teclado físico numérico." title="Con teclado físico numérico.">
+                                                <span class="rb-model-chip__code">M3 Mobile SL20K</span>
+                                                                                                    <span class="rb-model-chip__desc">Con teclado físico numérico.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile sl20p versión con mango tipo pistola." title="Versión con mango tipo pistola.">
+                                                <span class="rb-model-chip__code">M3 Mobile SL20P</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión con mango tipo pistola.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile ul20 industrial para almacenes." title="Industrial para almacenes.">
+                                                <span class="rb-model-chip__code">M3 Mobile UL20</span>
+                                                                                                    <span class="rb-model-chip__desc">Industrial para almacenes.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile ul20f industrial para cámaras de congelados." title="Industrial para cámaras de congelados.">
+                                                <span class="rb-model-chip__code">M3 Mobile UL20F</span>
+                                                                                                    <span class="rb-model-chip__desc">Industrial para cámaras de congelados.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile ul20fx frío extremo." title="Frío extremo.">
+                                                <span class="rb-model-chip__code">M3 Mobile UL20FX</span>
+                                                                                                    <span class="rb-model-chip__desc">Frío extremo.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile ul20x industrial ultra robusto." title="Industrial ultra robusto.">
+                                                <span class="rb-model-chip__code">M3 Mobile UL20X</span>
+                                                                                                    <span class="rb-model-chip__desc">Industrial ultra robusto.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile ul30f nueva generación para congelados." title="Nueva generación para congelados.">
+                                                <span class="rb-model-chip__code">M3 Mobile UL30F</span>
+                                                                                                    <span class="rb-model-chip__desc">Nueva generación para congelados.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile sm15 captura de datos." title="Captura de datos.">
+                                                <span class="rb-model-chip__code">M3 Mobile SM15</span>
+                                                                                                    <span class="rb-model-chip__desc">Captura de datos.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile sm15n versión extendida." title="Versión extendida.">
+                                                <span class="rb-model-chip__code">M3 Mobile SM15N</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión extendida.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="m3 mobile sm15w optimizado para wi-fi." title="Optimizado para Wi-Fi.">
+                                                <span class="rb-model-chip__code">M3 Mobile SM15W</span>
+                                                                                                    <span class="rb-model-chip__desc">Optimizado para Wi-Fi.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                            </div>
+                
+                <div class="rb-compat-note">
+                    <div style="display:flex; gap:16px; align-items:flex-start;">
+                        <div class="rb-notice-icon" style="flex-shrink:0;">!</div>
+                        <div>
+                            <strong style="color:var(--color-brand-primary); font-size:1rem; display:block; margin-bottom:4px;">¿Tu modelo no aparece en la lista o requieres un diseño exclusivo?</strong>
+                            <p style="margin:0; font-size:0.92rem; color:#475569;">Confeccionamos fundas y valijas a la medida exacta de tu equipo. Solo requerimos disponer del dispositivo físico durante <strong>48 horas</strong> en nuestro taller central de Santiago Centro para realizar el patronaje milimétrico y la muestra real de aprobación.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     
     <!-- Formulario de Cotización Específico -->
     <section id="cotizar" class="rb-section rb-quote-section">
@@ -4011,35 +5344,78 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Buscador interactivo de modelos (Chips)
+    // Buscador interactivo y filtros de marcas (Chips)
     const filterInput = document.getElementById('rb-model-filter');
-    if (filterInput) {
-        filterInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
-            const brandCards = document.querySelectorAll('.rb-brand-card');
-            
-            brandCards.forEach(card => {
-                let hasVisible = false;
-                const chips = card.querySelectorAll('.rb-model-chip');
-                const brandName = card.getAttribute('data-brand');
-                
-                if (brandName && brandName.includes(query)) {
-                    chips.forEach(chip => chip.style.display = '');
-                    hasVisible = true;
-                } else {
-                    chips.forEach(chip => {
-                        const modelText = chip.getAttribute('data-model');
-                        if (modelText && modelText.includes(query)) {
-                            chip.style.display = '';
-                            hasVisible = true;
-                        } else {
-                            chip.style.display = 'none';
-                        }
-                    });
-                }
-                card.style.display = hasVisible ? '' : 'none';
+    const brandPills = document.querySelectorAll('.rb-brand-pill');
+    const brandCards = document.querySelectorAll('.rb-brand-card');
+
+    let currentBrandFilter = 'all';
+
+    function applyFilters() {
+        const query = filterInput ? filterInput.value.toLowerCase().trim() : '';
+        
+        brandCards.forEach(card => {
+            const cardBrand = card.getAttribute('data-brand');
+            const matchesBrand = (currentBrandFilter === 'all' || cardBrand === currentBrandFilter);
+
+            if (!matchesBrand) {
+                card.style.display = 'none';
+                return;
+            }
+
+            if (!query) {
+                card.style.display = '';
+                card.querySelectorAll('.rb-model-chip').forEach(chip => chip.style.display = '');
+                return;
+            }
+
+            let hasVisibleChip = false;
+            const chips = card.querySelectorAll('.rb-model-chip');
+
+            if (cardBrand && cardBrand.includes(query)) {
+                chips.forEach(chip => chip.style.display = '');
+                hasVisibleChip = true;
+            } else {
+                chips.forEach(chip => {
+                    const modelText = chip.getAttribute('data-model') || '';
+                    if (modelText.includes(query)) {
+                        chip.style.display = '';
+                        hasVisibleChip = true;
+                    } else {
+                        chip.style.display = 'none';
+                    }
+                });
+            }
+            card.style.display = hasVisibleChip ? '' : 'none';
+        });
+    }
+
+    if (brandPills.length > 0) {
+        brandPills.forEach(pill => {
+            pill.addEventListener('click', function() {
+                brandPills.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                currentBrandFilter = this.getAttribute('data-brand-filter');
+                applyFilters();
             });
         });
+    }
+
+    if (filterInput) {
+        filterInput.addEventListener('input', applyFilters);
+    }
+
+    // Comprobar si hay hash en la URL para auto-filtrar (ej. #marca-zebra)
+    if (window.location.hash) {
+        const hashTarget = window.location.hash.replace('#marca-', '').replace('#', '').toLowerCase();
+        const matchingPill = Array.from(brandPills).find(p => p.getAttribute('data-brand-filter') === hashTarget);
+        if (matchingPill) {
+            matchingPill.click();
+            const targetElem = document.getElementById('marca-' + hashTarget);
+            if (targetElem) {
+                targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
     }
 });
 </script>

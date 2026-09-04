@@ -485,4 +485,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ==========================================================================
+    // 6. ECOSISTEMA DE MARCAS COMPATIBLES (FRONT-PAGE)
+    // ==========================================================================
+    const brandTabs = document.querySelectorAll('.rb-brand-tab');
+    const brandCards = document.querySelectorAll('.rb-brand-card-item');
+    const brandSearchInput = document.getElementById('rb-brands-search');
+
+    if (brandTabs.length > 0 && brandCards.length > 0) {
+        let activeFilter = 'all';
+
+        const filterBrandCards = () => {
+            const query = brandSearchInput ? brandSearchInput.value.toLowerCase().trim() : '';
+
+            brandCards.forEach(card => {
+                const category = card.getAttribute('data-category') || '';
+                const brandName = card.getAttribute('data-name') || '';
+                const models = card.getAttribute('data-models') || '';
+                const cardTitle = (card.querySelector('.rb-brand-card-item__title')?.textContent || '').toLowerCase();
+
+                // Verificar categoría
+                const matchesCategory = (activeFilter === 'all' || category.includes(activeFilter));
+
+                // Verificar búsqueda
+                let matchesSearch = true;
+                if (query) {
+                    matchesSearch = brandName.includes(query) || 
+                                    models.includes(query) || 
+                                    cardTitle.includes(query);
+                }
+
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = '';
+                    if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
+                        gsap.to(card, { opacity: 1, y: 0, duration: 0.3, overwrite: 'auto' });
+                    }
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        };
+
+        brandTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                brandTabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                activeFilter = tab.getAttribute('data-filter');
+                filterBrandCards();
+            });
+        });
+
+        if (brandSearchInput) {
+            brandSearchInput.addEventListener('input', filterBrandCards);
+        }
+    }
+
 });

@@ -1,6 +1,6 @@
 <?php
 /**
- * Script to populate all 5 ROLBAG product lines with verified images and exact data from briefing PDF
+ * Script to populate all ROLBAG product lines with verified images and exact data from briefing
  */
 if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
     die( 'Must be run via WP-CLI' );
@@ -386,6 +386,71 @@ $products_data = array(
     ),
 
     array(
+        'slug'            => 'fundas-para-pos-moviles',
+        'title'           => 'Fundas para POS Móviles y Terminales de Pago',
+        'short_title'     => 'Fundas para POS Móviles',
+        'image'           => 'funda_pos_movil_principal.jpg',
+        'gallery'         => array(
+            'funda_pos_movil_principal.jpg',
+            'bento_capturador_1787700291965.jpg',
+            'custom_solution_1787698415328.jpg',
+            'fabricacion_1787702420725.jpg',
+        ),
+        'content'         => 'Funda protectora de alta duración confeccionada en material impermeable según la anatomía y comandos de cada equipo POS móvil. Permite una adecuada manipulación de botones, lector de banda/chip, teclado táctil, ranura de impresión y puertos de conexión. Equipada con correa cosida a la funda y materiales sintéticos de máxima resistencia para uso intensivo en ruta, delivery y retail.',
+        'materiales'      => 'Materiales sintéticos impermeables de alta duración, amortiguación interna de goma EVA de absorción, ventana de PVC transparente de alta resistencia para visualización de pantalla táctil y teclado sin entorpecer la digitación del cliente o la lectura contactless. Correas tejidas de nylon con terminales de regulación.',
+        'caracteristicas' => array(
+            'Confección a la medida exacta de terminales POS móviles (Sunmi, PAX, Castles, TUU).',
+            'Correa de nylon cosida a la funda, regulable para transporte en bandolera o cuello.',
+            'Acceso total a lector de tarjetas magnéticas, chip EMV, contactless NFC e impresora térmica integrada.',
+            'Materiales impermeables resistentes a caídas accidentales, polvo y derrames en faena.',
+            'Colores corporativos y opciones de personalización con logo de empresa.',
+        ),
+        'beneficios'      => array(
+            'Protege equipos de alto costo contra caídas en terreno, rotura de pantallas y desgaste de puertos.',
+            'Facilita la labor de cobro y transporte continuo en delivery, ferias, rutas comerciales y restaurantes.',
+            'Disminuye costos operacionales por reposición de hardware y servicio técnico.',
+            'Patronaje a medida en 48 horas para cualquier modelo nuevo de terminal POS.',
+        ),
+        'brands_models'   => array(
+            'Sunmi' => array(
+                'SUNMI V3 PLUS' => 'Terminal POS móvil de última generación con pantalla grande.',
+                'SUNMI V3e' => 'Versión ligera y compacta para cobro móvil.',
+                'SUNMI V3 Family' => 'Gama integrada para punto de venta.',
+                'SUNMI V3 MIX' => 'Terminal híbrido POS con pantalla rotativa y alta velocidad.',
+                'SUNMI V2 PRO' => 'Terminal móvil con impresora térmica integrada y escáner.',
+                'SUNMI V2s PLUS' => 'Hardware mejorado para delivery y retail exigente.',
+                'SUNMI V2s' => 'Uno de los terminales POS más extendidos en terreno.',
+            ),
+            'PAX (Mercado Libre)' => array(
+                'PAX A920' => 'Terminal Smart POS Android con pantalla táctil e impresora.',
+                'PAX A920 Pro' => 'Uno de los más comunes en Chile (Mercado Pago, Transbank, etc.).',
+                'PAX A910S' => 'Formato compacto de alto rendimiento.',
+                'PAX A77' => 'Formato tipo smartphone de bolsillo para cobro rápido.',
+                'PAX A50 / A50S' => 'Mini POS portátil ultraligero.',
+                'PAX A8900' => 'Terminal industrial avanzado para transacciones de alto volumen.',
+            ),
+            'Castles' => array(
+                'Castles S1E2' => 'Terminal POS táctil con certificación bancaria.',
+                'Castles S1F3' => 'Smart POS móvil con impresora rápida.',
+                'Castles S1P' => 'Terminal portátil de cobro con conectividad 4G.',
+                'Castles VEGA3000' => 'Terminal robusto para transporte y retail.',
+                'Castles MP200' => 'Lector mPOS compacto.',
+                'Castles Saturn1000' => 'Gama de alta seguridad para pagos móviles.',
+            ),
+            'TUU' => array(
+                'TUU Pro 2' => 'Terminal Smart POS con impresora de recibos.',
+                'TUU Pro 2 S' => 'Versión optimizada con mayor autonomía de batería.',
+                'TUU Pro' => 'Terminal táctil para punto de venta móvil.',
+                'TUU SE' => 'Versión estándar económica y resistente.',
+                'TUU Mini' => 'Formato compacto para ventas en terreno.',
+                'TUU Mini S' => 'Mini POS de bolsillo.',
+                'TUU P2' => 'Terminal móvil de alto flujo comercial.',
+                'TUU P2 SE' => 'Edición especial para delivery y retail.',
+            ),
+        ),
+    ),
+
+    array(
         'slug'            => 'valijas-de-seguridad',
         'title'           => 'Valijas de Seguridad y Transporte',
         'short_title'     => 'Valijas de Seguridad',
@@ -396,31 +461,46 @@ $products_data = array(
             'ops_logistica_1787700573166.jpg',
             'fabricacion_1787702420725.jpg',
         ),
-        'content'         => 'Fabricación a distintas medidas según el volumen en litros que contemple el ancho, largo y alto. Diseñadas para resguardar el traslado seguro de documentación confidencial, valores, piezas de repuesto o productos terminados. Empleadas por grandes empresas asociadas a valores y transporte de documentación confidencial, tales como Cencosud, La Polar, Correos de Chile, Iron Mountain y FedEx.',
-        'materiales'      => 'Telas sintéticas impermeables y lonas balísticas de alta resistencia a la tracción y abrasión. Forros interiores acolchados, estructuras con placas de refuerzo, cremalleras de alta seguridad con ojete para precinto o candado, y asas reforzadas para alta carga.',
+        'content'         => 'Fabricación a distintas medidas según el volumen en litros que contemple el ancho, largo y alto. Diseñadas para resguardar el traslado seguro de documentación confidencial, valores, piezas de repuesto o productos terminados. Confeccionadas en tela Cordura de alta resistencia con estoperoles de protección, solapa de cuero reforzada, argollas metálicas y ventanilla transparente con broche para etiqueta. Empleadas por grandes empresas como Cencosud, La Polar, Correos de Chile, Iron Mountain y FedEx.',
+        'materiales'      => 'Confeccionada con tela Cordura de alta resistencia mecánica a la tracción y abrasión. Tela exterior impermeable y forro interior impermeable. Estoperoles metálicos para proteger la base del desgaste por fricción. Ventanilla transparente con broche para asegurar etiqueta/folio de destino. Solapa y correa de cuero reforzada. 1 porta candado y 4 argollas metálicas de seguridad (3 en valijas sobre). Manilla superior de goma (hasta 48 litros) o manilla plástica reforzada con pletina interior metálica fijada con remache (>48 litros). Colores a elección e impresión de logotipo IL-4C optativo.',
         'caracteristicas' => array(
-            'Fabricación a medidas personalizadas según volumen en litros (ancho × largo × alto).',
-            'Opciones de formato: Valija sobre, Valija con carro/ruedas o Valija con compartimento para GPS.',
-            'Cremallera de alta seguridad con sistema de traba para candado o precinto numerado.',
-            'Personalización con logotipo corporativo en alta resolución (bordado o estampado).',
-            'Colores corporativos a elección del cliente para clasificación de rutas y áreas.',
+            'Confección en tela Cordura de alta resistencia con doble impermeabilidad (exterior e interior).',
+            'Estoperoles de protección en la base contra desgaste por fricción y arrastre.',
+            'Ventanilla transparente con broche para resguardo de folios, guías de despacho y etiquetas.',
+            'Solapa y correa de cuero reforzada con ojetillo porta-candado o precinto numerado.',
+            'Manilla superior de goma (hasta 48L) o plástica reforzada con pletina metálica remachada (>48L).',
+            'Formatos especiales disponibles: Valija con carro/ruedas, bolsillo interior camuflado para GPS o dimensiones personalizadas.',
+            'Impresión a color de logotipo corporativo, folio o sucursal (código IL-4C optativo).',
         ),
         'beneficios'      => array(
-            'Garantiza un traslado seguro y confidencial de valores y documentos a cualquier parte de Chile.',
-            'Máxima durabilidad y resistencia al uso logístico intensivo y manipulación de transporte.',
-            'Desarrollo exclusivo adaptado a las dimensiones de las piezas o cajas a transportar.',
+            'Máxima custodia para transporte de documentación confidencial, valores, piezas de repuesto o productos terminados.',
+            'Utilizada históricamente por grandes corporaciones como Cencosud, La Polar, Correos de Chile, Iron Mountain y FedEx.',
+            'Fabricación milimétrica a medida según volumen en litros (ancho × largo × alto).',
+            'Garantiza durabilidad extrema para tráfico intensivo tipo oficina o transporte interurbano.',
         ),
         'brands_models'   => array(
-            'Formatos y Diseños Disponibles' => array(
-                'Valija Tipo Sobre' => 'Para transporte plano de documentación confidencial, contratos y correspondencia bancaria.',
-                'Valija Volumétrica a Medida' => 'Confeccionada según el volumen en litros (ancho × largo × alto) para productos terminados y valores.',
-                'Valija con Carro y Ruedas' => 'Estructura con sistema retráctil para traslado ergonómico de bultos pesados.',
-                'Valija con Compartimento GPS' => 'Bolsillo interior camuflado para inserción de dispositivo de rastreo satelital.',
+            'Valijas Grandes' => array(
+                'VS - 40R' => 'Alto: 50 cm | Ancho: 40 cm | Fuelle: 20 cm — Capacidad: 40 Lts',
+                'VS - 48R' => 'Alto: 60 cm | Ancho: 40 cm | Fuelle: 20 cm — Capacidad: 48 Lts',
+                'VS - 55R' => 'Alto: 50 cm | Ancho: 50 cm | Fuelle: 22 cm — Capacidad: 55 Lts',
+                'VS - 65R' => 'Alto: 65 cm | Ancho: 50 cm | Fuelle: 20 cm — Capacidad: 65 Lts',
+                'VS - 80R' => 'Alto: 65 cm | Ancho: 50 cm | Fuelle: 25 cm — Capacidad: 80 Lts',
             ),
-            'Opciones de Personalización y Seguridad' => array(
-                'Bordado / Estampado de Logotipo' => 'Identificación corporativa en alta resolución de tu empresa.',
-                'Colores a Elección' => 'Codificación por sucursal, ruta logística o tipo de mercancía.',
-                'Ojales para Candado / Precinto' => 'Compatible con candados igualados o precintos plásticos de control.',
+            'Valijas Medianas' => array(
+                'VS - 16R' => 'Alto: 35 cm | Ancho: 26 cm | Fuelle: 18 cm — Capacidad: 16 Lts',
+                'VS - 20R' => 'Alto: 45 cm | Ancho: 26 cm | Fuelle: 18 cm — Capacidad: 20 Lts',
+                'VS - 25R' => 'Alto: 55 cm | Ancho: 30 cm | Fuelle: 18 cm — Capacidad: 25 Lts',
+            ),
+            'Valijas Tipo Sobre' => array(
+                'VS - 30 COR' => 'Alto: 30 cm | Ancho: 30 cm | Fuelle: 1 cm — Correspondencia plana',
+                'VS - 35 COR' => 'Alto: 35 cm | Ancho: 30 cm | Fuelle: 1 cm — Documentación legal',
+                'VS - 38 COR' => 'Alto: 38 cm | Ancho: 30 cm | Fuelle: 1 cm — Valijas de archivo',
+            ),
+            'Diseños y Opciones Especiales' => array(
+                'Valija con Carro Retráctil' => 'Estructura con ruedas y mango telescópico para bultos pesados.',
+                'Valija con Bolsillo GPS' => 'Compartimento interior camuflado para dispositivo de rastreo satelital.',
+                'Fabricación 100% a Medida' => 'Confección según las medidas en litros (ancho × largo × alto) que el cliente requiera.',
+                'Personalización IL-4C' => 'Impresión de logotipo, folio o sucursal corporativa.',
             ),
         ),
     ),
@@ -483,11 +563,11 @@ foreach ( $products_data as $p ) {
     if ( ! is_wp_error( $post_id ) ) {
         update_post_meta( $post_id, 'rolbag_short_title', $p['short_title'] );
         update_post_meta( $post_id, 'rolbag_image', $p['image'] );
-        update_post_meta( $post_id, 'rolbag_gallery', wp_json_encode( $p['gallery'] ) );
+        update_post_meta( $post_id, 'rolbag_gallery', $p['gallery'] );
         update_post_meta( $post_id, 'rolbag_materiales', $p['materiales'] );
-        update_post_meta( $post_id, 'rolbag_caracteristicas', wp_json_encode( $p['caracteristicas'], JSON_UNESCAPED_UNICODE ) );
-        update_post_meta( $post_id, 'rolbag_beneficios', wp_json_encode( $p['beneficios'], JSON_UNESCAPED_UNICODE ) );
-        update_post_meta( $post_id, 'rolbag_brands_models', wp_json_encode( $p['brands_models'], JSON_UNESCAPED_UNICODE ) );
+        update_post_meta( $post_id, 'rolbag_caracteristicas', $p['caracteristicas'] );
+        update_post_meta( $post_id, 'rolbag_beneficios', $p['beneficios'] );
+        update_post_meta( $post_id, 'rolbag_brands_models', $p['brands_models'] );
         
         WP_CLI::success( "Metadatos y marcas/modelos guardados con éxito para: {$p['short_title']}" );
     } else {
@@ -496,4 +576,4 @@ foreach ( $products_data as $p ) {
 }
 
 flush_rewrite_rules();
-WP_CLI::success( "Todas las galerías e imágenes han sido sincronizadas y verificadas." );
+WP_CLI::success( "Todas las líneas de productos y modelos han sido sincronizados y verificados." );

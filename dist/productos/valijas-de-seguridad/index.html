@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="/assets/images/brand/apple-touch-icon.png">
     <link rel="shortcut icon" href="/assets/images/brand/favicon.ico">
 
-	<title>Valijas de Seguridad para Transporte de Valores y Documentación &#8211; ROLBAG</title>
+	<title>Valijas de Seguridad y Transporte &#8211; ROLBAG</title>
 <meta name='robots' content='max-image-preview:large' />
 <link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
 <link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -3594,6 +3594,560 @@ body.rb-main {
     }
 }
 
+/* ==========================================================================
+   MARCAS & COMPATIBILIDAD INDUSTRIAL (MARQUEE TICKER & ECOSISTEMA)
+   ========================================================================== */
+
+/* 1. SLIDER CONTINUO / MARQUEE TICKER */
+.rb-brand-ticker {
+    background-color: var(--color-brand-primary-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.rb-brand-ticker__inner {
+    display: flex;
+    align-items: center;
+    max-width: 100vw;
+}
+
+.rb-brand-ticker__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 24px;
+    background-color: var(--color-brand-primary-dark);
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.rb-ticker-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-brand-cyan);
+    box-shadow: 0 0 10px var(--color-brand-cyan);
+    animation: rbPulseDot 2s infinite ease-in-out;
+}
+
+@keyframes rbPulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.rb-ticker-label-text {
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-brand-cyan);
+    white-space: nowrap;
+}
+
+.rb-brand-ticker__viewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+
+.rb-brand-ticker__track {
+    display: flex;
+    width: max-content;
+    animation: rbTickerLoop 40s linear infinite;
+}
+
+.rb-brand-ticker:hover .rb-brand-ticker__track {
+    animation-play-state: paused;
+}
+
+@keyframes rbTickerLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.rb-ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding-right: 22px;
+    white-space: nowrap;
+}
+
+.rb-ticker-item {
+    font-family: var(--font-family-mono);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #e2e8f0;
+    transition: color 0.2s ease;
+}
+
+.rb-ticker-item:hover {
+    color: var(--color-brand-cyan);
+}
+
+.rb-ticker-sep {
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+/* 2. ECOSISTEMA DE MARCAS EN FRONT-PAGE */
+.rb-brands-ecosystem {
+    margin-top: 80px;
+    padding-top: 64px;
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+.rb-brands-ecosystem__header {
+    margin-bottom: 32px;
+}
+
+.rb-brands-filter-wrap {
+    margin-bottom: 24px;
+}
+
+.rb-brands-filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rb-brand-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 1.5px solid var(--color-border-subtle);
+    border-radius: 9999px;
+    font-family: var(--font-family-sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.rb-brand-tab:hover {
+    border-color: var(--color-brand-accent);
+    color: var(--color-brand-primary);
+    transform: translateY(-1px);
+}
+
+.rb-brand-tab.active {
+    background-color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 43, 73, 0.2);
+}
+
+.rb-brand-tab__count {
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    background-color: #f1f5f9;
+    color: var(--color-brand-accent);
+    padding: 2px 7px;
+    border-radius: 9999px;
+    transition: var(--transition-fast);
+}
+
+.rb-brand-tab.active .rb-brand-tab__count {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.rb-brands-search-wrap {
+    max-width: 580px;
+    margin: 0 auto 36px auto;
+}
+
+.rb-brands-search-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.rb-brands-search-inner .rb-search-icon {
+    position: absolute;
+    left: 16px;
+    color: var(--color-text-muted);
+    pointer-events: none;
+}
+
+.rb-brands-search-inner input {
+    width: 100%;
+    padding: 12px 18px 12px 46px;
+    font-size: 0.92rem;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+    background-color: #ffffff;
+    border: 1.5px solid var(--color-border-subtle);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: var(--transition-fast);
+}
+
+.rb-brands-search-inner input:focus {
+    outline: none;
+    border-color: var(--color-brand-accent);
+    box-shadow: 0 0 0 4px rgba(0, 163, 224, 0.12);
+}
+
+/* Grilla de Marcas */
+.rb-brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+}
+
+.rb-brand-card-item {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 14px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.rb-brand-card-item:hover {
+    transform: translateY(-4px);
+    border-color: #cbd5e1;
+    box-shadow: 0 12px 30px rgba(0, 43, 73, 0.08);
+}
+
+.rb-brand-card-item__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.rb-brand-badge-cat {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+}
+
+.rb-brand-models-badge {
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-brand-accent);
+    background-color: #e0f2fe;
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.rb-brand-card-item__title {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+
+.rb-brand-card-item__desc {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex: 1;
+}
+
+.rb-brand-card-item__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.rb-brand-card-item__tags .rb-tag {
+    font-family: var(--font-family-mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #334155;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+.rb-brand-card-item__action {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.rb-brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--color-brand-accent);
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.rb-brand-link:hover {
+    color: var(--color-brand-primary);
+    gap: 10px;
+}
+
+/* Banner de Prototipado 48 Horas */
+.rb-brands-custom-callout {
+    background: linear-gradient(135deg, #071324 0%, #0c1c33 100%);
+    border: 1px solid rgba(0, 196, 255, 0.2);
+    border-radius: 16px;
+    padding: 32px 36px;
+    box-shadow: 0 16px 40px rgba(7, 19, 36, 0.2);
+    color: #ffffff;
+}
+
+.rb-custom-callout-inner {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.rb-custom-callout-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background-color: rgba(0, 196, 255, 0.12);
+    border: 1px solid rgba(0, 196, 255, 0.25);
+    color: var(--color-brand-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.rb-custom-callout-content {
+    flex: 1;
+    min-width: 280px;
+}
+
+.rb-custom-callout-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.rb-custom-callout-desc {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.rb-custom-callout-desc strong {
+    color: var(--color-brand-cyan);
+}
+
+.rb-custom-callout-action {
+    flex-shrink: 0;
+}
+
+/* 3. PRODUCTOS SINGLE: PILLS Y BUSCADOR DE MODELOS */
+.rb-brand-filter-pills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 24px auto 20px auto;
+    max-width: 900px;
+}
+
+.rb-brand-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f8fafc;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 9999px;
+    font-family: var(--font-family-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.rb-brand-pill:hover {
+    border-color: var(--color-brand-accent);
+    color: var(--color-brand-primary);
+    background-color: #ffffff;
+}
+
+.rb-brand-pill.active {
+    background-color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 43, 73, 0.18);
+}
+
+.rb-model-search-wrap {
+    max-width: 520px;
+    margin: 0 auto 36px auto;
+}
+
+.rb-model-search-wrap .rb-search-input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-family: var(--font-family-sans);
+    border: 1.5px solid var(--color-border-subtle);
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: var(--transition-fast);
+}
+
+.rb-model-search-wrap .rb-search-input:focus {
+    outline: none;
+    border-color: var(--color-brand-accent);
+    box-shadow: 0 0 0 4px rgba(0, 163, 224, 0.12);
+}
+
+/* 4. PRODUCTOS SINGLE: VALIJAS DE SEGURIDAD (TABLA / CARDS DIMENSIONALES) */
+.rb-valijas-models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 36px;
+}
+
+.rb-valija-card-group {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.rb-valija-card-group__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.rb-valija-group-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    margin: 0;
+}
+
+.rb-valija-items-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.rb-valija-item-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 14px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.rb-valija-item-box:hover {
+    background-color: #f0f9ff;
+    border-color: var(--color-brand-accent);
+}
+
+.rb-valija-code {
+    font-family: var(--font-family-mono);
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    white-space: nowrap;
+}
+
+.rb-valija-specs {
+    font-size: 0.84rem;
+    color: #475569;
+    text-align: right;
+    line-height: 1.35;
+}
+
+/* RESPONSIVE AJUSTES PARA MARCAS Y VALIJAS */
+@media (max-width: 768px) {
+    .rb-brand-ticker__label {
+        padding: 0 16px;
+    }
+    .rb-ticker-label-text {
+        display: none;
+    }
+    .rb-brands-grid {
+        grid-template-columns: 1fr;
+    }
+    .rb-custom-callout-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .rb-custom-callout-action {
+        width: 100%;
+    }
+    .rb-custom-callout-action .rb-btn {
+        width: 100%;
+    }
+    .rb-valijas-models-grid {
+        grid-template-columns: 1fr;
+    }
+    .rb-valija-item-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .rb-valija-specs {
+        text-align: left;
+    }
+    .rb-brand-filter-pills-wrap {
+        gap: 6px;
+    }
+    .rb-brand-pill {
+        font-size: 0.78rem;
+        padding: 6px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rb-brand-ticker__track {
+        animation: none !important;
+        overflow-x: auto;
+    }
+}
+
+
 
 
 /* =======================================
@@ -3836,17 +4390,20 @@ body.rb-main {
                 <!-- Columna Izquierda: Galería -->
                 <div class="rb-product-gallery-col">
                     <div class="rb-product-main-img-wrap">
-                                                    <img id="rb-main-view" src="/assets/images/generated/hero_valija_3d_1787700281649.jpg" alt="Valijas de Seguridad para Transporte de Valores y Documentación" class="rb-product-main-img" />
+                                                    <img id="rb-main-view" src="/assets/images/generated/hero_valija_3d_1787700281649.jpg" alt="Valijas de Seguridad y Transporte" class="rb-product-main-img" />
                                             </div>
                                             <div class="rb-product-thumbs">
                                                             <button type="button" class="rb-thumb-btn active" data-img="/assets/images/generated/hero_valija_3d_1787700281649.jpg" aria-label="Ver vista 1">
-                                    <img src="/assets/images/generated/hero_valija_3d_1787700281649.jpg" alt="Valijas de Seguridad para Transporte de Valores y Documentación vista 1" />
+                                    <img src="/assets/images/generated/hero_valija_3d_1787700281649.jpg" alt="Valijas de Seguridad y Transporte vista 1" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/custom_solution_1787698415328.jpg" aria-label="Ver vista 2">
-                                    <img src="/assets/images/generated/custom_solution_1787698415328.jpg" alt="Valijas de Seguridad para Transporte de Valores y Documentación vista 2" />
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/operations_logistics_1787698432669.jpg" aria-label="Ver vista 2">
+                                    <img src="/assets/images/generated/operations_logistics_1787698432669.jpg" alt="Valijas de Seguridad y Transporte vista 2" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/fabricacion_1787702420725.jpg" aria-label="Ver vista 3">
-                                    <img src="/assets/images/generated/fabricacion_1787702420725.jpg" alt="Valijas de Seguridad para Transporte de Valores y Documentación vista 3" />
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/ops_logistica_1787700573166.jpg" aria-label="Ver vista 3">
+                                    <img src="/assets/images/generated/ops_logistica_1787700573166.jpg" alt="Valijas de Seguridad y Transporte vista 3" />
+                                </button>
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/fabricacion_1787702420725.jpg" aria-label="Ver vista 4">
+                                    <img src="/assets/images/generated/fabricacion_1787702420725.jpg" alt="Valijas de Seguridad y Transporte vista 4" />
                                 </button>
                                                     </div>
                                     </div>
@@ -3856,14 +4413,14 @@ body.rb-main {
                     <div style="display:flex; gap:8px; align-items:center; margin-bottom:12px;">
                         <span class="rb-badge">Línea Oficial ROLBAG</span>
                                                     <span class="rb-badge" style="background-color:rgba(0,163,224,0.12); color:var(--color-brand-accent);">
-                                +9 Modelos / Sistemas
+                                +15 Modelos / Sistemas
                             </span>
                                             </div>
 
-                    <h1 class="rb-product-title">Valijas de Seguridad para Transporte de Valores y Documentación</h1>
+                    <h1 class="rb-product-title">Valijas de Seguridad y Transporte</h1>
                     
                     <div class="rb-product-lead">
-                        <p>Valijas de alta seguridad diseñadas para el resguardo y traslado seguro de documentación confidencial, piezas de repuesto, valores y productos terminados. Fabricación a medida en distintas dimensiones y capacidades según volumen en litros.</p>
+                        <p>Fabricación a distintas medidas según el volumen en litros que contemple el ancho, largo y alto. Diseñadas para resguardar el traslado seguro de documentación confidencial, valores, piezas de repuesto o productos terminados. Confeccionadas en tela Cordura de alta resistencia con estoperoles de protección, solapa de cuero reforzada, argollas metálicas y ventanilla transparente con broche para etiqueta. Empleadas por grandes empresas como Cencosud, La Polar, Correos de Chile, Iron Mountain y FedEx.</p>
                     </div>
 
                     <div class="rb-product-highlights">
@@ -3880,7 +4437,7 @@ body.rb-main {
 
                     <div class="rb-product-actions">
                         <a href="#cotizar" class="rb-btn rb-btn--primary rb-btn--lg">Solicitar Cotización</a>
-                        <a href="https://wa.me/569318360416?text=Hola+ROLBAG%2C+quisiera+solicitar+asesor%C3%ADa+y+cotizaci%C3%B3n+para+la+l%C3%ADnea%3A+Valijas+de+Seguridad+para+Transporte+de+Valores+y+Documentaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="rb-btn rb-btn--whatsapp rb-btn--lg">
+                        <a href="https://wa.me/569318360416?text=Hola+ROLBAG%2C+quisiera+solicitar+asesor%C3%ADa+y+cotizaci%C3%B3n+para+la+l%C3%ADnea%3A+Valijas+de+Seguridad+y+Transporte" target="_blank" rel="noopener noreferrer" class="rb-btn rb-btn--whatsapp rb-btn--lg">
                             <svg viewBox="0 0 24 24" width="22" height="22" style="fill:currentColor; margin-right:8px; vertical-align:middle;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8.01 12.27C8.14 12.44 9.76 14.94 12.24 16C12.83 16.27 13.28 16.42 13.64 16.53C14.23 16.72 14.77 16.69 15.2 16.63C15.68 16.56 16.67 16.03 16.88 15.45C17.08 14.87 17.08 14.38 17.02 14.28C16.96 14.17 16.8 14.11 16.56 13.99C16.32 13.86 15.12 13.28 14.9 13.2C14.67 13.11 14.51 13.08 14.35 13.32C14.18 13.57 13.71 14.11 13.56 14.28C13.42 14.45 13.27 14.47 13.03 14.35C12.79 14.24 11.99 13.97 11.04 13.13C10.3 12.47 9.8 11.66 9.66 11.42C9.51 11.18 9.64 11.04 9.77 10.92C9.88 10.81 10.02 10.63 10.14 10.49C10.26 10.34 10.3 10.24 10.38 10.08C10.46 9.92 10.42 9.77 10.36 9.66C10.3 9.54 9.8 8.34 9.6 7.84C9.39 7.36 9.19 7.43 9.03 7.42C8.88 7.42 8.71 7.33 8.53 7.33Z"/></svg>
                             WhatsApp Comercial Directo
                         </a>
@@ -3898,11 +4455,13 @@ body.rb-main {
                                     <div class="rb-detail-card">
                         <h2 class="rb-h3 rb-text-primary">Características Técnicas</h2>
                         <ul class="rb-feature-list">
-                                                            <li>Confección robusta en telas de alta tenacidad con refuerzos perimetrales</li>
-                                                            <li>Sistemas de cierre especiales compatibles con sellos de seguridad y candados amaestrados</li>
-                                                            <li>Opciones especiales: Valija tipo sobre, valija con sistema de carro/ruedas, compartimento especial para dispositivo GPS</li>
-                                                            <li>Personalización corporativa: Colores de tela a elección e impresión/bordado de logotipo en alta resolución</li>
-                                                            <li>Dimensiones adaptables según el volumen en litros (Ancho, Largo y Alto especificados por el cliente)</li>
+                                                            <li>Confección en tela Cordura de alta resistencia con doble impermeabilidad (exterior e interior).</li>
+                                                            <li>Estoperoles de protección en la base contra desgaste por fricción y arrastre.</li>
+                                                            <li>Ventanilla transparente con broche para resguardo de folios, guías de despacho y etiquetas.</li>
+                                                            <li>Solapa y correa de cuero reforzada con ojetillo porta-candado o precinto numerado.</li>
+                                                            <li>Manilla superior de goma (hasta 48L) o plástica reforzada con pletina metálica remachada (&gt;48L).</li>
+                                                            <li>Formatos especiales disponibles: Valija con carro/ruedas, bolsillo interior camuflado para GPS o dimensiones personalizadas.</li>
+                                                            <li>Impresión a color de logotipo corporativo, folio o sucursal (código IL-4C optativo).</li>
                                                     </ul>
                     </div>
                 
@@ -3910,9 +4469,10 @@ body.rb-main {
                                     <div class="rb-detail-card">
                         <h2 class="rb-h3 rb-text-primary">Beneficios Operacionales</h2>
                         <ul class="rb-feature-list rb-feature-list--benefits">
-                                                            <li>Garantiza trazabilidad y custodia inviolable en el transporte de correspondencia y valores</li>
-                                                            <li>Historial comprobado en grandes empresas: Cencosud, La Polar, Correos de Chile, Iron Mountain, FedEx</li>
-                                                            <li>Larga durabilidad bajo exigencias severas de transporte interurbano y mensajería diaria</li>
+                                                            <li>Máxima custodia para transporte de documentación confidencial, valores, piezas de repuesto o productos terminados.</li>
+                                                            <li>Utilizada históricamente por grandes corporaciones como Cencosud, La Polar, Correos de Chile, Iron Mountain y FedEx.</li>
+                                                            <li>Fabricación milimétrica a medida según volumen en litros (ancho × largo × alto).</li>
+                                                            <li>Garantiza durabilidad extrema para tráfico intensivo tipo oficina o transporte interurbano.</li>
                                                     </ul>
                     </div>
                             </div>
@@ -3920,72 +4480,117 @@ body.rb-main {
             <!-- Materiales -->
                             <div class="rb-materials-box">
                     <h3 class="rb-h4 rb-text-primary">Materiales y Confección</h3>
-                    <p>Telas sintéticas pesadas impermeables (Cordura/Poliéster de alta densidad), cremalleras reforzadas de uso continuo, herrajes metálicos niquelados y sistemas de sellado de seguridad.</p>
+                    <p>Confeccionada con tela Cordura de alta resistencia mecánica a la tracción y abrasión. Tela exterior impermeable y forro interior impermeable. Estoperoles metálicos para proteger la base del desgaste por fricción. Ventanilla transparente con broche para asegurar etiqueta/folio de destino. Solapa y correa de cuero reforzada. 1 porta candado y 4 argollas metálicas de seguridad (3 en valijas sobre). Manilla superior de goma (hasta 48 litros) o manilla plástica reforzada con pletina interior metálica fijada con remache (&gt;48 litros). Colores a elección e impresión de logotipo IL-4C optativo.</p>
                 </div>
                     </div>
     </section>
 
-    <!-- Compatibilidad de Marcas y Modelos (Chips Técnicos) -->
+    <!-- Compatibilidad de Marcas y Modelos (Chips Técnicos y Dimensiones) -->
             <section class="rb-section rb-compat-section" id="compatibilidad">
             <div class="rb-container">
                 <div class="rb-section-header text-center">
                     <span class="rb-eyebrow rb-text-mono rb-text-accent">PROFUNDIDAD DE CATÁLOGO</span>
-                    <h2 class="rb-h2">Compatibilidad y Modelos Desarrollados</h2>
-                    <p class="rb-section-subtitle">Disponemos de patrones de confección probados para cada modelo y sistema operativo.</p>
+                                            <h2 class="rb-h2">Medidas Estándar, Cubicaje y Modelos</h2>
+                        <p class="rb-section-subtitle">Confeccionamos en tela Cordura impermeable con medidas estándar en litros o fabricadas 100% a la medida de tu carga.</p>
                     
-                                            <div class="rb-model-search-wrap">
-                            <input type="text" id="rb-model-filter" placeholder="Buscar modelo o marca (ej. Zebra, TC58, Honeywell, ET40, ZQ630)..." aria-label="Filtrar modelos compatibles" class="rb-search-input" />
-                        </div>
                                     </div>
 
-                <div class="rb-compat-brands-grid rb-compat-brands-grid--compact">
-                                            <div class="rb-brand-card" data-brand="configuraciones especiales">
-                            <div class="rb-brand-card__header">
-                                <h3 class="rb-brand-name">Configuraciones Especiales</h3>
-                                <span class="rb-brand-count">4 modelos</span>
+                                    <!-- Vista Especializada de Valijas: Tabla de Medidas y Formatos -->
+                    <div class="rb-valijas-models-grid">
+                                                    <div class="rb-valija-card-group">
+                                <div class="rb-valija-card-group__header">
+                                    <h3 class="rb-valija-group-title">Valijas Grandes</h3>
+                                    <span class="rb-badge rb-badge--light">5 opciones</span>
+                                </div>
+                                <div class="rb-valija-items-grid">
+                                                                                                                        <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 40R</div>
+                                                <div class="rb-valija-specs">Alto: 50 cm | Ancho: 40 cm | Fuelle: 20 cm — Capacidad: 40 Lts</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 48R</div>
+                                                <div class="rb-valija-specs">Alto: 60 cm | Ancho: 40 cm | Fuelle: 20 cm — Capacidad: 48 Lts</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 55R</div>
+                                                <div class="rb-valija-specs">Alto: 50 cm | Ancho: 50 cm | Fuelle: 22 cm — Capacidad: 55 Lts</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 65R</div>
+                                                <div class="rb-valija-specs">Alto: 65 cm | Ancho: 50 cm | Fuelle: 20 cm — Capacidad: 65 Lts</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 80R</div>
+                                                <div class="rb-valija-specs">Alto: 65 cm | Ancho: 50 cm | Fuelle: 25 cm — Capacidad: 80 Lts</div>
+                                            </div>
+                                                                                                            </div>
                             </div>
-                            
-                            <div class="rb-models-chips-wrap">
-                                                                                                            <div class="rb-model-chip" data-model="valija de seguridad estándar (diferentes dimensiones en litros) " title="">
-                                            <span class="rb-model-chip__code">Valija de Seguridad Estándar (diferentes dimensiones en litros)</span>
-                                                                                    </div>
-                                                                            <div class="rb-model-chip" data-model="valija tipo sobre para correspondencia confidencial " title="">
-                                            <span class="rb-model-chip__code">Valija Tipo Sobre para correspondencia confidencial</span>
-                                                                                    </div>
-                                                                            <div class="rb-model-chip" data-model="valija con carro y ruedas para transporte de alto peso " title="">
-                                            <span class="rb-model-chip__code">Valija con Carro y Ruedas para transporte de alto peso</span>
-                                                                                    </div>
-                                                                            <div class="rb-model-chip" data-model="valija con compartimiento especial para gps de rastreo " title="">
-                                            <span class="rb-model-chip__code">Valija con Compartimiento Especial para GPS de rastreo</span>
-                                                                                    </div>
-                                                                                                </div>
-                        </div>
-                                            <div class="rb-brand-card" data-brand="clientes históricos documentados">
-                            <div class="rb-brand-card__header">
-                                <h3 class="rb-brand-name">Clientes Históricos Documentados</h3>
-                                <span class="rb-brand-count">5 modelos</span>
+                                                    <div class="rb-valija-card-group">
+                                <div class="rb-valija-card-group__header">
+                                    <h3 class="rb-valija-group-title">Valijas Medianas</h3>
+                                    <span class="rb-badge rb-badge--light">3 opciones</span>
+                                </div>
+                                <div class="rb-valija-items-grid">
+                                                                                                                        <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 16R</div>
+                                                <div class="rb-valija-specs">Alto: 35 cm | Ancho: 26 cm | Fuelle: 18 cm — Capacidad: 16 Lts</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 20R</div>
+                                                <div class="rb-valija-specs">Alto: 45 cm | Ancho: 26 cm | Fuelle: 18 cm — Capacidad: 20 Lts</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 25R</div>
+                                                <div class="rb-valija-specs">Alto: 55 cm | Ancho: 30 cm | Fuelle: 18 cm — Capacidad: 25 Lts</div>
+                                            </div>
+                                                                                                            </div>
                             </div>
-                            
-                            <div class="rb-models-chips-wrap">
-                                                                                                            <div class="rb-model-chip" data-model="cencosud " title="">
-                                            <span class="rb-model-chip__code">CENCOSUD</span>
-                                                                                    </div>
-                                                                            <div class="rb-model-chip" data-model="la polar " title="">
-                                            <span class="rb-model-chip__code">LA POLAR</span>
-                                                                                    </div>
-                                                                            <div class="rb-model-chip" data-model="correos de chile " title="">
-                                            <span class="rb-model-chip__code">CORREOS DE CHILE</span>
-                                                                                    </div>
-                                                                            <div class="rb-model-chip" data-model="iron mountain " title="">
-                                            <span class="rb-model-chip__code">IRON MOUNTAIN</span>
-                                                                                    </div>
-                                                                            <div class="rb-model-chip" data-model="fedex " title="">
-                                            <span class="rb-model-chip__code">FEDEX</span>
-                                                                                    </div>
-                                                                                                </div>
-                        </div>
-                                    </div>
-
+                                                    <div class="rb-valija-card-group">
+                                <div class="rb-valija-card-group__header">
+                                    <h3 class="rb-valija-group-title">Valijas Tipo Sobre</h3>
+                                    <span class="rb-badge rb-badge--light">3 opciones</span>
+                                </div>
+                                <div class="rb-valija-items-grid">
+                                                                                                                        <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 30 COR</div>
+                                                <div class="rb-valija-specs">Alto: 30 cm | Ancho: 30 cm | Fuelle: 1 cm — Correspondencia plana</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 35 COR</div>
+                                                <div class="rb-valija-specs">Alto: 35 cm | Ancho: 30 cm | Fuelle: 1 cm — Documentación legal</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">VS - 38 COR</div>
+                                                <div class="rb-valija-specs">Alto: 38 cm | Ancho: 30 cm | Fuelle: 1 cm — Valijas de archivo</div>
+                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-valija-card-group">
+                                <div class="rb-valija-card-group__header">
+                                    <h3 class="rb-valija-group-title">Diseños y Opciones Especiales</h3>
+                                    <span class="rb-badge rb-badge--light">4 opciones</span>
+                                </div>
+                                <div class="rb-valija-items-grid">
+                                                                                                                        <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">Valija con Carro Retráctil</div>
+                                                <div class="rb-valija-specs">Estructura con ruedas y mango telescópico para bultos pesados.</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">Valija con Bolsillo GPS</div>
+                                                <div class="rb-valija-specs">Compartimento interior camuflado para dispositivo de rastreo satelital.</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">Fabricación 100% a Medida</div>
+                                                <div class="rb-valija-specs">Confección según las medidas en litros (ancho × largo × alto) que el cliente requiera.</div>
+                                            </div>
+                                                                                    <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code">Personalización IL-4C</div>
+                                                <div class="rb-valija-specs">Impresión de logotipo, folio o sucursal corporativa.</div>
+                                            </div>
+                                                                                                            </div>
+                            </div>
+                                            </div>
+                
                 <div class="rb-compat-note">
                     <div style="display:flex; gap:16px; align-items:flex-start;">
                         <div class="rb-notice-icon" style="flex-shrink:0;">!</div>
@@ -4065,35 +4670,78 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Buscador interactivo de modelos (Chips)
+    // Buscador interactivo y filtros de marcas (Chips)
     const filterInput = document.getElementById('rb-model-filter');
-    if (filterInput) {
-        filterInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
-            const brandCards = document.querySelectorAll('.rb-brand-card');
-            
-            brandCards.forEach(card => {
-                let hasVisible = false;
-                const chips = card.querySelectorAll('.rb-model-chip');
-                const brandName = card.getAttribute('data-brand');
-                
-                if (brandName && brandName.includes(query)) {
-                    chips.forEach(chip => chip.style.display = '');
-                    hasVisible = true;
-                } else {
-                    chips.forEach(chip => {
-                        const modelText = chip.getAttribute('data-model');
-                        if (modelText && modelText.includes(query)) {
-                            chip.style.display = '';
-                            hasVisible = true;
-                        } else {
-                            chip.style.display = 'none';
-                        }
-                    });
-                }
-                card.style.display = hasVisible ? '' : 'none';
+    const brandPills = document.querySelectorAll('.rb-brand-pill');
+    const brandCards = document.querySelectorAll('.rb-brand-card');
+
+    let currentBrandFilter = 'all';
+
+    function applyFilters() {
+        const query = filterInput ? filterInput.value.toLowerCase().trim() : '';
+        
+        brandCards.forEach(card => {
+            const cardBrand = card.getAttribute('data-brand');
+            const matchesBrand = (currentBrandFilter === 'all' || cardBrand === currentBrandFilter);
+
+            if (!matchesBrand) {
+                card.style.display = 'none';
+                return;
+            }
+
+            if (!query) {
+                card.style.display = '';
+                card.querySelectorAll('.rb-model-chip').forEach(chip => chip.style.display = '');
+                return;
+            }
+
+            let hasVisibleChip = false;
+            const chips = card.querySelectorAll('.rb-model-chip');
+
+            if (cardBrand && cardBrand.includes(query)) {
+                chips.forEach(chip => chip.style.display = '');
+                hasVisibleChip = true;
+            } else {
+                chips.forEach(chip => {
+                    const modelText = chip.getAttribute('data-model') || '';
+                    if (modelText.includes(query)) {
+                        chip.style.display = '';
+                        hasVisibleChip = true;
+                    } else {
+                        chip.style.display = 'none';
+                    }
+                });
+            }
+            card.style.display = hasVisibleChip ? '' : 'none';
+        });
+    }
+
+    if (brandPills.length > 0) {
+        brandPills.forEach(pill => {
+            pill.addEventListener('click', function() {
+                brandPills.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                currentBrandFilter = this.getAttribute('data-brand-filter');
+                applyFilters();
             });
         });
+    }
+
+    if (filterInput) {
+        filterInput.addEventListener('input', applyFilters);
+    }
+
+    // Comprobar si hay hash en la URL para auto-filtrar (ej. #marca-zebra)
+    if (window.location.hash) {
+        const hashTarget = window.location.hash.replace('#marca-', '').replace('#', '').toLowerCase();
+        const matchingPill = Array.from(brandPills).find(p => p.getAttribute('data-brand-filter') === hashTarget);
+        if (matchingPill) {
+            matchingPill.click();
+            const targetElem = document.getElementById('marca-' + hashTarget);
+            if (targetElem) {
+                targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
     }
 });
 </script>

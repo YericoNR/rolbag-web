@@ -64,9 +64,116 @@ get_header('landing');
                                 <span class="rb-showcase-chip">Capturadores</span>
                                 <span class="rb-showcase-chip">Tablets</span>
                                 <span class="rb-showcase-chip">Impresoras</span>
+                                <span class="rb-showcase-chip">POS Móviles</span>
                                 <span class="rb-showcase-chip">Valijas de Seguridad</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================================
+         SLIDER DECORATIVO CONTINUO / BRAND TICKER MARQUEE
+         ============================================== -->
+    <section class="rb-brand-ticker" aria-label="Marcas de Hardware Industrial Soportadas">
+        <div class="rb-brand-ticker__inner">
+            <div class="rb-brand-ticker__label">
+                <span class="rb-ticker-pulse"></span>
+                <span class="rb-ticker-label-text">COMPATIBILIDAD INDUSTRIAL</span>
+            </div>
+            <div class="rb-brand-ticker__viewport">
+                <div class="rb-brand-ticker__track">
+                    <!-- Grupo 1 -->
+                    <div class="rb-ticker-group">
+                        <span class="rb-ticker-item">ZEBRA</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">HONEYWELL</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">DATALOGIC</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">SAMSUNG</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">UROVO</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">NEWLAND</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">UNITECH</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">BIXOLON</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">CIPHERLAB</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">SUNMI</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">PAX</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">SEWOO</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">STAR MICRONICS</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">CHAINWAY</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">CASTLES</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">TUU</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">BLUEBIRD</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">M3 MOBILE</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">WEPOY</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">EPSON</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">PANASONIC</span>
+                        <span class="rb-ticker-sep">/</span>
+                    </div>
+                    <!-- Grupo 2 (Clon idéntico para loop continuo sin saltos) -->
+                    <div class="rb-ticker-group" aria-hidden="true">
+                        <span class="rb-ticker-item">ZEBRA</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">HONEYWELL</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">DATALOGIC</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">SAMSUNG</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">UROVO</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">NEWLAND</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">UNITECH</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">BIXOLON</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">CIPHERLAB</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">SUNMI</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">PAX</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">SEWOO</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">STAR MICRONICS</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">CHAINWAY</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">CASTLES</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">TUU</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">BLUEBIRD</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">M3 MOBILE</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">WEPOY</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">EPSON</span>
+                        <span class="rb-ticker-sep">/</span>
+                        <span class="rb-ticker-item">PANASONIC</span>
+                        <span class="rb-ticker-sep">/</span>
                     </div>
                 </div>
             </div>
@@ -291,23 +398,34 @@ get_header('landing');
                         </div>
                     </a>
 
-                    <!-- Línea 04: Valijas -->
+                    <!-- Línea 04: POS Móviles -->
+                    <a href="/productos/fundas-para-pos-moviles" class="rb-bento-card rb-bento-card--side">
+                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/funda_pos_movil_principal.jpg' ); ?>');"></div>
+                        <div class="rb-bento-card__overlay"></div>
+                        <div class="rb-bento-card__content">
+                            <span class="rb-badge rb-badge--light">Línea 04</span>
+                            <h4 class="rb-bento-sub-title">Fundas para POS Móviles</h4>
+                            <span class="rb-bento-link">Ver modelos &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Línea 05: Valijas -->
                     <a href="/productos/valijas-de-seguridad" class="rb-bento-card rb-bento-card--side">
                         <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/hero_valija_3d_1787700281649.jpg' ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
-                            <span class="rb-badge rb-badge--light">Línea 04</span>
+                            <span class="rb-badge rb-badge--light">Línea 05</span>
                             <h4 class="rb-bento-sub-title">Valijas de Seguridad</h4>
                             <span class="rb-bento-link">Ver modelos &rarr;</span>
                         </div>
                     </a>
 
-                    <!-- Línea 05: Candados -->
+                    <!-- Línea 06: Candados -->
                     <a href="/productos/candados-especiales" class="rb-bento-card rb-bento-card--side">
                         <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/bento_candado_1787700534442.jpg' ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
-                            <span class="rb-badge rb-badge--light">Línea 05</span>
+                            <span class="rb-badge rb-badge--light">Línea 06</span>
                             <h4 class="rb-bento-sub-title">Candados Especiales</h4>
                             <span class="rb-bento-link">Ver modelos &rarr;</span>
                         </div>
@@ -426,22 +544,482 @@ get_header('landing');
                 </div>
             </div>
             
-            <!-- Resumen de Marcas y Compatibilidad Técnica -->
-            <div class="rb-compatibility-box">
-                <h3 class="rb-compat-title">Marcas y Compatibilidad Desarrollada</h3>
-                <p class="text-center rb-text-muted" style="margin-bottom: 24px; font-size: 0.95rem;">Diseñamos fundas a la medida de los principales fabricantes de tecnología corporativa móvil:</p>
-                <div class="rb-compat-grid">
-                    <div class="rb-compat-card">
-                        <span class="rb-compat-cat">Capturadores / Terminales</span>
-                        <p class="rb-compat-brands">Zebra, Honeywell, Datalogic, Urovo, Newland, Unitech, CipherLab, Wepoy, Chainway, Bluebird, M3 Mobile, Sunmi, Motorola, Symbol.</p>
+            <!-- ==============================================
+                 SECCIÓN ESTRUCTURADA: ECOSISTEMA DE MARCAS COMPATIBLES
+                 ============================================== -->
+            <div class="rb-brands-ecosystem" id="marcas">
+                <div class="rb-brands-ecosystem__header text-center">
+                    <span class="rb-eyebrow rb-text-mono rb-text-accent">ECOSISTEMA MULTIMARCA (+300 MODELOS DESARROLLADOS)</span>
+                    <h3 class="rb-h2">Marcas Compatibles y Fabricantes Soportados</h3>
+                    <p class="rb-section-subtitle" style="max-width: 800px; margin: 0 auto 28px auto;">Confeccionamos fundas protectoras con calce milimétrico para el hardware industrial de los principales fabricantes del mundo.</p>
+                </div>
+
+                <!-- Filtros por Categoría de Hardware -->
+                <div class="rb-brands-filter-wrap">
+                    <div class="rb-brands-filter-tabs" role="tablist" aria-label="Filtrar marcas por categoría de equipamiento">
+                        <button type="button" class="rb-brand-tab active" data-filter="all" role="tab" aria-selected="true">
+                            <span>Todas las Marcas</span>
+                            <span class="rb-brand-tab__count">22</span>
+                        </button>
+                        <button type="button" class="rb-brand-tab" data-filter="capturadores" role="tab" aria-selected="false">
+                            <span>Capturadores & PDA</span>
+                            <span class="rb-brand-tab__count">11</span>
+                        </button>
+                        <button type="button" class="rb-brand-tab" data-filter="tablets" role="tab" aria-selected="false">
+                            <span>Tablets Industriales</span>
+                            <span class="rb-brand-tab__count">6</span>
+                        </button>
+                        <button type="button" class="rb-brand-tab" data-filter="impresoras" role="tab" aria-selected="false">
+                            <span>Impresoras Portátiles</span>
+                            <span class="rb-brand-tab__count">7</span>
+                        </button>
+                        <button type="button" class="rb-brand-tab" data-filter="pos" role="tab" aria-selected="false">
+                            <span>Terminales POS Móviles</span>
+                            <span class="rb-brand-tab__count">4</span>
+                        </button>
                     </div>
-                    <div class="rb-compat-card">
-                        <span class="rb-compat-cat">Tablets Industriales</span>
-                        <p class="rb-compat-brands">Samsung Galaxy Tab Active, Zebra ET40 / ET45 / ET60 / ET80, Honeywell RT10 / EDA10, Urovo, Unitech, Chainway, Panasonic Toughbook, Lenovo.</p>
+                </div>
+
+                <!-- Buscador predictivo de marcas -->
+                <div class="rb-brands-search-wrap">
+                    <div class="rb-brands-search-inner">
+                        <svg class="rb-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        <input type="text" id="rb-brands-search" placeholder="Buscar fabricante o modelo (ej. Zebra, Honeywell, Sunmi, Bixolon, TC58, PAX)..." aria-label="Buscar marcas o modelos compatibles">
                     </div>
-                    <div class="rb-compat-card">
-                        <span class="rb-compat-cat">Impresoras Portátiles</span>
-                        <p class="rb-compat-brands">Zebra ZQ Series, Honeywell RP / LNX, Bixolon SPP / XM7, Sewoo LK-P Series, Star Micronics, Epson, Barpos, iDPRT.</p>
+                </div>
+
+                <!-- Grid de Tarjetas de Marcas -->
+                <div class="rb-brands-grid" id="rb-brands-container">
+                    <!-- Zebra -->
+                    <div class="rb-brand-card-item" data-category="capturadores tablets impresoras" data-name="zebra" data-models="tc22 tc26 tc27 tc53 tc58 tc53e tc58e tc73 tc78 mc3300 mc3400 mc9400 et40 et45 et60 et80 zq200 zq320 zq511 zq521 zq630">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Líder Global Industrial</span>
+                            <span class="rb-brand-models-badge">+39 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Zebra Technologies</h4>
+                        <p class="rb-brand-card-item__desc">Terminales móviles de almacén, tablets rugerizadas e impresoras térmicas portátiles.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">TC58 / TC53</span>
+                            <span class="rb-tag">MC9400 / MC3300</span>
+                            <span class="rb-tag">ET40 / ET45</span>
+                            <span class="rb-tag">ZQ630 / ZQ521</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos Zebra &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Honeywell -->
+                    <div class="rb-brand-card-item" data-category="capturadores tablets impresoras" data-name="honeywell" data-models="ct30 ct37 ct45 ct47 ct60 eda51 eda52 eda56 ck62 ck65 ck75 eda61k cw45 rt10a eda10a rp2f rp4f lnx3">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Movilidad & Logística</span>
+                            <span class="rb-brand-models-badge">+27 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Honeywell</h4>
+                        <p class="rb-brand-card-item__desc">Terminales de captura intensiva, tablets ScanPal e impresoras de recibos y etiquetas.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">CT45 XP / CT47</span>
+                            <span class="rb-tag">CK65 Industrial</span>
+                            <span class="rb-tag">RT10A / EDA10</span>
+                            <span class="rb-tag">RP4F / LNX3</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos Honeywell &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Datalogic -->
+                    <div class="rb-brand-card-item" data-category="capturadores" data-name="datalogic" data-models="memor 30 memor 35 memor 20 memor 11 memor k skorpio x5 skorpio x4 falcon x4 falcon x3 lynx elf">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Captura & Distribución</span>
+                            <span class="rb-brand-models-badge">17 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Datalogic</h4>
+                        <p class="rb-brand-card-item__desc">Terminales para picking, logística pesada, distribución y gestión de inventario en bodega.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">Memor 30 / 35</span>
+                            <span class="rb-tag">Skorpio X5 / X4</span>
+                            <span class="rb-tag">Falcon X4</span>
+                            <span class="rb-tag">Memor 11 / K</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos Datalogic &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Samsung -->
+                    <div class="rb-brand-card-item" data-category="tablets" data-name="samsung" data-models="galaxy tab active5 active5 5g tab s11 s11 ultra tab s10 fe tab s10 tab a">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Tablets Rugged & Enterprise</span>
+                            <span class="rb-brand-models-badge">5 Líneas</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Samsung</h4>
+                        <p class="rb-brand-card-item__desc">Tablets de alta resistencia IP68/MIL-STD y productividad para supervisión y terreno.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">Tab Active5 5G (8")</span>
+                            <span class="rb-tag">Tab S10 FE / FE+</span>
+                            <span class="rb-tag">Tab S11 Ultra</span>
+                            <span class="rb-tag">Galaxy Tab A</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-tablets' ) ); ?>" class="rb-brand-link">Ver modelos Samsung &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Urovo -->
+                    <div class="rb-brand-card-item" data-category="capturadores tablets impresoras" data-name="urovo" data-models="dt40 dt50 dt50 5g dt66 dt630 ct48 ct58s rt30 rt40s dt610 rfid dt50p p8100 k329 k419">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Terminales, Tablets & RFID</span>
+                            <span class="rb-brand-models-badge">19 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Urovo</h4>
+                        <p class="rb-brand-card-item__desc">Dispositivos móviles de alta relación precio-resistencia, tablets rugerizadas e impresoras.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">DT50 5G / DT40</span>
+                            <span class="rb-tag">RT40S Industrial</span>
+                            <span class="rb-tag">P8100 Rugged 8"/10"</span>
+                            <span class="rb-tag">K329 / K419</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos Urovo &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Newland -->
+                    <div class="rb-brand-card-item" data-category="capturadores" data-name="newland" data-models="mt65 beluga iv beluga lite mt67 sei mt90 orca pro mt93 megattera mt95 kambur n7 cachalot">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Capturadores & Almacén</span>
+                            <span class="rb-brand-models-badge">12 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Newland</h4>
+                        <p class="rb-brand-card-item__desc">Terminales PDA con teclado físico y táctil para logística, bodegas y trabajo en terreno.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">MT90 Orca Pro II</span>
+                            <span class="rb-tag">MT95 Kambur Pro</span>
+                            <span class="rb-tag">MT65 Beluga IV</span>
+                            <span class="rb-tag">N7 Cachalot Pro</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos Newland &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Unitech -->
+                    <div class="rb-brand-card-item" data-category="capturadores tablets impresoras" data-name="unitech" data-models="ea530 ea660 pa768 pa768e ht330 ht380 ht730 rt112 tb170 tb85 sp320">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Movilidad & RFID</span>
+                            <span class="rb-brand-models-badge">22 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Unitech</h4>
+                        <p class="rb-brand-card-item__desc">Smartphones industriales, terminales con teclado numérico, tablets Windows/Android e impresoras.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">EA660 5G / EA530</span>
+                            <span class="rb-tag">PA768 Rugged 6"</span>
+                            <span class="rb-tag">HT730 Logística</span>
+                            <span class="rb-tag">RT112 / TB170</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos Unitech &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Bixolon -->
+                    <div class="rb-brand-card-item" data-category="impresoras" data-name="bixolon" data-models="spp-c200 spp-c300 spp-r200 spp-r310 spp-r410 spp-l310 spp-l410 spp-l3000 xm7-20 xm7-30 xm7-40">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Impresión Térmica & RFID</span>
+                            <span class="rb-brand-models-badge">11 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Bixolon</h4>
+                        <p class="rb-brand-card-item__desc">Línea líder en impresoras móviles de 2", 3" y 4" para recibos, tickets y etiquetas con codificación RFID.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">SPP-R310 / R410</span>
+                            <span class="rb-tag">SPP-L310 Etiquetas</span>
+                            <span class="rb-tag">XM7-40 RFID</span>
+                            <span class="rb-tag">SPP-C300 Compacta</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras' ) ); ?>" class="rb-brand-link">Ver modelos Bixolon &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- CipherLab -->
+                    <div class="rb-brand-card-item" data-category="capturadores" data-name="cipherlab" data-models="rk96 rs38 rs38h rs36 rk26 rk95 hera51 rs51 rs35 rk25 9700 rs50 rs31">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Terminales de Almacén</span>
+                            <span class="rb-brand-models-badge">13 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">CipherLab</h4>
+                        <p class="rb-brand-card-item__desc">Terminales robustos con teclado físico y táctil para centros de distribución y faenas logísticas.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">RK96 / RK95</span>
+                            <span class="rb-tag">RS38 / RS38H</span>
+                            <span class="rb-tag">RK26 / RK25</span>
+                            <span class="rb-tag">RS35 / RS51</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos CipherLab &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Sunmi -->
+                    <div class="rb-brand-card-item" data-category="pos" data-name="sunmi" data-models="sunmi v3 plus v3e v3 mix v2 pro v2s plus v2s">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Smart POS & Cobro Móvil</span>
+                            <span class="rb-brand-models-badge">7 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Sunmi</h4>
+                        <p class="rb-brand-card-item__desc">Terminales inteligentes de punto de venta móvil con impresora integrada para retail y delivery.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">V3 PLUS / V3 MIX</span>
+                            <span class="rb-tag">V2 PRO con Escáner</span>
+                            <span class="rb-tag">V2s PLUS</span>
+                            <span class="rb-tag">V3 Family</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-pos-moviles' ) ); ?>" class="rb-brand-link">Ver fundas Sunmi &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- PAX (Mercado Libre) -->
+                    <div class="rb-brand-card-item" data-category="pos" data-name="pax mercado libre" data-models="pax a920 a920 pro a910s a77 a50 a50s a8900">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Terminales de Pago en Ruta</span>
+                            <span class="rb-brand-models-badge">6 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">PAX Technology</h4>
+                        <p class="rb-brand-card-item__desc">Terminales de cobro bancario y comercial más utilizados en Chile (Mercado Pago, Transbank).</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">A920 Pro</span>
+                            <span class="rb-tag">A910S Alta Velocidad</span>
+                            <span class="rb-tag">A77 Bolsillo</span>
+                            <span class="rb-tag">A50 / A50S</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-pos-moviles' ) ); ?>" class="rb-brand-link">Ver fundas PAX &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Castles Technology -->
+                    <div class="rb-brand-card-item" data-category="pos" data-name="castles" data-models="castles s1e2 s1f3 s1p vega3000 mp200 saturn1000">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Cobro & Certificación Bancaria</span>
+                            <span class="rb-brand-models-badge">6 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Castles Technology</h4>
+                        <p class="rb-brand-card-item__desc">Terminales POS inteligentes de alta seguridad y conectividad continua para pagos electrónicos.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">S1F3 Smart POS</span>
+                            <span class="rb-tag">VEGA3000</span>
+                            <span class="rb-tag">Saturn1000</span>
+                            <span class="rb-tag">S1P Portátil</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-pos-moviles' ) ); ?>" class="rb-brand-link">Ver fundas Castles &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- TUU -->
+                    <div class="rb-brand-card-item" data-category="pos" data-name="tuu" data-models="tuu pro 2 pro 2 s pro tuu se mini mini s p2 p2 se">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Smart POS & Delivery</span>
+                            <span class="rb-brand-models-badge">8 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">TUU</h4>
+                        <p class="rb-brand-card-item__desc">Terminales de cobro táctiles compactos para comercios en terreno, delivery y restaurantes.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">TUU Pro 2 / Pro 2 S</span>
+                            <span class="rb-tag">TUU Mini S</span>
+                            <span class="rb-tag">TUU SE</span>
+                            <span class="rb-tag">TUU P2 SE</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-pos-moviles' ) ); ?>" class="rb-brand-link">Ver fundas TUU &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Sewoo -->
+                    <div class="rb-brand-card-item" data-category="impresoras" data-name="sewoo" data-models="lk-p25 lk-p34 lk-p41 lk-p43 lk-p21 lk-p400">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Impresoras de Recibos</span>
+                            <span class="rb-brand-models-badge">6 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Sewoo</h4>
+                        <p class="rb-brand-card-item__desc">Impresoras portátiles de 2", 3" y 4" para recibos, tickets, documentos de entrega y etiquetas.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">LK-P43 / LK-P41 (4")</span>
+                            <span class="rb-tag">LK-P34 (3")</span>
+                            <span class="rb-tag">LK-P25 / LK-P21</span>
+                            <span class="rb-tag">LK-P400 Logística</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras' ) ); ?>" class="rb-brand-link">Ver modelos Sewoo &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Star Micronics -->
+                    <div class="rb-brand-card-item" data-category="impresoras" data-name="star micronics" data-models="l200 sm-l300 sm-s230i sm-t300 sm-t300i sm-t400i">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Impresión en Terreno</span>
+                            <span class="rb-brand-models-badge">5 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Star Micronics</h4>
+                        <p class="rb-brand-card-item__desc">Impresión portátil ultra liviana y resistente para facturación móvil y comprobantes de ruta.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">SM-T300 / T300i (3")</span>
+                            <span class="rb-tag">SM-T400i (4")</span>
+                            <span class="rb-tag">SM-L300</span>
+                            <span class="rb-tag">SM-S230i Compacta</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras' ) ); ?>" class="rb-brand-link">Ver modelos Star &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Wepoy -->
+                    <div class="rb-brand-card-item" data-category="capturadores" data-name="wepoy" data-models="wepoy dt30 dt40 dt50b dt50s ct48 dt50u ct58s rt40 dt630 dt610 dt66">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Captura Intensiva & RFID</span>
+                            <span class="rb-brand-models-badge">11 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Wepoy</h4>
+                        <p class="rb-brand-card-item__desc">Terminales PDA industriales tipo smartphone para logística, inventarios y lectura masiva RFID.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">DT50S / DT50B</span>
+                            <span class="rb-tag">CT48 / CT58S</span>
+                            <span class="rb-tag">RT40 Industrial</span>
+                            <span class="rb-tag">DT50U / DT610 RFID</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos Wepoy &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Chainway -->
+                    <div class="rb-brand-card-item" data-category="capturadores tablets" data-name="chainway" data-models="chainway c61 c63 c66 c70 c71 c72 c75 c90 c6000 mc21 mc50 mc51 mc62 mc95 p100 p80">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">PDA Industrial, 5G & RFID</span>
+                            <span class="rb-brand-models-badge">22 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Chainway</h4>
+                        <p class="rb-brand-card-item__desc">Terminales de alta tecnología con opciones de escaneo de largo alcance, RFID UHF y tablets rugged.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">C66 / C61 Teclado</span>
+                            <span class="rb-tag">C72 / C75 Impresora</span>
+                            <span class="rb-tag">MC50 / MC51 5G</span>
+                            <span class="rb-tag">P100 / P80 Tablets</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos Chainway &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Bluebird -->
+                    <div class="rb-brand-card-item" data-category="capturadores" data-name="bluebird" data-models="bluebird s70 s70 explosion proof ef551 ef550r ef550 ef501 ef501r bp30 ek430 vx500 vf550 hf550x">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Terminales & Anti-Explosión</span>
+                            <span class="rb-brand-models-badge">13 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Bluebird</h4>
+                        <p class="rb-brand-card-item__desc">Terminales empresariales coreanos de alta fiabilidad, versiones ATEX para ambientes exigentes y mPOS.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">EF551 / EF550R</span>
+                            <span class="rb-tag">S70 Anti-Explosión</span>
+                            <span class="rb-tag">VX500 PTT</span>
+                            <span class="rb-tag">BP30 / EK430</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos Bluebird &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- M3 Mobile -->
+                    <div class="rb-brand-card-item" data-category="capturadores" data-name="m3 mobile" data-models="m3 mobile sm30 sm20 sm20f sm15x sl20 sl20k sl20p ul20 ul20f ul20fx ul20x ul30f sm15">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Cámaras de Frío & Logística</span>
+                            <span class="rb-brand-models-badge">17 Modelos</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">M3 Mobile</h4>
+                        <p class="rb-brand-card-item__desc">Especialistas en terminales industriales para faenas en frío extremo, logística pesada y bodegaje.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">SM20F Congelados</span>
+                            <span class="rb-tag">UL20X / UL30F Frío</span>
+                            <span class="rb-tag">SL20K con Teclado</span>
+                            <span class="rb-tag">SM30 Smartphone</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-brand-link">Ver modelos M3 &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Panasonic -->
+                    <div class="rb-brand-card-item" data-category="tablets capturadores" data-name="panasonic toughbook" data-models="panasonic toughbook fz-g1 fz-g2 fz-n1 fz-t1">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Línea Toughbook Rugged</span>
+                            <span class="rb-brand-models-badge">Modelos Rugged</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Panasonic Toughbook</h4>
+                        <p class="rb-brand-card-item__desc">Tablets y terminales de resistencia militar extrema para industrias de minería, energía y transporte.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">Toughbook Tablets</span>
+                            <span class="rb-tag">Handhelds FZ</span>
+                            <span class="rb-tag">Minería & Terreno</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-tablets' ) ); ?>" class="rb-brand-link">Ver modelos Panasonic &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Epson -->
+                    <div class="rb-brand-card-item" data-category="impresoras" data-name="epson" data-models="epson tm-p80 tm-p20 tm-p60">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Facturación & Boleta Móvil</span>
+                            <span class="rb-brand-models-badge">Línea TM-P</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Epson</h4>
+                        <p class="rb-brand-card-item__desc">Impresoras térmicas portátiles para emisión inmediata de comprobantes y recibos móviles en terreno.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">TM-P80 (3")</span>
+                            <span class="rb-tag">TM-P20 (2")</span>
+                            <span class="rb-tag">Boleta Electrónica</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras' ) ); ?>" class="rb-brand-link">Ver modelos Epson &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Otras Marcas Especializadas -->
+                    <div class="rb-brand-card-item" data-category="impresoras capturadores" data-name="brother barpos idprt point mobile handheld idata" data-models="brother barpos t3 idprt imove 3 pro unitech sp320 point mobile handheld idata">
+                        <div class="rb-brand-card-item__top">
+                            <span class="rb-brand-badge-cat">Marcas Especializadas</span>
+                            <span class="rb-brand-models-badge">+10 Fabricantes</span>
+                        </div>
+                        <h4 class="rb-brand-card-item__title">Otras Marcas</h4>
+                        <p class="rb-brand-card-item__desc">Fabricamos fundas para Barpos, Brother, iDPRT, Point Mobile, Handheld, iData, Motorola y Symbol.</p>
+                        <div class="rb-brand-card-item__tags">
+                            <span class="rb-tag">BARPOS T3</span>
+                            <span class="rb-tag">iDPRT iMOVE 3 Pro</span>
+                            <span class="rb-tag">Point Mobile</span>
+                            <span class="rb-tag">Symbol / Motorola</span>
+                        </div>
+                        <div class="rb-brand-card-item__action">
+                            <a href="<?php echo esc_url( home_url( '/productos' ) ); ?>" class="rb-brand-link">Explorar catálogo &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner Compromiso Prototipado 48 Horas -->
+                <div class="rb-brands-custom-callout">
+                    <div class="rb-custom-callout-inner">
+                        <div class="rb-custom-callout-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="rb-custom-callout-content">
+                            <h4 class="rb-custom-callout-title">¿Tu marca o modelo no aparece en esta lista?</h4>
+                            <p class="rb-custom-callout-desc">Fabricamos fundas exclusivas a la medida de cualquier equipo del mercado. Solo requerimos disponer del dispositivo físico durante <strong>48 horas</strong> en nuestro taller de Santiago Centro para diseñar el patronaje milimétrico y entregarte una muestra física para aprobación técnica.</p>
+                        </div>
+                        <div class="rb-custom-callout-action">
+                            <a href="<?php echo esc_url( home_url( '/soluciones-a-medida' ) ); ?>" class="rb-btn rb-btn--primary">Solicitar Muestra en 48 Horas</a>
+                        </div>
                     </div>
                 </div>
             </div>

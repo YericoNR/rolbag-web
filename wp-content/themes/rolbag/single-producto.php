@@ -16,14 +16,14 @@ $short_title = get_post_meta( $post_id, 'rolbag_short_title', true ) ?: get_the_
 
 // Características
 $caracteristicas_meta = get_post_meta( $post_id, 'rolbag_caracteristicas', true );
-$caracteristicas = json_decode( $caracteristicas_meta, true );
+$caracteristicas = is_array( $caracteristicas_meta ) ? $caracteristicas_meta : json_decode( $caracteristicas_meta, true );
 if ( ! is_array( $caracteristicas ) && ! empty( $caracteristicas_meta ) ) {
     $caracteristicas = array_filter( array_map( 'trim', explode( "\n", str_replace( "\r", "", $caracteristicas_meta ) ) ) );
 }
 
 // Beneficios
 $beneficios_meta = get_post_meta( $post_id, 'rolbag_beneficios', true );
-$beneficios = json_decode( $beneficios_meta, true );
+$beneficios = is_array( $beneficios_meta ) ? $beneficios_meta : json_decode( $beneficios_meta, true );
 if ( ! is_array( $beneficios ) && ! empty( $beneficios_meta ) ) {
     $beneficios = array_filter( array_map( 'trim', explode( "\n", str_replace( "\r", "", $beneficios_meta ) ) ) );
 }
@@ -33,7 +33,7 @@ $materiales = get_post_meta( $post_id, 'rolbag_materiales', true );
 
 // Marcas y Modelos
 $brands_models_meta = get_post_meta( $post_id, 'rolbag_brands_models', true );
-$brands_models = is_string( $brands_models_meta ) ? json_decode( $brands_models_meta, true ) : $brands_models_meta;
+$brands_models = is_array( $brands_models_meta ) ? $brands_models_meta : json_decode( $brands_models_meta, true );
 if ( ! is_array( $brands_models ) ) {
     $brands_models = array();
 }
@@ -51,7 +51,7 @@ foreach ( $brands_models as $b_name => $b_models ) {
 // Imágenes
 $main_image = get_post_meta( $post_id, 'rolbag_image', true );
 $gallery_meta = get_post_meta( $post_id, 'rolbag_gallery', true );
-$gallery = json_decode( $gallery_meta, true );
+$gallery = is_array( $gallery_meta ) ? $gallery_meta : json_decode( $gallery_meta, true );
 if ( ! is_array( $gallery ) && ! empty( $gallery_meta ) ) {
     $gallery = array_filter( array_map( 'trim', explode( ',', $gallery_meta ) ) );
 }
@@ -174,8 +174,10 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
         </div>
     </section>
 
-    <!-- Compatibilidad de Marcas y Modelos (Chips Técnicos) -->
+    <!-- Compatibilidad de Marcas y Modelos (Chips Técnicos y Dimensiones) -->
     <?php if ( ! empty( $brands_models ) ) : 
+        $post_slug = get_post_field( 'post_name', $post_id );
+        $is_valijas = ( $post_slug === 'valijas-de-seguridad' || strpos( strtolower( get_the_title() ), 'valija' ) !== false );
         $num_brands = count( $brands_models );
         $is_few_brands = ( $num_brands <= 2 );
     ?>
@@ -183,48 +185,97 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
             <div class="rb-container">
                 <div class="rb-section-header text-center">
                     <span class="rb-eyebrow rb-text-mono rb-text-accent">PROFUNDIDAD DE CATÁLOGO</span>
-                    <h2 class="rb-h2">Compatibilidad y Modelos Desarrollados</h2>
-                    <p class="rb-section-subtitle">Disponemos de patrones de confección probados para cada modelo y sistema operativo.</p>
-                    
-                    <?php if ( $total_models_count > 6 ) : ?>
+                    <?php if ( $is_valijas ) : ?>
+                        <h2 class="rb-h2">Medidas Estándar, Cubicaje y Modelos</h2>
+                        <p class="rb-section-subtitle">Confeccionamos en tela Cordura impermeable con medidas estándar en litros o fabricadas 100% a la medida de tu carga.</p>
+                    <?php else : ?>
+                        <h2 class="rb-h2">Compatibilidad y Modelos Desarrollados</h2>
+                        <p class="rb-section-subtitle">Disponemos de patrones de confección probados para cada modelo y fabricante del mercado.</p>
+                    <?php endif; ?>
+
+                    <?php if ( ! $is_valijas && $total_models_count > 6 ) : ?>
+                        <!-- Pills Rápidas de Filtrado por Marca -->
+                        <div class="rb-brand-filter-pills-wrap">
+                            <button type="button" class="rb-brand-pill active" data-brand-filter="all">
+                                Todas las Marcas (<?php echo esc_html( $total_models_count ); ?>)
+                            </button>
+                            <?php foreach ( $brands_models as $brand_name => $m_list ) : 
+                                $count_m = is_array( $m_list ) ? count( $m_list ) : 1;
+                            ?>
+                                <button type="button" class="rb-brand-pill" data-brand-filter="<?php echo esc_attr( strtolower( $brand_name ) ); ?>">
+                                    <?php echo esc_html( $brand_name ); ?> (<?php echo esc_html( $count_m ); ?>)
+                                </button>
+                            <?php endforeach; ?>
+                        </div>
+
+                        <!-- Buscador en tiempo real -->
                         <div class="rb-model-search-wrap">
-                            <input type="text" id="rb-model-filter" placeholder="Buscar modelo o marca (ej. Zebra, TC58, Honeywell, ET40, ZQ630)..." aria-label="Filtrar modelos compatibles" class="rb-search-input" />
+                            <input type="text" id="rb-model-filter" placeholder="Buscar modelo o marca (ej. Zebra, TC58, Honeywell, CT45, Sunmi, ZQ630)..." aria-label="Filtrar modelos compatibles" class="rb-search-input" />
                         </div>
                     <?php endif; ?>
                 </div>
 
-                <div class="rb-compat-brands-grid <?php echo $is_few_brands ? 'rb-compat-brands-grid--compact' : ''; ?>">
-                    <?php foreach ( $brands_models as $brand => $models ) : 
-                        $brand_count = is_array( $models ) ? count( $models ) : 1;
-                    ?>
-                        <div class="rb-brand-card" data-brand="<?php echo esc_attr( strtolower( $brand ) ); ?>">
-                            <div class="rb-brand-card__header">
-                                <h3 class="rb-brand-name"><?php echo esc_html( $brand ); ?></h3>
-                                <span class="rb-brand-count"><?php echo esc_html( $brand_count ); ?> <?php echo ( $brand_count === 1 ) ? 'opción' : 'modelos'; ?></span>
-                            </div>
-                            
-                            <div class="rb-models-chips-wrap">
-                                <?php if ( is_array( $models ) ) : ?>
-                                    <?php foreach ( $models as $m_key => $m_val ) : 
-                                        $model_name = is_string( $m_key ) ? $m_key : $m_val;
-                                        $model_desc = is_string( $m_key ) ? $m_val : '';
-                                    ?>
-                                        <div class="rb-model-chip" data-model="<?php echo esc_attr( strtolower( $model_name . ' ' . $model_desc ) ); ?>" title="<?php echo esc_attr( $model_desc ); ?>">
-                                            <span class="rb-model-chip__code"><?php echo esc_html( $model_name ); ?></span>
-                                            <?php if ( ! empty( $model_desc ) ) : ?>
-                                                <span class="rb-model-chip__desc"><?php echo esc_html( $model_desc ); ?></span>
-                                            <?php endif; ?>
+                <?php if ( $is_valijas ) : ?>
+                    <!-- Vista Especializada de Valijas: Tabla de Medidas y Formatos -->
+                    <div class="rb-valijas-models-grid">
+                        <?php foreach ( $brands_models as $category_name => $items ) : ?>
+                            <div class="rb-valija-card-group">
+                                <div class="rb-valija-card-group__header">
+                                    <h3 class="rb-valija-group-title"><?php echo esc_html( $category_name ); ?></h3>
+                                    <span class="rb-badge rb-badge--light"><?php echo is_array( $items ) ? count( $items ) : 1; ?> opciones</span>
+                                </div>
+                                <div class="rb-valija-items-grid">
+                                    <?php if ( is_array( $items ) ) : ?>
+                                        <?php foreach ( $items as $code => $specs ) : ?>
+                                            <div class="rb-valija-item-box">
+                                                <div class="rb-valija-code"><?php echo esc_html( $code ); ?></div>
+                                                <div class="rb-valija-specs"><?php echo esc_html( $specs ); ?></div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <div class="rb-valija-item-box">
+                                            <div class="rb-valija-specs"><?php echo esc_html( $items ); ?></div>
                                         </div>
-                                    <?php endforeach; ?>
-                                <?php else : ?>
-                                    <div class="rb-model-chip" data-model="<?php echo esc_attr( strtolower( $models ) ); ?>">
-                                        <span class="rb-model-chip__code"><?php echo esc_html( $models ); ?></span>
-                                    </div>
-                                <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php else : ?>
+                    <!-- Vista de Grilla de Marcas y Modelos (Chips Técnicos) -->
+                    <div class="rb-compat-brands-grid <?php echo $is_few_brands ? 'rb-compat-brands-grid--compact' : ''; ?>" id="rb-compat-grid">
+                        <?php foreach ( $brands_models as $brand => $models ) : 
+                            $brand_count = is_array( $models ) ? count( $models ) : 1;
+                        ?>
+                            <div class="rb-brand-card" data-brand="<?php echo esc_attr( strtolower( $brand ) ); ?>" id="marca-<?php echo esc_attr( sanitize_title( $brand ) ); ?>">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name"><?php echo esc_html( $brand ); ?></h3>
+                                    <span class="rb-brand-count"><?php echo esc_html( $brand_count ); ?> <?php echo ( $brand_count === 1 ) ? 'opción' : 'modelos'; ?></span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                    <?php if ( is_array( $models ) ) : ?>
+                                        <?php foreach ( $models as $m_key => $m_val ) : 
+                                            $model_name = is_string( $m_key ) ? $m_key : $m_val;
+                                            $model_desc = is_string( $m_key ) ? $m_val : '';
+                                        ?>
+                                            <div class="rb-model-chip" data-model="<?php echo esc_attr( strtolower( $model_name . ' ' . $model_desc ) ); ?>" title="<?php echo esc_attr( $model_desc ); ?>">
+                                                <span class="rb-model-chip__code"><?php echo esc_html( $model_name ); ?></span>
+                                                <?php if ( ! empty( $model_desc ) ) : ?>
+                                                    <span class="rb-model-chip__desc"><?php echo esc_html( $model_desc ); ?></span>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <div class="rb-model-chip" data-model="<?php echo esc_attr( strtolower( $models ) ); ?>">
+                                            <span class="rb-model-chip__code"><?php echo esc_html( $models ); ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
 
                 <div class="rb-compat-note">
                     <div style="display:flex; gap:16px; align-items:flex-start;">
@@ -306,35 +357,78 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Buscador interactivo de modelos (Chips)
+    // Buscador interactivo y filtros de marcas (Chips)
     const filterInput = document.getElementById('rb-model-filter');
-    if (filterInput) {
-        filterInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
-            const brandCards = document.querySelectorAll('.rb-brand-card');
-            
-            brandCards.forEach(card => {
-                let hasVisible = false;
-                const chips = card.querySelectorAll('.rb-model-chip');
-                const brandName = card.getAttribute('data-brand');
-                
-                if (brandName && brandName.includes(query)) {
-                    chips.forEach(chip => chip.style.display = '');
-                    hasVisible = true;
-                } else {
-                    chips.forEach(chip => {
-                        const modelText = chip.getAttribute('data-model');
-                        if (modelText && modelText.includes(query)) {
-                            chip.style.display = '';
-                            hasVisible = true;
-                        } else {
-                            chip.style.display = 'none';
-                        }
-                    });
-                }
-                card.style.display = hasVisible ? '' : 'none';
+    const brandPills = document.querySelectorAll('.rb-brand-pill');
+    const brandCards = document.querySelectorAll('.rb-brand-card');
+
+    let currentBrandFilter = 'all';
+
+    function applyFilters() {
+        const query = filterInput ? filterInput.value.toLowerCase().trim() : '';
+        
+        brandCards.forEach(card => {
+            const cardBrand = card.getAttribute('data-brand');
+            const matchesBrand = (currentBrandFilter === 'all' || cardBrand === currentBrandFilter);
+
+            if (!matchesBrand) {
+                card.style.display = 'none';
+                return;
+            }
+
+            if (!query) {
+                card.style.display = '';
+                card.querySelectorAll('.rb-model-chip').forEach(chip => chip.style.display = '');
+                return;
+            }
+
+            let hasVisibleChip = false;
+            const chips = card.querySelectorAll('.rb-model-chip');
+
+            if (cardBrand && cardBrand.includes(query)) {
+                chips.forEach(chip => chip.style.display = '');
+                hasVisibleChip = true;
+            } else {
+                chips.forEach(chip => {
+                    const modelText = chip.getAttribute('data-model') || '';
+                    if (modelText.includes(query)) {
+                        chip.style.display = '';
+                        hasVisibleChip = true;
+                    } else {
+                        chip.style.display = 'none';
+                    }
+                });
+            }
+            card.style.display = hasVisibleChip ? '' : 'none';
+        });
+    }
+
+    if (brandPills.length > 0) {
+        brandPills.forEach(pill => {
+            pill.addEventListener('click', function() {
+                brandPills.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                currentBrandFilter = this.getAttribute('data-brand-filter');
+                applyFilters();
             });
         });
+    }
+
+    if (filterInput) {
+        filterInput.addEventListener('input', applyFilters);
+    }
+
+    // Comprobar si hay hash en la URL para auto-filtrar (ej. #marca-zebra)
+    if (window.location.hash) {
+        const hashTarget = window.location.hash.replace('#marca-', '').replace('#', '').toLowerCase();
+        const matchingPill = Array.from(brandPills).find(p => p.getAttribute('data-brand-filter') === hashTarget);
+        if (matchingPill) {
+            matchingPill.click();
+            const targetElem = document.getElementById('marca-' + hashTarget);
+            if (targetElem) {
+                targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
     }
 });
 </script>

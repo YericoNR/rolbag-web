@@ -53,3 +53,12 @@ Esta skill establece las reglas de negocio de ROLBAG. Se apoya en:
 - **FRONTEND/DISEÑO:** `frontend-design`, `web-design-guidelines`, `mobile-design`.
 - **MOTION:** `motion-design-skill`, `gsap-advanced`, `ui-animation`, `motion-design-systems`.
 - **QUALITY/SECURITY:** `webapp-testing`, `web-performance-optimization`, `seo-audit`, `wp-security-best-practices`.
+
+## 9. Despliegue en Línea y Publicación en Vercel (Regla Permanente)
+- **Sitio en Producción:** El sitio corporativo de ROLBAG se encuentra en línea y activo a través de **Vercel** conectado a la rama `main` del repositorio `origin`.
+- **Obligación de Commit y Push:** Cualquier tarea, modificación de código, ajuste de estilos, templates o actualización de catálogo aprobada DEBE reflejarse en producción siguiendo el flujo:
+  1. Ejecutar el generador estático: `python scripts/export_static.py` para sincronizar `dist/`.
+  2. Ejecutar `git add .`
+  3. Ejecutar `git commit -m "<tipo>: <descripción>"`
+  4. Ejecutar `git push origin main` para activar el despliegue automático de Vercel y actualizar el sitio en vivo.
+

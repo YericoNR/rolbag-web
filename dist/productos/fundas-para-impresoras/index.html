@@ -3594,6 +3594,560 @@ body.rb-main {
     }
 }
 
+/* ==========================================================================
+   MARCAS & COMPATIBILIDAD INDUSTRIAL (MARQUEE TICKER & ECOSISTEMA)
+   ========================================================================== */
+
+/* 1. SLIDER CONTINUO / MARQUEE TICKER */
+.rb-brand-ticker {
+    background-color: var(--color-brand-primary-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.rb-brand-ticker__inner {
+    display: flex;
+    align-items: center;
+    max-width: 100vw;
+}
+
+.rb-brand-ticker__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 24px;
+    background-color: var(--color-brand-primary-dark);
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.rb-ticker-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-brand-cyan);
+    box-shadow: 0 0 10px var(--color-brand-cyan);
+    animation: rbPulseDot 2s infinite ease-in-out;
+}
+
+@keyframes rbPulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.rb-ticker-label-text {
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-brand-cyan);
+    white-space: nowrap;
+}
+
+.rb-brand-ticker__viewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+
+.rb-brand-ticker__track {
+    display: flex;
+    width: max-content;
+    animation: rbTickerLoop 40s linear infinite;
+}
+
+.rb-brand-ticker:hover .rb-brand-ticker__track {
+    animation-play-state: paused;
+}
+
+@keyframes rbTickerLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.rb-ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding-right: 22px;
+    white-space: nowrap;
+}
+
+.rb-ticker-item {
+    font-family: var(--font-family-mono);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #e2e8f0;
+    transition: color 0.2s ease;
+}
+
+.rb-ticker-item:hover {
+    color: var(--color-brand-cyan);
+}
+
+.rb-ticker-sep {
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+/* 2. ECOSISTEMA DE MARCAS EN FRONT-PAGE */
+.rb-brands-ecosystem {
+    margin-top: 80px;
+    padding-top: 64px;
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+.rb-brands-ecosystem__header {
+    margin-bottom: 32px;
+}
+
+.rb-brands-filter-wrap {
+    margin-bottom: 24px;
+}
+
+.rb-brands-filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rb-brand-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 1.5px solid var(--color-border-subtle);
+    border-radius: 9999px;
+    font-family: var(--font-family-sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.rb-brand-tab:hover {
+    border-color: var(--color-brand-accent);
+    color: var(--color-brand-primary);
+    transform: translateY(-1px);
+}
+
+.rb-brand-tab.active {
+    background-color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 43, 73, 0.2);
+}
+
+.rb-brand-tab__count {
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    background-color: #f1f5f9;
+    color: var(--color-brand-accent);
+    padding: 2px 7px;
+    border-radius: 9999px;
+    transition: var(--transition-fast);
+}
+
+.rb-brand-tab.active .rb-brand-tab__count {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.rb-brands-search-wrap {
+    max-width: 580px;
+    margin: 0 auto 36px auto;
+}
+
+.rb-brands-search-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.rb-brands-search-inner .rb-search-icon {
+    position: absolute;
+    left: 16px;
+    color: var(--color-text-muted);
+    pointer-events: none;
+}
+
+.rb-brands-search-inner input {
+    width: 100%;
+    padding: 12px 18px 12px 46px;
+    font-size: 0.92rem;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+    background-color: #ffffff;
+    border: 1.5px solid var(--color-border-subtle);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: var(--transition-fast);
+}
+
+.rb-brands-search-inner input:focus {
+    outline: none;
+    border-color: var(--color-brand-accent);
+    box-shadow: 0 0 0 4px rgba(0, 163, 224, 0.12);
+}
+
+/* Grilla de Marcas */
+.rb-brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+}
+
+.rb-brand-card-item {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 14px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.rb-brand-card-item:hover {
+    transform: translateY(-4px);
+    border-color: #cbd5e1;
+    box-shadow: 0 12px 30px rgba(0, 43, 73, 0.08);
+}
+
+.rb-brand-card-item__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.rb-brand-badge-cat {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+}
+
+.rb-brand-models-badge {
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-brand-accent);
+    background-color: #e0f2fe;
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.rb-brand-card-item__title {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+
+.rb-brand-card-item__desc {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex: 1;
+}
+
+.rb-brand-card-item__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.rb-brand-card-item__tags .rb-tag {
+    font-family: var(--font-family-mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #334155;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+.rb-brand-card-item__action {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.rb-brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--color-brand-accent);
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.rb-brand-link:hover {
+    color: var(--color-brand-primary);
+    gap: 10px;
+}
+
+/* Banner de Prototipado 48 Horas */
+.rb-brands-custom-callout {
+    background: linear-gradient(135deg, #071324 0%, #0c1c33 100%);
+    border: 1px solid rgba(0, 196, 255, 0.2);
+    border-radius: 16px;
+    padding: 32px 36px;
+    box-shadow: 0 16px 40px rgba(7, 19, 36, 0.2);
+    color: #ffffff;
+}
+
+.rb-custom-callout-inner {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.rb-custom-callout-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background-color: rgba(0, 196, 255, 0.12);
+    border: 1px solid rgba(0, 196, 255, 0.25);
+    color: var(--color-brand-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.rb-custom-callout-content {
+    flex: 1;
+    min-width: 280px;
+}
+
+.rb-custom-callout-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.rb-custom-callout-desc {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.rb-custom-callout-desc strong {
+    color: var(--color-brand-cyan);
+}
+
+.rb-custom-callout-action {
+    flex-shrink: 0;
+}
+
+/* 3. PRODUCTOS SINGLE: PILLS Y BUSCADOR DE MODELOS */
+.rb-brand-filter-pills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 24px auto 20px auto;
+    max-width: 900px;
+}
+
+.rb-brand-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f8fafc;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 9999px;
+    font-family: var(--font-family-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.rb-brand-pill:hover {
+    border-color: var(--color-brand-accent);
+    color: var(--color-brand-primary);
+    background-color: #ffffff;
+}
+
+.rb-brand-pill.active {
+    background-color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 43, 73, 0.18);
+}
+
+.rb-model-search-wrap {
+    max-width: 520px;
+    margin: 0 auto 36px auto;
+}
+
+.rb-model-search-wrap .rb-search-input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-family: var(--font-family-sans);
+    border: 1.5px solid var(--color-border-subtle);
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: var(--transition-fast);
+}
+
+.rb-model-search-wrap .rb-search-input:focus {
+    outline: none;
+    border-color: var(--color-brand-accent);
+    box-shadow: 0 0 0 4px rgba(0, 163, 224, 0.12);
+}
+
+/* 4. PRODUCTOS SINGLE: VALIJAS DE SEGURIDAD (TABLA / CARDS DIMENSIONALES) */
+.rb-valijas-models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 36px;
+}
+
+.rb-valija-card-group {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.rb-valija-card-group__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.rb-valija-group-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    margin: 0;
+}
+
+.rb-valija-items-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.rb-valija-item-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 14px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.rb-valija-item-box:hover {
+    background-color: #f0f9ff;
+    border-color: var(--color-brand-accent);
+}
+
+.rb-valija-code {
+    font-family: var(--font-family-mono);
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    white-space: nowrap;
+}
+
+.rb-valija-specs {
+    font-size: 0.84rem;
+    color: #475569;
+    text-align: right;
+    line-height: 1.35;
+}
+
+/* RESPONSIVE AJUSTES PARA MARCAS Y VALIJAS */
+@media (max-width: 768px) {
+    .rb-brand-ticker__label {
+        padding: 0 16px;
+    }
+    .rb-ticker-label-text {
+        display: none;
+    }
+    .rb-brands-grid {
+        grid-template-columns: 1fr;
+    }
+    .rb-custom-callout-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .rb-custom-callout-action {
+        width: 100%;
+    }
+    .rb-custom-callout-action .rb-btn {
+        width: 100%;
+    }
+    .rb-valijas-models-grid {
+        grid-template-columns: 1fr;
+    }
+    .rb-valija-item-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .rb-valija-specs {
+        text-align: left;
+    }
+    .rb-brand-filter-pills-wrap {
+        gap: 6px;
+    }
+    .rb-brand-pill {
+        font-size: 0.78rem;
+        padding: 6px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rb-brand-ticker__track {
+        animation: none !important;
+        overflow-x: auto;
+    }
+}
+
+
 
 
 /* =======================================
@@ -3836,23 +4390,20 @@ body.rb-main {
                 <!-- Columna Izquierda: Galería -->
                 <div class="rb-product-gallery-col">
                     <div class="rb-product-main-img-wrap">
-                                                    <img id="rb-main-view" src="/assets/images/generated/funda_impresora_principal_01.webp" alt="Fundas para Impresoras Portátiles" class="rb-product-main-img" />
+                                                    <img id="rb-main-view" src="/assets/images/generated/bento_impresora_1787700478886.jpg" alt="Fundas para Impresoras Portátiles" class="rb-product-main-img" />
                                             </div>
                                             <div class="rb-product-thumbs">
-                                                            <button type="button" class="rb-thumb-btn active" data-img="/assets/images/generated/funda_impresora_principal_01.webp" aria-label="Ver vista 1">
-                                    <img src="/assets/images/generated/funda_impresora_principal_01.webp" alt="Fundas para Impresoras Portátiles vista 1" />
+                                                            <button type="button" class="rb-thumb-btn active" data-img="/assets/images/generated/bento_impresora_1787700478886.jpg" aria-label="Ver vista 1">
+                                    <img src="/assets/images/generated/bento_impresora_1787700478886.jpg" alt="Fundas para Impresoras Portátiles vista 1" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/funda_impresora_vista_02.webp" aria-label="Ver vista 2">
-                                    <img src="/assets/images/generated/funda_impresora_vista_02.webp" alt="Fundas para Impresoras Portátiles vista 2" />
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/impresora_detail.jpg" aria-label="Ver vista 2">
+                                    <img src="/assets/images/generated/impresora_detail.jpg" alt="Fundas para Impresoras Portátiles vista 2" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/funda_impresora_vista_03.webp" aria-label="Ver vista 3">
-                                    <img src="/assets/images/generated/funda_impresora_vista_03.webp" alt="Fundas para Impresoras Portátiles vista 3" />
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/ops_logistica_1787700573166.jpg" aria-label="Ver vista 3">
+                                    <img src="/assets/images/generated/ops_logistica_1787700573166.jpg" alt="Fundas para Impresoras Portátiles vista 3" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/funda_impresora_vista_04.webp" aria-label="Ver vista 4">
-                                    <img src="/assets/images/generated/funda_impresora_vista_04.webp" alt="Fundas para Impresoras Portátiles vista 4" />
-                                </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/funda_impresora_vista_05.webp" aria-label="Ver vista 5">
-                                    <img src="/assets/images/generated/funda_impresora_vista_05.webp" alt="Fundas para Impresoras Portátiles vista 5" />
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/fabricacion_1787702420725.jpg" aria-label="Ver vista 4">
+                                    <img src="/assets/images/generated/fabricacion_1787702420725.jpg" alt="Fundas para Impresoras Portátiles vista 4" />
                                 </button>
                                                     </div>
                                     </div>
@@ -3861,12 +4412,15 @@ body.rb-main {
                 <div class="rb-product-info-col">
                     <div style="display:flex; gap:8px; align-items:center; margin-bottom:12px;">
                         <span class="rb-badge">Línea Oficial ROLBAG</span>
+                                                    <span class="rb-badge" style="background-color:rgba(0,163,224,0.12); color:var(--color-brand-accent);">
+                                +52 Modelos / Sistemas
+                            </span>
                                             </div>
 
                     <h1 class="rb-product-title">Fundas para Impresoras Portátiles</h1>
                     
                     <div class="rb-product-lead">
-                        <p>Funda protectora confeccionada en material impermeable de alta duración, acorde a la forma de cada impresora térmica móvil. Permite una adecuada manipulación de sus comandos, botones, ranura de salida de papel y puertos de conexión.</p>
+                        <p>Funda protectora confeccionada en material impermeable de alta duración, acorde a la forma de cada equipo, permitiendo una adecuada manipulación de sus comandos, botones y puertos de conexión. Opciones de uso: Correa de tela tejida de nylon (40mm) regulable con cierre tip-top plástico a la cintura, o correa de nylon (30mm) regulable con soporte acolchado de hombro.</p>
                     </div>
 
                     <div class="rb-product-highlights">
@@ -3901,11 +4455,11 @@ body.rb-main {
                                     <div class="rb-detail-card">
                         <h2 class="rb-h3 rb-text-primary">Características Técnicas</h2>
                         <ul class="rb-feature-list">
-                                                            <li>Opción 1: Correa de tela tejida de nylon (40 mm de ancho) regulable con cierre tip-top plástico a la cintura</li>
-                                                            <li>Opción 2: Correa de tela tejida de nylon (30 mm de ancho) regulable con soporte de hombro acolchado cosida a los fuelles</li>
-                                                            <li>Apertura frontal o superior abatible para reemplazo rápido del rollo de etiquetas sin retirar la funda</li>
-                                                            <li>Materiales de alta durabilidad resistentes al roce diario y faenas logísticas</li>
-                                                            <li>Colores a elección según requerimiento</li>
+                                                            <li>Apertura frontal para expulsión de etiquetas y recibos sin atascos.</li>
+                                                            <li>Acceso rápido para recarga de rollos de papel térmico sin desarmar la funda.</li>
+                                                            <li>Dos sistemas de sujeción: correa de cintura (40mm con tip-top) o bandolera de hombro (30mm acolchada).</li>
+                                                            <li>Material impermeable de alta duración resistente a polvo y grasa.</li>
+                                                            <li>Variedad de colores corporativos a elección.</li>
                                                     </ul>
                     </div>
                 
@@ -3913,9 +4467,9 @@ body.rb-main {
                                     <div class="rb-detail-card">
                         <h2 class="rb-h3 rb-text-primary">Beneficios Operacionales</h2>
                         <ul class="rb-feature-list rb-feature-list--benefits">
-                                                            <li>Portabilidad óptima para emisión de comprobantes, tickets y etiquetas en terreno o bodega</li>
-                                                            <li>Protección de los mecanismos de impresión contra polvo, humedad y golpes por caídas</li>
-                                                            <li>Facilita el trabajo continuo de operarios de despacho, transporte y control de stock</li>
+                                                            <li>Evita roturas de tapas, bisagras y sensores térmicos ante caídas en terreno.</li>
+                                                            <li>Agiliza los procesos de etiquetado en bodegas, picking y despachos móviles.</li>
+                                                            <li>Permite al operador tener ambas manos libres durante el trabajo en ruta o almacén.</li>
                                                     </ul>
                     </div>
                             </div>
@@ -3923,12 +4477,339 @@ body.rb-main {
             <!-- Materiales -->
                             <div class="rb-materials-box">
                     <h3 class="rb-h4 rb-text-primary">Materiales y Confección</h3>
-                    <p>Nylon balístico de alta tenacidad impermeable, cintas tejidas de nylon de 30 mm y 40 mm, broches tip-top de acetal de alto impacto y acolchado de espuma EVA.</p>
+                    <p>Materiales sintéticos impermeables de alta resistencia para uso logístico. Cintas tejidas de nylon (30mm y 40mm) con terminales y accesorios plásticos tipo tip-top o metálicos de alta durabilidad para regulación ergonómica.</p>
                 </div>
                     </div>
     </section>
 
-    <!-- Compatibilidad de Marcas y Modelos (Chips Técnicos) -->
+    <!-- Compatibilidad de Marcas y Modelos (Chips Técnicos y Dimensiones) -->
+            <section class="rb-section rb-compat-section" id="compatibilidad">
+            <div class="rb-container">
+                <div class="rb-section-header text-center">
+                    <span class="rb-eyebrow rb-text-mono rb-text-accent">PROFUNDIDAD DE CATÁLOGO</span>
+                                            <h2 class="rb-h2">Compatibilidad y Modelos Desarrollados</h2>
+                        <p class="rb-section-subtitle">Disponemos de patrones de confección probados para cada modelo y fabricante del mercado.</p>
+                    
+                                            <!-- Pills Rápidas de Filtrado por Marca -->
+                        <div class="rb-brand-filter-pills-wrap">
+                            <button type="button" class="rb-brand-pill active" data-brand-filter="all">
+                                Todas las Marcas (52)
+                            </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="zebra">
+                                    Zebra (16)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="honeywell">
+                                    Honeywell (8)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="bixolon">
+                                    Bixolon (11)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="sewoo">
+                                    Sewoo (6)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="star micronics">
+                                    Star Micronics (5)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="urovo">
+                                    Urovo (2)
+                                </button>
+                                                            <button type="button" class="rb-brand-pill" data-brand-filter="otras marcas">
+                                    Otras Marcas (4)
+                                </button>
+                                                    </div>
+
+                        <!-- Buscador en tiempo real -->
+                        <div class="rb-model-search-wrap">
+                            <input type="text" id="rb-model-filter" placeholder="Buscar modelo o marca (ej. Zebra, TC58, Honeywell, CT45, Sunmi, ZQ630)..." aria-label="Filtrar modelos compatibles" class="rb-search-input" />
+                        </div>
+                                    </div>
+
+                                    <!-- Vista de Grilla de Marcas y Modelos (Chips Técnicos) -->
+                    <div class="rb-compat-brands-grid " id="rb-compat-grid">
+                                                    <div class="rb-brand-card" data-brand="zebra" id="marca-zebra">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Zebra</h3>
+                                    <span class="rb-brand-count">16 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="zq200 impresora móvil compacta de recibos." title="Impresora móvil compacta de recibos.">
+                                                <span class="rb-model-chip__code">ZQ200</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora móvil compacta de recibos.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq210 impresora móvil compacta 2&quot;." title="Impresora móvil compacta 2&quot;.">
+                                                <span class="rb-model-chip__code">ZQ210</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora móvil compacta 2&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq220 plus recibos y etiquetas linerless." title="Recibos y etiquetas linerless.">
+                                                <span class="rb-model-chip__code">ZQ220 Plus</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos y etiquetas linerless.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq300 plus impresión móvil de recibos en interiores y exteriores." title="Impresión móvil de recibos en interiores y exteriores.">
+                                                <span class="rb-model-chip__code">ZQ300 Plus</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresión móvil de recibos en interiores y exteriores.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq310 plus formato 2&quot; para recibos y etiquetas." title="Formato 2&quot; para recibos y etiquetas.">
+                                                <span class="rb-model-chip__code">ZQ310 Plus</span>
+                                                                                                    <span class="rb-model-chip__desc">Formato 2&quot; para recibos y etiquetas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq320 plus formato 3&quot; para recibos y etiquetas." title="Formato 3&quot; para recibos y etiquetas.">
+                                                <span class="rb-model-chip__code">ZQ320 Plus</span>
+                                                                                                    <span class="rb-model-chip__desc">Formato 3&quot; para recibos y etiquetas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq500 gama industrial ultra resistente." title="Gama industrial ultra resistente.">
+                                                <span class="rb-model-chip__code">ZQ500</span>
+                                                                                                    <span class="rb-model-chip__desc">Gama industrial ultra resistente.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq511 gama industrial 3&quot; resistente a caídas e intemperie." title="Gama industrial 3&quot; resistente a caídas e intemperie.">
+                                                <span class="rb-model-chip__code">ZQ511</span>
+                                                                                                    <span class="rb-model-chip__desc">Gama industrial 3&quot; resistente a caídas e intemperie.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq521 gama industrial 4&quot; resistente a caídas extremas." title="Gama industrial 4&quot; resistente a caídas extremas.">
+                                                <span class="rb-model-chip__code">ZQ521</span>
+                                                                                                    <span class="rb-model-chip__desc">Gama industrial 4&quot; resistente a caídas extremas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq600 plus impresión móvil premium de etiquetas." title="Impresión móvil premium de etiquetas.">
+                                                <span class="rb-model-chip__code">ZQ600 Plus</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresión móvil premium de etiquetas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq610 plus formato 2&quot; alta velocidad." title="Formato 2&quot; alta velocidad.">
+                                                <span class="rb-model-chip__code">ZQ610 Plus</span>
+                                                                                                    <span class="rb-model-chip__desc">Formato 2&quot; alta velocidad.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq620 plus formato 3&quot; alto volumen." title="Formato 3&quot; alto volumen.">
+                                                <span class="rb-model-chip__code">ZQ620 Plus</span>
+                                                                                                    <span class="rb-model-chip__desc">Formato 3&quot; alto volumen.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq630 plus formato 4&quot; alto rendimiento." title="Formato 4&quot; alto rendimiento.">
+                                                <span class="rb-model-chip__code">ZQ630 Plus</span>
+                                                                                                    <span class="rb-model-chip__desc">Formato 4&quot; alto rendimiento.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq610 plus healthcare versión para sector salud y hospitales." title="Versión para sector salud y hospitales.">
+                                                <span class="rb-model-chip__code">ZQ610 Plus Healthcare</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión para sector salud y hospitales.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq620 plus healthcare versión para sector salud y hospitales 3&quot;." title="Versión para sector salud y hospitales 3&quot;.">
+                                                <span class="rb-model-chip__code">ZQ620 Plus Healthcare</span>
+                                                                                                    <span class="rb-model-chip__desc">Versión para sector salud y hospitales 3&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="zq630 plus rfid codificación y grabado de etiquetas rfid móvil." title="Codificación y grabado de etiquetas RFID móvil.">
+                                                <span class="rb-model-chip__code">ZQ630 Plus RFID</span>
+                                                                                                    <span class="rb-model-chip__desc">Codificación y grabado de etiquetas RFID móvil.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="honeywell" id="marca-honeywell">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Honeywell</h3>
+                                    <span class="rb-brand-count">8 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="rp2f etiquetas pequeñas y recibos (retail, logística y salud)." title="Etiquetas pequeñas y recibos (retail, logística y salud).">
+                                                <span class="rb-model-chip__code">RP2F</span>
+                                                                                                    <span class="rb-model-chip__desc">Etiquetas pequeñas y recibos (retail, logística y salud).</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="rp4f etiquetas grandes, recibos y tags (opción más robusta)." title="Etiquetas grandes, recibos y tags (opción más robusta).">
+                                                <span class="rb-model-chip__code">RP4F</span>
+                                                                                                    <span class="rb-model-chip__desc">Etiquetas grandes, recibos y tags (opción más robusta).</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="lnx3 etiquetas y recibos de mayor volumen para manufactura." title="Etiquetas y recibos de mayor volumen para manufactura.">
+                                                <span class="rb-model-chip__code">LNX3</span>
+                                                                                                    <span class="rb-model-chip__desc">Etiquetas y recibos de mayor volumen para manufactura.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="rp2 impresora portátil 2&quot; para recibos." title="Impresora portátil 2&quot; para recibos.">
+                                                <span class="rb-model-chip__code">RP2</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora portátil 2&quot; para recibos.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="rp4 impresora portátil 4&quot; para etiquetas." title="Impresora portátil 4&quot; para etiquetas.">
+                                                <span class="rb-model-chip__code">RP4</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora portátil 4&quot; para etiquetas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="rp4d impresión térmica directa 4&quot;." title="Impresión térmica directa 4&quot;.">
+                                                <span class="rb-model-chip__code">RP4D</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresión térmica directa 4&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="rp4b conectividad inalámbrica bluetooth." title="Conectividad inalámbrica Bluetooth.">
+                                                <span class="rb-model-chip__code">RP4B</span>
+                                                                                                    <span class="rb-model-chip__desc">Conectividad inalámbrica Bluetooth.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="mpd31d impresora móvil compacta de 3&quot;." title="Impresora móvil compacta de 3&quot;.">
+                                                <span class="rb-model-chip__code">MPD31D</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora móvil compacta de 3&quot;.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="bixolon" id="marca-bixolon">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Bixolon</h3>
+                                    <span class="rb-brand-count">11 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="spp-c200 recibos compacta de 2&quot;." title="Recibos compacta de 2&quot;.">
+                                                <span class="rb-model-chip__code">SPP-C200</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos compacta de 2&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="spp-c300 recibos compacta de 3&quot;." title="Recibos compacta de 3&quot;.">
+                                                <span class="rb-model-chip__code">SPP-C300</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos compacta de 3&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="spp-r200iii recibos móvil para retail." title="Recibos móvil para retail.">
+                                                <span class="rb-model-chip__code">SPP-R200III</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos móvil para retail.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="spp-r310 recibos móvil para logística." title="Recibos móvil para logística.">
+                                                <span class="rb-model-chip__code">SPP-R310</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos móvil para logística.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="spp-r410 recibos y documentos de 4&quot;." title="Recibos y documentos de 4&quot;.">
+                                                <span class="rb-model-chip__code">SPP-R410</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos y documentos de 4&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="spp-l310 etiquetas térmicas móvil de 3&quot;." title="Etiquetas térmicas móvil de 3&quot;.">
+                                                <span class="rb-model-chip__code">SPP-L310</span>
+                                                                                                    <span class="rb-model-chip__desc">Etiquetas térmicas móvil de 3&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="spp-l410 etiquetas térmicas móvil de 4&quot;." title="Etiquetas térmicas móvil de 4&quot;.">
+                                                <span class="rb-model-chip__code">SPP-L410</span>
+                                                                                                    <span class="rb-model-chip__desc">Etiquetas térmicas móvil de 4&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="spp-l3000 etiquetas industrial de alto rendimiento." title="Etiquetas industrial de alto rendimiento.">
+                                                <span class="rb-model-chip__code">SPP-L3000</span>
+                                                                                                    <span class="rb-model-chip__desc">Etiquetas industrial de alto rendimiento.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="xm7-20 etiquetas / rfid móvil de 2&quot;." title="Etiquetas / RFID móvil de 2&quot;.">
+                                                <span class="rb-model-chip__code">XM7-20</span>
+                                                                                                    <span class="rb-model-chip__desc">Etiquetas / RFID móvil de 2&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="xm7-30 etiquetas / rfid móvil de 3&quot;." title="Etiquetas / RFID móvil de 3&quot;.">
+                                                <span class="rb-model-chip__code">XM7-30</span>
+                                                                                                    <span class="rb-model-chip__desc">Etiquetas / RFID móvil de 3&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="xm7-40 etiquetas / rfid móvil de 4&quot;." title="Etiquetas / RFID móvil de 4&quot;.">
+                                                <span class="rb-model-chip__code">XM7-40</span>
+                                                                                                    <span class="rb-model-chip__desc">Etiquetas / RFID móvil de 4&quot;.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="sewoo" id="marca-sewoo">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Sewoo</h3>
+                                    <span class="rb-brand-count">6 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="lk-p25 impresora portátil de 2&quot; para recibos, tickets y comprobantes." title="Impresora portátil de 2&quot; para recibos, tickets y comprobantes.">
+                                                <span class="rb-model-chip__code">LK-P25</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora portátil de 2&quot; para recibos, tickets y comprobantes.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="lk-p34 impresora portátil de 3&quot; para recibos y documentos de entrega." title="Impresora portátil de 3&quot; para recibos y documentos de entrega.">
+                                                <span class="rb-model-chip__code">LK-P34</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora portátil de 3&quot; para recibos y documentos de entrega.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="lk-p41 impresora portátil de 4&quot; para recibos, etiquetas y códigos de barras." title="Impresora portátil de 4&quot; para recibos, etiquetas y códigos de barras.">
+                                                <span class="rb-model-chip__code">LK-P41</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora portátil de 4&quot; para recibos, etiquetas y códigos de barras.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="lk-p43 impresora portátil de 4&quot; orientada a logística y retail." title="Impresora portátil de 4&quot; orientada a logística y retail.">
+                                                <span class="rb-model-chip__code">LK-P43</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora portátil de 4&quot; orientada a logística y retail.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="lk-p21 impresora compacta para tickets y recibos pequeños." title="Impresora compacta para tickets y recibos pequeños.">
+                                                <span class="rb-model-chip__code">LK-P21</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora compacta para tickets y recibos pequeños.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="lk-p400 impresora portátil robusta de 4&quot; para logística." title="Impresora portátil robusta de 4&quot; para logística.">
+                                                <span class="rb-model-chip__code">LK-P400</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresora portátil robusta de 4&quot; para logística.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="star micronics" id="marca-star-micronics">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Star Micronics</h3>
+                                    <span class="rb-brand-count">5 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="l200 recibos y tickets pequeños." title="Recibos y tickets pequeños.">
+                                                <span class="rb-model-chip__code">L200</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos y tickets pequeños.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="sm-l300 recibos, tickets y etiquetas." title="Recibos, tickets y etiquetas.">
+                                                <span class="rb-model-chip__code">SM-L300</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos, tickets y etiquetas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="sm-s230i recibos y tickets compacta y liviana." title="Recibos y tickets compacta y liviana.">
+                                                <span class="rb-model-chip__code">SM-S230i</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos y tickets compacta y liviana.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="sm-t300 / sm-t300i recibos y tickets más robusta para trabajo en terreno." title="Recibos y tickets más robusta para trabajo en terreno.">
+                                                <span class="rb-model-chip__code">SM-T300 / SM-T300i</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos y tickets más robusta para trabajo en terreno.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="sm-t400i impresión portátil de mayor formato 4&quot; para documentos." title="Impresión portátil de mayor formato 4&quot; para documentos.">
+                                                <span class="rb-model-chip__code">SM-T400i</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresión portátil de mayor formato 4&quot; para documentos.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="urovo" id="marca-urovo">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Urovo</h3>
+                                    <span class="rb-brand-count">2 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="urovo k329 imprime recibos y etiquetas de 3&quot;." title="Imprime recibos y etiquetas de 3&quot;.">
+                                                <span class="rb-model-chip__code">UROVO K329</span>
+                                                                                                    <span class="rb-model-chip__desc">Imprime recibos y etiquetas de 3&quot;.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="urovo k419 recibos, tickets y códigos de barras de 4&quot;." title="Recibos, tickets y códigos de barras de 4&quot;.">
+                                                <span class="rb-model-chip__code">UROVO K419</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos, tickets y códigos de barras de 4&quot;.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                                    <div class="rb-brand-card" data-brand="otras marcas" id="marca-otras-marcas">
+                                <div class="rb-brand-card__header">
+                                    <h3 class="rb-brand-name">Otras Marcas</h3>
+                                    <span class="rb-brand-count">4 modelos</span>
+                                </div>
+                                
+                                <div class="rb-models-chips-wrap">
+                                                                                                                        <div class="rb-model-chip" data-model="epson tm-p80 recibos, tickets y comprobantes móviles." title="Recibos, tickets y comprobantes móviles.">
+                                                <span class="rb-model-chip__code">Epson TM-P80</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos, tickets y comprobantes móviles.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="barpos t3 recibos y etiquetas." title="Recibos y etiquetas.">
+                                                <span class="rb-model-chip__code">BARPOS T3</span>
+                                                                                                    <span class="rb-model-chip__desc">Recibos y etiquetas.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="unitech sp320 impresión portátil de recibos y tickets." title="Impresión portátil de recibos y tickets.">
+                                                <span class="rb-model-chip__code">Unitech SP320</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresión portátil de recibos y tickets.</span>
+                                                                                            </div>
+                                                                                    <div class="rb-model-chip" data-model="idprt imove 3 pro impresión portátil de etiquetas y recibos." title="Impresión portátil de etiquetas y recibos.">
+                                                <span class="rb-model-chip__code">iDPRT iMOVE 3 Pro</span>
+                                                                                                    <span class="rb-model-chip__desc">Impresión portátil de etiquetas y recibos.</span>
+                                                                                            </div>
+                                                                                                            </div>
+                            </div>
+                                            </div>
+                
+                <div class="rb-compat-note">
+                    <div style="display:flex; gap:16px; align-items:flex-start;">
+                        <div class="rb-notice-icon" style="flex-shrink:0;">!</div>
+                        <div>
+                            <strong style="color:var(--color-brand-primary); font-size:1rem; display:block; margin-bottom:4px;">¿Tu modelo no aparece en la lista o requieres un diseño exclusivo?</strong>
+                            <p style="margin:0; font-size:0.92rem; color:#475569;">Confeccionamos fundas y valijas a la medida exacta de tu equipo. Solo requerimos disponer del dispositivo físico durante <strong>48 horas</strong> en nuestro taller central de Santiago Centro para realizar el patronaje milimétrico y la muestra real de aprobación.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     
     <!-- Formulario de Cotización Específico -->
     <section id="cotizar" class="rb-section rb-quote-section">
@@ -3997,35 +4878,78 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Buscador interactivo de modelos (Chips)
+    // Buscador interactivo y filtros de marcas (Chips)
     const filterInput = document.getElementById('rb-model-filter');
-    if (filterInput) {
-        filterInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
-            const brandCards = document.querySelectorAll('.rb-brand-card');
-            
-            brandCards.forEach(card => {
-                let hasVisible = false;
-                const chips = card.querySelectorAll('.rb-model-chip');
-                const brandName = card.getAttribute('data-brand');
-                
-                if (brandName && brandName.includes(query)) {
-                    chips.forEach(chip => chip.style.display = '');
-                    hasVisible = true;
-                } else {
-                    chips.forEach(chip => {
-                        const modelText = chip.getAttribute('data-model');
-                        if (modelText && modelText.includes(query)) {
-                            chip.style.display = '';
-                            hasVisible = true;
-                        } else {
-                            chip.style.display = 'none';
-                        }
-                    });
-                }
-                card.style.display = hasVisible ? '' : 'none';
+    const brandPills = document.querySelectorAll('.rb-brand-pill');
+    const brandCards = document.querySelectorAll('.rb-brand-card');
+
+    let currentBrandFilter = 'all';
+
+    function applyFilters() {
+        const query = filterInput ? filterInput.value.toLowerCase().trim() : '';
+        
+        brandCards.forEach(card => {
+            const cardBrand = card.getAttribute('data-brand');
+            const matchesBrand = (currentBrandFilter === 'all' || cardBrand === currentBrandFilter);
+
+            if (!matchesBrand) {
+                card.style.display = 'none';
+                return;
+            }
+
+            if (!query) {
+                card.style.display = '';
+                card.querySelectorAll('.rb-model-chip').forEach(chip => chip.style.display = '');
+                return;
+            }
+
+            let hasVisibleChip = false;
+            const chips = card.querySelectorAll('.rb-model-chip');
+
+            if (cardBrand && cardBrand.includes(query)) {
+                chips.forEach(chip => chip.style.display = '');
+                hasVisibleChip = true;
+            } else {
+                chips.forEach(chip => {
+                    const modelText = chip.getAttribute('data-model') || '';
+                    if (modelText.includes(query)) {
+                        chip.style.display = '';
+                        hasVisibleChip = true;
+                    } else {
+                        chip.style.display = 'none';
+                    }
+                });
+            }
+            card.style.display = hasVisibleChip ? '' : 'none';
+        });
+    }
+
+    if (brandPills.length > 0) {
+        brandPills.forEach(pill => {
+            pill.addEventListener('click', function() {
+                brandPills.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                currentBrandFilter = this.getAttribute('data-brand-filter');
+                applyFilters();
             });
         });
+    }
+
+    if (filterInput) {
+        filterInput.addEventListener('input', applyFilters);
+    }
+
+    // Comprobar si hay hash en la URL para auto-filtrar (ej. #marca-zebra)
+    if (window.location.hash) {
+        const hashTarget = window.location.hash.replace('#marca-', '').replace('#', '').toLowerCase();
+        const matchingPill = Array.from(brandPills).find(p => p.getAttribute('data-brand-filter') === hashTarget);
+        if (matchingPill) {
+            matchingPill.click();
+            const targetElem = document.getElementById('marca-' + hashTarget);
+            if (targetElem) {
+                targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
     }
 });
 </script>
