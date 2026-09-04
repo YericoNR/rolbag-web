@@ -656,4 +656,162 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initQuickQuoteWidget();
 
+    /* --------------------------------------------------------------------------
+       MODAL DE GALERÍA DE 4 VISTAS REALES POR MARCA (LIGHTBOX B2B)
+       -------------------------------------------------------------------------- */
+    const initBrandGalleryModal = () => {
+        const modal = document.getElementById('rb-gallery-modal');
+        const dataScript = document.getElementById('rb-brand-galleries-data');
+        if (!modal || !dataScript) return;
+
+        let galleriesData = {};
+        try {
+            galleriesData = JSON.parse(dataScript.textContent || '{}');
+        } catch (e) {
+            console.warn('Error parsing galleries data:', e);
+        }
+
+        const mainImg = document.getElementById('rb-modal-main-img');
+        const badge = document.getElementById('rb-modal-badge');
+        const brandNameEl = document.getElementById('rb-modal-brand-name');
+        const titleEl = document.getElementById('rb-modal-title');
+        const subtitleEl = document.getElementById('rb-modal-subtitle');
+        const viewNameEl = document.getElementById('rb-modal-view-name');
+        const viewDescEl = document.getElementById('rb-modal-view-desc');
+        const anglesContainer = document.getElementById('rb-modal-angles');
+        const thumbsContainer = document.getElementById('rb-modal-thumbs');
+        const specsList = document.getElementById('rb-modal-specs-list');
+        const waBtn = document.getElementById('rb-modal-wa-btn');
+        const closeBtn = document.getElementById('rb-gallery-modal-close');
+        const backdrop = document.getElementById('rb-gallery-modal-backdrop');
+
+        let currentBrand = null;
+        let currentViewIndex = 0;
+
+        const renderView = (index) => {
+            if (!currentBrand || !currentBrand.views || !currentBrand.views[index]) return;
+            currentViewIndex = index;
+            const view = currentBrand.views[index];
+
+            if (mainImg) {
+                mainImg.style.opacity = '0';
+                setTimeout(() => {
+                    mainImg.src = view.url;
+                    mainImg.alt = `${currentBrand.title} - ${view.name}`;
+                    mainImg.style.opacity = '1';
+                }, 120);
+            }
+
+            if (viewNameEl) viewNameEl.textContent = view.name;
+            if (viewDescEl) viewDescEl.textContent = view.desc;
+
+            // Actualizar botones de ángulo activos
+            if (anglesContainer) {
+                const angleBtns = anglesContainer.querySelectorAll('.rb-gallery-angle-btn');
+                angleBtns.forEach((btn, i) => {
+                    btn.classList.toggle('is-active', i === index);
+                    btn.setAttribute('aria-selected', i === index ? 'true' : 'false');
+                });
+            }
+
+            // Actualizar miniaturas activas
+            if (thumbsContainer) {
+                const thumbBtns = thumbsContainer.querySelectorAll('.rb-gallery-thumb');
+                thumbBtns.forEach((thumb, i) => {
+                    thumb.classList.toggle('is-active', i === index);
+                });
+            }
+        };
+
+        window.openBrandGalleryModal = function(brandKey) {
+            const normalizedKey = (brandKey || 'zebra').toLowerCase().trim();
+            currentBrand = galleriesData[normalizedKey] || galleriesData['zebra'];
+            if (!currentBrand) return;
+
+            if (brandNameEl) brandNameEl.textContent = `FABRICANTE: ${normalizedKey.toUpperCase()}`;
+            if (badge) badge.textContent = currentBrand.badge || 'Fotos Reales ROLBAG';
+            if (titleEl) titleEl.textContent = currentBrand.title || 'Línea de Fundas';
+            if (subtitleEl) subtitleEl.textContent = currentBrand.subtitle || '';
+
+            // Renderizar Especificaciones
+            if (specsList && currentBrand.specs) {
+                specsList.innerHTML = Object.entries(currentBrand.specs).map(([label, val]) => `
+                    <li><strong>${label}:</strong> <span>${val}</span></li>
+                `).join('');
+            }
+
+            // Renderizar Botones de Ángulos
+            if (anglesContainer && currentBrand.views) {
+                anglesContainer.innerHTML = currentBrand.views.map((v, i) => `
+                    <button type="button" class="rb-gallery-angle-btn ${i === 0 ? 'is-active' : ''}" data-index="${i}" role="tab" aria-selected="${i === 0 ? 'true' : 'false'}">
+                        ${v.name}
+                    </button>
+                `).join('');
+
+                anglesContainer.querySelectorAll('.rb-gallery-angle-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const idx = parseInt(btn.getAttribute('data-index'), 10);
+                        renderView(idx);
+                    });
+                });
+            }
+
+            // Renderizar Miniaturas
+            if (thumbsContainer && currentBrand.views) {
+                thumbsContainer.innerHTML = currentBrand.views.map((v, i) => `
+                    <button type="button" class="rb-gallery-thumb ${i === 0 ? 'is-active' : ''}" data-index="${i}" title="${v.name}">
+                        <img src="${v.url}" alt="${v.name}" loading="lazy" />
+                    </button>
+                `).join('');
+
+                thumbsContainer.querySelectorAll('.rb-gallery-thumb').forEach(thumb => {
+                    thumb.addEventListener('click', () => {
+                        const idx = parseInt(thumb.getAttribute('data-index'), 10);
+                        renderView(idx);
+                    });
+                });
+            }
+
+            // Actualizar CTA WhatsApp
+            if (waBtn) {
+                const msg = `Hola ROLBAG, estuve viendo la galería de fotos reales para ${currentBrand.title} y quisiera cotizar fundas para nuestros equipos.`;
+                waBtn.href = `https://wa.me/569318360416?text=${encodeURIComponent(msg)}`;
+            }
+
+            // Activar primera vista
+            renderView(0);
+
+            // Mostrar modal
+            modal.classList.add('is-active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeBrandGalleryModal = function() {
+            modal.classList.remove('is-active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', window.closeBrandGalleryModal);
+        if (backdrop) backdrop.addEventListener('click', window.closeBrandGalleryModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (modal.classList.contains('is-active')) {
+                if (e.key === 'Escape') {
+                    window.closeBrandGalleryModal();
+                } else if (e.key === 'ArrowRight' && currentBrand && currentBrand.views) {
+                    const next = (currentViewIndex + 1) % currentBrand.views.length;
+                    renderView(next);
+                } else if (e.key === 'ArrowLeft' && currentBrand && currentBrand.views) {
+                    const prev = (currentViewIndex - 1 + currentBrand.views.length) % currentBrand.views.length;
+                    renderView(prev);
+                }
+            }
+        });
+    };
+
+    initBrandGalleryModal();
+
 });
+

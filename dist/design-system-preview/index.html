@@ -4475,6 +4475,381 @@ body.rb-main {
     }
 }
 
+/* ==========================================================================
+   GALERÍA MODAL B2B (LIGHTBOX DE 4 VISTAS REALES POR MARCA)
+   ========================================================================== */
+.rb-gallery-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    box-sizing: border-box;
+}
+
+.rb-gallery-modal.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rb-gallery-modal__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 10, 20, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+}
+
+.rb-gallery-modal__dialog {
+    position: relative;
+    z-index: 1;
+    background: #0b1528;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 196, 255, 0.15);
+    transform: scale(0.96) translateY(10px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rb-gallery-modal.is-active .rb-gallery-modal__dialog {
+    transform: scale(1) translateY(0);
+}
+
+.rb-gallery-modal__close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rb-gallery-modal__close:hover {
+    background: #ef4444;
+    border-color: #ef4444;
+    transform: rotate(90deg);
+}
+
+.rb-gallery-modal__body {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 32px;
+    padding: 36px;
+}
+
+/* Columna Izquierda: Visor con Fondo Limpio Blanco */
+.rb-gallery-viewer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.rb-gallery-viewer__stage {
+    position: relative;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06), 0 12px 30px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.rb-gallery-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #003b94;
+    color: #ffffff;
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 59, 148, 0.3);
+    z-index: 2;
+}
+
+.rb-gallery-image-container {
+    width: 100%;
+    height: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rb-gallery-main-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: opacity 0.2s ease, transform 0.3s ease;
+}
+
+/* Selector de Ángulos / Tabs de Vistas */
+.rb-gallery-angles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.rb-gallery-angle-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: var(--font-family-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rb-gallery-angle-btn:hover {
+    background: rgba(0, 196, 255, 0.12);
+    border-color: var(--color-brand-cyan);
+    color: #ffffff;
+}
+
+.rb-gallery-angle-btn.is-active {
+    background: var(--color-brand-accent);
+    border-color: var(--color-brand-accent);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 163, 224, 0.3);
+}
+
+/* Miniaturas */
+.rb-gallery-thumbs {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.rb-gallery-thumb {
+    width: 64px;
+    height: 64px;
+    background: #ffffff;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.rb-gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.rb-gallery-thumb:hover {
+    border-color: var(--color-brand-cyan);
+    transform: translateY(-2px);
+}
+
+.rb-gallery-thumb.is-active {
+    border-color: var(--color-brand-accent);
+    box-shadow: 0 0 0 2px rgba(0, 163, 224, 0.4);
+}
+
+/* Columna Derecha: Información Técnica */
+.rb-gallery-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.rb-gallery-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+    margin: 6px 0 10px 0;
+}
+
+.rb-gallery-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #94a3b8;
+    margin: 0;
+}
+
+.rb-gallery-view-detail {
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 3px solid var(--color-brand-cyan);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+}
+
+.rb-gallery-view-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+}
+
+.rb-gallery-view-desc {
+    font-size: 0.84rem;
+    color: #cbd5e1;
+    margin: 0;
+    line-height: 1.45;
+}
+
+.rb-gallery-specs-box {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+
+.rb-gallery-specs-heading {
+    font-family: var(--font-family-mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-brand-cyan);
+    letter-spacing: 0.05em;
+    margin: 0 0 12px 0;
+}
+
+.rb-gallery-specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rb-gallery-specs-list li {
+    font-size: 0.82rem;
+    color: #e2e8f0;
+    display: flex;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.rb-gallery-specs-list strong {
+    color: #94a3b8;
+    min-width: 105px;
+    flex-shrink: 0;
+}
+
+.rb-gallery-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Botón disparador en cards de marcas */
+.rb-brand-gallery-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 196, 255, 0.08);
+    border: 1px solid rgba(0, 196, 255, 0.25);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: var(--font-family-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-brand-cyan);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.rb-brand-gallery-trigger-btn:hover {
+    background: var(--color-brand-accent);
+    border-color: var(--color-brand-accent);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 163, 224, 0.3);
+}
+
+.rb-brand-card-item__action {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 14px;
+}
+
+/* Mini botón disparador en cards de marcas dentro de fichas de producto */
+.rb-brand-mini-gallery-btn {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(0, 196, 255, 0.08);
+    border: 1px solid rgba(0, 196, 255, 0.22);
+    border-radius: 9999px;
+    padding: 3px 10px;
+    font-family: var(--font-family-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-brand-cyan);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    vertical-align: middle;
+}
+
+.rb-brand-mini-gallery-btn:hover {
+    background: var(--color-brand-accent);
+    border-color: var(--color-brand-accent);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 163, 224, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Responsive Modal */
+@media (max-width: 860px) {
+    .rb-gallery-modal__body {
+        grid-template-columns: 1fr;
+        padding: 24px 20px;
+        gap: 24px;
+    }
+    .rb-gallery-viewer__stage {
+        min-height: 280px;
+    }
+    .rb-gallery-image-container {
+        height: 240px;
+    }
+}
+
+
+
+
 
 
 
@@ -4801,6 +5176,72 @@ body.rb-main {
 <a href="https://wa.me/569318360416" class="rb-whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 24 24" width="30" height="30" style="fill:white;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8.01 12.27C8.14 12.44 9.76 14.94 12.24 16C12.83 16.27 13.28 16.42 13.64 16.53C14.23 16.72 14.77 16.69 15.2 16.63C15.68 16.56 16.67 16.03 16.88 15.45C17.08 14.87 17.08 14.38 17.02 14.28C16.96 14.17 16.8 14.11 16.56 13.99C16.32 13.86 15.12 13.28 14.9 13.2C14.67 13.11 14.51 13.08 14.35 13.32C14.18 13.57 13.71 14.11 13.56 14.28C13.42 14.45 13.27 14.47 13.03 14.35C12.79 14.24 11.99 13.97 11.04 13.13C10.3 12.47 9.8 11.66 9.66 11.42C9.51 11.18 9.64 11.04 9.77 10.92C9.88 10.81 10.02 10.63 10.14 10.49C10.26 10.34 10.3 10.24 10.38 10.08C10.46 9.92 10.42 9.77 10.36 9.66C10.3 9.54 9.8 8.34 9.6 7.84C9.39 7.36 9.19 7.43 9.03 7.42C8.88 7.42 8.71 7.33 8.53 7.33Z"/></svg>
 </a>
+
+<!-- MODAL DE GALERÍA DE FOTOS REALES Y VISTAS TÉCNICAS (B2B LIGHTBOX) -->
+<div class="rb-gallery-modal" id="rb-gallery-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="rb-modal-title">
+    <div class="rb-gallery-modal__backdrop" id="rb-gallery-modal-backdrop"></div>
+    <div class="rb-gallery-modal__dialog">
+        <button type="button" class="rb-gallery-modal__close" id="rb-gallery-modal-close" aria-label="Cerrar galería">&times;</button>
+        
+        <div class="rb-gallery-modal__body">
+            <!-- Columna Izquierda: Visor Fotográfico con Fondo Limpio Blanco -->
+            <div class="rb-gallery-viewer">
+                <div class="rb-gallery-viewer__stage">
+                    <span class="rb-gallery-badge" id="rb-modal-badge">Fotos Reales de Confección ROLBAG</span>
+                    <div class="rb-gallery-image-container">
+                        <img id="rb-modal-main-img" src="" alt="Vista técnica del producto" class="rb-gallery-main-image" loading="lazy" />
+                    </div>
+                </div>
+
+                <!-- Selector de Ángulos / Tabs de 4 Vistas -->
+                <div class="rb-gallery-angles" id="rb-modal-angles" role="tablist" aria-label="Vistas disponibles">
+                    <!-- Dinámico vía JS -->
+                </div>
+
+                <!-- Miniaturas navegables -->
+                <div class="rb-gallery-thumbs" id="rb-modal-thumbs">
+                    <!-- Dinámico vía JS -->
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Ficha Técnica y CTA Directo -->
+            <div class="rb-gallery-info">
+                <div class="rb-gallery-info__header">
+                    <span class="rb-eyebrow rb-text-accent" id="rb-modal-brand-name">FABRICANTE COMPATIBLE</span>
+                    <h3 class="rb-gallery-title" id="rb-modal-title">Línea de Fundas</h3>
+                    <p class="rb-gallery-subtitle" id="rb-modal-subtitle">Confección nacional en taller propio con materiales de alta duración.</p>
+                </div>
+
+                <!-- Descripción de la Vista Actual -->
+                <div class="rb-gallery-view-detail">
+                    <h4 class="rb-gallery-view-name" id="rb-modal-view-name">Vista Frontal</h4>
+                    <p class="rb-gallery-view-desc" id="rb-modal-view-desc">Acceso libre y protección reforzada.</p>
+                </div>
+
+                <!-- Especificaciones Rápidas -->
+                <div class="rb-gallery-specs-box">
+                    <h4 class="rb-gallery-specs-heading">Especificaciones de Confección:</h4>
+                    <ul class="rb-gallery-specs-list" id="rb-modal-specs-list">
+                        <!-- Dinámico vía JS -->
+                    </ul>
+                </div>
+
+                <!-- Acciones de Cotización Rápida -->
+                <div class="rb-gallery-actions">
+                    <a href="#" id="rb-modal-wa-btn" class="rb-btn rb-btn--whatsapp rb-btn--lg" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" width="20" height="20" style="fill:currentColor; margin-right:8px; vertical-align:middle;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8.01 12.27C8.14 12.44 9.76 14.94 12.24 16C12.83 16.27 13.28 16.42 13.64 16.53C14.23 16.72 14.77 16.69 15.2 16.63C15.68 16.56 16.67 16.03 16.88 15.45C17.08 14.87 17.08 14.38 17.02 14.28C16.96 14.17 16.8 14.11 16.56 13.99C16.32 13.86 15.12 13.28 14.9 13.2C14.67 13.11 14.51 13.08 14.35 13.32C14.18 13.57 13.71 14.11 13.56 14.28C13.42 14.45 13.27 14.47 13.03 14.35C12.79 14.24 11.99 13.97 11.04 13.13C10.3 12.47 9.8 11.66 9.66 11.42C9.51 11.18 9.64 11.04 9.77 10.92C9.88 10.81 10.02 10.63 10.14 10.49C10.26 10.34 10.3 10.24 10.38 10.08C10.46 9.92 10.42 9.77 10.36 9.66C10.3 9.54 9.8 8.34 9.6 7.84C9.39 7.36 9.19 7.43 9.03 7.42C8.88 7.42 8.71 7.33 8.53 7.33Z"/></svg>
+                        <span>Cotizar Funda para esta Marca en WhatsApp</span>
+                    </a>
+                    <a href="/contacto" class="rb-btn rb-btn--outline">Solicitar Muestra Física &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Objeto JSON embebido con datos de galerías para inicialización instantánea -->
+<script id="rb-brand-galleries-data" type="application/json">
+{"zebra":{"title":"Fundas de Protección para Equipos Zebra Technologies","subtitle":"Confección nacional en Nylon Balístico 1680D para terminales táctiles (TC58/TC21) y modelos con empuñadura Pistol Grip (TC7x/MC9300).","has_real_photos":true,"badge":"Fotos Reales de Confección ROLBAG","views":[{"id":"frontal","name":"Vista Frontal","desc":"Acceso directo a pantalla táctil protegida por mica transparente de alta sensibilidad y visor de escáner superior libre.","url":"/assets/images/galeria/zebra-sin-mango/vista_01.webp"},{"id":"perfil","name":"Vista Lateral / Perfil","desc":"Perfil aerodinámico con acceso a botones PTT amarillos, anillas D de acero inoxidable y acolchado de impacto EVA.","url":"/assets/images/galeria/zebra-sin-mango/vista_02.webp"},{"id":"posterior","name":"Vista Posterior / Sujeción","desc":"Handstrap ergonómico elástico ajustable con velcro industrial para operación intensiva con una sola mano.","url":"/assets/images/galeria/zebra-sin-mango/vista_03.webp"},{"id":"pistol_grip","name":"Versión Pistol Grip","desc":"Calce reforzado para mango ergonómico con bota de protección de gatillo de lectura de código de barras.","url":"/assets/images/galeria/zebra-con-mango/vista_01.webp"}],"specs":{"Material":"Nylon Balístico 1680D Impermeable + Espuma EVA 4mm","Protección":"Mica Cristal Anti-Rayas + Bisel Antichoque","Fijación":"Handstrap elástico con velcro + Pasador para cinturón","Compatibilidad":"Zebra TC53/TC58, TC52/TC57, TC21/TC26, TC72/TC77, MC9300"}},"honeywell":{"title":"Fundas de Protección para Equipos Honeywell","subtitle":"Confección de alta resistencia para terminales industriales con teclado físico alfanumérico (CK65 / Dolphin) y terminales táctiles (CT40/CT45).","has_real_photos":true,"badge":"Fotos Reales de Confección ROLBAG","views":[{"id":"frontal","name":"Vista Frontal","desc":"Ventana de protección integral sobre pantalla y teclado numérico/alfanumérico sin pérdida de respuesta táctil.","url":"/assets/images/galeria/honeywell-ck65/vista_01.webp"},{"id":"perfil","name":"Vista Lateral / Robustez","desc":"Costuras reforzadas de 6 hebras con remaches metálicos para soportar caídas en bodegas y centros de distribución.","url":"/assets/images/galeria/honeywell-ck65/vista_02.webp"},{"id":"posterior","name":"Vista Posterior","desc":"Banda elástica de sujeción ancha para manos enguantadas en cuartos fríos y logística de frío.","url":"/assets/images/galeria/honeywell-ck65/vista_03.webp"},{"id":"detalle","name":"Detalle Operativo","desc":"Apertura inferior para cambio de batería o carga en cuna sin necesidad de desarmar la funda.","url":"/assets/images/galeria/honeywell-ck65/vista_04.webp"}],"specs":{"Material":"Nylon 1680D alta tenacidad + Refuerzo de esquinas","Protección":"Teclado y pantalla bajo mica transparente sellada","Fijación":"Correa de mano industrial + Argollas D de fijación","Compatibilidad":"Honeywell CK65, CK3X, CT40, CT45, CT60, EDA51, EDA52"}},"bixolon":{"title":"Fundas para Impresoras Portátiles Bixolon / Zebra","subtitle":"Diseñadas para emisión de boleta electrónica e impresión térmica en ruta con apertura frontal directa.","has_real_photos":true,"badge":"Fotos Reales de Confección ROLBAG","views":[{"id":"frontal","name":"Vista Frontal / Salida Ticket","desc":"Apertura frontal para expulsión de ticket o etiqueta térmica y botón de encendido accesible.","url":"/assets/images/galeria/impresoras-portatiles/vista_01.webp"},{"id":"perfil","name":"Vista Lateral / Anillas","desc":"Anillas de acero reforzadas en los laterales para correa de hombro ajustable para repartidores.","url":"/assets/images/galeria/impresoras-portatiles/vista_02.webp"},{"id":"posterior","name":"Vista Posterior / Cinturón","desc":"Pasador de cinturón reforzado con broches de alta seguridad para fijación en cintura.","url":"/assets/images/galeria/impresoras-portatiles/vista_03.webp"},{"id":"recarga","name":"Apertura de Recarga","desc":"Tapa superior con velcro para recarga rápida de rollo de papel térmico sin sacar la impresora.","url":"/assets/images/galeria/impresoras-portatiles/vista_04.webp"}],"specs":{"Material":"Nylon Balístico impermeable repelente al agua y polvo","Acceso":"Ventana frontal para salida de papel + tapa de recarga","Transporte":"Correa de hombro regulable + Pasador de cinturón","Compatibilidad":"Bixolon SPP-R200/R310/R410, Zebra ZQ511/ZQ521, Epson Mobilink"}},"datalogic":{"title":"Fundas de Protección para Equipos Datalogic","subtitle":"Confección a medida para terminales Memor y Skorpio de captura logística.","has_real_photos":true,"badge":"Fotos Reales de Confección ROLBAG","views":[{"id":"frontal","name":"Vista Frontal","desc":"Protección frontal con mica de alta transparencia y visor libre para cabezal de lectura 2D.","url":"/assets/images/galeria/modelos-adicionales/vista_01.webp"},{"id":"perfil","name":"Vista Lateral","desc":"Estructura amortiguadora con refuerzos perimetrales antichoque para trabajo intensivo.","url":"/assets/images/galeria/modelos-adicionales/vista_02.webp"},{"id":"posterior","name":"Vista Posterior","desc":"Handstrap de seguridad para evitar caídas durante el picking y despacho.","url":"/assets/images/galeria/modelos-adicionales/vista_03.webp"},{"id":"detalle","name":"Acabados y Costura","desc":"Ribete perimetral y costura de alta tenacidad con hilos resistentes a la abrasión.","url":"/assets/images/galeria/modelos-adicionales/vista_04.webp"}],"specs":{"Material":"Nylon Balístico 1680D + Acolchado protector","Protección":"Mica flexible antichoque y bordes reforzados","Fijación":"Handstrap de mano + D-rings para correa","Compatibilidad":"Datalogic Memor 1, Memor 10, Memor 20, Skorpio X5"}}}</script>
 
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/rolbag/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}

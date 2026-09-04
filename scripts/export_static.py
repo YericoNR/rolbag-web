@@ -123,11 +123,13 @@ def transform_html(html_content, combined_css):
     # Map WordPress asset paths to clean public paths
     html = html.replace("/wp-content/themes/rolbag/assets/", "/assets/")
     html = html.replace("wp-content/themes/rolbag/assets/", "/assets/")
+    html = html.replace("\\/wp-content\\/themes\\/rolbag\\/assets\\/", "\\/assets\\/")
     html = html.replace("/wp-content/themes/rolbag/style.css", "/assets/css/style.css")
     html = html.replace("wp-content/themes/rolbag/style.css", "/assets/css/style.css")
     html = html.replace("/wp-content/themes/rolbag/favicon.ico", "/assets/images/brand/favicon.ico")
     html = html.replace("/wp-content/uploads/", "/uploads/")
     html = html.replace("wp-content/uploads/", "/uploads/")
+    html = html.replace("\\/wp-content\\/uploads\\/", "\\/uploads\\/")
     html = html.replace("/wp-includes/css/", "/assets/vendor/css/")
     html = html.replace("/wp-includes/js/", "/assets/vendor/js/")
     html = html.replace("/wp-includes/", "/assets/vendor/")

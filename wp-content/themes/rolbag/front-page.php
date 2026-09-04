@@ -521,6 +521,10 @@ get_header('landing');
                             </div>
                         </div>
                         <div class="rb-brand-card-item__action">
+                            <button type="button" class="rb-brand-gallery-trigger-btn" onclick="if(window.openBrandGalleryModal) window.openBrandGalleryModal('zebra');">
+                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                                <span>Ver Fotos Reales (4 vistas)</span>
+                            </button>
                             <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores/#marca-zebra' ) ); ?>" class="rb-brand-main-btn">
                                 <span>Ver Ficha Técnica</span>
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -546,6 +550,10 @@ get_header('landing');
                             </div>
                         </div>
                         <div class="rb-brand-card-item__action">
+                            <button type="button" class="rb-brand-gallery-trigger-btn" onclick="if(window.openBrandGalleryModal) window.openBrandGalleryModal('honeywell');">
+                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                                <span>Ver Fotos Reales (4 vistas)</span>
+                            </button>
                             <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores/#marca-honeywell' ) ); ?>" class="rb-brand-main-btn">
                                 <span>Ver Ficha Técnica</span>
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -569,6 +577,10 @@ get_header('landing');
                             </div>
                         </div>
                         <div class="rb-brand-card-item__action">
+                            <button type="button" class="rb-brand-gallery-trigger-btn" onclick="if(window.openBrandGalleryModal) window.openBrandGalleryModal('datalogic');">
+                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                                <span>Ver Fotos Reales (4 vistas)</span>
+                            </button>
                             <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores/#marca-datalogic' ) ); ?>" class="rb-brand-main-btn">
                                 <span>Ver Ficha Técnica</span>
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -688,6 +700,10 @@ get_header('landing');
                             </div>
                         </div>
                         <div class="rb-brand-card-item__action">
+                            <button type="button" class="rb-brand-gallery-trigger-btn" onclick="if(window.openBrandGalleryModal) window.openBrandGalleryModal('bixolon');">
+                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                                <span>Ver Fotos Reales (4 vistas)</span>
+                            </button>
                             <a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras/#marca-bixolon' ) ); ?>" class="rb-brand-main-btn">
                                 <span>Ver Ficha Técnica</span>
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

@@ -246,10 +246,17 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
                     <div class="rb-compat-brands-grid <?php echo $is_few_brands ? 'rb-compat-brands-grid--compact' : ''; ?>" id="rb-compat-grid">
                         <?php foreach ( $brands_models as $brand => $models ) : 
                             $brand_count = is_array( $models ) ? count( $models ) : 1;
+                            $brand_key = strtolower( trim( $brand ) );
                         ?>
-                            <div class="rb-brand-card" data-brand="<?php echo esc_attr( strtolower( $brand ) ); ?>" id="marca-<?php echo esc_attr( sanitize_title( $brand ) ); ?>">
+                            <div class="rb-brand-card" data-brand="<?php echo esc_attr( $brand_key ); ?>" id="marca-<?php echo esc_attr( sanitize_title( $brand ) ); ?>">
                                 <div class="rb-brand-card__header">
-                                    <h3 class="rb-brand-name"><?php echo esc_html( $brand ); ?></h3>
+                                    <div class="rb-brand-title-wrap" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                                        <h3 class="rb-brand-name"><?php echo esc_html( $brand ); ?></h3>
+                                        <button type="button" class="rb-brand-mini-gallery-btn" onclick="if(window.openBrandGalleryModal) window.openBrandGalleryModal('<?php echo esc_attr( $brand_key ); ?>');" title="Ver galería de fotos reales y acabados de confección">
+                                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                                            <span>Fotos Reales (4 vistas)</span>
+                                        </button>
+                                    </div>
                                     <span class="rb-brand-count"><?php echo esc_html( $brand_count ); ?> <?php echo ( $brand_count === 1 ) ? 'opción' : 'modelos'; ?></span>
                                 </div>
                                 

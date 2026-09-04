@@ -281,11 +281,181 @@ function rolbag_save_producto_meta( $post_id ) {
             update_post_meta( $post_id, 'rolbag_brands_models', '' );
         }
     }
+
+    // 4 Vistas Técnicas Autoadministrables
+    $views = array( 'vista_frontal', 'vista_lateral', 'vista_posterior', 'vista_detalle' );
+    foreach ( $views as $view_key ) {
+        if ( isset( $_POST[ 'rolbag_' . $view_key ] ) ) {
+            update_post_meta( $post_id, 'rolbag_' . $view_key, sanitize_text_field( $_POST[ 'rolbag_' . $view_key ] ) );
+        }
+    }
 }
 add_action( 'save_post_producto', 'rolbag_save_producto_meta' );
 
 /**
- * 6. Flush rewrite rules on plugin activation
+ * 6. Catálogo Global de Galerías por Marca (Fotos Reales y Autoadministrables)
+ */
+function rolbag_get_brand_galleries_catalog() {
+    $theme_uri = get_template_directory_uri();
+    
+    return array(
+        'zebra' => array(
+            'title'        => 'Fundas de Protección para Equipos Zebra Technologies',
+            'subtitle'     => 'Confección nacional en Nylon Balístico 1680D para terminales táctiles (TC58/TC21) y modelos con empuñadura Pistol Grip (TC7x/MC9300).',
+            'has_real_photos' => true,
+            'badge'        => 'Fotos Reales de Confección ROLBAG',
+            'views'        => array(
+                array(
+                    'id'          => 'frontal',
+                    'name'        => 'Vista Frontal',
+                    'desc'        => 'Acceso directo a pantalla táctil protegida por mica transparente de alta sensibilidad y visor de escáner superior libre.',
+                    'url'         => $theme_uri . '/assets/images/galeria/zebra-sin-mango/vista_01.webp'
+                ),
+                array(
+                    'id'          => 'perfil',
+                    'name'        => 'Vista Lateral / Perfil',
+                    'desc'        => 'Perfil aerodinámico con acceso a botones PTT amarillos, anillas D de acero inoxidable y acolchado de impacto EVA.',
+                    'url'         => $theme_uri . '/assets/images/galeria/zebra-sin-mango/vista_02.webp'
+                ),
+                array(
+                    'id'          => 'posterior',
+                    'name'        => 'Vista Posterior / Sujeción',
+                    'desc'        => 'Handstrap ergonómico elástico ajustable con velcro industrial para operación intensiva con una sola mano.',
+                    'url'         => $theme_uri . '/assets/images/galeria/zebra-sin-mango/vista_03.webp'
+                ),
+                array(
+                    'id'          => 'pistol_grip',
+                    'name'        => 'Versión Pistol Grip',
+                    'desc'        => 'Calce reforzado para mango ergonómico con bota de protección de gatillo de lectura de código de barras.',
+                    'url'         => $theme_uri . '/assets/images/galeria/zebra-con-mango/vista_01.webp'
+                )
+            ),
+            'specs'        => array(
+                'Material'       => 'Nylon Balístico 1680D Impermeable + Espuma EVA 4mm',
+                'Protección'     => 'Mica Cristal Anti-Rayas + Bisel Antichoque',
+                'Fijación'       => 'Handstrap elástico con velcro + Pasador para cinturón',
+                'Compatibilidad' => 'Zebra TC53/TC58, TC52/TC57, TC21/TC26, TC72/TC77, MC9300'
+            )
+        ),
+        'honeywell' => array(
+            'title'        => 'Fundas de Protección para Equipos Honeywell',
+            'subtitle'     => 'Confección de alta resistencia para terminales industriales con teclado físico alfanumérico (CK65 / Dolphin) y terminales táctiles (CT40/CT45).',
+            'has_real_photos' => true,
+            'badge'        => 'Fotos Reales de Confección ROLBAG',
+            'views'        => array(
+                array(
+                    'id'          => 'frontal',
+                    'name'        => 'Vista Frontal',
+                    'desc'        => 'Ventana de protección integral sobre pantalla y teclado numérico/alfanumérico sin pérdida de respuesta táctil.',
+                    'url'         => $theme_uri . '/assets/images/galeria/honeywell-ck65/vista_01.webp'
+                ),
+                array(
+                    'id'          => 'perfil',
+                    'name'        => 'Vista Lateral / Robustez',
+                    'desc'        => 'Costuras reforzadas de 6 hebras con remaches metálicos para soportar caídas en bodegas y centros de distribución.',
+                    'url'         => $theme_uri . '/assets/images/galeria/honeywell-ck65/vista_02.webp'
+                ),
+                array(
+                    'id'          => 'posterior',
+                    'name'        => 'Vista Posterior',
+                    'desc'        => 'Banda elástica de sujeción ancha para manos enguantadas en cuartos fríos y logística de frío.',
+                    'url'         => $theme_uri . '/assets/images/galeria/honeywell-ck65/vista_03.webp'
+                ),
+                array(
+                    'id'          => 'detalle',
+                    'name'        => 'Detalle Operativo',
+                    'desc'        => 'Apertura inferior para cambio de batería o carga en cuna sin necesidad de desarmar la funda.',
+                    'url'         => $theme_uri . '/assets/images/galeria/honeywell-ck65/vista_04.webp'
+                )
+            ),
+            'specs'        => array(
+                'Material'       => 'Nylon 1680D alta tenacidad + Refuerzo de esquinas',
+                'Protección'     => 'Teclado y pantalla bajo mica transparente sellada',
+                'Fijación'       => 'Correa de mano industrial + Argollas D de fijación',
+                'Compatibilidad' => 'Honeywell CK65, CK3X, CT40, CT45, CT60, EDA51, EDA52'
+            )
+        ),
+        'bixolon' => array(
+            'title'        => 'Fundas para Impresoras Portátiles Bixolon / Zebra',
+            'subtitle'     => 'Diseñadas para emisión de boleta electrónica e impresión térmica en ruta con apertura frontal directa.',
+            'has_real_photos' => true,
+            'badge'        => 'Fotos Reales de Confección ROLBAG',
+            'views'        => array(
+                array(
+                    'id'          => 'frontal',
+                    'name'        => 'Vista Frontal / Salida Ticket',
+                    'desc'        => 'Apertura frontal para expulsión de ticket o etiqueta térmica y botón de encendido accesible.',
+                    'url'         => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_01.webp'
+                ),
+                array(
+                    'id'          => 'perfil',
+                    'name'        => 'Vista Lateral / Anillas',
+                    'desc'        => 'Anillas de acero reforzadas en los laterales para correa de hombro ajustable para repartidores.',
+                    'url'         => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_02.webp'
+                ),
+                array(
+                    'id'          => 'posterior',
+                    'name'        => 'Vista Posterior / Cinturón',
+                    'desc'        => 'Pasador de cinturón reforzado con broches de alta seguridad para fijación en cintura.',
+                    'url'         => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_03.webp'
+                ),
+                array(
+                    'id'          => 'recarga',
+                    'name'        => 'Apertura de Recarga',
+                    'desc'        => 'Tapa superior con velcro para recarga rápida de rollo de papel térmico sin sacar la impresora.',
+                    'url'         => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_04.webp'
+                )
+            ),
+            'specs'        => array(
+                'Material'       => 'Nylon Balístico impermeable repelente al agua y polvo',
+                'Acceso'         => 'Ventana frontal para salida de papel + tapa de recarga',
+                'Transporte'     => 'Correa de hombro regulable + Pasador de cinturón',
+                'Compatibilidad' => 'Bixolon SPP-R200/R310/R410, Zebra ZQ511/ZQ521, Epson Mobilink'
+            )
+        ),
+        'datalogic' => array(
+            'title'        => 'Fundas de Protección para Equipos Datalogic',
+            'subtitle'     => 'Confección a medida para terminales Memor y Skorpio de captura logística.',
+            'has_real_photos' => true,
+            'badge'        => 'Fotos Reales de Confección ROLBAG',
+            'views'        => array(
+                array(
+                    'id'          => 'frontal',
+                    'name'        => 'Vista Frontal',
+                    'desc'        => 'Protección frontal con mica de alta transparencia y visor libre para cabezal de lectura 2D.',
+                    'url'         => $theme_uri . '/assets/images/galeria/modelos-adicionales/vista_01.webp'
+                ),
+                array(
+                    'id'          => 'perfil',
+                    'name'        => 'Vista Lateral',
+                    'desc'        => 'Estructura amortiguadora con refuerzos perimetrales antichoque para trabajo intensivo.',
+                    'url'         => $theme_uri . '/assets/images/galeria/modelos-adicionales/vista_02.webp'
+                ),
+                array(
+                    'id'          => 'posterior',
+                    'name'        => 'Vista Posterior',
+                    'desc'        => 'Handstrap de seguridad para evitar caídas durante el picking y despacho.',
+                    'url'         => $theme_uri . '/assets/images/galeria/modelos-adicionales/vista_03.webp'
+                ),
+                array(
+                    'id'          => 'detalle',
+                    'name'        => 'Acabados y Costura',
+                    'desc'        => 'Ribete perimetral y costura de alta tenacidad con hilos resistentes a la abrasión.',
+                    'url'         => $theme_uri . '/assets/images/galeria/modelos-adicionales/vista_04.webp'
+                )
+            ),
+            'specs'        => array(
+                'Material'       => 'Nylon Balístico 1680D + Acolchado protector',
+                'Protección'     => 'Mica flexible antichoque y bordes reforzados',
+                'Fijación'       => 'Handstrap de mano + D-rings para correa',
+                'Compatibilidad' => 'Datalogic Memor 1, Memor 10, Memor 20, Skorpio X5'
+            )
+        )
+    );
+}
+
+/**
+ * 7. Flush rewrite rules on plugin activation
  */
 function rolbag_core_activate() {
     rolbag_register_cpt_producto();
@@ -296,9 +466,10 @@ function rolbag_core_activate() {
 register_activation_hook( __FILE__, 'rolbag_core_activate' );
 
 /**
- * 7. Flush rewrite rules on plugin deactivation
+ * 8. Flush rewrite rules on plugin deactivation
  */
 function rolbag_core_deactivate() {
     flush_rewrite_rules();
 }
 register_deactivation_hook( __FILE__, 'rolbag_core_deactivate' );
+
