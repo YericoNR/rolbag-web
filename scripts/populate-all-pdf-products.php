@@ -2,8 +2,16 @@
 /**
  * Script to populate all ROLBAG product lines with verified images and exact data from briefing
  */
-if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
-    die( 'Must be run via WP-CLI' );
+if ( ! defined( 'ABSPATH' ) ) {
+    require_once __DIR__ . '/../wp-load.php';
+}
+
+if ( ! class_exists( 'WP_CLI' ) ) {
+    class WP_CLI {
+        public static function line( $msg ) { echo "[INFO] $msg\n"; }
+        public static function success( $msg ) { echo "[SUCCESS] $msg\n"; }
+        public static function error( $msg ) { echo "[ERROR] $msg\n"; }
+    }
 }
 
 $products_data = array(
@@ -287,6 +295,12 @@ $products_data = array(
                 'P80 Industrial' => 'Android 13 para bodegas.',
                 'P80 RFID' => 'Android 13 con RFID.',
             ),
+            'Panasonic' => array(
+                'Toughbook G2 (10,1")' => 'Tablet modular totalmente reforzada para minería, logística y faenas.',
+                'Toughbook 33 (12")' => 'Tablet 2 en 1 ultra resistente con pantalla dual touch y batería hot-swap.',
+                'Toughbook A3 (10,1")' => 'Tablet Android reforzada para operaciones de campo y bodegas.',
+                'Toughbook 55' => 'Equipo semirrobusto modular para vehículos industriales y terreno.',
+            ),
         ),
     ),
 
@@ -376,10 +390,16 @@ $products_data = array(
                 'UROVO K329' => 'Imprime recibos y etiquetas de 3".',
                 'UROVO K419' => 'Recibos, tickets y códigos de barras de 4".',
             ),
+            'Epson' => array(
+                'TM-P80' => 'Impresora portátil térmica de 3" para recibos y boleta electrónica.',
+                'TM-P20' => 'Impresora portátil ultra ligera de 2" para recibos móviles.',
+                'TM-P60II' => 'Impresión móvil de recibos y etiquetas linerless.',
+            ),
+            'Unitech' => array(
+                'SP320' => 'Impresora térmica portátil de 3" para tickets y recibos en ruta.',
+            ),
             'Otras Marcas' => array(
-                'Epson TM-P80' => 'Recibos, tickets y comprobantes móviles.',
                 'BARPOS T3' => 'Recibos y etiquetas.',
-                'Unitech SP320' => 'Impresión portátil de recibos y tickets.',
                 'iDPRT iMOVE 3 Pro' => 'Impresión portátil de etiquetas y recibos.',
             ),
         ),
