@@ -491,6 +491,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const brandTabs = document.querySelectorAll('.rb-brand-tab');
     const brandCards = document.querySelectorAll('.rb-brand-card-item');
     const brandSearchInput = document.getElementById('rb-brands-search');
+    const brandContainer = document.getElementById('rb-brands-container');
+    const mobileToggleBtn = document.getElementById('rb-brands-toggle-mobile-btn');
 
     if (brandTabs.length > 0 && brandCards.length > 0) {
         let activeFilter = 'all';
@@ -529,16 +531,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const mobileToggleWrap = document.querySelector('.rb-brands-mobile-toggle-wrap');
             if (mobileToggleWrap) {
                 if (activeFilter !== 'all' || query !== '') {
-                    brandContainer?.classList.add('rb-brands-grid--expanded');
+                    if (brandContainer) brandContainer.classList.add('rb-brands-grid--expanded');
                     mobileToggleWrap.style.display = 'none';
                 } else {
                     mobileToggleWrap.style.display = '';
                 }
             }
         };
-
-        const brandContainer = document.getElementById('rb-brands-container');
-        const mobileToggleBtn = document.getElementById('rb-brands-toggle-mobile-btn');
 
         if (mobileToggleBtn && brandContainer) {
             mobileToggleBtn.addEventListener('click', () => {
@@ -575,22 +574,27 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --------------------------------------------------------------------------
        PRE-COTIZADOR RÁPIDO B2B (WIDGET EN #COTIZAR)
        -------------------------------------------------------------------------- */
-    const qqPills = document.querySelectorAll('.rb-qq-pill');
-    const qqLineInput = document.getElementById('rb-qq-selected-line');
-    const qqModelInput = document.getElementById('rb-qq-model');
-    const qqQtyInput = document.getElementById('rb-qq-qty');
-    const qqWhatsAppBtn = document.getElementById('rb-qq-whatsapp-btn');
-    const qqEmailBtn = document.getElementById('rb-qq-email-btn');
+    const initQuickQuoteWidget = () => {
+        const qqWidget = document.getElementById('cotizador-rapido');
+        if (!qqWidget) return;
 
-    if (qqPills.length > 0 && qqLineInput && qqWhatsAppBtn) {
+        const qqPills = qqWidget.querySelectorAll('.rb-qq-pill');
+        const qqLineInput = document.getElementById('rb-qq-selected-line');
+        const qqModelInput = document.getElementById('rb-qq-model');
+        const qqQtyInput = document.getElementById('rb-qq-qty');
+        const qqWhatsAppBtn = document.getElementById('rb-qq-whatsapp-btn');
+        const qqEmailBtn = document.getElementById('rb-qq-email-btn');
+
         const updateQuickQuoteLinks = () => {
-            const line = qqLineInput.value || 'Fundas para Capturadores';
+            const line = qqLineInput ? (qqLineInput.value || 'Fundas para Capturadores') : 'Fundas para Capturadores';
             const model = qqModelInput ? qqModelInput.value.trim() : '';
             const qty = qqQtyInput && qqQtyInput.value ? qqQtyInput.value : '10';
 
             const modelText = model ? ` para el equipo/medida ${model}` : '';
             const msg = `Hola ROLBAG, quisiera cotizar ${qty} unidades de ${line}${modelText}.`;
-            qqWhatsAppBtn.href = `https://wa.me/569318360416?text=${encodeURIComponent(msg)}`;
+            if (qqWhatsAppBtn) {
+                qqWhatsAppBtn.href = `https://wa.me/569318360416?text=${encodeURIComponent(msg)}`;
+            }
 
             if (qqEmailBtn) {
                 const params = new URLSearchParams();
@@ -601,14 +605,43 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
+        window.selectQuickQuoteLine = function(selectedElement) {
+            if (!selectedElement) return;
+            const allPills = document.querySelectorAll('.rb-qq-pill');
+            allPills.forEach(p => p.classList.remove('active'));
+            selectedElement.classList.add('active');
+
+            const lineName = selectedElement.getAttribute('data-line') || selectedElement.textContent.trim();
+            if (qqLineInput) {
+                qqLineInput.value = lineName;
+            }
+
+            const placeholder = selectedElement.getAttribute('data-placeholder');
+            if (placeholder && qqModelInput) {
+                qqModelInput.setAttribute('placeholder', placeholder);
+            }
+
+            updateQuickQuoteLinks();
+        };
+
         qqPills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                qqPills.forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
-                qqLineInput.value = pill.getAttribute('data-line') || pill.textContent.trim();
-                updateQuickQuoteLinks();
+            pill.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.selectQuickQuoteLine(pill);
             });
         });
+
+        // Event delegation sobre el contenedor de pills
+        const pillsContainer = document.getElementById('rb-qq-pills-container');
+        if (pillsContainer) {
+            pillsContainer.addEventListener('click', (e) => {
+                const targetPill = e.target.closest('.rb-qq-pill');
+                if (targetPill) {
+                    e.preventDefault();
+                    window.selectQuickQuoteLine(targetPill);
+                }
+            });
+        }
 
         if (qqModelInput) {
             qqModelInput.addEventListener('input', updateQuickQuoteLinks);
@@ -617,8 +650,10 @@ document.addEventListener('DOMContentLoaded', () => {
             qqQtyInput.addEventListener('input', updateQuickQuoteLinks);
         }
 
-        // Inicializar link
+        // Inicializar enlaces
         updateQuickQuoteLinks();
-    }
+    };
+
+    initQuickQuoteWidget();
 
 });

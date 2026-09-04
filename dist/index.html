@@ -5905,13 +5905,13 @@ body.rb-main {
                     <form class="rb-quick-quote-form" id="rb-quick-quote-form" onsubmit="return false;">
                         <div class="rb-qq-step">
                             <label class="rb-qq-label"><span class="rb-qq-step-num">1</span> Selecciona la Línea de Interés:</label>
-                            <div class="rb-qq-pills" role="radiogroup" aria-label="Seleccionar Línea">
-                                <button type="button" class="rb-qq-pill active" data-line="Fundas para Capturadores">Capturadores / PDA</button>
-                                <button type="button" class="rb-qq-pill" data-line="Fundas para Tablets">Tablets Industriales</button>
-                                <button type="button" class="rb-qq-pill" data-line="Fundas para Impresoras">Impresoras Portátiles</button>
-                                <button type="button" class="rb-qq-pill" data-line="Fundas para POS Móviles">POS Móviles</button>
-                                <button type="button" class="rb-qq-pill" data-line="Valijas de Seguridad">Valijas de Seguridad</button>
-                                <button type="button" class="rb-qq-pill" data-line="Candados Especiales">Candados Especiales</button>
+                            <div class="rb-qq-pills" id="rb-qq-pills-container" role="radiogroup" aria-label="Seleccionar Línea de Producto">
+                                <button type="button" class="rb-qq-pill active" data-line="Fundas para Capturadores" data-placeholder="Ej: Zebra TC58, MC9300, Honeywell CT45, Datalogic Memor 10..." onclick="if(window.selectQuickQuoteLine) window.selectQuickQuoteLine(this);">Capturadores / PDA</button>
+                                <button type="button" class="rb-qq-pill" data-line="Fundas para Tablets" data-placeholder="Ej: Samsung Galaxy Tab Active5, Zebra ET40 10&quot;, Honeywell RT10..." onclick="if(window.selectQuickQuoteLine) window.selectQuickQuoteLine(this);">Tablets Industriales</button>
+                                <button type="button" class="rb-qq-pill" data-line="Fundas para Impresoras" data-placeholder="Ej: Zebra ZQ521, Bixolon SPP-R310, Epson Mobilink P80..." onclick="if(window.selectQuickQuoteLine) window.selectQuickQuoteLine(this);">Impresoras Portátiles</button>
+                                <button type="button" class="rb-qq-pill" data-line="Fundas para POS Móviles" data-placeholder="Ej: Sunmi V2s Plus, Ingenico Move 3500, Pax A920 Pro, Verifone..." onclick="if(window.selectQuickQuoteLine) window.selectQuickQuoteLine(this);">POS Móviles</button>
+                                <button type="button" class="rb-qq-pill" data-line="Valijas de Seguridad" data-placeholder="Ej: Valija 45L con ojal de candado, medidas 55x35x25 cm..." onclick="if(window.selectQuickQuoteLine) window.selectQuickQuoteLine(this);">Valijas de Seguridad</button>
+                                <button type="button" class="rb-qq-pill" data-line="Candados Especiales" data-placeholder="Ej: Candado con cable de acero y llave maestra / combinación..." onclick="if(window.selectQuickQuoteLine) window.selectQuickQuoteLine(this);">Candados Especiales</button>
                             </div>
                             <input type="hidden" id="rb-qq-selected-line" value="Fundas para Capturadores">
                         </div>
@@ -5919,7 +5919,7 @@ body.rb-main {
                         <div class="rb-qq-grid-fields">
                             <div class="rb-qq-field">
                                 <label for="rb-qq-model" class="rb-qq-label"><span class="rb-qq-step-num">2</span> Marca, Modelo o Medidas:</label>
-                                <input type="text" id="rb-qq-model" placeholder="Ej: Zebra TC58 con pistol grip / Valija 40L..." class="rb-qq-input">
+                                <input type="text" id="rb-qq-model" placeholder="Ej: Zebra TC58 con pistol grip / Honeywell CT45..." class="rb-qq-input">
                             </div>
                             <div class="rb-qq-field rb-qq-field--qty">
                                 <label for="rb-qq-qty" class="rb-qq-label"><span class="rb-qq-step-num">3</span> Cantidad Estimada:</label>
