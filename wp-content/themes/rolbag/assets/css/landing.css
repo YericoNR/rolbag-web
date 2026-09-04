@@ -1118,18 +1118,70 @@ body.rb-main {
     background-color: var(--color-bg-light);
 }
 
-.rb-products-bento {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+.rb-products-bento-v2 {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    min-height: 520px;
+    margin-bottom: 24px;
 }
 
-.rb-products-bento__sidebar {
+.rb-bento-row--top {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
     gap: 20px;
+    min-height: 420px;
+}
+
+.rb-bento-row--bottom {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    min-height: 280px;
+}
+
+.rb-bento-card--lead {
+    min-height: 400px;
+}
+
+.rb-bento-card--side-top {
+    min-height: 400px;
+}
+
+.rb-bento-card--quad {
+    min-height: 280px;
+    padding: 24px 20px;
+}
+
+.rb-bento-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.rb-bento-chip {
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.rb-bento-desc-compact {
+    color: #cbd5e1;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    margin-bottom: 14px;
+}
+
+.rb-bento-micro-desc {
+    color: #94a3b8;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
 }
 
 .rb-bento-card {
@@ -2809,7 +2861,20 @@ body.rb-main {
     font-size: 0.9rem;
 }
 
-/* 2. ECOSISTEMA DE MARCAS EN FRONT-PAGE */
+/* 2. ECOSISTEMA DE MARCAS EN FRONT-PAGE (SECCIÓN INDEPENDIENTE) */
+.rb-brands-section {
+    background-color: #f8fafc;
+    border-top: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding: 80px 0;
+}
+
+.rb-brands-section .rb-brands-ecosystem {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
 .rb-brands-ecosystem {
     margin-top: 80px;
     padding-top: 64px;
@@ -3256,8 +3321,222 @@ body.rb-main {
     line-height: 1.35;
 }
 
+/* Botón Expansor para Mobile en Marcas */
+.rb-brands-mobile-toggle-wrap {
+    display: none;
+    margin: 16px auto 36px auto;
+    text-align: center;
+}
+
+.rb-brands-mobile-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 26px;
+    background-color: #ffffff;
+    border: 1.5px solid var(--color-brand-primary);
+    border-radius: 9999px;
+    font-family: var(--font-family-sans);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 43, 73, 0.08);
+    transition: var(--transition-fast);
+}
+
+.rb-brands-mobile-btn:hover {
+    background-color: var(--color-brand-primary);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 43, 73, 0.16);
+}
+
+.rb-brands-mobile-btn svg {
+    transition: transform 0.25s ease;
+}
+
+.rb-brands-mobile-btn.expanded svg {
+    transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   WIDGET PRE-COTIZADOR RÁPIDO B2B
+   ========================================================================== */
+.rb-quick-quote-widget {
+    margin-top: 56px;
+    background: linear-gradient(135deg, #071324 0%, #0d1e38 100%);
+    border: 1px solid rgba(0, 196, 255, 0.25);
+    border-radius: 20px;
+    padding: 44px 36px;
+    box-shadow: 0 20px 50px rgba(7, 19, 36, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.rb-quick-quote-widget::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 196, 255, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.rb-quick-quote-header {
+    margin-bottom: 28px;
+}
+
+.rb-quick-quote-header .rb-h3 {
+    margin: 12px 0 6px 0;
+}
+
+.rb-qq-step {
+    margin-bottom: 22px;
+}
+
+.rb-qq-label {
+    display: flex;
+    align-items: center;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 10px;
+}
+
+.rb-qq-step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: var(--color-brand-cyan);
+    color: #071324;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.rb-qq-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.rb-qq-pill {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 9999px;
+    padding: 8px 16px;
+    font-family: var(--font-family-sans);
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rb-qq-pill:hover {
+    background: rgba(0, 196, 255, 0.12);
+    border-color: var(--color-brand-cyan);
+    color: #ffffff;
+}
+
+.rb-qq-pill.active {
+    background: var(--color-brand-accent);
+    border-color: var(--color-brand-accent);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 163, 224, 0.3);
+}
+
+.rb-qq-grid-fields {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.rb-qq-input {
+    width: 100%;
+    padding: 13px 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    font-family: var(--font-family-sans);
+    font-size: 0.92rem;
+    color: #ffffff;
+    transition: var(--transition-fast);
+    box-sizing: border-box;
+}
+
+.rb-qq-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--color-brand-cyan);
+    box-shadow: 0 0 0 4px rgba(0, 196, 255, 0.15);
+}
+
+.rb-qq-input::placeholder {
+    color: #64748b;
+}
+
+.rb-qq-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.rb-qq-actions .rb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Bento y Pre-Cotizador */
+@media (max-width: 992px) {
+    .rb-bento-row--top {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+    .rb-bento-row--bottom {
+        grid-template-columns: repeat(2, 1fr);
+        min-height: auto;
+    }
+    .rb-qq-grid-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* RESPONSIVE AJUSTES PARA MARCAS Y VALIJAS */
 @media (max-width: 768px) {
+    .rb-bento-row--bottom {
+        grid-template-columns: 1fr;
+    }
+    .rb-brands-mobile-toggle-wrap {
+        display: block;
+    }
+    /* En móviles ocultar marcas a partir de la 9na hasta que se expanda */
+    .rb-brands-grid:not(.rb-brands-grid--expanded) .rb-brand-card-item:nth-child(n+9) {
+        display: none !important;
+    }
+    .rb-quick-quote-widget {
+        padding: 32px 20px;
+    }
+    .rb-qq-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    .rb-qq-actions .rb-btn {
+        width: 100%;
+    }
     .rb-brand-ticker__label {
         padding: 0 16px;
     }

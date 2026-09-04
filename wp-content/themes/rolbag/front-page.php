@@ -43,7 +43,7 @@ get_header('landing');
                         </div>
                         <div class="rb-hero-badge-divider"></div>
                         <div class="rb-hero-badge-item">
-                            <span class="rb-hero-badge-val">20+</span>
+                            <span class="rb-hero-badge-val">+28</span>
                             <span class="rb-hero-badge-lbl">Años de Trayectoria</span>
                         </div>
                     </div>
@@ -358,81 +358,94 @@ get_header('landing');
             <div class="rb-section-header text-center">
                 <span class="rb-eyebrow rb-text-mono rb-text-accent">CATÁLOGO OFICIAL</span>
                 <h2 class="rb-h2">Líneas de Productos ROLBAG</h2>
-                <p class="rb-section-subtitle">Conoce nuestras 5 líneas especializadas de confección nacional para hardware móvil y transporte seguro.</p>
+                <p class="rb-section-subtitle">Conoce nuestras 6 líneas especializadas de confección nacional para hardware móvil y transporte seguro.</p>
             </div>
             
-            <div class="rb-products-bento">
-                <!-- Línea 01: Capturadores (Dominante 55%) -->
-                <a href="/productos/fundas-para-capturadores" class="rb-bento-card rb-bento-card--main">
-                    <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/capturador_zebra_principal_portada.webp' ); ?>');"></div>
-                    <div class="rb-bento-card__overlay"></div>
-                    <div class="rb-bento-card__content">
-                        <span class="rb-badge">Línea Principal (+120 modelos)</span>
-                        <h3 class="rb-bento-title">Fundas para Capturadores de Datos</h3>
-                        <p class="rb-bento-desc">Confeccionadas en material impermeable de alta duración con acceso libre a comandos, teclado y puertos. Compatibles para versiones con y sin pistol grip.</p>
-                        <span class="rb-bento-link">Ver ficha y modelos compatibles &rarr;</span>
-                    </div>
-                </a>
-                
-                <!-- Secundarias (Grid 2x2 45%) -->
-                <div class="rb-products-bento__sidebar">
-                    <!-- Línea 02: Tablets -->
-                    <a href="/productos/fundas-para-tablets" class="rb-bento-card rb-bento-card--side">
-                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/bento_tablet_1787700308321.jpg' ); ?>');"></div>
+            <div class="rb-products-bento-v2">
+                <!-- Fila Superior: Línea Insignia (2/3) + Tablets (1/3) -->
+                <div class="rb-bento-row rb-bento-row--top">
+                    <!-- Línea 01: Capturadores (Dominante) -->
+                    <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-bento-card rb-bento-card--lead">
+                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/capturador_zebra_principal_portada.webp' ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
-                            <span class="rb-badge rb-badge--light">Línea 02</span>
-                            <h4 class="rb-bento-sub-title">Fundas para Tablets</h4>
-                            <span class="rb-bento-link">Ver modelos &rarr;</span>
+                            <div class="rb-bento-card__meta">
+                                <span class="rb-badge">Línea Insignia (+120 modelos)</span>
+                                <span class="rb-bento-chip">Nylon Balístico / EVA</span>
+                            </div>
+                            <h3 class="rb-bento-title">Fundas para Capturadores de Datos</h3>
+                            <p class="rb-bento-desc">Confeccionadas en material impermeable de alta duración con acceso libre a comandos, gatillo pistol grip, teclado y puertos de carga sin desarmar la funda.</p>
+                            <span class="rb-bento-link">Explorar ficha técnica y modelos compatibles &rarr;</span>
                         </div>
                     </a>
 
-                    <!-- Línea 03: Impresoras -->
-                    <a href="/productos/fundas-para-impresoras" class="rb-bento-card rb-bento-card--side">
+                    <!-- Línea 02: Tablets -->
+                    <a href="<?php echo esc_url( home_url( '/productos/fundas-para-tablets' ) ); ?>" class="rb-bento-card rb-bento-card--side-top">
+                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/bento_tablet_1787700308321.jpg' ); ?>');"></div>
+                        <div class="rb-bento-card__overlay"></div>
+                        <div class="rb-bento-card__content">
+                            <div class="rb-bento-card__meta">
+                                <span class="rb-badge rb-badge--light">Línea 02</span>
+                                <span class="rb-bento-chip">7" a 12" Pulgadas</span>
+                            </div>
+                            <h4 class="rb-bento-sub-title">Fundas para Tablets</h4>
+                            <p class="rb-bento-desc-compact">Soporte ergonómico de mano y correa de hombro para inventario intensivo y faenas en terreno.</p>
+                            <span class="rb-bento-link">Ver modelos &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Fila Inferior: 4 Columnas Modulares y Equilibradas (25% cada una en Desktop) -->
+                <div class="rb-bento-row rb-bento-row--bottom">
+                    <!-- Línea 03: Impresoras Portátiles -->
+                    <a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras' ) ); ?>" class="rb-bento-card rb-bento-card--quad">
                         <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/funda_impresora_principal_01.webp' ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 03</span>
                             <h4 class="rb-bento-sub-title">Fundas para Impresoras</h4>
+                            <p class="rb-bento-micro-desc">Apertura frontal para expulsión de boleta o ticket y recarga rápida de rollo.</p>
                             <span class="rb-bento-link">Ver modelos &rarr;</span>
                         </div>
                     </a>
 
                     <!-- Línea 04: POS Móviles -->
-                    <a href="/productos/fundas-para-pos-moviles" class="rb-bento-card rb-bento-card--side">
+                    <a href="<?php echo esc_url( home_url( '/productos/fundas-para-pos-moviles' ) ); ?>" class="rb-bento-card rb-bento-card--quad">
                         <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/funda_pos_movil_principal.jpg' ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 04</span>
                             <h4 class="rb-bento-sub-title">Fundas para POS Móviles</h4>
+                            <p class="rb-bento-micro-desc">Lectura de chip, NFC contactless y teclado táctil protegido para cobro en ruta.</p>
                             <span class="rb-bento-link">Ver modelos &rarr;</span>
                         </div>
                     </a>
 
-                    <!-- Línea 05: Valijas -->
-                    <a href="/productos/valijas-de-seguridad" class="rb-bento-card rb-bento-card--side">
+                    <!-- Línea 05: Valijas de Seguridad -->
+                    <a href="<?php echo esc_url( home_url( '/productos/valijas-de-seguridad' ) ); ?>" class="rb-bento-card rb-bento-card--quad">
                         <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/hero_valija_3d_1787700281649.jpg' ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 05</span>
                             <h4 class="rb-bento-sub-title">Valijas de Seguridad</h4>
+                            <p class="rb-bento-micro-desc">Transporte inviolable de documentación y valores con sistema de ojal y precinto.</p>
                             <span class="rb-bento-link">Ver modelos &rarr;</span>
                         </div>
                     </a>
 
-                    <!-- Línea 06: Candados -->
-                    <a href="/productos/candados-especiales" class="rb-bento-card rb-bento-card--side">
+                    <!-- Línea 06: Candados Especiales -->
+                    <a href="<?php echo esc_url( home_url( '/productos/candados-especiales' ) ); ?>" class="rb-bento-card rb-bento-card--quad">
                         <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/bento_candado_1787700534442.jpg' ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 06</span>
                             <h4 class="rb-bento-sub-title">Candados Especiales</h4>
+                            <p class="rb-bento-micro-desc">Amaestramiento y llaves combinadas para control de acceso y cadena de custodia.</p>
                             <span class="rb-bento-link">Ver modelos &rarr;</span>
                         </div>
                     </a>
                 </div>
             </div>
-            
             <div class="rb-products-all-link text-center" style="margin-top: 36px;">
                 <a href="/productos" class="rb-btn rb-btn--outline">Ver Catálogo Completo de Líneas &rarr;</a>
             </div>
@@ -440,111 +453,11 @@ get_header('landing');
     </section>
 
     <!-- ==============================================
-         MACRO 5: DESARROLLO A MEDIDA + PROCESO
+         MACRO 5: ECOSISTEMA DE MARCAS COMPATIBLES (SECCIÓN INDEPENDIENTE)
          ============================================== -->
-    <section id="soluciones" class="rb-custom-process">
-        <div class="rb-custom-process__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/custom_solution_1787698415328.jpg' ); ?>');"></div>
-        <div class="rb-custom-process__overlay"></div>
-        
-        <div class="rb-container rb-custom-process__container">
-            <div class="rb-custom-process__intro">
-                <span class="rb-eyebrow rb-text-mono rb-text-cyan">SOLUCIONES EXCLUSIVAS</span>
-                <h2 class="rb-h2 rb-text-white">¿No encuentras una funda para tu equipo?</h2>
-                <p class="rb-custom-highlight">La desarrollamos a la medida exacta de tu empresa.</p>
-                <p class="rb-text-muted">Confeccionamos productos totalmente exclusivos según la aprobación del cliente. Desarrollamos fundas especiales para cualquier modelo nuevo o accesorios de sujeción (ejemplo: soportes para grúa horquilla).</p>
-            </div>
-            
-            <div class="rb-process-timeline">
-                <div class="rb-process-step">
-                    <div class="rb-process-step__marker rb-text-mono">01</div>
-                    <div class="rb-process-step__content">
-                        <h4 class="rb-step-title">Cuéntanos</h4>
-                        <p class="rb-step-desc">Indica la marca, modelo de hardware, códigos y cantidad de unidades requeridas.</p>
-                    </div>
-                </div>
-                <div class="rb-process-step">
-                    <div class="rb-process-step__marker rb-text-mono">02</div>
-                    <div class="rb-process-step__content">
-                        <h4 class="rb-step-title">Analizamos</h4>
-                        <p class="rb-step-desc">Evaluamos la ergonomía de uso, manipulación de puertos y materiales sintéticos recomendados.</p>
-                    </div>
-                </div>
-                <div class="rb-process-step">
-                    <div class="rb-process-step__marker rb-text-mono">03</div>
-                    <div class="rb-process-step__content">
-                        <h4 class="rb-step-title">Desarrollamos</h4>
-                        <p class="rb-step-desc">Patronaje a medida y confección de muestra física para prueba de calce y aprobación técnica.</p>
-                    </div>
-                </div>
-                <div class="rb-process-step">
-                    <div class="rb-process-step__marker rb-text-mono">04</div>
-                    <div class="rb-process-step__content">
-                        <h4 class="rb-step-title">Cotizamos</h4>
-                        <p class="rb-step-desc">Enviamos la propuesta formal con valores escalonados por volumen y tiempos de entrega.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="rb-process-notice">
-                <div class="rb-notice-icon">!</div>
-                <div class="rb-notice-text">
-                    <strong>Requisito para modelos nuevos:</strong> Para modelos nuevos e independientes de la marca, es necesario disponer del equipo físico durante un lapso de <strong>48 horas</strong> para su respectivo diseño, patronaje y posterior aprobación.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==============================================
-         MACRO 6: SECTORES DE OPERACIÓN (INTERACTIVO) + COMPATIBILIDAD
-         ============================================== -->
-    <section id="sectores" class="rb-section rb-operations-editorial">
+    <section id="marcas" class="rb-section rb-brands-section">
         <div class="rb-container">
-            <div class="rb-section-header text-center">
-                <span class="rb-eyebrow rb-text-mono rb-text-accent">APLICACIONES REALES</span>
-                <h2 class="rb-h2">Sectores de Operación</h2>
-                <p class="rb-section-subtitle">Nuestras fundas y valijas operan diariamente en los entornos de trabajo intensivo en todo Chile.</p>
-            </div>
-            
-            <!-- Panel Interactivo de Sectores -->
-            <div class="rb-operations-panel">
-                <div class="rb-operations-panel__list" role="tablist" aria-label="Sectores de Operación">
-                    <button type="button" class="rb-op-item rb-op-item--active" role="tab" id="tab-almacenes" aria-selected="true" aria-controls="panel-sector" tabindex="0" data-sector="almacenes" data-title="Almacenes y Centros de Acopio" data-desc="Lectura intensiva de códigos de barras, gestión de inventarios y control de mercancías con máxima protección ante caídas en superficies duras." data-img="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/ops_bodega_1787700615440.jpg' ); ?>">
-                        <span class="rb-text-mono rb-op-num">01</span>
-                        <div class="rb-op-info">
-                            <strong>Almacenes</strong>
-                            <p>Control interno de mercancía y lectura en altura.</p>
-                        </div>
-                    </button>
-
-                    <button type="button" class="rb-op-item" role="tab" id="tab-bodegajes" aria-selected="false" aria-controls="panel-sector" tabindex="-1" data-sector="bodegajes" data-title="Bodegajes y Almacenaje Pesado" data-desc="Operación continua en grúas horquilla, picking de cajas y recepción de carga, donde el hardware requiere correas de seguridad y arneses ergonómicos." data-img="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/ops_terreno_1787700644226.jpg' ); ?>">
-                        <span class="rb-text-mono rb-op-num">02</span>
-                        <div class="rb-op-info">
-                            <strong>Bodegajes</strong>
-                            <p>Picking intensivo y manipulación en turnos continuos.</p>
-                        </div>
-                    </button>
-
-                    <button type="button" class="rb-op-item" role="tab" id="tab-logistica" aria-selected="false" aria-controls="panel-sector" tabindex="-1" data-sector="logistica" data-title="Logística y Distribución" data-desc="Cross docking, despacho interurbano y entrega en terreno, con protección contra lluvia, polvo y manipulación exigente del transporte." data-img="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/ops_logistica_1787700573166.jpg' ); ?>">
-                        <span class="rb-text-mono rb-op-num">03</span>
-                        <div class="rb-op-info">
-                            <strong>Logística y Distribución</strong>
-                            <p>Despacho en terreno, transporte y cross docking.</p>
-                        </div>
-                    </button>
-                </div>
-
-                <div class="rb-operations-panel__view" id="panel-sector" role="tabpanel" aria-labelledby="tab-almacenes">
-                    <div class="rb-op-view-img-wrap">
-                        <img id="rb-op-dynamic-img" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/ops_bodega_1787700615440.jpg' ); ?>" alt="Operación en Almacenes con Fundas ROLBAG" class="rb-ops-img" />
-                    </div>
-                    <div class="rb-op-view-content">
-                        <h3 id="rb-op-dynamic-title" class="rb-h3 rb-text-primary">Almacenes y Centros de Acopio</h3>
-                        <p id="rb-op-dynamic-desc" class="rb-paragraph">Lectura intensiva de códigos de barras, gestión de inventarios y control de mercancías con máxima protección ante caídas en superficies duras.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ==============================================
+<!-- ==============================================
                  SECCIÓN ESTRUCTURADA: ECOSISTEMA DE MARCAS COMPATIBLES
                  ============================================== -->
             <div class="rb-brands-ecosystem" id="marcas">
@@ -1109,6 +1022,15 @@ get_header('landing');
                     </div>
                 </div>
 
+
+                <!-- Botón Expansor para Mobile (Evita fatiga de scroll de 22 tarjetas) -->
+                <div class="rb-brands-mobile-toggle-wrap">
+                    <button type="button" id="rb-brands-toggle-mobile-btn" class="rb-brands-mobile-btn" aria-expanded="false">
+                        <span class="rb-brands-toggle-text">Ver todas las marcas compatibles (+14 fabricantes)</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                </div>
+
                 <!-- Banner Compromiso Prototipado 48 Horas -->
                 <div class="rb-brands-custom-callout">
                     <div class="rb-custom-callout-inner">
@@ -1125,6 +1047,114 @@ get_header('landing');
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ==============================================
+         MACRO 5: DESARROLLO A MEDIDA + PROCESO
+         ============================================== -->
+    <section id="soluciones" class="rb-custom-process">
+        <div class="rb-custom-process__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/custom_solution_1787698415328.jpg' ); ?>');"></div>
+        <div class="rb-custom-process__overlay"></div>
+        
+        <div class="rb-container rb-custom-process__container">
+            <div class="rb-custom-process__intro">
+                <span class="rb-eyebrow rb-text-mono rb-text-cyan">SOLUCIONES EXCLUSIVAS</span>
+                <h2 class="rb-h2 rb-text-white">¿No encuentras una funda para tu equipo?</h2>
+                <p class="rb-custom-highlight">La desarrollamos a la medida exacta de tu empresa.</p>
+                <p class="rb-text-muted">Confeccionamos productos totalmente exclusivos según la aprobación del cliente. Desarrollamos fundas especiales para cualquier modelo nuevo o accesorios de sujeción (ejemplo: soportes para grúa horquilla).</p>
+            </div>
+            
+            <div class="rb-process-timeline">
+                <div class="rb-process-step">
+                    <div class="rb-process-step__marker rb-text-mono">01</div>
+                    <div class="rb-process-step__content">
+                        <h4 class="rb-step-title">Cuéntanos</h4>
+                        <p class="rb-step-desc">Indica la marca, modelo de hardware, códigos y cantidad de unidades requeridas.</p>
+                    </div>
+                </div>
+                <div class="rb-process-step">
+                    <div class="rb-process-step__marker rb-text-mono">02</div>
+                    <div class="rb-process-step__content">
+                        <h4 class="rb-step-title">Analizamos</h4>
+                        <p class="rb-step-desc">Evaluamos la ergonomía de uso, manipulación de puertos y materiales sintéticos recomendados.</p>
+                    </div>
+                </div>
+                <div class="rb-process-step">
+                    <div class="rb-process-step__marker rb-text-mono">03</div>
+                    <div class="rb-process-step__content">
+                        <h4 class="rb-step-title">Desarrollamos</h4>
+                        <p class="rb-step-desc">Patronaje a medida y confección de muestra física para prueba de calce y aprobación técnica.</p>
+                    </div>
+                </div>
+                <div class="rb-process-step">
+                    <div class="rb-process-step__marker rb-text-mono">04</div>
+                    <div class="rb-process-step__content">
+                        <h4 class="rb-step-title">Cotizamos</h4>
+                        <p class="rb-step-desc">Enviamos la propuesta formal con valores escalonados por volumen y tiempos de entrega.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rb-process-notice">
+                <div class="rb-notice-icon">!</div>
+                <div class="rb-notice-text">
+                    <strong>Requisito para modelos nuevos:</strong> Para modelos nuevos e independientes de la marca, es necesario disponer del equipo físico durante un lapso de <strong>48 horas</strong> para su respectivo diseño, patronaje y posterior aprobación.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================================
+         MACRO 6: SECTORES DE OPERACIÓN (INTERACTIVO) + COMPATIBILIDAD
+         ============================================== -->
+    <section id="sectores" class="rb-section rb-operations-editorial">
+        <div class="rb-container">
+            <div class="rb-section-header text-center">
+                <span class="rb-eyebrow rb-text-mono rb-text-accent">APLICACIONES REALES</span>
+                <h2 class="rb-h2">Sectores de Operación</h2>
+                <p class="rb-section-subtitle">Nuestras fundas y valijas operan diariamente en los entornos de trabajo intensivo en todo Chile.</p>
+            </div>
+            
+            <!-- Panel Interactivo de Sectores -->
+            <div class="rb-operations-panel">
+                <div class="rb-operations-panel__list" role="tablist" aria-label="Sectores de Operación">
+                    <button type="button" class="rb-op-item rb-op-item--active" role="tab" id="tab-almacenes" aria-selected="true" aria-controls="panel-sector" tabindex="0" data-sector="almacenes" data-title="Almacenes y Centros de Acopio" data-desc="Lectura intensiva de códigos de barras, gestión de inventarios y control de mercancías con máxima protección ante caídas en superficies duras." data-img="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/ops_bodega_1787700615440.jpg' ); ?>">
+                        <span class="rb-text-mono rb-op-num">01</span>
+                        <div class="rb-op-info">
+                            <strong>Almacenes</strong>
+                            <p>Control interno de mercancía y lectura en altura.</p>
+                        </div>
+                    </button>
+
+                    <button type="button" class="rb-op-item" role="tab" id="tab-bodegajes" aria-selected="false" aria-controls="panel-sector" tabindex="-1" data-sector="bodegajes" data-title="Bodegajes y Almacenaje Pesado" data-desc="Operación continua en grúas horquilla, picking de cajas y recepción de carga, donde el hardware requiere correas de seguridad y arneses ergonómicos." data-img="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/ops_terreno_1787700644226.jpg' ); ?>">
+                        <span class="rb-text-mono rb-op-num">02</span>
+                        <div class="rb-op-info">
+                            <strong>Bodegajes</strong>
+                            <p>Picking intensivo y manipulación en turnos continuos.</p>
+                        </div>
+                    </button>
+
+                    <button type="button" class="rb-op-item" role="tab" id="tab-logistica" aria-selected="false" aria-controls="panel-sector" tabindex="-1" data-sector="logistica" data-title="Logística y Distribución" data-desc="Cross docking, despacho interurbano y entrega en terreno, con protección contra lluvia, polvo y manipulación exigente del transporte." data-img="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/ops_logistica_1787700573166.jpg' ); ?>">
+                        <span class="rb-text-mono rb-op-num">03</span>
+                        <div class="rb-op-info">
+                            <strong>Logística y Distribución</strong>
+                            <p>Despacho en terreno, transporte y cross docking.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="rb-operations-panel__view" id="panel-sector" role="tabpanel" aria-labelledby="tab-almacenes">
+                    <div class="rb-op-view-img-wrap">
+                        <img id="rb-op-dynamic-img" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/ops_bodega_1787700615440.jpg' ); ?>" alt="Operación en Almacenes con Fundas ROLBAG" class="rb-ops-img" />
+                    </div>
+                    <div class="rb-op-view-content">
+                        <h3 id="rb-op-dynamic-title" class="rb-h3 rb-text-primary">Almacenes y Centros de Acopio</h3>
+                        <p id="rb-op-dynamic-desc" class="rb-paragraph">Lectura intensiva de códigos de barras, gestión de inventarios y control de mercancías con máxima protección ante caídas en superficies duras.</p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
@@ -1168,6 +1198,55 @@ get_header('landing');
                         <li><strong>Logotipo corporativo:</strong> Formato en alta resolución (vectorial o imagen nítida).</li>
                         <li><strong>Valijas especiales:</strong> Disponibles bajo previo acuerdo: valija sobre, valija con carro o compartimento para GPS.</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- ==============================================
+                 WIDGET PRE-COTIZADOR RÁPIDO B2B
+                 ============================================== -->
+            <div class="rb-quick-quote-widget" id="cotizador-rapido">
+                <div class="rb-quick-quote-widget__inner">
+                    <div class="rb-quick-quote-header text-center">
+                        <span class="rb-badge rb-badge--accent">COTIZACIÓN ÁGIL DIRECTA</span>
+                        <h3 class="rb-h3 rb-text-white">Pre-configura tu requerimiento en 30 segundos</h3>
+                        <p class="rb-text-muted">Selecciona la línea y cuéntanos sobre tus equipos para recibir una propuesta técnica al instante.</p>
+                    </div>
+
+                    <form class="rb-quick-quote-form" id="rb-quick-quote-form" onsubmit="return false;">
+                        <div class="rb-qq-step">
+                            <label class="rb-qq-label"><span class="rb-qq-step-num">1</span> Selecciona la Línea de Interés:</label>
+                            <div class="rb-qq-pills" role="radiogroup" aria-label="Seleccionar Línea">
+                                <button type="button" class="rb-qq-pill active" data-line="Fundas para Capturadores">Capturadores / PDA</button>
+                                <button type="button" class="rb-qq-pill" data-line="Fundas para Tablets">Tablets Industriales</button>
+                                <button type="button" class="rb-qq-pill" data-line="Fundas para Impresoras">Impresoras Portátiles</button>
+                                <button type="button" class="rb-qq-pill" data-line="Fundas para POS Móviles">POS Móviles</button>
+                                <button type="button" class="rb-qq-pill" data-line="Valijas de Seguridad">Valijas de Seguridad</button>
+                                <button type="button" class="rb-qq-pill" data-line="Candados Especiales">Candados Especiales</button>
+                            </div>
+                            <input type="hidden" id="rb-qq-selected-line" value="Fundas para Capturadores">
+                        </div>
+
+                        <div class="rb-qq-grid-fields">
+                            <div class="rb-qq-field">
+                                <label for="rb-qq-model" class="rb-qq-label"><span class="rb-qq-step-num">2</span> Marca, Modelo o Medidas:</label>
+                                <input type="text" id="rb-qq-model" placeholder="Ej: Zebra TC58 con pistol grip / Valija 40L..." class="rb-qq-input">
+                            </div>
+                            <div class="rb-qq-field rb-qq-field--qty">
+                                <label for="rb-qq-qty" class="rb-qq-label"><span class="rb-qq-step-num">3</span> Cantidad Estimada:</label>
+                                <input type="number" id="rb-qq-qty" min="1" value="10" placeholder="10" class="rb-qq-input">
+                            </div>
+                        </div>
+
+                        <div class="rb-qq-actions">
+                            <a href="https://wa.me/569318360416?text=Hola%20ROLBAG%2C%20quisiera%20cotizar%2010%20unidades%20de%20Fundas%20para%20Capturadores" id="rb-qq-whatsapp-btn" class="rb-btn rb-btn--whatsapp rb-btn--lg" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" width="22" height="22" style="fill:currentColor; margin-right:8px; vertical-align:middle;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8.01 12.27C8.14 12.44 9.76 14.94 12.24 16C12.83 16.27 13.28 16.42 13.64 16.53C14.23 16.72 14.77 16.69 15.2 16.63C15.68 16.56 16.67 16.03 16.88 15.45C17.08 14.87 17.08 14.38 17.02 14.28C16.96 14.17 16.8 14.11 16.56 13.99C16.32 13.86 15.12 13.28 14.9 13.2C14.67 13.11 14.51 13.08 14.35 13.32C14.18 13.57 13.71 14.11 13.56 14.28C13.42 14.45 13.27 14.47 13.03 14.35C12.79 14.24 11.99 13.97 11.04 13.13C10.3 12.47 9.8 11.66 9.66 11.42C9.51 11.18 9.64 11.04 9.77 10.92C9.88 10.81 10.02 10.63 10.14 10.49C10.26 10.34 10.3 10.24 10.38 10.08C10.46 9.92 10.42 9.77 10.36 9.66C10.3 9.54 9.8 8.34 9.6 7.84C9.39 7.36 9.19 7.43 9.03 7.42C8.88 7.42 8.71 7.33 8.53 7.33Z"/></svg>
+                                <span>Enviar Consulta a WhatsApp con estos Datos</span>
+                            </a>
+                            <a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>" id="rb-qq-email-btn" class="rb-btn rb-btn--outline rb-btn--lg">
+                                <span>Solicitar Cotización Formal por Formulario &rarr;</span>
+                            </a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

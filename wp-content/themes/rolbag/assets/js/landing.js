@@ -524,7 +524,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.display = 'none';
                 }
             });
+
+            // Si hay filtro o búsqueda en móvil, asegurar que se vean todos los resultados
+            const mobileToggleWrap = document.querySelector('.rb-brands-mobile-toggle-wrap');
+            if (mobileToggleWrap) {
+                if (activeFilter !== 'all' || query !== '') {
+                    brandContainer?.classList.add('rb-brands-grid--expanded');
+                    mobileToggleWrap.style.display = 'none';
+                } else {
+                    mobileToggleWrap.style.display = '';
+                }
+            }
         };
+
+        const brandContainer = document.getElementById('rb-brands-container');
+        const mobileToggleBtn = document.getElementById('rb-brands-toggle-mobile-btn');
+
+        if (mobileToggleBtn && brandContainer) {
+            mobileToggleBtn.addEventListener('click', () => {
+                const isExpanded = brandContainer.classList.toggle('rb-brands-grid--expanded');
+                mobileToggleBtn.classList.toggle('expanded', isExpanded);
+                mobileToggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+                const textSpan = mobileToggleBtn.querySelector('.rb-brands-toggle-text');
+                if (textSpan) {
+                    textSpan.textContent = isExpanded 
+                        ? 'Mostrar menos marcas ↑' 
+                        : 'Ver todas las marcas compatibles (+14 fabricantes)';
+                }
+            });
+        }
 
         brandTabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -542,6 +570,55 @@ document.addEventListener('DOMContentLoaded', () => {
         if (brandSearchInput) {
             brandSearchInput.addEventListener('input', filterBrandCards);
         }
+    }
+
+    /* --------------------------------------------------------------------------
+       PRE-COTIZADOR RÁPIDO B2B (WIDGET EN #COTIZAR)
+       -------------------------------------------------------------------------- */
+    const qqPills = document.querySelectorAll('.rb-qq-pill');
+    const qqLineInput = document.getElementById('rb-qq-selected-line');
+    const qqModelInput = document.getElementById('rb-qq-model');
+    const qqQtyInput = document.getElementById('rb-qq-qty');
+    const qqWhatsAppBtn = document.getElementById('rb-qq-whatsapp-btn');
+    const qqEmailBtn = document.getElementById('rb-qq-email-btn');
+
+    if (qqPills.length > 0 && qqLineInput && qqWhatsAppBtn) {
+        const updateQuickQuoteLinks = () => {
+            const line = qqLineInput.value || 'Fundas para Capturadores';
+            const model = qqModelInput ? qqModelInput.value.trim() : '';
+            const qty = qqQtyInput && qqQtyInput.value ? qqQtyInput.value : '10';
+
+            const modelText = model ? ` para el equipo/medida ${model}` : '';
+            const msg = `Hola ROLBAG, quisiera cotizar ${qty} unidades de ${line}${modelText}.`;
+            qqWhatsAppBtn.href = `https://wa.me/569318360416?text=${encodeURIComponent(msg)}`;
+
+            if (qqEmailBtn) {
+                const params = new URLSearchParams();
+                params.set('linea', line);
+                if (model) params.set('modelo', model);
+                params.set('cantidad', qty);
+                qqEmailBtn.href = `/contacto?${params.toString()}`;
+            }
+        };
+
+        qqPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                qqPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                qqLineInput.value = pill.getAttribute('data-line') || pill.textContent.trim();
+                updateQuickQuoteLinks();
+            });
+        });
+
+        if (qqModelInput) {
+            qqModelInput.addEventListener('input', updateQuickQuoteLinks);
+        }
+        if (qqQtyInput) {
+            qqQtyInput.addEventListener('input', updateQuickQuoteLinks);
+        }
+
+        // Inicializar link
+        updateQuickQuoteLinks();
     }
 
 });
