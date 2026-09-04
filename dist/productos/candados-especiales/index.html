@@ -5092,20 +5092,12 @@ body.rb-main {
             <div class="rb-product-hero__grid">
                 <!-- Columna Izquierda: Galería -->
                 <div class="rb-product-gallery-col">
-                    <div class="rb-product-main-img-wrap">
-                                                    <img id="rb-main-view" src="/assets/images/generated/bento_candado_1787700534442.jpg" alt="Candados de Seguridad Igualados y Amaestrados" class="rb-product-main-img" />
+                    <div class="rb-product-main-img-wrap" style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:20px; display:flex; align-items:center; justify-content:center; min-height:380px; position:relative; box-shadow:0 4px 15px rgba(0,0,0,0.04);">
+                        <span class="rb-badge" style="position:absolute; top:12px; left:12px; font-size:11px; z-index:2; background:rgba(15,23,42,0.85); color:#fff; backdrop-filter:blur(4px);">
+                            📸 Foto Real ROLBAG (Fondo Estudio)
+                        </span>
+                                                    <img id="rb-main-view" src="/assets/images/generated/bento_candado_1787700534442.jpg" alt="Candados de Seguridad Igualados y Amaestrados" class="rb-product-main-img" style="max-height:340px; width:auto; object-fit:contain; transition:opacity 0.25s ease;" />
                                             </div>
-                                            <div class="rb-product-thumbs">
-                                                            <button type="button" class="rb-thumb-btn active" data-img="/assets/images/generated/bento_candado_1787700534442.jpg" aria-label="Ver vista 1">
-                                    <img src="/assets/images/generated/bento_candado_1787700534442.jpg" alt="Candados de Seguridad Igualados y Amaestrados vista 1" />
-                                </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/hero_valija_3d_1787700281649.jpg" aria-label="Ver vista 2">
-                                    <img src="/assets/images/generated/hero_valija_3d_1787700281649.jpg" alt="Candados de Seguridad Igualados y Amaestrados vista 2" />
-                                </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/generated/ops_logistica_1787700573166.jpg" aria-label="Ver vista 3">
-                                    <img src="/assets/images/generated/ops_logistica_1787700573166.jpg" alt="Candados de Seguridad Igualados y Amaestrados vista 3" />
-                                </button>
-                                                    </div>
                                     </div>
 
                 <!-- Columna Derecha: Información Principal & Acciones -->
@@ -5293,15 +5285,26 @@ body.rb-main {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Galería interactiva
-    const mainView = document.getElementById('rb-main-view');
+    // 0. Conmutador de Galería de Fotos Reales
+    const mainImg = document.getElementById('rb-main-view');
     const thumbBtns = document.querySelectorAll('.rb-thumb-btn');
-    if (mainView && thumbBtns.length > 0) {
+    if (mainImg && thumbBtns.length > 0) {
         thumbBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                thumbBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                mainView.src = this.getAttribute('data-img');
+                const newSrc = this.getAttribute('data-img');
+                if (newSrc) {
+                    mainImg.style.opacity = '0.3';
+                    setTimeout(() => {
+                        mainImg.src = newSrc;
+                        mainImg.style.opacity = '1';
+                    }, 120);
+                    thumbBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.borderColor = '#e2e8f0';
+                    });
+                    this.classList.add('active');
+                    this.style.borderColor = '#00a3e0';
+                }
             });
         });
     }

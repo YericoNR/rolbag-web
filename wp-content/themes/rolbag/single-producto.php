@@ -48,13 +48,108 @@ foreach ( $brands_models as $b_name => $b_models ) {
     }
 }
 
-// Imágenes
-$main_image = get_post_meta( $post_id, 'rolbag_image', true );
-$gallery_meta = get_post_meta( $post_id, 'rolbag_gallery', true );
-$gallery = is_array( $gallery_meta ) ? $gallery_meta : json_decode( $gallery_meta, true );
-if ( ! is_array( $gallery ) && ! empty( $gallery_meta ) ) {
-    $gallery = array_filter( array_map( 'trim', explode( ',', $gallery_meta ) ) );
+// Construcción inteligente de la Galería de Fotos Reales con Fondo Blanco de Estudio
+$theme_uri = get_template_directory_uri();
+$product_slug = get_post_field( 'post_name', $post_id );
+
+$real_gallery = array();
+
+if ( $product_slug === 'fundas-para-capturadores' ) {
+    $real_gallery = array(
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/zebra-sin-mango/vista_01.webp',
+            'title' => 'Zebra Touch - Vista Frontal con Mica'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/zebra-sin-mango/vista_02.webp',
+            'title' => 'Zebra Touch - Vista Lateral y Anillas'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/zebra-sin-mango/vista_03.webp',
+            'title' => 'Zebra Touch - Vista Posterior Handstrap'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/zebra-con-mango/vista_01.webp',
+            'title' => 'Zebra Pistol Grip - Con Mango Ergonómico'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/honeywell-ck65/vista_01.webp',
+            'title' => 'Honeywell CK65 - Teclado Físico y Protección Ruda'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/datalogic-falcon/vista_01.webp',
+            'title' => 'Datalogic Falcon / Skorpio - Uso Industrial'
+        )
+    );
+} elseif ( $product_slug === 'fundas-para-impresoras' ) {
+    $real_gallery = array(
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_01.webp',
+            'title' => 'Apertura Frontal Expulsión Ticket'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_02.webp',
+            'title' => 'Anillas de Acero para Correa de Hombro'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_03.webp',
+            'title' => 'Pasador Posterior para Cinturón'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_04.webp',
+            'title' => 'Tapa Superior de Recarga con Velcro'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_05.webp',
+            'title' => 'Confección en Nylon Balístico Impermeable'
+        )
+    );
+} elseif ( $product_slug === 'fundas-para-pos-moviles' ) {
+    $real_gallery = array(
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/filtradas/vista_02.webp',
+            'title' => 'Funda POS Móvil - Visor Frontal Transparente'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/filtradas/vista_03.webp',
+            'title' => 'Funda POS Móvil - Acceso Lateral Ranura Chip'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/filtradas/vista_04.webp',
+            'title' => 'Funda POS Móvil - Handstrap de Sujeción'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/filtradas/vista_05.webp',
+            'title' => 'Funda POS Móvil - Protección Antichoque'
+        )
+    );
+} elseif ( $product_slug === 'fundas-para-tablets' ) {
+    $real_gallery = array(
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores-otros/vista_01.webp',
+            'title' => 'Funda Tablet Industrial - Vista Frontal'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores-otros/vista_02.webp',
+            'title' => 'Funda Tablet Industrial - Perfil Reforzado'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores-otros/vista_03.webp',
+            'title' => 'Funda Tablet Industrial - Handstrap y Soporte'
+        )
+    );
+} else {
+    // Fallback general
+    $main_image_meta = get_post_meta( $post_id, 'rolbag_image', true );
+    if ( $main_image_meta ) {
+        $real_gallery[] = array(
+            'url'   => $theme_uri . '/assets/images/generated/' . $main_image_meta,
+            'title' => get_the_title()
+        );
+    }
 }
+
+$active_main_image = ! empty( $real_gallery ) ? $real_gallery[0]['url'] : '';
 
 $whatsapp = '569318360416';
 $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización para la línea: ' . get_the_title() );
@@ -76,18 +171,21 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
             <div class="rb-product-hero__grid">
                 <!-- Columna Izquierda: Galería -->
                 <div class="rb-product-gallery-col">
-                    <div class="rb-product-main-img-wrap">
-                        <?php if ( $main_image ) : ?>
-                            <img id="rb-main-view" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/' . $main_image ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="rb-product-main-img" />
+                    <div class="rb-product-main-img-wrap" style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:20px; display:flex; align-items:center; justify-content:center; min-height:380px; position:relative; box-shadow:0 4px 15px rgba(0,0,0,0.04);">
+                        <span class="rb-badge" style="position:absolute; top:12px; left:12px; font-size:11px; z-index:2; background:rgba(15,23,42,0.85); color:#fff; backdrop-filter:blur(4px);">
+                            📸 Foto Real ROLBAG (Fondo Estudio)
+                        </span>
+                        <?php if ( $active_main_image ) : ?>
+                            <img id="rb-main-view" src="<?php echo esc_url( $active_main_image ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="rb-product-main-img" style="max-height:340px; width:auto; object-fit:contain; transition:opacity 0.25s ease;" />
                         <?php else : ?>
                             <?php the_post_thumbnail( 'large', array( 'class' => 'rb-product-main-img' ) ); ?>
                         <?php endif; ?>
                     </div>
-                    <?php if ( ! empty( $gallery ) && count( $gallery ) > 1 ) : ?>
-                        <div class="rb-product-thumbs">
-                            <?php foreach ( $gallery as $idx => $img_file ) : ?>
-                                <button type="button" class="rb-thumb-btn <?php echo ( $idx === 0 ) ? 'active' : ''; ?>" data-img="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/' . $img_file ); ?>" aria-label="Ver vista <?php echo $idx + 1; ?>">
-                                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/' . $img_file ); ?>" alt="<?php echo esc_attr( get_the_title() . ' vista ' . ($idx + 1) ); ?>" />
+                    <?php if ( ! empty( $real_gallery ) && count( $real_gallery ) > 1 ) : ?>
+                        <div class="rb-product-thumbs" style="display:flex; gap:10px; margin-top:12px; overflow-x:auto; padding-bottom:6px;">
+                            <?php foreach ( $real_gallery as $idx => $item ) : ?>
+                                <button type="button" class="rb-thumb-btn <?php echo ( $idx === 0 ) ? 'active' : ''; ?>" data-img="<?php echo esc_url( $item['url'] ); ?>" aria-label="<?php echo esc_attr( $item['title'] ); ?>" style="flex:0 0 72px; height:72px; border-radius:8px; border:2px solid <?php echo ( $idx === 0 ) ? '#00a3e0' : '#e2e8f0'; ?>; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
+                                    <img src="<?php echo esc_url( $item['url'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" style="width:100%; height:100%; object-fit:contain;" />
                                 </button>
                             <?php endforeach; ?>
                         </div>
@@ -351,15 +449,26 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Galería interactiva
-    const mainView = document.getElementById('rb-main-view');
+    // 0. Conmutador de Galería de Fotos Reales
+    const mainImg = document.getElementById('rb-main-view');
     const thumbBtns = document.querySelectorAll('.rb-thumb-btn');
-    if (mainView && thumbBtns.length > 0) {
+    if (mainImg && thumbBtns.length > 0) {
         thumbBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                thumbBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                mainView.src = this.getAttribute('data-img');
+                const newSrc = this.getAttribute('data-img');
+                if (newSrc) {
+                    mainImg.style.opacity = '0.3';
+                    setTimeout(() => {
+                        mainImg.src = newSrc;
+                        mainImg.style.opacity = '1';
+                    }, 120);
+                    thumbBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.borderColor = '#e2e8f0';
+                    });
+                    this.classList.add('active');
+                    this.style.borderColor = '#00a3e0';
+                }
             });
         });
     }

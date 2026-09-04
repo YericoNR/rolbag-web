@@ -415,7 +415,7 @@ function rolbag_get_brand_galleries_catalog() {
         ),
         'datalogic' => array(
             'title'        => 'Fundas de Protección para Equipos Datalogic',
-            'subtitle'     => 'Confección a medida para terminales Memor y Skorpio de captura logística.',
+            'subtitle'     => 'Confección a medida para terminales Memor, Falcon y Skorpio de captura logística.',
             'has_real_photos' => true,
             'badge'        => 'Fotos Reales de Confección ROLBAG',
             'views'        => array(
@@ -423,32 +423,146 @@ function rolbag_get_brand_galleries_catalog() {
                     'id'          => 'frontal',
                     'name'        => 'Vista Frontal',
                     'desc'        => 'Protección frontal con mica de alta transparencia y visor libre para cabezal de lectura 2D.',
-                    'url'         => $theme_uri . '/assets/images/galeria/modelos-adicionales/vista_01.webp'
+                    'url'         => $theme_uri . '/assets/images/galeria/datalogic-falcon/vista_01.webp'
                 ),
                 array(
                     'id'          => 'perfil',
                     'name'        => 'Vista Lateral',
                     'desc'        => 'Estructura amortiguadora con refuerzos perimetrales antichoque para trabajo intensivo.',
-                    'url'         => $theme_uri . '/assets/images/galeria/modelos-adicionales/vista_02.webp'
+                    'url'         => $theme_uri . '/assets/images/galeria/datalogic-falcon/vista_02.webp'
                 ),
                 array(
                     'id'          => 'posterior',
                     'name'        => 'Vista Posterior',
                     'desc'        => 'Handstrap de seguridad para evitar caídas durante el picking y despacho.',
-                    'url'         => $theme_uri . '/assets/images/galeria/modelos-adicionales/vista_03.webp'
+                    'url'         => $theme_uri . '/assets/images/galeria/datalogic-falcon/vista_03.webp'
                 ),
                 array(
                     'id'          => 'detalle',
-                    'name'        => 'Acabados y Costura',
-                    'desc'        => 'Ribete perimetral y costura de alta tenacidad con hilos resistentes a la abrasión.',
-                    'url'         => $theme_uri . '/assets/images/galeria/modelos-adicionales/vista_04.webp'
+                    'name'        => 'Pistol Grip / Gatillo',
+                    'desc'        => 'Apertura reforzada para mango tipo pistola y accionamiento suave del gatillo.',
+                    'url'         => $theme_uri . '/assets/images/galeria/datalogic-falcon/vista_04.webp'
                 )
             ),
             'specs'        => array(
-                'Material'       => 'Nylon Balístico 1680D + Acolchado protector',
+                'Material'       => 'Nylon Balístico 1680D + Acolchado protector EVA',
                 'Protección'     => 'Mica flexible antichoque y bordes reforzados',
                 'Fijación'       => 'Handstrap de mano + D-rings para correa',
-                'Compatibilidad' => 'Datalogic Memor 1, Memor 10, Memor 20, Skorpio X5'
+                'Compatibilidad' => 'Datalogic Memor 1/10/20, Skorpio X5, Falcon X3+/X4'
+            )
+        ),
+        'unitech' => array(
+            'title'        => 'Fundas de Protección para Equipos Unitech',
+            'subtitle'     => 'Protección de alto estándar para terminales portátiles y PDA robustas Unitech.',
+            'has_real_photos' => true,
+            'badge'        => 'Fotos Reales de Confección ROLBAG',
+            'views'        => array(
+                array(
+                    'id'          => 'frontal',
+                    'name'        => 'Vista Frontal',
+                    'desc'        => 'Mica protectora de alta claridad para pantalla táctil y teclado.',
+                    'url'         => $theme_uri . '/assets/images/galeria/capturadores-otros/vista_01.webp'
+                ),
+                array(
+                    'id'          => 'perfil',
+                    'name'        => 'Vista Lateral',
+                    'desc'        => 'Argollas D de acero para correa cruzada y acolchado perimetral.',
+                    'url'         => $theme_uri . '/assets/images/galeria/capturadores-otros/vista_02.webp'
+                ),
+                array(
+                    'id'          => 'posterior',
+                    'name'        => 'Vista Posterior',
+                    'desc'        => 'Correa elástica trasera para agarre seguro durante la jornada.',
+                    'url'         => $theme_uri . '/assets/images/galeria/capturadores-otros/vista_03.webp'
+                ),
+                array(
+                    'id'          => 'detalle',
+                    'name'        => 'Detalle de Construcción',
+                    'desc'        => 'Costura reforzada y remaches anti-desgarro para trabajo pesado.',
+                    'url'         => $theme_uri . '/assets/images/galeria/filtradas/vista_01.webp'
+                )
+            ),
+            'specs'        => array(
+                'Material'       => 'Nylon Balístico 1680D Impermeable',
+                'Protección'     => 'Mica Cristalina + Bisel de protección perimetral',
+                'Fijación'       => 'Handstrap ergonómico + D-Rings',
+                'Compatibilidad' => 'Unitech EA630, PA760, HT730, WD200'
+            )
+        ),
+        'point-mobile' => array(
+            'title'        => 'Fundas para Terminales Point Mobile',
+            'subtitle'     => 'Confección precisa para PDAs y capturadores compactos e industriales Point Mobile.',
+            'has_real_photos' => true,
+            'badge'        => 'Fotos Reales de Confección ROLBAG',
+            'views'        => array(
+                array(
+                    'id'          => 'frontal',
+                    'name'        => 'Vista Frontal',
+                    'desc'        => 'Mica de alta respuesta táctil con marco protector sellado.',
+                    'url'         => $theme_uri . '/assets/images/galeria/filtradas/vista_02.webp'
+                ),
+                array(
+                    'id'          => 'perfil',
+                    'name'        => 'Vista Lateral',
+                    'desc'        => 'Acceso despejado a escáner de código de barras y botones laterales.',
+                    'url'         => $theme_uri . '/assets/images/galeria/filtradas/vista_03.webp'
+                ),
+                array(
+                    'id'          => 'posterior',
+                    'name'        => 'Vista Posterior',
+                    'desc'        => 'Sujeción de mano antideslizante con ajuste de velcro.',
+                    'url'         => $theme_uri . '/assets/images/galeria/filtradas/vista_04.webp'
+                ),
+                array(
+                    'id'          => 'detalle',
+                    'name'        => 'Refuerzo de Esquinas',
+                    'desc'        => 'Esquinas con doble capa de amortiguación para impactos por caída.',
+                    'url'         => $theme_uri . '/assets/images/galeria/filtradas/vista_05.webp'
+                )
+            ),
+            'specs'        => array(
+                'Material'       => 'Nylon 1680D de alta densidad + Espuma antichoque',
+                'Protección'     => 'Mica frontal sellada resistente a polvo y salpicaduras',
+                'Fijación'       => 'Handstrap trasero ajustable',
+                'Compatibilidad' => 'Point Mobile PM85, PM90, PM75, PM67, PM30'
+            )
+        ),
+        'urovo' => array(
+            'title'        => 'Fundas de Protección para Equipos Urovo',
+            'subtitle'     => 'Diseño ergonómico para terminales móviles y handhelds Urovo en logística y retail.',
+            'has_real_photos' => true,
+            'badge'        => 'Fotos Reales de Confección ROLBAG',
+            'views'        => array(
+                array(
+                    'id'          => 'frontal',
+                    'name'        => 'Vista Frontal',
+                    'desc'        => 'Visor frontal transparente con ajuste exacto al bisel de la pantalla.',
+                    'url'         => $theme_uri . '/assets/images/galeria/filtradas/vista_06.webp'
+                ),
+                array(
+                    'id'          => 'perfil',
+                    'name'        => 'Vista Lateral',
+                    'desc'        => 'Perfil reforzado con acceso a conectores y botonera.',
+                    'url'         => $theme_uri . '/assets/images/galeria/filtradas/vista_07.webp'
+                ),
+                array(
+                    'id'          => 'posterior',
+                    'name'        => 'Vista Posterior',
+                    'desc'        => 'Banda de sujeción ergonómica para turnos de trabajo prolongados.',
+                    'url'         => $theme_uri . '/assets/images/galeria/filtradas/vista_08.webp'
+                ),
+                array(
+                    'id'          => 'detalle',
+                    'name'        => 'Costuras Industriales',
+                    'desc'        => 'Ribeteado de nylon y costuras de alta tensión para máxima durabilidad.',
+                    'url'         => $theme_uri . '/assets/images/galeria/capturadores-otros/vista_02.webp'
+                )
+            ),
+            'specs'        => array(
+                'Material'       => 'Nylon Balístico 1680D + Acolchado EVA',
+                'Protección'     => 'Mica protectora flexible anti-rayas',
+                'Fijación'       => 'Handstrap elástico + Anclajes metálicos D-Ring',
+                'Compatibilidad' => 'Urovo DT50, DT40, RT40, CT48, CT58'
             )
         )
     );
