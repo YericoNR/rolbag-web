@@ -50,7 +50,7 @@ get_header('landing');
                         $card_img_url = '';
 
                         if ( $card_slug === 'fundas-para-capturadores' ) {
-                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/capturadores/honeywell_ck65_frontal.webp';
+                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/capturadores/honeywell_ck65_lateral.webp';
                         } elseif ( $card_slug === 'fundas-para-tablets' ) {
                             $card_img_url = get_template_directory_uri() . '/assets/images/galeria/tablets/tablet_05.webp';
                         } elseif ( $card_slug === 'fundas-para-impresoras' ) {
