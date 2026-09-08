@@ -747,13 +747,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${v.name}
                     </button>
                 `).join('');
-
-                anglesContainer.querySelectorAll('.rb-gallery-angle-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const idx = parseInt(btn.getAttribute('data-index'), 10);
-                        renderView(idx);
-                    });
-                });
             }
 
             // Renderizar Miniaturas
@@ -763,13 +756,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${v.url}" alt="${v.name}" loading="lazy" />
                     </button>
                 `).join('');
-
-                thumbsContainer.querySelectorAll('.rb-gallery-thumb').forEach(thumb => {
-                    thumb.addEventListener('click', () => {
-                        const idx = parseInt(thumb.getAttribute('data-index'), 10);
-                        renderView(idx);
-                    });
-                });
             }
 
             // Actualizar CTA WhatsApp
@@ -784,17 +770,51 @@ document.addEventListener('DOMContentLoaded', () => {
             // Mostrar modal
             modal.classList.add('is-active');
             modal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
+            
+            // Save current scroll position and prevent body scroll
+            document.body.dataset.scrollY = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${window.scrollY}px`;
+            document.body.style.width = '100%';
         };
 
         window.closeBrandGalleryModal = function() {
             modal.classList.remove('is-active');
             modal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
+            
+            // Restore body scroll
+            const scrollY = document.body.dataset.scrollY;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY || '0'));
+            }
         };
 
         if (closeBtn) closeBtn.addEventListener('click', window.closeBrandGalleryModal);
         if (backdrop) backdrop.addEventListener('click', window.closeBrandGalleryModal);
+
+        // Event delegation for dynamically generated elements
+        if (anglesContainer) {
+            anglesContainer.addEventListener('click', (e) => {
+                const btn = e.target.closest('.rb-gallery-angle-btn');
+                if (btn) {
+                    const idx = parseInt(btn.getAttribute('data-index'), 10);
+                    renderView(idx);
+                }
+            });
+        }
+
+        if (thumbsContainer) {
+            thumbsContainer.addEventListener('click', (e) => {
+                const thumb = e.target.closest('.rb-gallery-thumb');
+                if (thumb) {
+                    const idx = parseInt(thumb.getAttribute('data-index'), 10);
+                    renderView(idx);
+                }
+            });
+        }
 
         document.addEventListener('keydown', (e) => {
             if (modal.classList.contains('is-active')) {

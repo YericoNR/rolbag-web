@@ -1,0 +1,53 @@
+
+[TEXT]: ORGANIZACIÓN DE FOTOS
+
+[TEXT]: FUNDAS CATURADORES
+
+[TEXT]: El orden sería el siguiente:
+
+[TEXT]: Funda sin mango
+
+[TEXT]: Con
+  -> [IMAGES]: image8.png, image13.png
+
+[TEXT]: Fundas con mango
+  -> [IMAGES]: image4.png, image18.png
+
+[TEXT]: Funda Modelo Robusto con o sin mango
+  -> [IMAGES]: image9.png, image20.png
+
+[TEXT]: FUNDAS TABLETS
+  -> [IMAGES]: image16.png
+  -> [IMAGES]: image34.png, image12.png, image21.jpg
+  -> [IMAGES]: image14.jpg
+
+[TEXT]: FUNDAS IMPRESORAS
+  -> [IMAGES]: image23.png, image31.png, image30.png, image28.png, image35.png, image26.jpg
+
+[TEXT]: FUNDAS POS MOVILES
+  -> [IMAGES]: image33.png
+  -> [IMAGES]: image32.png
+  -> [IMAGES]: image27.jpg, image2.jpg
+  -> [IMAGES]: image3.png
+  -> [IMAGES]: image1.jpg
+
+[TEXT]: A Parte de eso te voy a pasar unas fotos adicionales a ver tú cómo las colocas no sé de fondo
+
+[TEXT]: O de otros ejemplos de foto
+
+[TEXT]: Estás también las confeccionamos nosotros adicionales
+
+[TEXT]: Son como fundas especiales que nos solicitan los clientes son como con más estructuras
+  -> [IMAGES]: image19.png, image10.png, image15.png
+
+[TEXT]: Está son la la muñeca
+  -> [IMAGES]: image36.png, image11.png, image7.png
+
+[TEXT]: Estas son de radios
+  -> [IMAGES]: image17.png, image6.png, image5.png
+
+[TEXT]: Esto es un equipo diferente
+  -> [IMAGES]: image24.png, image25.png, image22.jpg
+
+[TEXT]: Este es ROLANDO HACE MIL AÑOS SI LA PUEDES AGREGAR sería súper
+  -> [IMAGES]: image29.png

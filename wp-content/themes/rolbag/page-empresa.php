@@ -59,10 +59,10 @@ get_header('landing');
 
                 <div class="rb-about-editorial__image-col">
                     <div class="rb-about-image-wrapper">
-                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/fabricacion_1787702420725.jpg' ); ?>" alt="Taller de Confección ROLBAG en Santiago Centro" class="rb-about-editorial__img" />
+                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/Rolando_Foto_Historica.webp' ); ?>" alt="Rolando Álvarez - Fundador de ROLBAG" class="rb-about-editorial__img" />
                         <div class="rb-about-image-badge">
-                            <span class="rb-about-image-badge__title">Taller Central de Confección</span>
-                            <span class="rb-about-image-badge__subtitle">San Pablo 2209, Santiago Centro</span>
+                            <span class="rb-about-image-badge__title">Rolando Álvarez</span>
+                            <span class="rb-about-image-badge__subtitle">Fundador de ROLBAG</span>
                         </div>
                     </div>
                 </div>

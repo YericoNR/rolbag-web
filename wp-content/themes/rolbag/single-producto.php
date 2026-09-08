@@ -57,86 +57,54 @@ $real_gallery = array();
 if ( $product_slug === 'fundas-para-capturadores' ) {
     $real_gallery = array(
         array(
-            'url'   => $theme_uri . '/assets/images/galeria/zebra-sin-mango/vista_01.webp',
-            'title' => 'Zebra Touch - Vista Frontal con Mica'
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_frontal.webp',
+            'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Frontal'
         ),
         array(
-            'url'   => $theme_uri . '/assets/images/galeria/zebra-sin-mango/vista_02.webp',
-            'title' => 'Zebra Touch - Vista Lateral y Anillas'
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_lateral.webp',
+            'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Lateral'
         ),
         array(
-            'url'   => $theme_uri . '/assets/images/galeria/zebra-sin-mango/vista_03.webp',
-            'title' => 'Zebra Touch - Vista Posterior Handstrap'
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_frontal.webp',
+            'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Frontal'
         ),
         array(
-            'url'   => $theme_uri . '/assets/images/galeria/zebra-con-mango/vista_01.webp',
-            'title' => 'Zebra Pistol Grip - Con Mango Ergonómico'
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_lateral.webp',
+            'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Lateral'
         ),
         array(
-            'url'   => $theme_uri . '/assets/images/galeria/honeywell-ck65/vista_01.webp',
-            'title' => 'Honeywell CK65 - Teclado Físico y Protección Ruda'
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/honeywell_ck65_frontal.webp',
+            'title' => 'Funda para Capturador Honeywell CK65 - Vista Frontal'
         ),
         array(
-            'url'   => $theme_uri . '/assets/images/galeria/datalogic-falcon/vista_01.webp',
-            'title' => 'Datalogic Falcon / Skorpio - Uso Industrial'
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/honeywell_ck65_lateral.webp',
+            'title' => 'Funda para Capturador Honeywell CK65 - Vista Lateral'
         )
     );
 } elseif ( $product_slug === 'fundas-para-impresoras' ) {
     $real_gallery = array(
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_01.webp',
-            'title' => 'Apertura Frontal Expulsión Ticket'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_02.webp',
-            'title' => 'Anillas de Acero para Correa de Hombro'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_03.webp',
-            'title' => 'Pasador Posterior para Cinturón'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_04.webp',
-            'title' => 'Tapa Superior de Recarga con Velcro'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/impresoras-portatiles/vista_05.webp',
-            'title' => 'Confección en Nylon Balístico Impermeable'
-        )
+        array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_01.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Vista Frontal' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_02.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Vista Lateral' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_03.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Vista Posterior' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_04.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Detalle Superior' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_05.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Detalle Inferior' )
     );
 } elseif ( $product_slug === 'fundas-para-pos-moviles' ) {
     $real_gallery = array(
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/filtradas/vista_02.webp',
-            'title' => 'Funda POS Móvil - Visor Frontal Transparente'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/filtradas/vista_03.webp',
-            'title' => 'Funda POS Móvil - Acceso Lateral Ranura Chip'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/filtradas/vista_04.webp',
-            'title' => 'Funda POS Móvil - Handstrap de Sujeción'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/filtradas/vista_05.webp',
-            'title' => 'Funda POS Móvil - Protección Antichoque'
-        )
+        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_01.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Frontal' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_02.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Lateral' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_03.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Posterior' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_04.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Detalle Operativo' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_05.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Detalle Ranura' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_06.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Ángulo 45 Grados' )
     );
 } elseif ( $product_slug === 'fundas-para-tablets' ) {
     $real_gallery = array(
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores-otros/vista_01.webp',
-            'title' => 'Funda Tablet Industrial - Vista Frontal'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores-otros/vista_02.webp',
-            'title' => 'Funda Tablet Industrial - Perfil Reforzado'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores-otros/vista_03.webp',
-            'title' => 'Funda Tablet Industrial - Handstrap y Soporte'
-        )
+        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_01.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Frontal' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_02.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Lateral' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_03.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Posterior' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_04.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Handstrap' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_05.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Soporte Plegable' )
     );
 } else {
     // Fallback general
@@ -176,9 +144,9 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
                             📸 Foto Real ROLBAG (Fondo Estudio)
                         </span>
                         <?php if ( $active_main_image ) : ?>
-                            <img id="rb-main-view" src="<?php echo esc_url( $active_main_image ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="rb-product-main-img" style="max-height:340px; width:auto; object-fit:contain; transition:opacity 0.25s ease;" />
+                            <img id="rb-main-view" src="<?php echo esc_url( $active_main_image ); ?>" alt="<?php echo esc_attr( ! empty( $real_gallery ) ? $real_gallery[0]['title'] : get_the_title() ); ?>" class="rb-product-main-img" style="max-height:340px; width:auto; object-fit:contain; transition:opacity 0.25s ease;" />
                         <?php else : ?>
-                            <?php the_post_thumbnail( 'large', array( 'class' => 'rb-product-main-img' ) ); ?>
+                            <?php the_post_thumbnail( 'large', array( 'class' => 'rb-product-main-img', 'alt' => esc_attr( get_the_title() ) ) ); ?>
                         <?php endif; ?>
                     </div>
                     <?php if ( ! empty( $real_gallery ) && count( $real_gallery ) > 1 ) : ?>
