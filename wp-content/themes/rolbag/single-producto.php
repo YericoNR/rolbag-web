@@ -67,20 +67,20 @@ if ( $product_slug === 'fundas-para-capturadores' ) {
             'title' => 'Funda para Capturador Honeywell CK65 - Vista Frontal'
         ),
         array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_lateral.webp',
-            'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Lateral'
-        ),
-        array(
             'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_frontal.webp',
             'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Frontal'
         ),
         array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_lateral.webp',
-            'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Lateral'
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_lateral.webp',
+            'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Lateral'
         ),
         array(
             'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_frontal.webp',
             'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Frontal'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_lateral.webp',
+            'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Lateral'
         )
     );
 } elseif ( $product_slug === 'fundas-para-impresoras' ) {
