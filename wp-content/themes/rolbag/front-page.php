@@ -189,9 +189,9 @@ get_header('landing');
                 <!-- Columna Izquierda: Fotografía Confección -->
                 <div class="rb-about-editorial__image-col">
                     <div class="rb-about-image-wrapper">
-                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/historia_taller_rolbag.jpg' ); ?>" alt="Taller de Confección ROLBAG" class="rb-about-editorial__img" loading="eager" />
+                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg' ); ?>" alt="Rolando Álvarez - Fundador ROLBAG" class="rb-about-editorial__img" style="object-fit: contain; width: 100%; height: auto; max-height: 500px; background-color: #fff;" loading="eager" />
                         <div class="rb-about-image-badge">
-                            <span class="rb-about-image-badge__title">Taller de Confección</span>
+                            <span class="rb-about-image-badge__title">Rolando Álvarez</span>
                             <span class="rb-about-image-badge__subtitle">Santiago Centro, Chile</span>
                         </div>
                     </div>
@@ -446,6 +446,19 @@ get_header('landing');
                     </a>
                 </div>
             </div>
+            
+            <div class="rb-bento-row rb-bento-row--bottom" style="margin-top: 16px;">
+                <a href="<?php echo esc_url( home_url( '/productos/confecciones-especiales' ) ); ?>" class="rb-bento-card rb-bento-card--lead" style="width: 100%;">
+                    <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/galeria/especiales_01/Especial_Estructura_01.png' ); ?>');"></div>
+                    <div class="rb-bento-card__overlay"></div>
+                    <div class="rb-bento-card__content">
+                        <span class="rb-badge rb-badge--light">Línea 07</span>
+                        <h4 class="rb-bento-sub-title" style="font-size: 1.5rem; margin-bottom: 8px;">Confecciones Especiales y Desarrollo a Medida</h4>
+                        <p class="rb-bento-desc">Soluciones personalizadas y confecciones a medida para hardware industrial, estructuras especiales, wearables y radiocomunicación.</p>
+                        <span class="rb-bento-link">Ver galería &rarr;</span>
+                    </div>
+                </a>
+            </div>
             <div class="rb-products-all-link text-center" style="margin-top: 36px;">
                 <a href="/productos" class="rb-btn rb-btn--outline">Ver Catálogo Completo de Líneas &rarr;</a>
             </div>
@@ -521,11 +534,7 @@ get_header('landing');
                             </div>
                         </div>
                         <div class="rb-brand-card-item__action">
-                            <button type="button" class="rb-brand-gallery-trigger-btn" onclick="if(window.openBrandGalleryModal) window.openBrandGalleryModal('zebra');">
-                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                                <span>Ver Fotos Reales (4 vistas)</span>
-                            </button>
-                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores/#marca-zebra' ) ); ?>" class="rb-brand-main-btn">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores/#marca-zebra' ) ); ?>" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
                                 <span>Ver Ficha Técnica</span>
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </a>
@@ -550,11 +559,7 @@ get_header('landing');
                             </div>
                         </div>
                         <div class="rb-brand-card-item__action">
-                            <button type="button" class="rb-brand-gallery-trigger-btn" onclick="if(window.openBrandGalleryModal) window.openBrandGalleryModal('honeywell');">
-                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                                <span>Ver Fotos Reales (4 vistas)</span>
-                            </button>
-                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores/#marca-honeywell' ) ); ?>" class="rb-brand-main-btn">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores/#marca-honeywell' ) ); ?>" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
                                 <span>Ver Ficha Técnica</span>
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </a>
@@ -577,11 +582,7 @@ get_header('landing');
                             </div>
                         </div>
                         <div class="rb-brand-card-item__action">
-                            <button type="button" class="rb-brand-gallery-trigger-btn" onclick="if(window.openBrandGalleryModal) window.openBrandGalleryModal('datalogic');">
-                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                                <span>Ver Fotos Reales (4 vistas)</span>
-                            </button>
-                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores/#marca-datalogic' ) ); ?>" class="rb-brand-main-btn">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores/#marca-datalogic' ) ); ?>" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
                                 <span>Ver Ficha Técnica</span>
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </a>
@@ -604,7 +605,7 @@ get_header('landing');
                             </div>
                         </div>
                         <div class="rb-brand-card-item__action">
-                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-tablets/#marca-samsung' ) ); ?>" class="rb-brand-main-btn">
+                            <a href="<?php echo esc_url( home_url( '/productos/fundas-para-tablets/#marca-samsung' ) ); ?>" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
                                 <span>Ver Ficha Técnica</span>
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </a>
@@ -700,10 +701,6 @@ get_header('landing');
                             </div>
                         </div>
                         <div class="rb-brand-card-item__action">
-                            <button type="button" class="rb-brand-gallery-trigger-btn" onclick="if(window.openBrandGalleryModal) window.openBrandGalleryModal('bixolon');">
-                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                                <span>Ver Fotos Reales (4 vistas)</span>
-                            </button>
                             <a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras/#marca-bixolon' ) ); ?>" class="rb-brand-main-btn">
                                 <span>Ver Ficha Técnica</span>
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

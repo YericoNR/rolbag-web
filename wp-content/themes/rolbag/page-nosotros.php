@@ -14,7 +14,7 @@ get_header('landing');
 
     <!-- Hero Institucional -->
     <section class="rb-hero-editorial" style="min-height: 480px; padding: 100px 0 90px 0;">
-        <div class="rb-hero-editorial__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/historia_taller_rolbag.jpg' ); ?>');"></div>
+        <div class="rb-hero-editorial__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg' ); ?>'); background-position: center top;"></div>
         <div class="rb-hero-editorial__overlay"></div>
         <div class="rb-container rb-hero-editorial__container">
             <div class="rb-hero-editorial__content">
@@ -32,9 +32,9 @@ get_header('landing');
                 <!-- Columna Imagen -->
                 <div class="rb-about-editorial__image-col">
                     <div class="rb-about-image-wrapper">
-                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/historia_taller_rolbag.jpg' ); ?>" alt="Taller de Confección ROLBAG en Santiago" class="rb-about-editorial__img" />
+                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg' ); ?>" alt="Rolando Álvarez - Fundador ROLBAG" class="rb-about-editorial__img" style="object-fit: contain; width: 100%; height: auto; max-height: 500px; background-color: #fff;" />
                         <div class="rb-about-image-badge">
-                            <span class="rb-about-image-badge__title">Taller Central de Confección</span>
+                            <span class="rb-about-image-badge__title">Rolando Álvarez</span>
                             <span class="rb-about-image-badge__subtitle">Santiago Centro, Chile</span>
                         </div>
                     </div>

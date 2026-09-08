@@ -91,20 +91,35 @@ if ( $product_slug === 'fundas-para-capturadores' ) {
     );
 } elseif ( $product_slug === 'fundas-para-pos-moviles' ) {
     $real_gallery = array(
-        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_01.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Frontal' ),
         array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_02.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Lateral' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_03.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Posterior' ),
         array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_04.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Detalle Operativo' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_05.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Detalle Ranura' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_06.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Ángulo 45 Grados' )
+        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_03.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Posterior' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_01.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Frontal' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_06.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Ángulo 45 Grados' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_05.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Detalle Ranura' )
     );
 } elseif ( $product_slug === 'fundas-para-tablets' ) {
     $real_gallery = array(
-        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_01.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Frontal' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_05.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Soporte Plegable' ),
         array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_02.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Lateral' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_01.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Frontal' ),
         array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_03.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Posterior' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_04.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Handstrap' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_05.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Soporte Plegable' )
+        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_04.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Handstrap' )
+    );
+} elseif ( $product_slug === 'confecciones-especiales' ) {
+    $real_gallery = array(
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_01/Especial_Estructura_01.png', 'title' => 'Estructuras Especiales - Especial Estructura 01' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_01/Especial_Estructura_02.png', 'title' => 'Estructuras Especiales - Especial Estructura 02' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_01/Especial_Estructura_03.png', 'title' => 'Estructuras Especiales - Especial Estructura 03' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_02/Muneca_Wearable_01.png', 'title' => 'Para Antebrazos y Muñecas (Wearables) - Muneca Wearable 01' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_02/Muneca_Wearable_02.png', 'title' => 'Para Antebrazos y Muñecas (Wearables) - Muneca Wearable 02' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_02/Muneca_Wearable_03.png', 'title' => 'Para Antebrazos y Muñecas (Wearables) - Muneca Wearable 03' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_03/Radio_Funda_01.png', 'title' => 'Radios y Comunicación - Radio Funda 01' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_03/Radio_Funda_02.png', 'title' => 'Radios y Comunicación - Radio Funda 02' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_03/Radio_Funda_03.png', 'title' => 'Radios y Comunicación - Radio Funda 03' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_04/Equipo_Diferente_01.png', 'title' => 'Equipos Especiales - Equipo Diferente 01' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_04/Equipo_Diferente_02.png', 'title' => 'Equipos Especiales - Equipo Diferente 02' ),
+        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_04/Equipo_Diferente_03.jpg', 'title' => 'Equipos Especiales - Equipo Diferente 03' ),
     );
 } else {
     // Fallback general
@@ -140,9 +155,6 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
                 <!-- Columna Izquierda: Galería -->
                 <div class="rb-product-gallery-col">
                     <div class="rb-product-main-img-wrap" style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:20px; display:flex; align-items:center; justify-content:center; min-height:380px; position:relative; box-shadow:0 4px 15px rgba(0,0,0,0.04);">
-                        <span class="rb-badge" style="position:absolute; top:12px; left:12px; font-size:11px; z-index:2; background:rgba(15,23,42,0.85); color:#fff; backdrop-filter:blur(4px);">
-                            📸 Foto Real ROLBAG (Fondo Estudio)
-                        </span>
                         <?php if ( $active_main_image ) : ?>
                             <img id="rb-main-view" src="<?php echo esc_url( $active_main_image ); ?>" alt="<?php echo esc_attr( ! empty( $real_gallery ) ? $real_gallery[0]['title'] : get_the_title() ); ?>" class="rb-product-main-img" style="max-height:340px; width:auto; object-fit:contain; transition:opacity 0.25s ease;" />
                         <?php else : ?>
@@ -318,10 +330,6 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
                                 <div class="rb-brand-card__header">
                                     <div class="rb-brand-title-wrap" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
                                         <h3 class="rb-brand-name"><?php echo esc_html( $brand ); ?></h3>
-                                        <button type="button" class="rb-brand-mini-gallery-btn" onclick="if(window.openBrandGalleryModal) window.openBrandGalleryModal('<?php echo esc_attr( $brand_key ); ?>');" title="Ver galería de fotos reales y acabados de confección">
-                                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                                            <span>Fotos Reales (4 vistas)</span>
-                                        </button>
                                     </div>
                                     <span class="rb-brand-count"><?php echo esc_html( $brand_count ); ?> <?php echo ( $brand_count === 1 ) ? 'opción' : 'modelos'; ?></span>
                                 </div>
