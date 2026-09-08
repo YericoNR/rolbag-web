@@ -20,6 +20,8 @@
                         <li><a href="/productos/fundas-para-capturadores" style="color:#94a3b8; text-decoration:none;">Fundas para Capturadores</a></li>
                         <li><a href="/productos/fundas-para-tablets" style="color:#94a3b8; text-decoration:none;">Fundas para Tablets</a></li>
                         <li><a href="/productos/fundas-para-impresoras" style="color:#94a3b8; text-decoration:none;">Fundas para Impresoras</a></li>
+                        <li><a href="/productos/fundas-para-pos-moviles" style="color:#94a3b8; text-decoration:none;">Fundas para POS Móviles</a></li>
+                        <li><a href="/productos/confecciones-especiales" style="color:#94a3b8; text-decoration:none;">Confecciones Especiales</a></li>
                         <li><a href="/productos/valijas-de-seguridad" style="color:#94a3b8; text-decoration:none;">Valijas de Seguridad</a></li>
                         <li><a href="/productos/candados-especiales" style="color:#94a3b8; text-decoration:none;">Candados de Seguridad</a></li>
                     </ul>

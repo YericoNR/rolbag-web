@@ -25,6 +25,7 @@ INITIAL_ROUTES = [
     "/productos/fundas-para-pos-moviles/",
     "/productos/valijas-de-seguridad/",
     "/productos/candados-especiales/",
+    "/productos/confecciones-especiales/",
     "/design-system-preview/",
 ]
 

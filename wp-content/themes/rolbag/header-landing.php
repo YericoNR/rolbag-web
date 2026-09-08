@@ -39,6 +39,7 @@
                             <li><a href="<?php echo esc_url( home_url( '/productos/fundas-para-tablets' ) ); ?>">Fundas para Tablets</a></li>
                             <li><a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras' ) ); ?>">Fundas para Impresoras</a></li>
                             <li><a href="<?php echo esc_url( home_url( '/productos/fundas-para-pos-moviles' ) ); ?>">Fundas para POS Móviles</a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/productos/confecciones-especiales' ) ); ?>">Confecciones Especiales</a></li>
                             <li><a href="<?php echo esc_url( home_url( '/productos/valijas-de-seguridad' ) ); ?>">Valijas de Seguridad</a></li>
                             <li><a href="<?php echo esc_url( home_url( '/productos/candados-especiales' ) ); ?>">Candados de Seguridad</a></li>
                         </ul>
@@ -106,6 +107,7 @@
                         <li><a href="<?php echo esc_url( home_url( '/productos/fundas-para-tablets' ) ); ?>" class="rb-mobile-submenu__link">Fundas para Tablets</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras' ) ); ?>" class="rb-mobile-submenu__link">Fundas para Impresoras</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/productos/fundas-para-pos-moviles' ) ); ?>" class="rb-mobile-submenu__link">Fundas para POS Móviles</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/productos/confecciones-especiales' ) ); ?>" class="rb-mobile-submenu__link">Confecciones Especiales</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/productos/valijas-de-seguridad' ) ); ?>" class="rb-mobile-submenu__link">Valijas de Seguridad</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/productos/candados-especiales' ) ); ?>" class="rb-mobile-submenu__link">Candados de Seguridad</a></li>
                     </ul>

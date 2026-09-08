@@ -3255,16 +3255,23 @@ body.rb-main {
 
 .rb-catalog-card__img-wrap {
     position: relative;
-    height: 230px;
-    background-color: #071324;
+    height: 260px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
 }
 
 .rb-catalog-card__img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    max-height: 236px;
+    object-fit: contain;
     display: block;
+    transition: transform 0.4s ease;
 }
 
 .rb-catalog-card__badge-wrap {
@@ -4845,10 +4852,374 @@ body.rb-main {
     }
 }
 
+/* ==========================================================================
+   LIGHTBOX MODAL B2B ROLBAG
+   ========================================================================== */
+.rb-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.22s ease, visibility 0.22s ease;
+}
 
+.rb-lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+}
 
+.rb-lightbox__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(8px);
+}
 
+.rb-lightbox__container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    width: 92vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+.rb-lightbox__content {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rb-lightbox__img-wrap {
+    width: 100%;
+    height: 60vh;
+    max-height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+.rb-lightbox__img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.rb-lightbox__info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    margin-top: 14px;
+    border-top: 1px solid #e2e8f0;
+    gap: 16px;
+}
+
+.rb-lightbox__caption {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rb-lightbox__counter {
+    font-size: 0.85rem;
+    font-family: monospace;
+    font-weight: 700;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.rb-lightbox__close {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.rb-lightbox__close:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.rb-lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.rb-lightbox__nav:hover {
+    background: #00a3e0;
+    color: #ffffff;
+    border-color: #00a3e0;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.rb-lightbox__prev {
+    left: -60px;
+}
+
+.rb-lightbox__next {
+    right: -60px;
+}
+
+@media (max-width: 768px) {
+    .rb-lightbox__nav {
+        top: auto;
+        bottom: 16px;
+        transform: none;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    .rb-lightbox__nav:hover {
+        transform: none;
+    }
+    .rb-lightbox__prev {
+        left: 16px;
+    }
+    .rb-lightbox__next {
+        right: 16px;
+    }
+    .rb-lightbox__content {
+        padding: 14px 14px 64px 14px;
+    }
+    .rb-lightbox__img-wrap {
+        height: 46vh;
+    }
+    .rb-lightbox__close {
+        top: -42px;
+        right: 4px;
+    }
+}
+
+/* ==========================================================================
+   CONFECCIONES ESPECIALES CARDS HOVER
+   ========================================================================== */
+.rb-special-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 43, 73, 0.08) !important;
+    border-color: #00a3e0 !important;
+}
+
+.rb-special-card:hover .rb-special-card__img-wrap img {
+    transform: scale(1.04);
+}
+
+.rb-special-card:hover .rb-card-zoom-badge {
+    background: #00a3e0 !important;
+}
+
+/* ==========================================================================
+   ACCORDION DE MARCAS Y FABRICANTES (LANDING B2B)
+   ========================================================================== */
+.rb-brands-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.rb-brands-accordion-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.rb-brands-accordion-item.is-open {
+    border-color: #00a3e0;
+    box-shadow: 0 10px 30px rgba(0, 43, 73, 0.08);
+}
+
+.rb-brands-accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s ease;
+    gap: 16px;
+}
+
+.rb-brands-accordion-header:hover {
+    background: #f8fafc;
+}
+
+.rb-brands-accordion-item.is-open .rb-brands-accordion-header {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.rb-brands-acc-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.rb-brands-acc-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #f1f5f9;
+    color: var(--color-brand-primary, #0f172a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s;
+}
+
+.rb-brands-accordion-item.is-open .rb-brands-acc-icon {
+    background: rgba(0, 163, 224, 0.12);
+    color: #00a3e0;
+}
+
+.rb-brands-acc-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-brand-primary, #0f172a);
+    margin: 0 0 2px 0;
+}
+
+.rb-brands-acc-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    display: block;
+}
+
+.rb-brands-acc-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.rb-brands-acc-badge {
+    background: #e0f2fe;
+    color: #0284c7;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 9999px;
+}
+
+.rb-brands-acc-chevron {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, background 0.2s, color 0.2s;
+}
+
+.rb-brands-accordion-item.is-open .rb-brands-acc-chevron {
+    transform: rotate(180deg);
+    background: #00a3e0;
+    color: #ffffff;
+}
+
+.rb-brands-accordion-body {
+    padding: 24px;
+    background: #ffffff;
+}
+
+.rb-brands-grid--category {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+    .rb-brands-accordion-header {
+        padding: 14px 16px;
+    }
+    .rb-brands-acc-left {
+        gap: 12px;
+    }
+    .rb-brands-acc-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .rb-brands-acc-title {
+        font-size: 1rem;
+    }
+    .rb-brands-acc-desc {
+        display: none;
+    }
+    .rb-brands-accordion-body {
+        padding: 16px;
+    }
+    .rb-brands-grid--category {
+        grid-template-columns: 1fr;
+    }
+}
 
 
 /* =======================================
@@ -4990,6 +5361,7 @@ body.rb-main {
                             <li><a href="/productos/fundas-para-tablets">Fundas para Tablets</a></li>
                             <li><a href="/productos/fundas-para-impresoras">Fundas para Impresoras</a></li>
                             <li><a href="/productos/fundas-para-pos-moviles">Fundas para POS Móviles</a></li>
+                            <li><a href="/productos/confecciones-especiales">Confecciones Especiales</a></li>
                             <li><a href="/productos/valijas-de-seguridad">Valijas de Seguridad</a></li>
                             <li><a href="/productos/candados-especiales">Candados de Seguridad</a></li>
                         </ul>
@@ -5057,6 +5429,7 @@ body.rb-main {
                         <li><a href="/productos/fundas-para-tablets" class="rb-mobile-submenu__link">Fundas para Tablets</a></li>
                         <li><a href="/productos/fundas-para-impresoras" class="rb-mobile-submenu__link">Fundas para Impresoras</a></li>
                         <li><a href="/productos/fundas-para-pos-moviles" class="rb-mobile-submenu__link">Fundas para POS Móviles</a></li>
+                        <li><a href="/productos/confecciones-especiales" class="rb-mobile-submenu__link">Confecciones Especiales</a></li>
                         <li><a href="/productos/valijas-de-seguridad" class="rb-mobile-submenu__link">Valijas de Seguridad</a></li>
                         <li><a href="/productos/candados-especiales" class="rb-mobile-submenu__link">Candados de Seguridad</a></li>
                     </ul>
@@ -5090,25 +5463,29 @@ body.rb-main {
             </nav>
             
             <div class="rb-product-hero__grid">
-                <!-- Columna Izquierda: Galería -->
+                <!-- Columna Izquierda: Galería Principal -->
                 <div class="rb-product-gallery-col">
-                    <div class="rb-product-main-img-wrap" style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:20px; display:flex; align-items:center; justify-content:center; min-height:380px; position:relative; box-shadow:0 4px 15px rgba(0,0,0,0.04);">
-                                                    <img id="rb-main-view" src="/assets/images/galeria/tablets/tablet_05.webp" alt="Funda para Tablet Industrial Samsung Zebra - Soporte Plegable" class="rb-product-main-img" style="max-height:340px; width:auto; object-fit:contain; transition:opacity 0.25s ease;" />
+                    <div class="rb-product-main-img-wrap" style="background:#ffffff; border-radius:16px; border:1px solid #e2e8f0; padding:12px; display:flex; align-items:center; justify-content:center; height:480px; position:relative; box-shadow:0 8px 24px rgba(0,0,0,0.06); cursor:zoom-in;">
+                                                    <img id="rb-main-view" src="/assets/images/galeria/tablets/tablet_05.webp" alt="Funda para Tablet Industrial Samsung Zebra - Soporte Plegable" class="rb-product-main-img" style="max-height:456px; width:100%; height:100%; object-fit:contain; transition:opacity 0.25s ease;" data-gallery-group="main" data-gallery-index="0" />
+                            <span class="rb-zoom-hint" style="position:absolute; bottom:12px; right:12px; background:rgba(15,23,42,0.75); color:#fff; font-size:0.75rem; padding:4px 10px; border-radius:20px; display:flex; align-items:center; gap:5px; pointer-events:none; backdrop-filter:blur(4px);">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+                                Click para ampliar
+                            </span>
                                             </div>
-                                            <div class="rb-product-thumbs" style="display:flex; gap:10px; margin-top:12px; overflow-x:auto; padding-bottom:6px;">
-                                                            <button type="button" class="rb-thumb-btn active" data-img="/assets/images/galeria/tablets/tablet_05.webp" aria-label="Funda para Tablet Industrial Samsung Zebra - Soporte Plegable" style="flex:0 0 72px; height:72px; border-radius:8px; border:2px solid #00a3e0; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
+                                            <div class="rb-product-thumbs" style="display:flex; gap:10px; margin-top:14px; overflow-x:auto; padding-bottom:6px;">
+                                                            <button type="button" class="rb-thumb-btn active" data-img="/assets/images/galeria/tablets/tablet_05.webp" data-index="0" aria-label="Funda para Tablet Industrial Samsung Zebra - Soporte Plegable" style="flex:0 0 76px; height:76px; border-radius:10px; border:2px solid #00a3e0; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
                                     <img src="/assets/images/galeria/tablets/tablet_05.webp" alt="Funda para Tablet Industrial Samsung Zebra - Soporte Plegable" style="width:100%; height:100%; object-fit:contain;" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/galeria/tablets/tablet_02.webp" aria-label="Funda para Tablet Industrial Samsung Zebra - Vista Lateral" style="flex:0 0 72px; height:72px; border-radius:8px; border:2px solid #e2e8f0; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/galeria/tablets/tablet_02.webp" data-index="1" aria-label="Funda para Tablet Industrial Samsung Zebra - Vista Lateral" style="flex:0 0 76px; height:76px; border-radius:10px; border:2px solid #e2e8f0; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
                                     <img src="/assets/images/galeria/tablets/tablet_02.webp" alt="Funda para Tablet Industrial Samsung Zebra - Vista Lateral" style="width:100%; height:100%; object-fit:contain;" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/galeria/tablets/tablet_01.webp" aria-label="Funda para Tablet Industrial Samsung Zebra - Vista Frontal" style="flex:0 0 72px; height:72px; border-radius:8px; border:2px solid #e2e8f0; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/galeria/tablets/tablet_01.webp" data-index="2" aria-label="Funda para Tablet Industrial Samsung Zebra - Vista Frontal" style="flex:0 0 76px; height:76px; border-radius:10px; border:2px solid #e2e8f0; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
                                     <img src="/assets/images/galeria/tablets/tablet_01.webp" alt="Funda para Tablet Industrial Samsung Zebra - Vista Frontal" style="width:100%; height:100%; object-fit:contain;" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/galeria/tablets/tablet_03.webp" aria-label="Funda para Tablet Industrial Samsung Zebra - Vista Posterior" style="flex:0 0 72px; height:72px; border-radius:8px; border:2px solid #e2e8f0; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/galeria/tablets/tablet_03.webp" data-index="3" aria-label="Funda para Tablet Industrial Samsung Zebra - Vista Posterior" style="flex:0 0 76px; height:76px; border-radius:10px; border:2px solid #e2e8f0; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
                                     <img src="/assets/images/galeria/tablets/tablet_03.webp" alt="Funda para Tablet Industrial Samsung Zebra - Vista Posterior" style="width:100%; height:100%; object-fit:contain;" />
                                 </button>
-                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/galeria/tablets/tablet_04.webp" aria-label="Funda para Tablet Industrial Samsung Zebra - Handstrap" style="flex:0 0 72px; height:72px; border-radius:8px; border:2px solid #e2e8f0; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
+                                                            <button type="button" class="rb-thumb-btn " data-img="/assets/images/galeria/tablets/tablet_04.webp" data-index="4" aria-label="Funda para Tablet Industrial Samsung Zebra - Handstrap" style="flex:0 0 76px; height:76px; border-radius:10px; border:2px solid #e2e8f0; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
                                     <img src="/assets/images/galeria/tablets/tablet_04.webp" alt="Funda para Tablet Industrial Samsung Zebra - Handstrap" style="width:100%; height:100%; object-fit:contain;" />
                                 </button>
                                                     </div>
@@ -5153,6 +5530,7 @@ body.rb-main {
         </div>
     </section>
 
+    
     <!-- Características, Beneficios y Materiales -->
     <section class="rb-section rb-product-details">
         <div class="rb-container">
@@ -5520,18 +5898,154 @@ body.rb-main {
 
 </main>
 
+<!-- LIGHTBOX MODAL DE FOTOGRAFÍAS EN ALTA RESOLUCIÓN (B2B ROLBAG) -->
+<div id="rb-lightbox" class="rb-lightbox" aria-hidden="true" role="dialog" style="display:none;">
+    <div class="rb-lightbox__backdrop" id="rb-lightbox-backdrop"></div>
+    <div class="rb-lightbox__container">
+        <button type="button" class="rb-lightbox__close" id="rb-lightbox-close" aria-label="Cerrar visor de fotografía">&times;</button>
+        <button type="button" class="rb-lightbox__nav rb-lightbox__prev" id="rb-lightbox-prev" aria-label="Fotografía anterior">&#10094;</button>
+        <div class="rb-lightbox__content">
+            <div class="rb-lightbox__img-wrap">
+                <img id="rb-lightbox-img" src="" alt="Fotografía técnica ROLBAG" class="rb-lightbox__img" />
+            </div>
+            <div class="rb-lightbox__info">
+                <div id="rb-lightbox-caption" class="rb-lightbox__caption"></div>
+                <div id="rb-lightbox-counter" class="rb-lightbox__counter"></div>
+            </div>
+        </div>
+        <button type="button" class="rb-lightbox__nav rb-lightbox__next" id="rb-lightbox-next" aria-label="Fotografía siguiente">&#10095;</button>
+    </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 0. Conmutador de Galería de Fotos Reales
+    // 1. Estructura de Galerías Aisladas para Lightbox
+    const allGalleries = {
+                    'main': [{"url":"\/assets\/images\/galeria\/tablets\/tablet_05.webp","title":"Funda para Tablet Industrial Samsung Zebra - Soporte Plegable"},{"url":"\/assets\/images\/galeria\/tablets\/tablet_02.webp","title":"Funda para Tablet Industrial Samsung Zebra - Vista Lateral"},{"url":"\/assets\/images\/galeria\/tablets\/tablet_01.webp","title":"Funda para Tablet Industrial Samsung Zebra - Vista Frontal"},{"url":"\/assets\/images\/galeria\/tablets\/tablet_03.webp","title":"Funda para Tablet Industrial Samsung Zebra - Vista Posterior"},{"url":"\/assets\/images\/galeria\/tablets\/tablet_04.webp","title":"Funda para Tablet Industrial Samsung Zebra - Handstrap"}],
+            };
+
+    let currentGalleryGroup = 'main';
+    let currentImageIndex = 0;
+
+    const lightbox = document.getElementById('rb-lightbox');
+    const lightboxImg = document.getElementById('rb-lightbox-img');
+    const lightboxCaption = document.getElementById('rb-lightbox-caption');
+    const lightboxCounter = document.getElementById('rb-lightbox-counter');
+    const lightboxClose = document.getElementById('rb-lightbox-close');
+    const lightboxBackdrop = document.getElementById('rb-lightbox-backdrop');
+    const lightboxPrev = document.getElementById('rb-lightbox-prev');
+    const lightboxNext = document.getElementById('rb-lightbox-next');
+
+    function updateLightbox() {
+        const groupItems = allGalleries[currentGalleryGroup] || [];
+        if (!groupItems.length) return;
+        if (currentImageIndex < 0) currentImageIndex = groupItems.length - 1;
+        if (currentImageIndex >= groupItems.length) currentImageIndex = 0;
+        
+        const item = groupItems[currentImageIndex];
+        if (item) {
+            lightboxImg.style.opacity = '0.4';
+            lightboxImg.src = item.url;
+            lightboxImg.alt = item.title;
+            lightboxImg.onload = function() {
+                lightboxImg.style.opacity = '1';
+            };
+            lightboxCaption.textContent = item.title;
+            lightboxCounter.textContent = (currentImageIndex + 1) + ' / ' + groupItems.length;
+        }
+    }
+
+    function openLightbox(group, index) {
+        if (!allGalleries[group] || !allGalleries[group].length) return;
+        currentGalleryGroup = group;
+        currentImageIndex = (index >= 0 && index < allGalleries[group].length) ? index : 0;
+        updateLightbox();
+        lightbox.style.display = 'flex';
+        setTimeout(function() {
+            lightbox.classList.add('is-open');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        setTimeout(function() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 220);
+    }
+
+    function nextImage() {
+        const groupItems = allGalleries[currentGalleryGroup] || [];
+        if (groupItems.length <= 1) return;
+        currentImageIndex = (currentImageIndex + 1) % groupItems.length;
+        updateLightbox();
+    }
+
+    function prevImage() {
+        const groupItems = allGalleries[currentGalleryGroup] || [];
+        if (groupItems.length <= 1) return;
+        currentImageIndex = (currentImageIndex - 1 + groupItems.length) % groupItems.length;
+        updateLightbox();
+    }
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', function(e) {
+        e.stopPropagation();
+        prevImage();
+    });
+    if (lightboxNext) lightboxNext.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nextImage();
+    });
+
+    // Teclado: ESC para cerrar, Flechas para navegar
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox || !lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+    });
+
+    // Soporte táctil / swipe en móvil
+    let touchStartX = 0;
+    let touchEndX = 0;
+    if (lightbox) {
+        lightbox.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        lightbox.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 40) nextImage();
+            if (touchEndX > touchStartX + 40) prevImage();
+        }, { passive: true });
+    }
+
+    // 2. Conmutador de Galería en Hero y apertura de Lightbox
     const mainImg = document.getElementById('rb-main-view');
+    const mainImgWrap = document.querySelector('.rb-product-main-img-wrap');
     const thumbBtns = document.querySelectorAll('.rb-thumb-btn');
-    if (mainImg && thumbBtns.length > 0) {
+
+    let activeThumbIndex = 0;
+
+    if (mainImgWrap) {
+        mainImgWrap.addEventListener('click', function() {
+            const grp = mainImg ? (mainImg.getAttribute('data-gallery-group') || 'main') : 'main';
+            openLightbox(grp, activeThumbIndex);
+        });
+    }
+
+    if (thumbBtns.length > 0) {
         thumbBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
                 const newSrc = this.getAttribute('data-img');
-                if (newSrc) {
+                const newIdx = parseInt(this.getAttribute('data-index'), 10) || 0;
+                activeThumbIndex = newIdx;
+                if (mainImg && newSrc) {
                     mainImg.style.opacity = '0.3';
-                    setTimeout(() => {
+                    setTimeout(function() {
                         mainImg.src = newSrc;
                         mainImg.style.opacity = '1';
                     }, 120);
@@ -5546,7 +6060,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Buscador interactivo y filtros de marcas (Chips)
+    // 3. Apertura de Lightbox desde tarjetas de Confecciones Especiales
+    document.querySelectorAll('.rb-special-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const grp = this.getAttribute('data-gallery-group');
+            const idx = parseInt(this.getAttribute('data-gallery-index'), 10) || 0;
+            openLightbox(grp, idx);
+        });
+    });
+
+    // 4. Buscador interactivo y filtros de marcas (Chips)
     const filterInput = document.getElementById('rb-model-filter');
     const brandPills = document.querySelectorAll('.rb-brand-pill');
     const brandCards = document.querySelectorAll('.rb-brand-card');
@@ -5607,7 +6130,7 @@ document.addEventListener('DOMContentLoaded', function() {
         filterInput.addEventListener('input', applyFilters);
     }
 
-    // Comprobar si hay hash en la URL para auto-filtrar (ej. #marca-zebra)
+    // Auto-filtrar por hash (#marca-zebra)
     if (window.location.hash) {
         const hashTarget = window.location.hash.replace('#marca-', '').replace('#', '').toLowerCase();
         const matchingPill = Array.from(brandPills).find(p => p.getAttribute('data-brand-filter') === hashTarget);
@@ -5654,6 +6177,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <li><a href="/productos/fundas-para-capturadores" class="rb-footer__link">Fundas para Capturadores</a></li>
                         <li><a href="/productos/fundas-para-tablets" class="rb-footer__link">Fundas para Tablets</a></li>
                         <li><a href="/productos/fundas-para-impresoras" class="rb-footer__link">Fundas para Impresoras</a></li>
+                        <li><a href="/productos/fundas-para-pos-moviles" class="rb-footer__link">Fundas para POS Móviles</a></li>
+                        <li><a href="/productos/confecciones-especiales" class="rb-footer__link">Confecciones Especiales</a></li>
                         <li><a href="/productos/valijas-de-seguridad" class="rb-footer__link">Valijas de Seguridad</a></li>
                         <li><a href="/productos/candados-especiales" class="rb-footer__link">Candados de Seguridad</a></li>
                     </ul>

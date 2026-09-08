@@ -3255,16 +3255,23 @@ body.rb-main {
 
 .rb-catalog-card__img-wrap {
     position: relative;
-    height: 230px;
-    background-color: #071324;
+    height: 260px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
 }
 
 .rb-catalog-card__img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    max-height: 236px;
+    object-fit: contain;
     display: block;
+    transition: transform 0.4s ease;
 }
 
 .rb-catalog-card__badge-wrap {
@@ -4845,10 +4852,374 @@ body.rb-main {
     }
 }
 
+/* ==========================================================================
+   LIGHTBOX MODAL B2B ROLBAG
+   ========================================================================== */
+.rb-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.22s ease, visibility 0.22s ease;
+}
 
+.rb-lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+}
 
+.rb-lightbox__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(8px);
+}
 
+.rb-lightbox__container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    width: 92vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+.rb-lightbox__content {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rb-lightbox__img-wrap {
+    width: 100%;
+    height: 60vh;
+    max-height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+.rb-lightbox__img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.rb-lightbox__info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    margin-top: 14px;
+    border-top: 1px solid #e2e8f0;
+    gap: 16px;
+}
+
+.rb-lightbox__caption {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rb-lightbox__counter {
+    font-size: 0.85rem;
+    font-family: monospace;
+    font-weight: 700;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.rb-lightbox__close {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.rb-lightbox__close:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.rb-lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.rb-lightbox__nav:hover {
+    background: #00a3e0;
+    color: #ffffff;
+    border-color: #00a3e0;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.rb-lightbox__prev {
+    left: -60px;
+}
+
+.rb-lightbox__next {
+    right: -60px;
+}
+
+@media (max-width: 768px) {
+    .rb-lightbox__nav {
+        top: auto;
+        bottom: 16px;
+        transform: none;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    .rb-lightbox__nav:hover {
+        transform: none;
+    }
+    .rb-lightbox__prev {
+        left: 16px;
+    }
+    .rb-lightbox__next {
+        right: 16px;
+    }
+    .rb-lightbox__content {
+        padding: 14px 14px 64px 14px;
+    }
+    .rb-lightbox__img-wrap {
+        height: 46vh;
+    }
+    .rb-lightbox__close {
+        top: -42px;
+        right: 4px;
+    }
+}
+
+/* ==========================================================================
+   CONFECCIONES ESPECIALES CARDS HOVER
+   ========================================================================== */
+.rb-special-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 43, 73, 0.08) !important;
+    border-color: #00a3e0 !important;
+}
+
+.rb-special-card:hover .rb-special-card__img-wrap img {
+    transform: scale(1.04);
+}
+
+.rb-special-card:hover .rb-card-zoom-badge {
+    background: #00a3e0 !important;
+}
+
+/* ==========================================================================
+   ACCORDION DE MARCAS Y FABRICANTES (LANDING B2B)
+   ========================================================================== */
+.rb-brands-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.rb-brands-accordion-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.rb-brands-accordion-item.is-open {
+    border-color: #00a3e0;
+    box-shadow: 0 10px 30px rgba(0, 43, 73, 0.08);
+}
+
+.rb-brands-accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s ease;
+    gap: 16px;
+}
+
+.rb-brands-accordion-header:hover {
+    background: #f8fafc;
+}
+
+.rb-brands-accordion-item.is-open .rb-brands-accordion-header {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.rb-brands-acc-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.rb-brands-acc-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #f1f5f9;
+    color: var(--color-brand-primary, #0f172a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s;
+}
+
+.rb-brands-accordion-item.is-open .rb-brands-acc-icon {
+    background: rgba(0, 163, 224, 0.12);
+    color: #00a3e0;
+}
+
+.rb-brands-acc-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-brand-primary, #0f172a);
+    margin: 0 0 2px 0;
+}
+
+.rb-brands-acc-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    display: block;
+}
+
+.rb-brands-acc-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.rb-brands-acc-badge {
+    background: #e0f2fe;
+    color: #0284c7;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 9999px;
+}
+
+.rb-brands-acc-chevron {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, background 0.2s, color 0.2s;
+}
+
+.rb-brands-accordion-item.is-open .rb-brands-acc-chevron {
+    transform: rotate(180deg);
+    background: #00a3e0;
+    color: #ffffff;
+}
+
+.rb-brands-accordion-body {
+    padding: 24px;
+    background: #ffffff;
+}
+
+.rb-brands-grid--category {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+    .rb-brands-accordion-header {
+        padding: 14px 16px;
+    }
+    .rb-brands-acc-left {
+        gap: 12px;
+    }
+    .rb-brands-acc-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .rb-brands-acc-title {
+        font-size: 1rem;
+    }
+    .rb-brands-acc-desc {
+        display: none;
+    }
+    .rb-brands-accordion-body {
+        padding: 16px;
+    }
+    .rb-brands-grid--category {
+        grid-template-columns: 1fr;
+    }
+}
 
 
 /* =======================================
@@ -4990,6 +5361,7 @@ body.rb-main {
                             <li><a href="/productos/fundas-para-tablets">Fundas para Tablets</a></li>
                             <li><a href="/productos/fundas-para-impresoras">Fundas para Impresoras</a></li>
                             <li><a href="/productos/fundas-para-pos-moviles">Fundas para POS Móviles</a></li>
+                            <li><a href="/productos/confecciones-especiales">Confecciones Especiales</a></li>
                             <li><a href="/productos/valijas-de-seguridad">Valijas de Seguridad</a></li>
                             <li><a href="/productos/candados-especiales">Candados de Seguridad</a></li>
                         </ul>
@@ -5057,6 +5429,7 @@ body.rb-main {
                         <li><a href="/productos/fundas-para-tablets" class="rb-mobile-submenu__link">Fundas para Tablets</a></li>
                         <li><a href="/productos/fundas-para-impresoras" class="rb-mobile-submenu__link">Fundas para Impresoras</a></li>
                         <li><a href="/productos/fundas-para-pos-moviles" class="rb-mobile-submenu__link">Fundas para POS Móviles</a></li>
+                        <li><a href="/productos/confecciones-especiales" class="rb-mobile-submenu__link">Confecciones Especiales</a></li>
                         <li><a href="/productos/valijas-de-seguridad" class="rb-mobile-submenu__link">Valijas de Seguridad</a></li>
                         <li><a href="/productos/candados-especiales" class="rb-mobile-submenu__link">Candados de Seguridad</a></li>
                     </ul>
@@ -5253,8 +5626,8 @@ body.rb-main {
             <div class="rb-about-editorial__grid">
                 <!-- Columna Izquierda: Fotografía Confección -->
                 <div class="rb-about-editorial__image-col">
-                    <div class="rb-about-image-wrapper">
-                        <img src="/assets/images/rolando_alvarez.jpg" alt="Rolando Álvarez - Fundador ROLBAG" class="rb-about-editorial__img" style="object-fit: contain; width: 100%; height: auto; max-height: 500px; background-color: #fff;" loading="eager" />
+                    <div class="rb-about-image-wrapper" style="aspect-ratio: 1 / 1; width: 100%; max-width: 480px; margin: 0 auto; background: #ffffff;">
+                        <img src="/assets/images/rolando_alvarez.jpg" alt="Rolando Álvarez - Fundador ROLBAG" class="rb-about-editorial__img" style="object-fit: cover; width: 100%; height: 100%; display: block;" loading="eager" />
                         <div class="rb-about-image-badge">
                             <span class="rb-about-image-badge__title">Rolando Álvarez</span>
                             <span class="rb-about-image-badge__subtitle">Santiago Centro, Chile</span>
@@ -5431,7 +5804,7 @@ body.rb-main {
                 <div class="rb-bento-row rb-bento-row--top">
                     <!-- Línea 01: Capturadores (Dominante) -->
                     <a href="/productos/fundas-para-capturadores" class="rb-bento-card rb-bento-card--lead">
-                        <div class="rb-bento-card__bg" style="background-image: url('/assets/images/generated/capturador_zebra_principal_portada.webp');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('/assets/images/galeria/capturadores/honeywell_ck65_frontal.webp');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <div class="rb-bento-card__meta">
@@ -5446,7 +5819,7 @@ body.rb-main {
 
                     <!-- Línea 02: Tablets -->
                     <a href="/productos/fundas-para-tablets" class="rb-bento-card rb-bento-card--side-top">
-                        <div class="rb-bento-card__bg" style="background-image: url('/assets/images/generated/bento_tablet_1787700308321.jpg');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('/assets/images/galeria/tablets/tablet_05.webp');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <div class="rb-bento-card__meta">
@@ -5464,7 +5837,7 @@ body.rb-main {
                 <div class="rb-bento-row rb-bento-row--bottom">
                     <!-- Línea 03: Impresoras Portátiles -->
                     <a href="/productos/fundas-para-impresoras" class="rb-bento-card rb-bento-card--quad">
-                        <div class="rb-bento-card__bg" style="background-image: url('/assets/images/generated/funda_impresora_principal_01.webp');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('/assets/images/galeria/impresoras/impresora_01.webp');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 03</span>
@@ -5476,7 +5849,7 @@ body.rb-main {
 
                     <!-- Línea 04: POS Móviles -->
                     <a href="/productos/fundas-para-pos-moviles" class="rb-bento-card rb-bento-card--quad">
-                        <div class="rb-bento-card__bg" style="background-image: url('/assets/images/generated/funda_pos_movil_principal.jpg');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('/assets/images/galeria/pos_moviles/pos_02.webp');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 04</span>
@@ -5511,19 +5884,6 @@ body.rb-main {
                     </a>
                 </div>
             </div>
-            
-            <div class="rb-bento-row rb-bento-row--bottom" style="margin-top: 16px;">
-                <a href="/productos/confecciones-especiales" class="rb-bento-card rb-bento-card--lead" style="width: 100%;">
-                    <div class="rb-bento-card__bg" style="background-image: url('/assets/images/galeria/especiales_01/Especial_Estructura_01.png');"></div>
-                    <div class="rb-bento-card__overlay"></div>
-                    <div class="rb-bento-card__content">
-                        <span class="rb-badge rb-badge--light">Línea 07</span>
-                        <h4 class="rb-bento-sub-title" style="font-size: 1.5rem; margin-bottom: 8px;">Confecciones Especiales y Desarrollo a Medida</h4>
-                        <p class="rb-bento-desc">Soluciones personalizadas y confecciones a medida para hardware industrial, estructuras especiales, wearables y radiocomunicación.</p>
-                        <span class="rb-bento-link">Ver galería &rarr;</span>
-                    </div>
-                </a>
-            </div>
             <div class="rb-products-all-link text-center" style="margin-top: 36px;">
                 <a href="/productos" class="rb-btn rb-btn--outline">Ver Catálogo Completo de Líneas &rarr;</a>
             </div>
@@ -5545,569 +5905,824 @@ body.rb-main {
                     <p class="rb-section-subtitle" style="max-width: 800px; margin: 0 auto 28px auto;">Confeccionamos fundas protectoras con calce milimétrico para el hardware industrial de los principales fabricantes del mundo.</p>
                 </div>
 
-                <!-- Filtros por Categoría de Hardware -->
-                <div class="rb-brands-filter-wrap">
-                    <div class="rb-brands-filter-tabs" role="tablist" aria-label="Filtrar marcas por categoría de equipamiento">
-                        <button type="button" class="rb-brand-tab active" data-filter="all" role="tab" aria-selected="true">
-                            <span>Todas las Marcas</span>
-                            <span class="rb-brand-tab__count">22</span>
-                        </button>
-                        <button type="button" class="rb-brand-tab" data-filter="capturadores" role="tab" aria-selected="false">
-                            <span>Capturadores & PDA</span>
-                            <span class="rb-brand-tab__count">11</span>
-                        </button>
-                        <button type="button" class="rb-brand-tab" data-filter="tablets" role="tab" aria-selected="false">
-                            <span>Tablets Industriales</span>
-                            <span class="rb-brand-tab__count">6</span>
-                        </button>
-                        <button type="button" class="rb-brand-tab" data-filter="impresoras" role="tab" aria-selected="false">
-                            <span>Impresoras Portátiles</span>
-                            <span class="rb-brand-tab__count">7</span>
-                        </button>
-                        <button type="button" class="rb-brand-tab" data-filter="pos" role="tab" aria-selected="false">
-                            <span>Terminales POS Móviles</span>
-                            <span class="rb-brand-tab__count">4</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Buscador predictivo de marcas -->
-                <div class="rb-brands-search-wrap">
+                
+                <!-- Buscador predictivo de marcas y fabricantes -->
+                <div class="rb-brands-search-wrap" style="margin-bottom: 28px;">
                     <div class="rb-brands-search-inner">
                         <svg class="rb-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                         <input type="text" id="rb-brands-search" placeholder="Buscar fabricante (ej. Zebra, Honeywell, Sunmi, Bixolon, Samsung, PAX)..." aria-label="Buscar marcas o fabricantes compatibles">
                     </div>
                 </div>
 
-                <!-- Grid de Tarjetas de Marcas -->
-                <div class="rb-brands-grid" id="rb-brands-container">
-                    <!-- Zebra -->
-                    <div class="rb-brand-card-item" data-category="capturadores tablets impresoras" data-name="zebra" style="--brand-color: #16191F; --brand-color-light: rgba(22, 25, 31, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16L6 20h14"/></svg>
+                <!-- Estructura de Lista Desplegable y Contraíble Agrupada por Categoría -->
+                <div class="rb-brands-accordion" id="rb-brands-accordion">
+                                            <div class="rb-brands-accordion-item" data-cat="capturadores">
+                            <button type="button" class="rb-brands-accordion-header" aria-expanded="false">
+                                <div class="rb-brands-acc-left">
+                                    <span class="rb-brands-acc-icon">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/><line x1="9" y1="6" x2="15" y2="6"/></svg>                                    </span>
+                                    <div class="rb-brands-acc-title-wrap">
+                                        <h4 class="rb-brands-acc-title">Capturadores &amp; PDA / Terminales Móviles</h4>
+                                        <span class="rb-brands-acc-desc">Soporte y calce milimétrico para 12 fabricantes globales de captura de datos</span>
+                                    </div>
+                                </div>
+                                <div class="rb-brands-acc-right">
+                                    <span class="rb-brands-acc-badge">12 Fabricantes</span>
+                                    <span class="rb-brands-acc-chevron" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                                    </span>
+                                </div>
+                            </button>
+                            <div class="rb-brands-accordion-body" style="display: none;">
+                                <div class="rb-brands-grid--category">
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="zebra technologies" style="--brand-color: #16191F; --brand-color-light: rgba(22, 25, 31, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16L6 20h14"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Líder Global Industrial</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Zebra Technologies</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-zebra" class="rb-brand-line-pill">Capturadores &rarr;</a>
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-zebra" class="rb-brand-line-pill">Tablets &rarr;</a>
+                                                                                                            <a href="/productos/fundas-para-impresoras/#marca-zebra" class="rb-brand-line-pill">Impresoras &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-zebra" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="honeywell" style="--brand-color: #EE3124; --brand-color-light: rgba(238, 49, 36, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16M19 4v16M5 12h14"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Movilidad &amp; Logística</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Honeywell</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-honeywell" class="rb-brand-line-pill">Capturadores &rarr;</a>
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-honeywell" class="rb-brand-line-pill">Tablets &rarr;</a>
+                                                                                                            <a href="/productos/fundas-para-impresoras/#marca-honeywell" class="rb-brand-line-pill">Impresoras &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-honeywell" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="datalogic" style="--brand-color: #E2001A; --brand-color-light: rgba(226, 0, 26, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="M7 12h2M15 12h2"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Captura &amp; Almacén</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Datalogic</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-datalogic" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-datalogic" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="urovo" style="--brand-color: #FF6600; --brand-color-light: rgba(255, 102, 0, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Terminales &amp; RFID</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Urovo</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-urovo" class="rb-brand-line-pill">Capturadores &rarr;</a>
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-urovo" class="rb-brand-line-pill">Tablets &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-urovo" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="newland" style="--brand-color: #0072CE; --brand-color-light: rgba(0, 114, 206, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19L19 4M8 20l12-12M4 12L12 4"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Capturadores &amp; Almacén</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Newland</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-newland" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-newland" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="unitech" style="--brand-color: #005BAC; --brand-color-light: rgba(0, 91, 172, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v10a6 6 0 0 0 12 0V4"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Movilidad &amp; RFID</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Unitech</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-unitech" class="rb-brand-line-pill">Capturadores &rarr;</a>
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-unitech" class="rb-brand-line-pill">Tablets &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-unitech" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="cipherlab" style="--brand-color: #004F9F; --brand-color-light: rgba(0, 79, 159, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a4.5 4.5 0 0 0 0 9H14a4.5 4.5 0 0 1 0 9H7"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Terminales de Almacén</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">CipherLab</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-cipherlab" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-cipherlab" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="wepoy" style="--brand-color: #0093DD; --brand-color-light: rgba(0, 147, 221, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Captura Intensiva &amp; RFID</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Wepoy</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-wepoy" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-wepoy" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="chainway" style="--brand-color: #0A60C2; --brand-color-light: rgba(10, 96, 194, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">PDA Industrial &amp; RFID</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Chainway</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-chainway" class="rb-brand-line-pill">Capturadores &rarr;</a>
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-chainway" class="rb-brand-line-pill">Tablets &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-chainway" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="bluebird" style="--brand-color: #0082C8; --brand-color-light: rgba(0, 130, 200, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><path d="M18 8h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Terminales Empresariales</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Bluebird</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-bluebird" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-bluebird" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="m3 mobile" style="--brand-color: #0054A6; --brand-color-light: rgba(0, 84, 166, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M4 4h16M4 12h16"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Cámaras de Frío &amp; Logística</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">M3 Mobile</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-m3-mobile" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-m3-mobile" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="capturadores" data-name="panasonic toughbook" style="--brand-color: #003896; --brand-color-light: rgba(0, 56, 150, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Línea Toughbook Rugged</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Panasonic Toughbook</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-capturadores/#marca-panasonic" class="rb-brand-line-pill">Capturadores & Tablets &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-capturadores/#marca-panasonic" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                    </div>
                             </div>
-                            <span class="rb-brand-badge-cat">Líder Global Industrial</span>
                         </div>
-                        <h4 class="rb-brand-card-item__title">Zebra Technologies</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Líneas compatibles:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-zebra" class="rb-brand-line-pill">Capturadores &rarr;</a>
-                                <a href="/productos/fundas-para-tablets/#marca-zebra" class="rb-brand-line-pill">Tablets &rarr;</a>
-                                <a href="/productos/fundas-para-impresoras/#marca-zebra" class="rb-brand-line-pill">Impresoras &rarr;</a>
+                                            <div class="rb-brands-accordion-item" data-cat="tablets">
+                            <button type="button" class="rb-brands-accordion-header" aria-expanded="false">
+                                <div class="rb-brands-acc-left">
+                                    <span class="rb-brands-acc-icon">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>                                    </span>
+                                    <div class="rb-brands-acc-title-wrap">
+                                        <h4 class="rb-brands-acc-title">Tablets Industriales Rugged</h4>
+                                        <span class="rb-brands-acc-desc">Soporte ergonómico de mano y protección perimetral para tablets empresariales de 7&quot; a 12&quot;</span>
+                                    </div>
+                                </div>
+                                <div class="rb-brands-acc-right">
+                                    <span class="rb-brands-acc-badge">7 Fabricantes</span>
+                                    <span class="rb-brands-acc-chevron" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                                    </span>
+                                </div>
+                            </button>
+                            <div class="rb-brands-accordion-body" style="display: none;">
+                                <div class="rb-brands-grid--category">
+                                                                            <div class="rb-brand-card-item" data-category="tablets" data-name="samsung" style="--brand-color: #1428A0; --brand-color-light: rgba(20, 40, 160, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Tablets Rugged &amp; Enterprise</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Samsung</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-samsung" class="rb-brand-line-pill">Tablets Industriales &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-tablets/#marca-samsung" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="tablets" data-name="zebra technologies" style="--brand-color: #16191F; --brand-color-light: rgba(22, 25, 31, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16L6 20h14"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Tablets Rugged ET5x / L10</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Zebra Technologies</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-zebra" class="rb-brand-line-pill">Tablets Industriales &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-tablets/#marca-zebra" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="tablets" data-name="honeywell" style="--brand-color: #EE3124; --brand-color-light: rgba(238, 49, 36, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16M19 4v16M5 12h14"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Tablets Rugged RT10 / EDA10A</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Honeywell</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-honeywell" class="rb-brand-line-pill">Tablets Industriales &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-tablets/#marca-honeywell" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="tablets" data-name="urovo" style="--brand-color: #FF6600; --brand-color-light: rgba(255, 102, 0, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Tablets Industriales P8100</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Urovo</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-urovo" class="rb-brand-line-pill">Tablets Industriales &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-tablets/#marca-urovo" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="tablets" data-name="unitech" style="--brand-color: #005BAC; --brand-color-light: rgba(0, 91, 172, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v10a6 6 0 0 0 12 0V4"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Tablets Rugged TB85 / TB162</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Unitech</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-unitech" class="rb-brand-line-pill">Tablets Industriales &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-tablets/#marca-unitech" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="tablets" data-name="chainway" style="--brand-color: #0A60C2; --brand-color-light: rgba(10, 96, 194, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Tablets P80 / P100 Rugged</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Chainway</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-chainway" class="rb-brand-line-pill">Tablets Industriales &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-tablets/#marca-chainway" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="tablets" data-name="panasonic toughbook" style="--brand-color: #003896; --brand-color-light: rgba(0, 56, 150, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Toughbook G2 / A3 Rugged</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Panasonic Toughbook</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-tablets/#marca-panasonic" class="rb-brand-line-pill">Tablets Rugged &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-tablets/#marca-panasonic" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                    </div>
                             </div>
                         </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-zebra" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
+                                            <div class="rb-brands-accordion-item" data-cat="impresoras">
+                            <button type="button" class="rb-brands-accordion-header" aria-expanded="false">
+                                <div class="rb-brands-acc-left">
+                                    <span class="rb-brands-acc-icon">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>                                    </span>
+                                    <div class="rb-brands-acc-title-wrap">
+                                        <h4 class="rb-brands-acc-title">Impresoras Portátiles y Térmicas</h4>
+                                        <span class="rb-brands-acc-desc">Fundas con apertura frontal para emisión de tickets y recarga de papel sin desarmar la funda</span>
+                                    </div>
+                                </div>
+                                <div class="rb-brands-acc-right">
+                                    <span class="rb-brands-acc-badge">9 Fabricantes</span>
+                                    <span class="rb-brands-acc-chevron" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                                    </span>
+                                </div>
+                            </button>
+                            <div class="rb-brands-accordion-body" style="display: none;">
+                                <div class="rb-brands-grid--category">
+                                                                            <div class="rb-brand-card-item" data-category="impresoras" data-name="bixolon" style="--brand-color: #EA5404; --brand-color-light: rgba(234, 84, 4, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Impresión Térmica &amp; RFID</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Bixolon</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-impresoras/#marca-bixolon" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-impresoras/#marca-bixolon" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="impresoras" data-name="zebra technologies" style="--brand-color: #16191F; --brand-color-light: rgba(22, 25, 31, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16L6 20h14"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Línea ZQ600 / ZQ500 / ZQ300</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Zebra Technologies</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-impresoras/#marca-zebra" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-impresoras/#marca-zebra" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="impresoras" data-name="honeywell" style="--brand-color: #EE3124; --brand-color-light: rgba(238, 49, 36, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16M19 4v16M5 12h14"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Línea RP2 / RP4 / PB50</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Honeywell</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-impresoras/#marca-honeywell" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-impresoras/#marca-honeywell" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="impresoras" data-name="urovo" style="--brand-color: #FF6600; --brand-color-light: rgba(255, 102, 0, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Impresión Móvil K319 / K419</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Urovo</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-impresoras/#marca-urovo" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-impresoras/#marca-urovo" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="impresoras" data-name="unitech" style="--brand-color: #005BAC; --brand-color-light: rgba(0, 91, 172, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v10a6 6 0 0 0 12 0V4"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Impresión de Terreno SP320</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Unitech</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-impresoras/#marca-unitech" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-impresoras/#marca-unitech" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="impresoras" data-name="sewoo" style="--brand-color: #00629B; --brand-color-light: rgba(0, 98, 155, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Impresoras de Recibos LK-P</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Sewoo</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-impresoras/#marca-sewoo" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-impresoras/#marca-sewoo" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="impresoras" data-name="star micronics" style="--brand-color: #004B97; --brand-color-light: rgba(0, 75, 151, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Facturación en Terreno SM-L / SM-T</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Star Micronics</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-impresoras/#marca-star-micronics" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-impresoras/#marca-star-micronics" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="impresoras" data-name="epson" style="--brand-color: #003399; --brand-color-light: rgba(0, 51, 153, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><rect x="6" y="14" width="12" height="8"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Facturación &amp; Boleta Móvil</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Epson</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-impresoras/#marca-epson" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-impresoras/#marca-epson" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="impresoras" data-name="otras marcas especializadas" style="--brand-color: #00A3E0; --brand-color-light: rgba(0, 163, 224, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Fabricantes Especializados</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Otras Marcas Especializadas</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos" class="rb-brand-line-pill">Barpos &rarr;</a>
+                                                                                                            <a href="/productos" class="rb-brand-line-pill">Brother &rarr;</a>
+                                                                                                            <a href="/productos" class="rb-brand-line-pill">iDPRT &rarr;</a>
+                                                                                                            <a href="/productos" class="rb-brand-line-pill">Point Mobile &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-impresoras" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                    </div>
+                            </div>
                         </div>
-                    </div>
+                                            <div class="rb-brands-accordion-item" data-cat="pos">
+                            <button type="button" class="rb-brands-accordion-header" aria-expanded="false">
+                                <div class="rb-brands-acc-left">
+                                    <span class="rb-brands-acc-icon">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="3"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M7 15h2M12 15h2"/></svg>                                    </span>
+                                    <div class="rb-brands-acc-title-wrap">
+                                        <h4 class="rb-brands-acc-title">Terminales POS Móviles y Medios de Pago</h4>
+                                        <span class="rb-brands-acc-desc">Lectura de chip, NFC contactless y teclado táctil protegido para cobro en ruta y delivery</span>
+                                    </div>
+                                </div>
+                                <div class="rb-brands-acc-right">
+                                    <span class="rb-brands-acc-badge">4 Fabricantes</span>
+                                    <span class="rb-brands-acc-chevron" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                                    </span>
+                                </div>
+                            </button>
+                            <div class="rb-brands-accordion-body" style="display: none;">
+                                <div class="rb-brands-grid--category">
+                                                                            <div class="rb-brand-card-item" data-category="pos" data-name="sunmi" style="--brand-color: #FF5E00; --brand-color-light: rgba(255, 94, 0, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M7 15h2M12 15h2"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Smart POS &amp; Cobro Móvil</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Sunmi</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-pos-moviles/#marca-sunmi" class="rb-brand-line-pill">Terminales POS Móviles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-pos-moviles/#marca-sunmi" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="pos" data-name="pax technology" style="--brand-color: #0066B3; --brand-color-light: rgba(0, 102, 179, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><circle cx="7" cy="15" r="1"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Terminales de Pago en Ruta</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">PAX Technology</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-pos-moviles/#marca-pax-mercado-libre" class="rb-brand-line-pill">Terminales POS Móviles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-pos-moviles/#marca-pax-mercado-libre" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="pos" data-name="castles technology" style="--brand-color: #C8102E; --brand-color-light: rgba(200, 16, 46, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Cobro &amp; Certificación Bancaria</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">Castles Technology</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-pos-moviles/#marca-castles" class="rb-brand-line-pill">Terminales POS Móviles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-pos-moviles/#marca-castles" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div class="rb-brand-card-item" data-category="pos" data-name="tuu" style="--brand-color: #4F46E5; --brand-color-light: rgba(79, 70, 229, 0.08);">
+                                            <div class="rb-brand-card-item__top">
+                                                <div class="rb-brand-emblem" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="4" x2="20" y2="4"/></svg>                                                </div>
+                                                <span class="rb-brand-badge-cat">Smart POS &amp; Delivery</span>
+                                            </div>
+                                            <h5 class="rb-brand-card-item__title" style="font-size:1.15rem; font-weight:700; margin:0 0 12px 0; color:#0f172a;">TUU</h5>
+                                            <div class="rb-brand-lines-wrap" style="margin-bottom:14px;">
+                                                <span class="rb-brand-lines-label" style="font-size:0.75rem; color:#64748b; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Línea compatible:</span>
+                                                <div class="rb-brand-line-pills" style="display:flex; flex-wrap:wrap; gap:6px;">
+                                                                                                            <a href="/productos/fundas-para-pos-moviles/#marca-tuu" class="rb-brand-line-pill">Terminales POS Móviles &rarr;</a>
+                                                                                                    </div>
+                                            </div>
+                                            <div class="rb-brand-card-item__action" style="margin-top:auto;">
+                                                <a href="/productos/fundas-para-pos-moviles/#marca-tuu" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
+                                                    <span>Ver Ficha Técnica</span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                    </div>
+                            </div>
+                        </div>
+                                    </div>
 
-                    <!-- Honeywell -->
-                    <div class="rb-brand-card-item" data-category="capturadores tablets impresoras" data-name="honeywell" style="--brand-color: #EE3124; --brand-color-light: rgba(238, 49, 36, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16M19 4v16M5 12h14"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Movilidad & Logística</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Honeywell</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Líneas compatibles:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-honeywell" class="rb-brand-line-pill">Capturadores &rarr;</a>
-                                <a href="/productos/fundas-para-tablets/#marca-honeywell" class="rb-brand-line-pill">Tablets &rarr;</a>
-                                <a href="/productos/fundas-para-impresoras/#marca-honeywell" class="rb-brand-line-pill">Impresoras &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-honeywell" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const accHeaders = document.querySelectorAll('.rb-brands-accordion-header');
+                    const brandSearch = document.getElementById('rb-brands-search');
+                    const accItems = document.querySelectorAll('.rb-brands-accordion-item');
 
-                    <!-- Datalogic -->
-                    <div class="rb-brand-card-item" data-category="capturadores" data-name="datalogic" style="--brand-color: #E2001A; --brand-color-light: rgba(226, 0, 26, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="M7 12h2M15 12h2"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Captura & Almacén</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Datalogic</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-datalogic" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-datalogic" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                    accHeaders.forEach(header => {
+                        header.addEventListener('click', function() {
+                            const item = this.closest('.rb-brands-accordion-item');
+                            const body = item.querySelector('.rb-brands-accordion-body');
+                            const isOpen = item.classList.contains('is-open');
 
-                    <!-- Samsung -->
-                    <div class="rb-brand-card-item" data-category="tablets" data-name="samsung" style="--brand-color: #1428A0; --brand-color-light: rgba(20, 40, 160, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Tablets Rugged & Enterprise</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Samsung</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-tablets/#marca-samsung" class="rb-brand-line-pill">Tablets Industriales &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-tablets/#marca-samsung" class="rb-brand-main-btn" style="width:100%; justify-content:center;">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                            if (isOpen) {
+                                item.classList.remove('is-open');
+                                this.setAttribute('aria-expanded', 'false');
+                                body.style.display = 'none';
+                            } else {
+                                item.classList.add('is-open');
+                                this.setAttribute('aria-expanded', 'true');
+                                body.style.display = 'block';
+                            }
+                        });
+                    });
 
-                    <!-- Urovo -->
-                    <div class="rb-brand-card-item" data-category="capturadores tablets impresoras" data-name="urovo" style="--brand-color: #FF6600; --brand-color-light: rgba(255, 102, 0, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Terminales, Tablets & RFID</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Urovo</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Líneas compatibles:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-urovo" class="rb-brand-line-pill">Capturadores &rarr;</a>
-                                <a href="/productos/fundas-para-tablets/#marca-urovo" class="rb-brand-line-pill">Tablets &rarr;</a>
-                                <a href="/productos/fundas-para-impresoras/#marca-urovo" class="rb-brand-line-pill">Impresoras &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-urovo" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                    if (brandSearch) {
+                        brandSearch.addEventListener('input', function() {
+                            const query = this.value.toLowerCase().trim();
 
-                    <!-- Newland -->
-                    <div class="rb-brand-card-item" data-category="capturadores" data-name="newland" style="--brand-color: #0072CE; --brand-color-light: rgba(0, 114, 206, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19L19 4M8 20l12-12M4 12L12 4"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Capturadores & Almacén</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Newland</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-newland" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-newland" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                            accItems.forEach(item => {
+                                const cards = item.querySelectorAll('.rb-brand-card-item');
+                                const header = item.querySelector('.rb-brands-accordion-header');
+                                const body = item.querySelector('.rb-brands-accordion-body');
+                                let matchCount = 0;
 
-                    <!-- Unitech -->
-                    <div class="rb-brand-card-item" data-category="capturadores tablets impresoras" data-name="unitech" style="--brand-color: #005BAC; --brand-color-light: rgba(0, 91, 172, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v10a6 6 0 0 0 12 0V4"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Movilidad, Tablets & RFID</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Unitech</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Líneas compatibles:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-unitech" class="rb-brand-line-pill">Capturadores &rarr;</a>
-                                <a href="/productos/fundas-para-tablets/#marca-unitech" class="rb-brand-line-pill">Tablets &rarr;</a>
-                                <a href="/productos/fundas-para-impresoras/#marca-unitech" class="rb-brand-line-pill">Impresoras &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-unitech" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                                cards.forEach(card => {
+                                    const name = card.getAttribute('data-name') || '';
+                                    const title = (card.querySelector('.rb-brand-card-item__title')?.textContent || '').toLowerCase();
+                                    const badge = (card.querySelector('.rb-brand-badge-cat')?.textContent || '').toLowerCase();
 
-                    <!-- Bixolon -->
-                    <div class="rb-brand-card-item" data-category="impresoras" data-name="bixolon" style="--brand-color: #EA5404; --brand-color-light: rgba(234, 84, 4, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Impresión Térmica & RFID</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Bixolon</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-impresoras/#marca-bixolon" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-impresoras/#marca-bixolon" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                                    if (!query || name.includes(query) || title.includes(query) || badge.includes(query)) {
+                                        card.style.display = '';
+                                        matchCount++;
+                                    } else {
+                                        card.style.display = 'none';
+                                    }
+                                });
 
-                    <!-- CipherLab -->
-                    <div class="rb-brand-card-item" data-category="capturadores" data-name="cipherlab" style="--brand-color: #004F9F; --brand-color-light: rgba(0, 79, 159, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a4.5 4.5 0 0 0 0 9H14a4.5 4.5 0 0 1 0 9H7"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Terminales de Almacén</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">CipherLab</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-cipherlab" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-cipherlab" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Sunmi -->
-                    <div class="rb-brand-card-item" data-category="pos" data-name="sunmi" style="--brand-color: #FF5E00; --brand-color-light: rgba(255, 94, 0, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M7 15h2M12 15h2"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Smart POS & Cobro Móvil</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Sunmi</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-pos-moviles/#marca-sunmi" class="rb-brand-line-pill">Terminales POS Móviles &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-pos-moviles/#marca-sunmi" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- PAX (Mercado Libre) -->
-                    <div class="rb-brand-card-item" data-category="pos" data-name="pax mercado libre" style="--brand-color: #0066B3; --brand-color-light: rgba(0, 102, 179, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><circle cx="7" cy="15" r="1"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Terminales de Pago en Ruta</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">PAX Technology</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-pos-moviles/#marca-pax-mercado-libre" class="rb-brand-line-pill">Terminales POS Móviles &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-pos-moviles/#marca-pax-mercado-libre" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Castles Technology -->
-                    <div class="rb-brand-card-item" data-category="pos" data-name="castles" style="--brand-color: #C8102E; --brand-color-light: rgba(200, 16, 46, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Cobro & Certificación Bancaria</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Castles Technology</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-pos-moviles/#marca-castles" class="rb-brand-line-pill">Terminales POS Móviles &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-pos-moviles/#marca-castles" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- TUU -->
-                    <div class="rb-brand-card-item" data-category="pos" data-name="tuu" style="--brand-color: #4F46E5; --brand-color-light: rgba(79, 70, 229, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="4" x2="20" y2="4"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Smart POS & Delivery</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">TUU</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-pos-moviles/#marca-tuu" class="rb-brand-line-pill">Terminales POS Móviles &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-pos-moviles/#marca-tuu" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Sewoo -->
-                    <div class="rb-brand-card-item" data-category="impresoras" data-name="sewoo" style="--brand-color: #00629B; --brand-color-light: rgba(0, 98, 155, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Impresoras de Recibos</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Sewoo</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-impresoras/#marca-sewoo" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-impresoras/#marca-sewoo" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Star Micronics -->
-                    <div class="rb-brand-card-item" data-category="impresoras" data-name="star micronics" style="--brand-color: #004B97; --brand-color-light: rgba(0, 75, 151, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Facturación en Terreno</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Star Micronics</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-impresoras/#marca-star-micronics" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-impresoras/#marca-star-micronics" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Wepoy -->
-                    <div class="rb-brand-card-item" data-category="capturadores" data-name="wepoy" style="--brand-color: #0093DD; --brand-color-light: rgba(0, 147, 221, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Captura Intensiva & RFID</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Wepoy</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-wepoy" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-wepoy" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Chainway -->
-                    <div class="rb-brand-card-item" data-category="capturadores tablets" data-name="chainway" style="--brand-color: #0A60C2; --brand-color-light: rgba(10, 96, 194, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">PDA Industrial & RFID</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Chainway</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Líneas compatibles:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-chainway" class="rb-brand-line-pill">Capturadores &rarr;</a>
-                                <a href="/productos/fundas-para-tablets/#marca-chainway" class="rb-brand-line-pill">Tablets &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-chainway" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Bluebird -->
-                    <div class="rb-brand-card-item" data-category="capturadores" data-name="bluebird" style="--brand-color: #0082C8; --brand-color-light: rgba(0, 130, 200, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><path d="M18 8h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Terminales Empresariales</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Bluebird</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-bluebird" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-bluebird" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- M3 Mobile -->
-                    <div class="rb-brand-card-item" data-category="capturadores" data-name="m3 mobile" style="--brand-color: #0054A6; --brand-color-light: rgba(0, 84, 166, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M4 4h16M4 12h16"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Cámaras de Frío & Logística</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">M3 Mobile</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-capturadores/#marca-m3-mobile" class="rb-brand-line-pill">Capturadores de Datos &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-capturadores/#marca-m3-mobile" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Panasonic -->
-                    <div class="rb-brand-card-item" data-category="tablets capturadores" data-name="panasonic toughbook" style="--brand-color: #003896; --brand-color-light: rgba(0, 56, 150, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Línea Toughbook Rugged</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Panasonic Toughbook</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Líneas compatibles:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-tablets/#marca-panasonic" class="rb-brand-line-pill">Tablets Rugged &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-tablets/#marca-panasonic" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Epson -->
-                    <div class="rb-brand-card-item" data-category="impresoras" data-name="epson" style="--brand-color: #003399; --brand-color-light: rgba(0, 51, 153, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><rect x="6" y="14" width="12" height="8"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Facturación & Boleta Móvil</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Epson</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Línea compatible:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos/fundas-para-impresoras/#marca-epson" class="rb-brand-line-pill">Impresoras Portátiles &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos/fundas-para-impresoras/#marca-epson" class="rb-brand-main-btn">
-                                <span>Ver Ficha Técnica</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Otras Marcas Especializadas -->
-                    <div class="rb-brand-card-item" data-category="impresoras capturadores" data-name="brother barpos idprt point mobile handheld idata" style="--brand-color: #00A3E0; --brand-color-light: rgba(0, 163, 224, 0.08);">
-                        <div class="rb-brand-card-item__top">
-                            <div class="rb-brand-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                            </div>
-                            <span class="rb-brand-badge-cat">Fabricantes Especializados</span>
-                        </div>
-                        <h4 class="rb-brand-card-item__title">Otras Marcas Especializadas</h4>
-                        <div class="rb-brand-lines-wrap">
-                            <span class="rb-brand-lines-label">Fabricantes soportados:</span>
-                            <div class="rb-brand-line-pills">
-                                <a href="/productos" class="rb-brand-line-pill">Barpos &rarr;</a>
-                                <a href="/productos" class="rb-brand-line-pill">Brother &rarr;</a>
-                                <a href="/productos" class="rb-brand-line-pill">iDPRT &rarr;</a>
-                                <a href="/productos" class="rb-brand-line-pill">Point Mobile &rarr;</a>
-                            </div>
-                        </div>
-                        <div class="rb-brand-card-item__action">
-                            <a href="/productos" class="rb-brand-main-btn">
-                                <span>Explorar Catálogo</span>
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Botón Expansor para Mobile (Evita fatiga de scroll de 22 tarjetas) -->
-                <div class="rb-brands-mobile-toggle-wrap">
-                    <button type="button" id="rb-brands-toggle-mobile-btn" class="rb-brands-mobile-btn" aria-expanded="false">
-                        <span class="rb-brands-toggle-text">Ver todas las marcas compatibles (+14 fabricantes)</span>
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                    </button>
-                </div>
+                                if (query) {
+                                    if (matchCount > 0) {
+                                        item.style.display = '';
+                                        item.classList.add('is-open');
+                                        header.setAttribute('aria-expanded', 'true');
+                                        body.style.display = 'block';
+                                    } else {
+                                        item.style.display = 'none';
+                                    }
+                                } else {
+                                    item.style.display = '';
+                                    item.classList.remove('is-open');
+                                    header.setAttribute('aria-expanded', 'false');
+                                    body.style.display = 'none';
+                                }
+                            });
+                        });
+                    }
+                });
+                </script>
 
                 <!-- Banner Compromiso Prototipado 48 Horas -->
                 <div class="rb-brands-custom-callout">
@@ -6380,6 +6995,8 @@ body.rb-main {
                         <li><a href="/productos/fundas-para-capturadores" class="rb-footer__link">Fundas para Capturadores</a></li>
                         <li><a href="/productos/fundas-para-tablets" class="rb-footer__link">Fundas para Tablets</a></li>
                         <li><a href="/productos/fundas-para-impresoras" class="rb-footer__link">Fundas para Impresoras</a></li>
+                        <li><a href="/productos/fundas-para-pos-moviles" class="rb-footer__link">Fundas para POS Móviles</a></li>
+                        <li><a href="/productos/confecciones-especiales" class="rb-footer__link">Confecciones Especiales</a></li>
                         <li><a href="/productos/valijas-de-seguridad" class="rb-footer__link">Valijas de Seguridad</a></li>
                         <li><a href="/productos/candados-especiales" class="rb-footer__link">Candados de Seguridad</a></li>
                     </ul>

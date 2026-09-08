@@ -51,27 +51,13 @@ foreach ( $brands_models as $b_name => $b_models ) {
 // Construcción inteligente de la Galería de Fotos Reales con Fondo Blanco de Estudio
 $theme_uri = get_template_directory_uri();
 $product_slug = get_post_field( 'post_name', $post_id );
+$is_confecciones_especiales = ( $product_slug === 'confecciones-especiales' );
 
 $real_gallery = array();
+$special_galleries = array();
 
 if ( $product_slug === 'fundas-para-capturadores' ) {
     $real_gallery = array(
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_frontal.webp',
-            'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Frontal'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_lateral.webp',
-            'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Lateral'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_frontal.webp',
-            'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Frontal'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_lateral.webp',
-            'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Lateral'
-        ),
         array(
             'url'   => $theme_uri . '/assets/images/galeria/capturadores/honeywell_ck65_frontal.webp',
             'title' => 'Funda para Capturador Honeywell CK65 - Vista Frontal'
@@ -79,6 +65,22 @@ if ( $product_slug === 'fundas-para-capturadores' ) {
         array(
             'url'   => $theme_uri . '/assets/images/galeria/capturadores/honeywell_ck65_lateral.webp',
             'title' => 'Funda para Capturador Honeywell CK65 - Vista Lateral'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_frontal.webp',
+            'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Frontal'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_frontal.webp',
+            'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Frontal'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_lateral.webp',
+            'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Lateral'
+        ),
+        array(
+            'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_lateral.webp',
+            'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Lateral'
         )
     );
 } elseif ( $product_slug === 'fundas-para-impresoras' ) {
@@ -106,21 +108,48 @@ if ( $product_slug === 'fundas-para-capturadores' ) {
         array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_03.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Posterior' ),
         array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_04.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Handstrap' )
     );
-} elseif ( $product_slug === 'confecciones-especiales' ) {
-    $real_gallery = array(
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_01/Especial_Estructura_01.png', 'title' => 'Estructuras Especiales - Especial Estructura 01' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_01/Especial_Estructura_02.png', 'title' => 'Estructuras Especiales - Especial Estructura 02' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_01/Especial_Estructura_03.png', 'title' => 'Estructuras Especiales - Especial Estructura 03' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_02/Muneca_Wearable_01.png', 'title' => 'Para Antebrazos y Muñecas (Wearables) - Muneca Wearable 01' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_02/Muneca_Wearable_02.png', 'title' => 'Para Antebrazos y Muñecas (Wearables) - Muneca Wearable 02' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_02/Muneca_Wearable_03.png', 'title' => 'Para Antebrazos y Muñecas (Wearables) - Muneca Wearable 03' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_03/Radio_Funda_01.png', 'title' => 'Radios y Comunicación - Radio Funda 01' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_03/Radio_Funda_02.png', 'title' => 'Radios y Comunicación - Radio Funda 02' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_03/Radio_Funda_03.png', 'title' => 'Radios y Comunicación - Radio Funda 03' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_04/Equipo_Diferente_01.png', 'title' => 'Equipos Especiales - Equipo Diferente 01' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_04/Equipo_Diferente_02.png', 'title' => 'Equipos Especiales - Equipo Diferente 02' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/especiales_04/Equipo_Diferente_03.jpg', 'title' => 'Equipos Especiales - Equipo Diferente 03' ),
+} elseif ( $is_confecciones_especiales ) {
+    $special_galleries = array(
+        'estructuras' => array(
+            'title' => 'ESTRUCTURAS ESPECIALES',
+            'desc'  => 'Fundas de alta rigidez estructural y sujeción reforzada para hardware especializado.',
+            'items' => array(
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/1.png', 'title' => 'Estructuras Especiales - Modelo 01' ),
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/2.png', 'title' => 'Estructuras Especiales - Modelo 02' ),
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/3.png', 'title' => 'Estructuras Especiales - Modelo 03' ),
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/4.png', 'title' => 'Estructuras Especiales - Modelo 04' ),
+            ),
+        ),
+        'wearables' => array(
+            'title' => 'SOPORTE DE MUÑECA (WEARABLES)',
+            'desc'  => 'Sistemas ergonómicos de sujeción para antebrazos y muñecas para operarios con manos libres.',
+            'items' => array(
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/1.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 01' ),
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/2.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 02' ),
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/3.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 03' ),
+            ),
+        ),
+        'radios' => array(
+            'title' => 'RADIOS Y COMUNICACION',
+            'desc'  => 'Fundas balísticas para radios portátiles VHF/UHF de faena, seguridad y transporte.',
+            'items' => array(
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/1.png', 'title' => 'Radios y Comunicación - Modelo 01' ),
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/2.png', 'title' => 'Radios y Comunicación - Modelo 02' ),
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/3.png', 'title' => 'Radios y Comunicación - Modelo 03' ),
+            ),
+        ),
+        'equipos_especiales' => array(
+            'title' => 'EQUIPOS ESPECIALES',
+            'desc'  => 'Desarrollos personalizados exclusivos según muestra física o plano del fabricante.',
+            'items' => array(
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/1.png', 'title' => 'Equipos Especiales - Modelo 01' ),
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/2.png', 'title' => 'Equipos Especiales - Modelo 02' ),
+                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/3.png', 'title' => 'Equipos Especiales - Modelo 03' ),
+            ),
+        ),
     );
+    // Portada del hero
+    $active_main_image = $special_galleries['estructuras']['items'][0]['url'];
 } else {
     // Fallback general
     $main_image_meta = get_post_meta( $post_id, 'rolbag_image', true );
@@ -132,7 +161,9 @@ if ( $product_slug === 'fundas-para-capturadores' ) {
     }
 }
 
-$active_main_image = ! empty( $real_gallery ) ? $real_gallery[0]['url'] : '';
+if ( ! $is_confecciones_especiales ) {
+    $active_main_image = ! empty( $real_gallery ) ? $real_gallery[0]['url'] : '';
+}
 
 $whatsapp = '569318360416';
 $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización para la línea: ' . get_the_title() );
@@ -152,19 +183,23 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
             </nav>
             
             <div class="rb-product-hero__grid">
-                <!-- Columna Izquierda: Galería -->
+                <!-- Columna Izquierda: Galería Principal -->
                 <div class="rb-product-gallery-col">
-                    <div class="rb-product-main-img-wrap" style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:20px; display:flex; align-items:center; justify-content:center; min-height:380px; position:relative; box-shadow:0 4px 15px rgba(0,0,0,0.04);">
+                    <div class="rb-product-main-img-wrap" style="background:#ffffff; border-radius:16px; border:1px solid #e2e8f0; padding:12px; display:flex; align-items:center; justify-content:center; height:480px; position:relative; box-shadow:0 8px 24px rgba(0,0,0,0.06); cursor:zoom-in;">
                         <?php if ( $active_main_image ) : ?>
-                            <img id="rb-main-view" src="<?php echo esc_url( $active_main_image ); ?>" alt="<?php echo esc_attr( ! empty( $real_gallery ) ? $real_gallery[0]['title'] : get_the_title() ); ?>" class="rb-product-main-img" style="max-height:340px; width:auto; object-fit:contain; transition:opacity 0.25s ease;" />
+                            <img id="rb-main-view" src="<?php echo esc_url( $active_main_image ); ?>" alt="<?php echo esc_attr( ! empty( $real_gallery ) ? $real_gallery[0]['title'] : get_the_title() ); ?>" class="rb-product-main-img" style="max-height:456px; width:100%; height:100%; object-fit:contain; transition:opacity 0.25s ease;" data-gallery-group="<?php echo $is_confecciones_especiales ? 'estructuras' : 'main'; ?>" data-gallery-index="0" />
+                            <span class="rb-zoom-hint" style="position:absolute; bottom:12px; right:12px; background:rgba(15,23,42,0.75); color:#fff; font-size:0.75rem; padding:4px 10px; border-radius:20px; display:flex; align-items:center; gap:5px; pointer-events:none; backdrop-filter:blur(4px);">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+                                Click para ampliar
+                            </span>
                         <?php else : ?>
                             <?php the_post_thumbnail( 'large', array( 'class' => 'rb-product-main-img', 'alt' => esc_attr( get_the_title() ) ) ); ?>
                         <?php endif; ?>
                     </div>
-                    <?php if ( ! empty( $real_gallery ) && count( $real_gallery ) > 1 ) : ?>
-                        <div class="rb-product-thumbs" style="display:flex; gap:10px; margin-top:12px; overflow-x:auto; padding-bottom:6px;">
+                    <?php if ( ! $is_confecciones_especiales && ! empty( $real_gallery ) && count( $real_gallery ) > 1 ) : ?>
+                        <div class="rb-product-thumbs" style="display:flex; gap:10px; margin-top:14px; overflow-x:auto; padding-bottom:6px;">
                             <?php foreach ( $real_gallery as $idx => $item ) : ?>
-                                <button type="button" class="rb-thumb-btn <?php echo ( $idx === 0 ) ? 'active' : ''; ?>" data-img="<?php echo esc_url( $item['url'] ); ?>" aria-label="<?php echo esc_attr( $item['title'] ); ?>" style="flex:0 0 72px; height:72px; border-radius:8px; border:2px solid <?php echo ( $idx === 0 ) ? '#00a3e0' : '#e2e8f0'; ?>; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
+                                <button type="button" class="rb-thumb-btn <?php echo ( $idx === 0 ) ? 'active' : ''; ?>" data-img="<?php echo esc_url( $item['url'] ); ?>" data-index="<?php echo $idx; ?>" aria-label="<?php echo esc_attr( $item['title'] ); ?>" style="flex:0 0 76px; height:76px; border-radius:10px; border:2px solid <?php echo ( $idx === 0 ) ? '#00a3e0' : '#e2e8f0'; ?>; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
                                     <img src="<?php echo esc_url( $item['url'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" style="width:100%; height:100%; object-fit:contain;" />
                                 </button>
                             <?php endforeach; ?>
@@ -212,6 +247,50 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
             </div>
         </div>
     </section>
+
+    <?php if ( $is_confecciones_especiales && ! empty( $special_galleries ) ) : ?>
+        <!-- Galerías Separadas de Confecciones Especiales (Agrupadas por Carpeta Oficial) -->
+        <section class="rb-section rb-special-galleries-section" style="background:#f8fafc; padding: 60px 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+            <div class="rb-container">
+                <div class="rb-section-header text-center" style="margin-bottom: 48px;">
+                    <span class="rb-eyebrow rb-text-mono rb-text-accent">GALERÍAS DE CONFECCIÓN TÉCNICA</span>
+                    <h2 class="rb-h2">Desarrollos por Especialidad</h2>
+                    <p class="rb-section-subtitle" style="max-width: 760px; margin: 0 auto;">Explora nuestras soluciones personalizadas organizadas por área técnica. Haz clic en cualquier fotografía para abrir el visor en alta resolución.</p>
+                </div>
+
+                <?php foreach ( $special_galleries as $group_key => $group ) : ?>
+                    <div class="rb-special-group-block" style="margin-bottom: 56px;" id="galeria-<?php echo esc_attr( $group_key ); ?>">
+                        <div class="rb-special-group-header" style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid #e2e8f0; padding-bottom:12px; margin-bottom:24px; flex-wrap:wrap; gap:12px;">
+                            <div>
+                                <h3 class="rb-h3" style="margin:0; color:var(--color-brand-primary); font-size:1.35rem; font-weight:800; letter-spacing:0.02em;"><?php echo esc_html( $group['title'] ); ?></h3>
+                                <p style="margin:4px 0 0 0; color:#64748b; font-size:0.92rem;"><?php echo esc_html( $group['desc'] ); ?></p>
+                            </div>
+                            <span class="rb-badge" style="background:rgba(0,163,224,0.1); color:var(--color-brand-accent); font-weight:700;">
+                                <?php echo count( $group['items'] ); ?> Fotografías
+                            </span>
+                        </div>
+
+                        <div class="rb-special-group-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:22px;">
+                            <?php foreach ( $group['items'] as $item_idx => $img_item ) : ?>
+                                <div class="rb-special-card" data-gallery-group="<?php echo esc_attr( $group_key ); ?>" data-gallery-index="<?php echo $item_idx; ?>" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,0.04); cursor:pointer; transition:transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;">
+                                    <div class="rb-special-card__img-wrap" style="height:270px; padding:16px; display:flex; align-items:center; justify-content:center; position:relative; background:#ffffff;">
+                                        <img src="<?php echo esc_url( $img_item['url'] ); ?>" alt="<?php echo esc_attr( $img_item['title'] ); ?>" style="max-height:100%; max-width:100%; width:auto; height:auto; object-fit:contain; transition:transform 0.25s ease;" />
+                                        <span class="rb-card-zoom-badge" style="position:absolute; top:12px; right:12px; background:rgba(15,23,42,0.7); color:#fff; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+                                        </span>
+                                    </div>
+                                    <div class="rb-special-card__footer" style="padding:12px 18px; background:#f8fafc; border-top:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                                        <span style="font-size:0.88rem; font-weight:600; color:#1e293b;"><?php echo esc_html( $group['title'] ); ?> #<?php echo $item_idx + 1; ?></span>
+                                        <span style="font-size:0.8rem; color:var(--color-brand-accent); font-weight:700;">Ampliar &rarr;</span>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    <?php endif; ?>
 
     <!-- Características, Beneficios y Materiales -->
     <section class="rb-section rb-product-details">
@@ -423,18 +502,160 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
 
 </main>
 
+<!-- LIGHTBOX MODAL DE FOTOGRAFÍAS EN ALTA RESOLUCIÓN (B2B ROLBAG) -->
+<div id="rb-lightbox" class="rb-lightbox" aria-hidden="true" role="dialog" style="display:none;">
+    <div class="rb-lightbox__backdrop" id="rb-lightbox-backdrop"></div>
+    <div class="rb-lightbox__container">
+        <button type="button" class="rb-lightbox__close" id="rb-lightbox-close" aria-label="Cerrar visor de fotografía">&times;</button>
+        <button type="button" class="rb-lightbox__nav rb-lightbox__prev" id="rb-lightbox-prev" aria-label="Fotografía anterior">&#10094;</button>
+        <div class="rb-lightbox__content">
+            <div class="rb-lightbox__img-wrap">
+                <img id="rb-lightbox-img" src="" alt="Fotografía técnica ROLBAG" class="rb-lightbox__img" />
+            </div>
+            <div class="rb-lightbox__info">
+                <div id="rb-lightbox-caption" class="rb-lightbox__caption"></div>
+                <div id="rb-lightbox-counter" class="rb-lightbox__counter"></div>
+            </div>
+        </div>
+        <button type="button" class="rb-lightbox__nav rb-lightbox__next" id="rb-lightbox-next" aria-label="Fotografía siguiente">&#10095;</button>
+    </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 0. Conmutador de Galería de Fotos Reales
+    // 1. Estructura de Galerías Aisladas para Lightbox
+    const allGalleries = {
+        <?php if ( $is_confecciones_especiales ) : ?>
+            <?php foreach ( $special_galleries as $gk => $grp ) : ?>
+                '<?php echo esc_js( $gk ); ?>': <?php echo json_encode( $grp['items'] ); ?>,
+            <?php endforeach; ?>
+        <?php else : ?>
+            'main': <?php echo json_encode( $real_gallery ); ?>,
+        <?php endif; ?>
+    };
+
+    let currentGalleryGroup = '<?php echo $is_confecciones_especiales ? 'estructuras' : 'main'; ?>';
+    let currentImageIndex = 0;
+
+    const lightbox = document.getElementById('rb-lightbox');
+    const lightboxImg = document.getElementById('rb-lightbox-img');
+    const lightboxCaption = document.getElementById('rb-lightbox-caption');
+    const lightboxCounter = document.getElementById('rb-lightbox-counter');
+    const lightboxClose = document.getElementById('rb-lightbox-close');
+    const lightboxBackdrop = document.getElementById('rb-lightbox-backdrop');
+    const lightboxPrev = document.getElementById('rb-lightbox-prev');
+    const lightboxNext = document.getElementById('rb-lightbox-next');
+
+    function updateLightbox() {
+        const groupItems = allGalleries[currentGalleryGroup] || [];
+        if (!groupItems.length) return;
+        if (currentImageIndex < 0) currentImageIndex = groupItems.length - 1;
+        if (currentImageIndex >= groupItems.length) currentImageIndex = 0;
+        
+        const item = groupItems[currentImageIndex];
+        if (item) {
+            lightboxImg.style.opacity = '0.4';
+            lightboxImg.src = item.url;
+            lightboxImg.alt = item.title;
+            lightboxImg.onload = function() {
+                lightboxImg.style.opacity = '1';
+            };
+            lightboxCaption.textContent = item.title;
+            lightboxCounter.textContent = (currentImageIndex + 1) + ' / ' + groupItems.length;
+        }
+    }
+
+    function openLightbox(group, index) {
+        if (!allGalleries[group] || !allGalleries[group].length) return;
+        currentGalleryGroup = group;
+        currentImageIndex = (index >= 0 && index < allGalleries[group].length) ? index : 0;
+        updateLightbox();
+        lightbox.style.display = 'flex';
+        setTimeout(function() {
+            lightbox.classList.add('is-open');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        setTimeout(function() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 220);
+    }
+
+    function nextImage() {
+        const groupItems = allGalleries[currentGalleryGroup] || [];
+        if (groupItems.length <= 1) return;
+        currentImageIndex = (currentImageIndex + 1) % groupItems.length;
+        updateLightbox();
+    }
+
+    function prevImage() {
+        const groupItems = allGalleries[currentGalleryGroup] || [];
+        if (groupItems.length <= 1) return;
+        currentImageIndex = (currentImageIndex - 1 + groupItems.length) % groupItems.length;
+        updateLightbox();
+    }
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', function(e) {
+        e.stopPropagation();
+        prevImage();
+    });
+    if (lightboxNext) lightboxNext.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nextImage();
+    });
+
+    // Teclado: ESC para cerrar, Flechas para navegar
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox || !lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+    });
+
+    // Soporte táctil / swipe en móvil
+    let touchStartX = 0;
+    let touchEndX = 0;
+    if (lightbox) {
+        lightbox.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        lightbox.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 40) nextImage();
+            if (touchEndX > touchStartX + 40) prevImage();
+        }, { passive: true });
+    }
+
+    // 2. Conmutador de Galería en Hero y apertura de Lightbox
     const mainImg = document.getElementById('rb-main-view');
+    const mainImgWrap = document.querySelector('.rb-product-main-img-wrap');
     const thumbBtns = document.querySelectorAll('.rb-thumb-btn');
-    if (mainImg && thumbBtns.length > 0) {
+
+    let activeThumbIndex = 0;
+
+    if (mainImgWrap) {
+        mainImgWrap.addEventListener('click', function() {
+            const grp = mainImg ? (mainImg.getAttribute('data-gallery-group') || 'main') : 'main';
+            openLightbox(grp, activeThumbIndex);
+        });
+    }
+
+    if (thumbBtns.length > 0) {
         thumbBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
                 const newSrc = this.getAttribute('data-img');
-                if (newSrc) {
+                const newIdx = parseInt(this.getAttribute('data-index'), 10) || 0;
+                activeThumbIndex = newIdx;
+                if (mainImg && newSrc) {
                     mainImg.style.opacity = '0.3';
-                    setTimeout(() => {
+                    setTimeout(function() {
                         mainImg.src = newSrc;
                         mainImg.style.opacity = '1';
                     }, 120);
@@ -449,7 +670,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Buscador interactivo y filtros de marcas (Chips)
+    // 3. Apertura de Lightbox desde tarjetas de Confecciones Especiales
+    document.querySelectorAll('.rb-special-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const grp = this.getAttribute('data-gallery-group');
+            const idx = parseInt(this.getAttribute('data-gallery-index'), 10) || 0;
+            openLightbox(grp, idx);
+        });
+    });
+
+    // 4. Buscador interactivo y filtros de marcas (Chips)
     const filterInput = document.getElementById('rb-model-filter');
     const brandPills = document.querySelectorAll('.rb-brand-pill');
     const brandCards = document.querySelectorAll('.rb-brand-card');
@@ -510,7 +740,7 @@ document.addEventListener('DOMContentLoaded', function() {
         filterInput.addEventListener('input', applyFilters);
     }
 
-    // Comprobar si hay hash en la URL para auto-filtrar (ej. #marca-zebra)
+    // Auto-filtrar por hash (#marca-zebra)
     if (window.location.hash) {
         const hashTarget = window.location.hash.replace('#marca-', '').replace('#', '').toLowerCase();
         const matchingPill = Array.from(brandPills).find(p => p.getAttribute('data-brand-filter') === hashTarget);

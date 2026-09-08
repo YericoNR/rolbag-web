@@ -45,11 +45,28 @@ get_header('landing');
                                 }
                             }
                         }
+
+                        $card_slug = get_post_field( 'post_name', $post_id );
+                        $card_img_url = '';
+
+                        if ( $card_slug === 'fundas-para-capturadores' ) {
+                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/capturadores/honeywell_ck65_frontal.webp';
+                        } elseif ( $card_slug === 'fundas-para-tablets' ) {
+                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/tablets/tablet_05.webp';
+                        } elseif ( $card_slug === 'fundas-para-impresoras' ) {
+                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/impresoras/impresora_01.webp';
+                        } elseif ( $card_slug === 'fundas-para-pos-moviles' ) {
+                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/pos_moviles/pos_02.webp';
+                        } elseif ( $card_slug === 'confecciones-especiales' ) {
+                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/confecciones_especiales/estructuras/1.png';
+                        } elseif ( $image ) {
+                            $card_img_url = get_template_directory_uri() . '/assets/images/generated/' . $image;
+                        }
                         ?>
                         <article class="rb-catalog-card">
                             <div class="rb-catalog-card__img-wrap">
-                                <?php if ( $image ) : ?>
-                                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/' . $image ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="rb-catalog-card__img" />
+                                <?php if ( $card_img_url ) : ?>
+                                    <img src="<?php echo esc_url( $card_img_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="rb-catalog-card__img" />
                                 <?php else : ?>
                                     <?php the_post_thumbnail( 'large', array( 'class' => 'rb-catalog-card__img' ) ); ?>
                                 <?php endif; ?>

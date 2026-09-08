@@ -30,6 +30,8 @@
                         <li><a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-footer__link">Fundas para Capturadores</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/productos/fundas-para-tablets' ) ); ?>" class="rb-footer__link">Fundas para Tablets</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras' ) ); ?>" class="rb-footer__link">Fundas para Impresoras</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/productos/fundas-para-pos-moviles' ) ); ?>" class="rb-footer__link">Fundas para POS Móviles</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/productos/confecciones-especiales' ) ); ?>" class="rb-footer__link">Confecciones Especiales</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/productos/valijas-de-seguridad' ) ); ?>" class="rb-footer__link">Valijas de Seguridad</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/productos/candados-especiales' ) ); ?>" class="rb-footer__link">Candados de Seguridad</a></li>
                     </ul>

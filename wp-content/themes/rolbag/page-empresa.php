@@ -58,8 +58,8 @@ get_header('landing');
                 </div>
 
                 <div class="rb-about-editorial__image-col">
-                    <div class="rb-about-image-wrapper">
-                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/Rolando_Foto_Historica.webp' ); ?>" alt="Rolando Álvarez - Fundador de ROLBAG" class="rb-about-editorial__img" />
+                    <div class="rb-about-image-wrapper" style="aspect-ratio: 1 / 1; width: 100%; max-width: 480px; margin: 0 auto; background: #ffffff;">
+                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg' ); ?>" alt="Rolando Álvarez - Fundador de ROLBAG" class="rb-about-editorial__img" style="object-fit: cover; width: 100%; height: 100%; display: block;" />
                         <div class="rb-about-image-badge">
                             <span class="rb-about-image-badge__title">Rolando Álvarez</span>
                             <span class="rb-about-image-badge__subtitle">Fundador de ROLBAG</span>
