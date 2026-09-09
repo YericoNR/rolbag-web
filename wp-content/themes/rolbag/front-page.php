@@ -12,23 +12,23 @@ get_header('landing');
 
 
 // --- AUTO-ADMIN VARIABLES ---
-$hero_eyebrow = get_post_meta( get_the_ID(), 'rb_hero_eyebrow', true ) ?: 'PROTECCIÓN & CONTINUIDAD OPERATIVA EN TODO CHILE';
-$hero_title   = get_post_meta( get_the_ID(), 'rb_hero_title', true ) ?: 'Soluciones de protección para equipos portátiles y valijas de seguridad';
-$hero_lead    = get_post_meta( get_the_ID(), 'rb_hero_lead', true ) ?: 'Fabricamos fundas, valijas y accesorios industriales a medida. Desde 2006 asegurando la protección del hardware crítico en almacenes, bodegajes y operaciones logísticas a lo largo de todo Chile.';
-$hero_bg      = get_post_meta( get_the_ID(), 'rb_hero_bg', true ) ?: get_template_directory_uri() . '/assets/images/generated/hero_industrial_clean.jpg';
+$hero_eyebrow = get_option( 'rb_hero_eyebrow', '' ) ?: 'PROTECCIÓN & CONTINUIDAD OPERATIVA EN TODO CHILE';
+$hero_title   = get_option( 'rb_hero_title', '' ) ?: 'Soluciones de protección para equipos portátiles y valijas de seguridad';
+$hero_lead    = get_option( 'rb_hero_lead', '' ) ?: 'Fabricamos fundas, valijas y accesorios industriales a medida. Desde 2006 asegurando la protección del hardware crítico en almacenes, bodegajes y operaciones logísticas a lo largo de todo Chile.';
+$hero_bg      = get_option( 'rb_hero_bg', '' ) ?: get_template_directory_uri() . '/assets/images/generated/hero_industrial_clean.jpg';
 
-$stat1_num    = get_post_meta( get_the_ID(), 'rb_stat1_num', true ) ?: '+300';
-$stat1_lbl    = get_post_meta( get_the_ID(), 'rb_stat1_lbl', true ) ?: 'Modelos a Medida';
-$stat2_num    = get_post_meta( get_the_ID(), 'rb_stat2_num', true ) ?: '100%';
-$stat2_lbl    = get_post_meta( get_the_ID(), 'rb_stat2_lbl', true ) ?: 'Confección Nacional';
-$stat3_num    = get_post_meta( get_the_ID(), 'rb_stat3_num', true ) ?: '+28';
-$stat3_lbl    = get_post_meta( get_the_ID(), 'rb_stat3_lbl', true ) ?: 'Años de Trayectoria';
+$stat1_num    = get_option( 'rb_stat1_num', '' ) ?: '+300';
+$stat1_lbl    = get_option( 'rb_stat1_lbl', '' ) ?: 'Modelos a Medida';
+$stat2_num    = get_option( 'rb_stat2_num', '' ) ?: '100%';
+$stat2_lbl    = get_option( 'rb_stat2_lbl', '' ) ?: 'Confección Nacional';
+$stat3_num    = get_option( 'rb_stat3_num', '' ) ?: '+28';
+$stat3_lbl    = get_option( 'rb_stat3_lbl', '' ) ?: 'Años de Trayectoria';
 
-$about_title  = get_post_meta( get_the_ID(), 'rb_about_title', true ) ?: 'Confección Nacional y Desarrollo a Medida';
-$about_text   = get_post_meta( get_the_ID(), 'rb_about_text', true ) ?: '<p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por Rolando Álvarez en el año 2006 a partir de una sólida trayectoria en la confección artesanal de calzado, bolsos y estuches especiales. Con el tiempo, la experiencia adquirida nos permitió dar el salto al sector corporativo, respondiendo a las exigencias de clientes empresariales que requerían resguardar sus operaciones.</p>
+$about_title  = get_option( 'rb_about_title', '' ) ?: 'Confección Nacional y Desarrollo a Medida';
+$about_text   = get_option( 'rb_about_text', '' ) ?: '<p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por Rolando Álvarez en el año 2006 a partir de una sólida trayectoria en la confección artesanal de calzado, bolsos y estuches especiales. Con el tiempo, la experiencia adquirida nos permitió dar el salto al sector corporativo, respondiendo a las exigencias de clientes empresariales que requerían resguardar sus operaciones.</p>
 <p class="rb-paragraph">Incursionamos con gran éxito en la fabricación de <strong>valijas de seguridad</strong> para el transporte de valores y documentación confidencial, contando con el privilegio de atender históricamente a grandes empresas como <strong>CENCOSUD, LA POLAR, CORREOS DE CHILE, IRON MOUNTAIN y FEDEX</strong>.</p>
 <p class="rb-paragraph">Posteriormente, ampliamos nuestras soluciones hacia la protección de equipos portátiles de alto valor (capturadores de datos, tablets e impresoras industriales), sumando a la fecha <strong>más de 300 modelos de fundas desarrollados</strong> con calce milimétrico para el control de mercancías en almacenes, bodegajes y logística en todo Chile.</p>';
-$about_img    = get_post_meta( get_the_ID(), 'rb_about_img', true ) ?: get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg';
+$about_img    = get_option( 'rb_about_img', '' ) ?: get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg';
 // ----------------------------
 ?>
 

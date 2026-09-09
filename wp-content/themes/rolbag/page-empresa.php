@@ -11,26 +11,26 @@ get_header('landing');
 
 
 // --- AUTO-ADMIN VARIABLES ---
-$hero_eyebrow = get_post_meta( get_the_ID(), 'rb_hero_eyebrow', true ) ?: 'TRAYECTORIA Y CONFECCIÓN NACIONAL';
-$hero_title   = get_post_meta( get_the_ID(), 'rb_hero_title', true ) ?: 'Más de 28 Años Diseñando<br>Soluciones de Protección<br>y Seguridad';
-$hero_lead    = get_post_meta( get_the_ID(), 'rb_hero_lead', true ) ?: 'Desde 2006, ROLBAG confecciona a medida fundas protectoras para tecnología móvil corporativa y valijas de seguridad para las principales operaciones logísticas de Chile.';
-$hero_bg      = get_post_meta( get_the_ID(), 'rb_hero_bg', true ) ?: get_template_directory_uri() . '/assets/images/generated/fabricacion_1787702420725.jpg';
+$hero_eyebrow = get_option( 'rb_hero_eyebrow', '' ) ?: 'TRAYECTORIA Y CONFECCIÓN NACIONAL';
+$hero_title   = get_option( 'rb_hero_title', '' ) ?: 'Más de 28 Años Diseñando<br>Soluciones de Protección<br>y Seguridad';
+$hero_lead    = get_option( 'rb_hero_lead', '' ) ?: 'Desde 2006, ROLBAG confecciona a medida fundas protectoras para tecnología móvil corporativa y valijas de seguridad para las principales operaciones logísticas de Chile.';
+$hero_bg      = get_option( 'rb_hero_bg', '' ) ?: get_template_directory_uri() . '/assets/images/generated/fabricacion_1787702420725.jpg';
 
-$about_title  = get_post_meta( get_the_ID(), 'rb_about_title', true ) ?: 'Especialistas en Confección Técnica a Medida';
-$about_text   = get_post_meta( get_the_ID(), 'rb_about_text', true ) ?: '<p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por <strong>Rolando Álvarez</strong> en el año <strong><?php echo esc_html( $stat2_num ); ?></strong> como un emprendimiento forjado tras décadas de experiencia en confección artesanal de calzado, bolsos y estuches de alta precisión.</p>
+$about_title  = get_option( 'rb_about_title', '' ) ?: 'Especialistas en Confección Técnica a Medida';
+$about_text   = get_option( 'rb_about_text', '' ) ?: '<p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por <strong>Rolando Álvarez</strong> en el año <strong><?php echo esc_html( $stat2_num ); ?></strong> como un emprendimiento forjado tras décadas de experiencia en confección artesanal de calzado, bolsos y estuches de alta precisión.</p>
 <p class="rb-paragraph">Con la experiencia consolidada en el manejo de materiales sintéticos de alta resistencia, la empresa incursionó en el mercado corporativo mediante la fabricación de <strong>valijas de seguridad</strong> para transporte de valores y documentación confidencial, contando con la confianza de grandes organizaciones a nivel nacional como <strong>Cencosud, La Polar, Correos de Chile, Iron Mountain y FedEx</strong>, entre otras.</p>
 <p class="rb-paragraph">Motivados por los nuevos requerimientos tecnológicos de la industria y de nuestros clientes en bodegas y centros de distribución, expandimos nuestras líneas hacia la confección de <strong>fundas protectoras para terminales móviles, capturadores de datos, tablets e impresoras portátiles de uso industrial</strong>, desarrollando calces milimétricos que protegen equipos de alto costo frente a caídas, rayones y manipulación continua.</p>';
-$about_img    = get_post_meta( get_the_ID(), 'rb_about_img', true ) ?: get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg';
+$about_img    = get_option( 'rb_about_img', '' ) ?: get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg';
 
-$stat1_num    = get_post_meta( get_the_ID(), 'rb_stat1_num', true ) ?: '+28';
-$stat1_lbl    = get_post_meta( get_the_ID(), 'rb_stat1_lbl', true ) ?: 'Años de oficio y experiencia técnica';
-$stat2_num    = get_post_meta( get_the_ID(), 'rb_stat2_num', true ) ?: '2006';
-$stat2_lbl    = get_post_meta( get_the_ID(), 'rb_stat2_lbl', true ) ?: 'Año de inicio de actividades corporativas';
-$stat3_num    = get_post_meta( get_the_ID(), 'rb_stat3_num', true ) ?: '100%';
-$stat3_lbl    = get_post_meta( get_the_ID(), 'rb_stat3_lbl', true ) ?: 'Cobertura y despachos a todo Chile';
+$stat1_num    = get_option( 'rb_stat1_num', '' ) ?: '+28';
+$stat1_lbl    = get_option( 'rb_stat1_lbl', '' ) ?: 'Años de oficio y experiencia técnica';
+$stat2_num    = get_option( 'rb_stat2_num', '' ) ?: '2006';
+$stat2_lbl    = get_option( 'rb_stat2_lbl', '' ) ?: 'Año de inicio de actividades corporativas';
+$stat3_num    = get_option( 'rb_stat3_num', '' ) ?: '100%';
+$stat3_lbl    = get_option( 'rb_stat3_lbl', '' ) ?: 'Cobertura y despachos a todo Chile';
 
-$mission      = get_post_meta( get_the_ID(), 'rb_mission', true ) ?: 'Confeccionar productos exclusivos que brinden una mayor durabilidad y calidad, resguardando la inversión tecnológica y la continuidad operativa de nuestros clientes en todo Chile.';
-$vision       = get_post_meta( get_the_ID(), 'rb_vision', true ) ?: 'Satisfacer los requerimientos especiales y exclusivos que demandan las operaciones de nuestros clientes, innovando en soluciones personalizadas tales como arneses corporales, soportes para grúas y valijas con compartimentos de seguridad satelital.';
+$mission      = get_option( 'rb_mission', '' ) ?: 'Confeccionar productos exclusivos que brinden una mayor durabilidad y calidad, resguardando la inversión tecnológica y la continuidad operativa de nuestros clientes en todo Chile.';
+$vision       = get_option( 'rb_vision', '' ) ?: 'Satisfacer los requerimientos especiales y exclusivos que demandan las operaciones de nuestros clientes, innovando en soluciones personalizadas tales como arneses corporales, soportes para grúas y valijas con compartimentos de seguridad satelital.';
 // ----------------------------
 ?>
 

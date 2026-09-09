@@ -763,10 +763,8 @@ function rolbag_ajax_deploy_vercel() {
     // Obtener ruta base del proyecto ROLBAG
     $project_root = dirname(dirname(dirname(dirname(__FILE__)))); 
     
-    // Ejecutar exportación y commit (evitamos bloquear mucho tiempo, el output se devuelve)
-    $command = 'cd "' . $project_root . '" && python scripts/export_static.py 2>&1';
-    $command .= ' && git add . 2>&1 && git commit -m "Auto-deploy desde WordPress admin" 2>&1 || echo "Nada que comitear"';
-    $command .= ' && git push origin main 2>&1';
+    // Ejecutar despliegue mediante el script Python unificado para evitar bloqueos
+    $command = 'cd "' . $project_root . '" && python scripts/deploy.py 2>&1';
     
     $output = shell_exec($command);
     
@@ -787,166 +785,165 @@ function rolbag_admin_enqueue_scripts($hook) {
 add_action( 'admin_enqueue_scripts', 'rolbag_admin_enqueue_scripts' );
 
 /**
- * 13. Meta Box Autoadministrable para Páginas (Inicio y Empresa)
+ * 13. Panel de Opciones Global (Tema/Plugin)
  */
-function rolbag_add_page_meta_boxes() {
-    global $post;
-    if ( ! $post ) {
-        return;
-    }
-    $template_file = get_post_meta( $post->ID, '_wp_page_template', true );
-    if ( $template_file == 'front-page.php' || $template_file == 'page-empresa.php' || $template_file == 'page-nosotros.php' ) {
-        add_meta_box(
-            'rolbag_page_details',
-            __( 'Configuración de Contenido (ROLBAG)', 'rolbag-core' ),
-            'rolbag_render_page_meta_box',
-            'page',
-            'normal',
-            'high'
-        );
-    }
+function rolbag_add_options_page() {
+    add_menu_page(
+        'Opciones ROLBAG',
+        'Opciones ROLBAG',
+        'manage_options',
+        'rolbag-options',
+        'rolbag_render_options_page',
+        'dashicons-admin-generic',
+        50
+    );
 }
-add_action( 'add_meta_boxes', 'rolbag_add_page_meta_boxes' );
+add_action( 'admin_menu', 'rolbag_add_options_page' );
 
-function rolbag_render_page_meta_box( $post ) {
-    wp_nonce_field( 'rolbag_save_page_meta', 'rolbag_page_meta_nonce' );
-
-    $hero_eyebrow = get_post_meta( $post->ID, 'rb_hero_eyebrow', true );
-    $hero_title   = get_post_meta( $post->ID, 'rb_hero_title', true );
-    $hero_lead    = get_post_meta( $post->ID, 'rb_hero_lead', true );
-    $hero_bg      = get_post_meta( $post->ID, 'rb_hero_bg', true );
-
-    $about_title  = get_post_meta( $post->ID, 'rb_about_title', true );
-    $about_text   = get_post_meta( $post->ID, 'rb_about_text', true );
-    $about_img    = get_post_meta( $post->ID, 'rb_about_img', true );
-
-    $stat1_num    = get_post_meta( $post->ID, 'rb_stat1_num', true );
-    $stat1_lbl    = get_post_meta( $post->ID, 'rb_stat1_lbl', true );
-    $stat2_num    = get_post_meta( $post->ID, 'rb_stat2_num', true );
-    $stat2_lbl    = get_post_meta( $post->ID, 'rb_stat2_lbl', true );
-    $stat3_num    = get_post_meta( $post->ID, 'rb_stat3_num', true );
-    $stat3_lbl    = get_post_meta( $post->ID, 'rb_stat3_lbl', true );
-
-    $mission      = get_post_meta( $post->ID, 'rb_mission', true );
-    $vision       = get_post_meta( $post->ID, 'rb_vision', true );
-
-    ?>
-    <style>
-        .rb-admin-section { background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
-        .rb-admin-section h3 { margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #cbd5e1; padding-bottom: 8px; color: #0f172a; font-size: 14px; }
-    </style>
-
-    <div class="rb-admin-section">
-        <h3>1. Sección Principal (Hero)</h3>
-        <div class="rolbag-admin-field">
-            <label>Antetítulo (Eyebrow)</label>
-            <input type="text" name="rb_hero_eyebrow" value="<?php echo esc_attr( $hero_eyebrow ); ?>" placeholder="Ej: PROTECCIÓN & CONTINUIDAD..." />
-        </div>
-        <div class="rolbag-admin-field">
-            <label>Título Principal (H1)</label>
-            <input type="text" name="rb_hero_title" value="<?php echo esc_attr( $hero_title ); ?>" placeholder="Ej: Soluciones de protección..." />
-        </div>
-        <div class="rolbag-admin-field">
-            <label>Texto Descriptivo (Lead)</label>
-            <textarea name="rb_hero_lead" rows="3"><?php echo esc_textarea( $hero_lead ); ?></textarea>
-        </div>
-        <div class="rolbag-admin-field">
-            <label>Imagen de Fondo (URL o Ruta Local)</label>
-            <input type="text" name="rb_hero_bg" value="<?php echo esc_attr( $hero_bg ); ?>" placeholder="/assets/images/generated/hero_industrial_clean.jpg" />
-            <p class="rolbag-admin-desc">Puedes pegar la URL de una imagen subida a Medios, o dejar vacío para usar la predeterminada.</p>
-        </div>
-    </div>
-
-    <div class="rb-admin-section">
-        <h3>2. Sección Nosotros / Empresa</h3>
-        <div class="rolbag-admin-field">
-            <label>Título de Sección</label>
-            <input type="text" name="rb_about_title" value="<?php echo esc_attr( $about_title ); ?>" />
-        </div>
-        <div class="rolbag-admin-field">
-            <label>Contenido / Historia (Soporta HTML básico)</label>
-            <textarea name="rb_about_text" rows="6"><?php echo esc_textarea( $about_text ); ?></textarea>
-        </div>
-        <div class="rolbag-admin-field">
-            <label>Imagen Nosotros (URL o Ruta Local)</label>
-            <input type="text" name="rb_about_img" value="<?php echo esc_attr( $about_img ); ?>" placeholder="/assets/images/rolando_alvarez.jpg" />
-        </div>
-        
-        <div class="rolbag-admin-grid">
-            <div class="rolbag-admin-field">
-                <label>Misión (Solo Empresa)</label>
-                <textarea name="rb_mission" rows="4"><?php echo esc_textarea( $mission ); ?></textarea>
-            </div>
-            <div class="rolbag-admin-field">
-                <label>Visión (Solo Empresa)</label>
-                <textarea name="rb_vision" rows="4"><?php echo esc_textarea( $vision ); ?></textarea>
-            </div>
-        </div>
-    </div>
-
-    <div class="rb-admin-section">
-        <h3>3. Estadísticas / Insignias</h3>
-        <div class="rolbag-admin-grid">
-            <div class="rolbag-admin-field">
-                <label>Stat 1 - Número</label>
-                <input type="text" name="rb_stat1_num" value="<?php echo esc_attr( $stat1_num ); ?>" placeholder="+300" />
-            </div>
-            <div class="rolbag-admin-field">
-                <label>Stat 1 - Etiqueta</label>
-                <input type="text" name="rb_stat1_lbl" value="<?php echo esc_attr( $stat1_lbl ); ?>" placeholder="Modelos a Medida" />
-            </div>
-        </div>
-        <div class="rolbag-admin-grid">
-            <div class="rolbag-admin-field">
-                <label>Stat 2 - Número</label>
-                <input type="text" name="rb_stat2_num" value="<?php echo esc_attr( $stat2_num ); ?>" placeholder="100%" />
-            </div>
-            <div class="rolbag-admin-field">
-                <label>Stat 2 - Etiqueta</label>
-                <input type="text" name="rb_stat2_lbl" value="<?php echo esc_attr( $stat2_lbl ); ?>" placeholder="Confección Nacional" />
-            </div>
-        </div>
-        <div class="rolbag-admin-grid">
-            <div class="rolbag-admin-field">
-                <label>Stat 3 - Número</label>
-                <input type="text" name="rb_stat3_num" value="<?php echo esc_attr( $stat3_num ); ?>" placeholder="+28" />
-            </div>
-            <div class="rolbag-admin-field">
-                <label>Stat 3 - Etiqueta</label>
-                <input type="text" name="rb_stat3_lbl" value="<?php echo esc_attr( $stat3_lbl ); ?>" placeholder="Años de Trayectoria" />
-            </div>
-        </div>
-    </div>
-    <?php
-}
-
-function rolbag_save_page_meta( $post_id ) {
-    if ( ! isset( $_POST['rolbag_page_meta_nonce'] ) || ! wp_verify_nonce( $_POST['rolbag_page_meta_nonce'], 'rolbag_save_page_meta' ) ) {
-        return;
-    }
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-    if ( ! current_user_can( 'edit_page', $post_id ) ) return;
-
+function rolbag_register_settings() {
     $fields = array(
         'rb_hero_eyebrow', 'rb_hero_title', 'rb_hero_bg', 'rb_about_title', 'rb_about_img',
         'rb_stat1_num', 'rb_stat1_lbl', 'rb_stat2_num', 'rb_stat2_lbl', 'rb_stat3_num', 'rb_stat3_lbl'
     );
     foreach ( $fields as $field ) {
-        if ( isset( $_POST[ $field ] ) ) {
-            update_post_meta( $post_id, $field, sanitize_text_field( wp_unslash( $_POST[ $field ] ) ) );
-        }
+        register_setting( 'rolbag_options_group', $field );
     }
 
-    $textarea_fields = array( 'rb_hero_lead', 'rb_mission', 'rb_vision' );
+    $textarea_fields = array( 'rb_hero_lead', 'rb_mission', 'rb_vision', 'rb_about_text' );
     foreach ( $textarea_fields as $field ) {
-        if ( isset( $_POST[ $field ] ) ) {
-            update_post_meta( $post_id, $field, sanitize_textarea_field( wp_unslash( $_POST[ $field ] ) ) );
-        }
-    }
-
-    // El About text necesita soportar HTML básico para negritas y párrafos.
-    if ( isset( $_POST['rb_about_text'] ) ) {
-        update_post_meta( $post_id, 'rb_about_text', wp_kses_post( wp_unslash( $_POST['rb_about_text'] ) ) );
+        register_setting( 'rolbag_options_group', $field );
     }
 }
-add_action( 'save_post_page', 'rolbag_save_page_meta' );
+add_action( 'admin_init', 'rolbag_register_settings' );
+
+function rolbag_render_options_page() {
+    // Necesitamos cargar media si no está cargado, aunque normalmente add_action('admin_enqueue_scripts') de producto no aplica aquí.
+    // Lo llamaremos en la función enqueue general para la página de opciones, pero como esto es rápido, 
+    // wp_enqueue_media() se maneja mejor en hook específico. Ya lo agregamos abajo si es necesario.
+    
+    // Obtener valores guardados o vacíos
+    $hero_eyebrow = get_option( 'rb_hero_eyebrow', '' );
+    $hero_title   = get_option( 'rb_hero_title', '' );
+    $hero_lead    = get_option( 'rb_hero_lead', '' );
+    $hero_bg      = get_option( 'rb_hero_bg', '' );
+
+    $about_title  = get_option( 'rb_about_title', '' );
+    $about_text   = get_option( 'rb_about_text', '' );
+    $about_img    = get_option( 'rb_about_img', '' );
+
+    $stat1_num    = get_option( 'rb_stat1_num', '' );
+    $stat1_lbl    = get_option( 'rb_stat1_lbl', '' );
+    $stat2_num    = get_option( 'rb_stat2_num', '' );
+    $stat2_lbl    = get_option( 'rb_stat2_lbl', '' );
+    $stat3_num    = get_option( 'rb_stat3_num', '' );
+    $stat3_lbl    = get_option( 'rb_stat3_lbl', '' );
+
+    $mission      = get_option( 'rb_mission', '' );
+    $vision       = get_option( 'rb_vision', '' );
+    ?>
+    <div class="wrap">
+        <h1>Opciones Globales ROLBAG</h1>
+        <p>Administra los contenidos estáticos de las landing pages (Inicio, Nosotros/Empresa).</p>
+        
+        <?php settings_errors(); ?>
+        
+        <form method="post" action="options.php">
+            <?php settings_fields( 'rolbag_options_group' ); ?>
+            
+            <style>
+                .rb-admin-section { background: #fff; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+                .rb-admin-section h2 { margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #cbd5e1; padding-bottom: 10px; color: #0f172a; font-size: 16px; }
+                .rolbag-admin-field { margin-bottom: 15px; }
+                .rolbag-admin-field label { display: block; font-weight: bold; margin-bottom: 5px; color: #334155; }
+                .rolbag-admin-field input[type="text"], .rolbag-admin-field textarea { width: 100%; max-width: 800px; padding: 8px; border: 1px solid #94a3b8; border-radius: 4px; }
+                .rolbag-admin-desc { color: #64748b; font-size: 13px; font-style: italic; margin-top: 4px; }
+                .rolbag-admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 800px; }
+            </style>
+
+            <div class="rb-admin-section">
+                <h2>1. Sección Principal (Hero de Inicio)</h2>
+                <div class="rolbag-admin-field">
+                    <label>Antetítulo (Eyebrow)</label>
+                    <input type="text" name="rb_hero_eyebrow" value="<?php echo esc_attr( $hero_eyebrow ); ?>" placeholder="Ej: PROTECCIÓN & CONTINUIDAD..." />
+                </div>
+                <div class="rolbag-admin-field">
+                    <label>Título Principal (H1)</label>
+                    <input type="text" name="rb_hero_title" value="<?php echo esc_attr( $hero_title ); ?>" placeholder="Ej: Soluciones de protección..." />
+                </div>
+                <div class="rolbag-admin-field">
+                    <label>Texto Descriptivo (Lead)</label>
+                    <textarea name="rb_hero_lead" rows="3"><?php echo esc_textarea( $hero_lead ); ?></textarea>
+                </div>
+                <div class="rolbag-admin-field">
+                    <label>Imagen de Fondo (URL o Ruta Local)</label>
+                    <input type="text" name="rb_hero_bg" value="<?php echo esc_attr( $hero_bg ); ?>" placeholder="/assets/images/generated/hero_industrial_clean.jpg" />
+                    <p class="rolbag-admin-desc">Puedes pegar la URL de una imagen subida a Medios, o dejar vacío para usar la predeterminada.</p>
+                </div>
+            </div>
+
+            <div class="rb-admin-section">
+                <h2>2. Sección Nosotros / Empresa</h2>
+                <div class="rolbag-admin-field">
+                    <label>Título de Sección</label>
+                    <input type="text" name="rb_about_title" value="<?php echo esc_attr( $about_title ); ?>" />
+                </div>
+                <div class="rolbag-admin-field">
+                    <label>Contenido / Historia (Soporta HTML básico para Negritas)</label>
+                    <textarea name="rb_about_text" rows="8"><?php echo esc_textarea( $about_text ); ?></textarea>
+                </div>
+                <div class="rolbag-admin-field">
+                    <label>Imagen Nosotros (URL o Ruta Local)</label>
+                    <input type="text" name="rb_about_img" value="<?php echo esc_attr( $about_img ); ?>" placeholder="/assets/images/rolando_alvarez.jpg" />
+                </div>
+                
+                <div class="rolbag-admin-grid">
+                    <div class="rolbag-admin-field">
+                        <label>Misión (Página de Empresa)</label>
+                        <textarea name="rb_mission" rows="4"><?php echo esc_textarea( $mission ); ?></textarea>
+                    </div>
+                    <div class="rolbag-admin-field">
+                        <label>Visión (Página de Empresa)</label>
+                        <textarea name="rb_vision" rows="4"><?php echo esc_textarea( $vision ); ?></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rb-admin-section">
+                <h2>3. Estadísticas / Insignias</h2>
+                <div class="rolbag-admin-grid">
+                    <div class="rolbag-admin-field">
+                        <label>Stat 1 - Número</label>
+                        <input type="text" name="rb_stat1_num" value="<?php echo esc_attr( $stat1_num ); ?>" placeholder="+300" />
+                    </div>
+                    <div class="rolbag-admin-field">
+                        <label>Stat 1 - Etiqueta</label>
+                        <input type="text" name="rb_stat1_lbl" value="<?php echo esc_attr( $stat1_lbl ); ?>" placeholder="Modelos a Medida" />
+                    </div>
+                </div>
+                <div class="rolbag-admin-grid">
+                    <div class="rolbag-admin-field">
+                        <label>Stat 2 - Número</label>
+                        <input type="text" name="rb_stat2_num" value="<?php echo esc_attr( $stat2_num ); ?>" placeholder="100%" />
+                    </div>
+                    <div class="rolbag-admin-field">
+                        <label>Stat 2 - Etiqueta</label>
+                        <input type="text" name="rb_stat2_lbl" value="<?php echo esc_attr( $stat2_lbl ); ?>" placeholder="Confección Nacional" />
+                    </div>
+                </div>
+                <div class="rolbag-admin-grid">
+                    <div class="rolbag-admin-field">
+                        <label>Stat 3 - Número</label>
+                        <input type="text" name="rb_stat3_num" value="<?php echo esc_attr( $stat3_num ); ?>" placeholder="+28" />
+                    </div>
+                    <div class="rolbag-admin-field">
+                        <label>Stat 3 - Etiqueta</label>
+                        <input type="text" name="rb_stat3_lbl" value="<?php echo esc_attr( $stat3_lbl ); ?>" placeholder="Años de Trayectoria" />
+                    </div>
+                </div>
+            </div>
+            
+            <?php submit_button('Guardar Opciones'); ?>
+        </form>
+    </div>
+    <?php
+}
