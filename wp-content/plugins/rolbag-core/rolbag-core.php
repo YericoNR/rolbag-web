@@ -731,10 +731,10 @@ function rolbag_deploy_scripts() {
         .then(res => res.json())
         .then(data => {
             if(data.success) {
-                alert('¡Publicación exitosa! Los cambios estarán visibles en Vercel en aproximadamente un minuto.\n\nLog en consola.');
+                alert(data.data + '\n\nPuedes revisar el progreso en scripts/deploy.log');
                 console.log(data.data);
             } else {
-                alert('Hubo un error al publicar:\n' + (data.data || 'Error desconocido'));
+                alert('Hubo un error al iniciar la publicación:\n' + (data.data || 'Error desconocido'));
             }
         })
         .catch(err => {
@@ -762,13 +762,13 @@ function rolbag_ajax_deploy_vercel() {
     
     // Obtener ruta base del proyecto ROLBAG
     $project_root = dirname(dirname(dirname(dirname(__FILE__)))); 
+    $project_root_win = str_replace('/', '\\', $project_root);
     
-    // Ejecutar despliegue mediante el script Python unificado para evitar bloqueos
-    $command = 'cd "' . $project_root . '" && python scripts/deploy.py 2>&1';
+    // Ejecutar despliegue en segundo plano (asíncrono) para evitar bloqueos del servidor PHP
+    $cmd = 'start /B cmd /C "cd /d ' . escapeshellarg($project_root_win) . ' && python scripts\deploy.py > scripts\deploy.log 2>&1"';
+    pclose(popen($cmd, "r"));
     
-    $output = shell_exec($command);
-    
-    wp_send_json_success($output);
+    wp_send_json_success("Despliegue iniciado en segundo plano. Los cambios estaran visibles en Vercel pronto.");
 }
 add_action('wp_ajax_rolbag_deploy_vercel', 'rolbag_ajax_deploy_vercel');
 
