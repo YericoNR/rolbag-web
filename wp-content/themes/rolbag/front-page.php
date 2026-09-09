@@ -9,7 +9,29 @@
  */
 
 get_header('landing');
+
+
+// --- AUTO-ADMIN VARIABLES ---
+$hero_eyebrow = get_post_meta( get_the_ID(), 'rb_hero_eyebrow', true ) ?: 'PROTECCIÓN & CONTINUIDAD OPERATIVA EN TODO CHILE';
+$hero_title   = get_post_meta( get_the_ID(), 'rb_hero_title', true ) ?: 'Soluciones de protección para equipos portátiles y valijas de seguridad';
+$hero_lead    = get_post_meta( get_the_ID(), 'rb_hero_lead', true ) ?: 'Fabricamos fundas, valijas y accesorios industriales a medida. Desde 2006 asegurando la protección del hardware crítico en almacenes, bodegajes y operaciones logísticas a lo largo de todo Chile.';
+$hero_bg      = get_post_meta( get_the_ID(), 'rb_hero_bg', true ) ?: get_template_directory_uri() . '/assets/images/generated/hero_industrial_clean.jpg';
+
+$stat1_num    = get_post_meta( get_the_ID(), 'rb_stat1_num', true ) ?: '+300';
+$stat1_lbl    = get_post_meta( get_the_ID(), 'rb_stat1_lbl', true ) ?: 'Modelos a Medida';
+$stat2_num    = get_post_meta( get_the_ID(), 'rb_stat2_num', true ) ?: '100%';
+$stat2_lbl    = get_post_meta( get_the_ID(), 'rb_stat2_lbl', true ) ?: 'Confección Nacional';
+$stat3_num    = get_post_meta( get_the_ID(), 'rb_stat3_num', true ) ?: '+28';
+$stat3_lbl    = get_post_meta( get_the_ID(), 'rb_stat3_lbl', true ) ?: 'Años de Trayectoria';
+
+$about_title  = get_post_meta( get_the_ID(), 'rb_about_title', true ) ?: 'Confección Nacional y Desarrollo a Medida';
+$about_text   = get_post_meta( get_the_ID(), 'rb_about_text', true ) ?: '<p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por Rolando Álvarez en el año 2006 a partir de una sólida trayectoria en la confección artesanal de calzado, bolsos y estuches especiales. Con el tiempo, la experiencia adquirida nos permitió dar el salto al sector corporativo, respondiendo a las exigencias de clientes empresariales que requerían resguardar sus operaciones.</p>
+<p class="rb-paragraph">Incursionamos con gran éxito en la fabricación de <strong>valijas de seguridad</strong> para el transporte de valores y documentación confidencial, contando con el privilegio de atender históricamente a grandes empresas como <strong>CENCOSUD, LA POLAR, CORREOS DE CHILE, IRON MOUNTAIN y FEDEX</strong>.</p>
+<p class="rb-paragraph">Posteriormente, ampliamos nuestras soluciones hacia la protección de equipos portátiles de alto valor (capturadores de datos, tablets e impresoras industriales), sumando a la fecha <strong>más de 300 modelos de fundas desarrollados</strong> con calce milimétrico para el control de mercancías en almacenes, bodegajes y logística en todo Chile.</p>';
+$about_img    = get_post_meta( get_the_ID(), 'rb_about_img', true ) ?: get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg';
+// ----------------------------
 ?>
+
 
 <main id="primary" class="site-main rb-main">
 
@@ -17,15 +39,15 @@ get_header('landing');
          MACRO 1: HERO / PROPUESTA PRINCIPAL
          ============================================== -->
     <section class="rb-hero-editorial">
-        <div class="rb-hero-editorial__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/hero_industrial_clean.jpg' ); ?>');"></div>
+        <div class="rb-hero-editorial__bg" style="background-image: url('<?php echo esc_url( $hero_bg ); ?>');"></div>
         <div class="rb-hero-editorial__overlay"></div>
         <div class="rb-container rb-hero-editorial__container">
             <div class="rb-hero-editorial__grid">
                 <!-- Columna Izquierda: Propuesta de Valor y CTAs -->
                 <div class="rb-hero-editorial__content">
-                    <span class="rb-eyebrow rb-text-mono">PROTECCIÓN & CONTINUIDAD OPERATIVA EN TODO CHILE</span>
-                    <h1 class="rb-h1">Soluciones de protección para equipos portátiles y valijas de seguridad</h1>
-                    <p class="rb-hero-lead">Fabricamos fundas, valijas y accesorios industriales a medida. Desde 2006 asegurando la protección del hardware crítico en almacenes, bodegajes y operaciones logísticas a lo largo de todo Chile.</p>
+                    <span class="rb-eyebrow rb-text-mono"><?php echo esc_html( $hero_eyebrow ); ?></span>
+                    <h1 class="rb-h1"><?php echo wp_kses_post( $hero_title ); ?></h1>
+                    <p class="rb-hero-lead"><?php echo wp_kses_post( $hero_lead ); ?></p>
                     <div class="rb-hero-actions">
                         <a href="#productos" class="rb-btn rb-btn--primary rb-btn--lg">Ver Líneas de Productos</a>
                         <a href="#cotizar" class="rb-btn rb-btn--secondary rb-btn--lg">Solicitar Cotización</a>
@@ -33,18 +55,18 @@ get_header('landing');
                     <!-- Badges de Confianza Industrial -->
                     <div class="rb-hero-badges">
                         <div class="rb-hero-badge-item">
-                            <span class="rb-hero-badge-val">+300</span>
-                            <span class="rb-hero-badge-lbl">Modelos a Medida</span>
+                            <span class="rb-hero-badge-val"><?php echo esc_html( $stat1_num ); ?></span>
+                            <span class="rb-hero-badge-lbl"><?php echo esc_html( $stat1_lbl ); ?></span>
                         </div>
                         <div class="rb-hero-badge-divider"></div>
                         <div class="rb-hero-badge-item">
-                            <span class="rb-hero-badge-val">100%</span>
-                            <span class="rb-hero-badge-lbl">Confección Nacional</span>
+                            <span class="rb-hero-badge-val"><?php echo esc_html( $stat2_num ); ?></span>
+                            <span class="rb-hero-badge-lbl"><?php echo esc_html( $stat2_lbl ); ?></span>
                         </div>
                         <div class="rb-hero-badge-divider"></div>
                         <div class="rb-hero-badge-item">
-                            <span class="rb-hero-badge-val">+28</span>
-                            <span class="rb-hero-badge-lbl">Años de Trayectoria</span>
+                            <span class="rb-hero-badge-val"><?php echo esc_html( $stat3_num ); ?></span>
+                            <span class="rb-hero-badge-lbl"><?php echo esc_html( $stat3_lbl ); ?></span>
                         </div>
                     </div>
                 </div>
@@ -189,7 +211,7 @@ get_header('landing');
                 <!-- Columna Izquierda: Fotografía Confección -->
                 <div class="rb-about-editorial__image-col">
                     <div class="rb-about-image-wrapper" style="aspect-ratio: 1 / 1; width: 100%; max-width: 480px; margin: 0 auto; background: #ffffff;">
-                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg' ); ?>" alt="Rolando Álvarez - Fundador ROLBAG" class="rb-about-editorial__img" style="object-fit: cover; width: 100%; height: 100%; display: block;" loading="eager" />
+                        <img src="<?php echo esc_url( $about_img ); ?>" alt="Rolando Álvarez - Fundador ROLBAG" class="rb-about-editorial__img" style="object-fit: cover; width: 100%; height: 100%; display: block;" loading="eager" />
                         <div class="rb-about-image-badge">
                             <span class="rb-about-image-badge__title">Rolando Álvarez</span>
                             <span class="rb-about-image-badge__subtitle">Santiago Centro, Chile</span>
@@ -199,13 +221,9 @@ get_header('landing');
                 <!-- Columna Derecha: Narrativa Institucional -->
                 <div class="rb-about-editorial__content-col">
                     <span class="rb-eyebrow rb-text-mono rb-text-accent">HISTORIA Y TRAYECTORIA</span>
-                    <h2 class="rb-h2">Confección Nacional y Desarrollo a Medida</h2>
+                    <h2 class="rb-h2"><?php echo wp_kses_post( $about_title ); ?></h2>
                     
-                    <p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por Rolando Álvarez en el año 2006 a partir de una sólida trayectoria en la confección artesanal de calzado, bolsos y estuches especiales. Con el tiempo, la experiencia adquirida nos permitió dar el salto al sector corporativo, respondiendo a las exigencias de clientes empresariales que requerían resguardar sus operaciones.</p>
-                    
-                    <p class="rb-paragraph">Incursionamos con gran éxito en la fabricación de <strong>valijas de seguridad</strong> para el transporte de valores y documentación confidencial, contando con el privilegio de atender históricamente a grandes empresas como <strong>CENCOSUD, LA POLAR, CORREOS DE CHILE, IRON MOUNTAIN y FEDEX</strong>.</p>
-                    
-                    <p class="rb-paragraph">Posteriormente, ampliamos nuestras soluciones hacia la protección de equipos portátiles de alto valor (capturadores de datos, tablets e impresoras industriales), sumando a la fecha <strong>más de 300 modelos de fundas desarrollados</strong> con calce milimétrico para el control de mercancías en almacenes, bodegajes y logística en todo Chile.</p>
+                    <?php echo wp_kses_post( $about_text ); ?>
 
                     <!-- Estadísticas -->
                     <div class="rb-about-editorial__stats">
@@ -361,12 +379,24 @@ get_header('landing');
                 <p class="rb-section-subtitle">Conoce nuestras 6 líneas especializadas de confección nacional para hardware móvil y transporte seguro.</p>
             </div>
             
+            <?php
+            // Helper para obtener la imagen destacada del producto para el bento grid
+            if (!function_exists('rb_get_product_bg_url')) {
+                function rb_get_product_bg_url( $slug, $fallback_path ) {
+                    $post = get_page_by_path( $slug, OBJECT, 'producto' );
+                    if ( $post && has_post_thumbnail( $post->ID ) ) {
+                        return get_the_post_thumbnail_url( $post->ID, 'large' );
+                    }
+                    return get_template_directory_uri() . $fallback_path;
+                }
+            }
+            ?>
             <div class="rb-products-bento-v2">
                 <!-- Fila Superior: Línea Insignia (2/3) + Tablets (1/3) -->
                 <div class="rb-bento-row rb-bento-row--top">
                     <!-- Línea 01: Capturadores (Dominante) -->
                     <a href="<?php echo esc_url( home_url( '/productos/fundas-para-capturadores' ) ); ?>" class="rb-bento-card rb-bento-card--lead">
-                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/galeria/capturadores/honeywell_ck65_frontal.webp' ); ?>');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( rb_get_product_bg_url('fundas-para-capturadores', '/assets/images/galeria/capturadores/honeywell_ck65_frontal.webp') ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <div class="rb-bento-card__meta">
@@ -381,7 +411,7 @@ get_header('landing');
 
                     <!-- Línea 02: Tablets -->
                     <a href="<?php echo esc_url( home_url( '/productos/fundas-para-tablets' ) ); ?>" class="rb-bento-card rb-bento-card--side-top">
-                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/galeria/tablets/tablet_05.webp' ); ?>');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( rb_get_product_bg_url('fundas-para-tablets', '/assets/images/galeria/tablets/tablet_05.webp') ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <div class="rb-bento-card__meta">
@@ -399,7 +429,7 @@ get_header('landing');
                 <div class="rb-bento-row rb-bento-row--bottom">
                     <!-- Línea 03: Impresoras Portátiles -->
                     <a href="<?php echo esc_url( home_url( '/productos/fundas-para-impresoras' ) ); ?>" class="rb-bento-card rb-bento-card--quad">
-                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/galeria/impresoras/impresora_01.webp' ); ?>');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( rb_get_product_bg_url('fundas-para-impresoras', '/assets/images/galeria/impresoras/impresora_01.webp') ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 03</span>
@@ -411,7 +441,7 @@ get_header('landing');
 
                     <!-- Línea 04: POS Móviles -->
                     <a href="<?php echo esc_url( home_url( '/productos/fundas-para-pos-moviles' ) ); ?>" class="rb-bento-card rb-bento-card--quad">
-                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/galeria/pos_moviles/pos_02.webp' ); ?>');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( rb_get_product_bg_url('fundas-para-pos-moviles', '/assets/images/galeria/pos_moviles/pos_02.webp') ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 04</span>
@@ -423,7 +453,7 @@ get_header('landing');
 
                     <!-- Línea 05: Valijas de Seguridad -->
                     <a href="<?php echo esc_url( home_url( '/productos/valijas-de-seguridad' ) ); ?>" class="rb-bento-card rb-bento-card--quad">
-                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/hero_valija_3d_1787700281649.jpg' ); ?>');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( rb_get_product_bg_url('valijas-de-seguridad', '/assets/images/generated/hero_valija_3d_1787700281649.jpg') ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 05</span>
@@ -435,7 +465,7 @@ get_header('landing');
 
                     <!-- Línea 06: Candados Especiales -->
                     <a href="<?php echo esc_url( home_url( '/productos/candados-especiales' ) ); ?>" class="rb-bento-card rb-bento-card--quad">
-                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/bento_candado_1787700534442.jpg' ); ?>');"></div>
+                        <div class="rb-bento-card__bg" style="background-image: url('<?php echo esc_url( rb_get_product_bg_url('candados-especiales', '/assets/images/generated/bento_candado_1787700534442.jpg') ); ?>');"></div>
                         <div class="rb-bento-card__overlay"></div>
                         <div class="rb-bento-card__content">
                             <span class="rb-badge rb-badge--light">Línea 06</span>

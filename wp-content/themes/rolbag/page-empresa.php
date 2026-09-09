@@ -8,19 +8,44 @@
  */
 
 get_header('landing');
+
+
+// --- AUTO-ADMIN VARIABLES ---
+$hero_eyebrow = get_post_meta( get_the_ID(), 'rb_hero_eyebrow', true ) ?: 'TRAYECTORIA Y CONFECCIÓN NACIONAL';
+$hero_title   = get_post_meta( get_the_ID(), 'rb_hero_title', true ) ?: 'Más de 28 Años Diseñando<br>Soluciones de Protección<br>y Seguridad';
+$hero_lead    = get_post_meta( get_the_ID(), 'rb_hero_lead', true ) ?: 'Desde 2006, ROLBAG confecciona a medida fundas protectoras para tecnología móvil corporativa y valijas de seguridad para las principales operaciones logísticas de Chile.';
+$hero_bg      = get_post_meta( get_the_ID(), 'rb_hero_bg', true ) ?: get_template_directory_uri() . '/assets/images/generated/fabricacion_1787702420725.jpg';
+
+$about_title  = get_post_meta( get_the_ID(), 'rb_about_title', true ) ?: 'Especialistas en Confección Técnica a Medida';
+$about_text   = get_post_meta( get_the_ID(), 'rb_about_text', true ) ?: '<p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por <strong>Rolando Álvarez</strong> en el año <strong><?php echo esc_html( $stat2_num ); ?></strong> como un emprendimiento forjado tras décadas de experiencia en confección artesanal de calzado, bolsos y estuches de alta precisión.</p>
+<p class="rb-paragraph">Con la experiencia consolidada en el manejo de materiales sintéticos de alta resistencia, la empresa incursionó en el mercado corporativo mediante la fabricación de <strong>valijas de seguridad</strong> para transporte de valores y documentación confidencial, contando con la confianza de grandes organizaciones a nivel nacional como <strong>Cencosud, La Polar, Correos de Chile, Iron Mountain y FedEx</strong>, entre otras.</p>
+<p class="rb-paragraph">Motivados por los nuevos requerimientos tecnológicos de la industria y de nuestros clientes en bodegas y centros de distribución, expandimos nuestras líneas hacia la confección de <strong>fundas protectoras para terminales móviles, capturadores de datos, tablets e impresoras portátiles de uso industrial</strong>, desarrollando calces milimétricos que protegen equipos de alto costo frente a caídas, rayones y manipulación continua.</p>';
+$about_img    = get_post_meta( get_the_ID(), 'rb_about_img', true ) ?: get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg';
+
+$stat1_num    = get_post_meta( get_the_ID(), 'rb_stat1_num', true ) ?: '+28';
+$stat1_lbl    = get_post_meta( get_the_ID(), 'rb_stat1_lbl', true ) ?: 'Años de oficio y experiencia técnica';
+$stat2_num    = get_post_meta( get_the_ID(), 'rb_stat2_num', true ) ?: '2006';
+$stat2_lbl    = get_post_meta( get_the_ID(), 'rb_stat2_lbl', true ) ?: 'Año de inicio de actividades corporativas';
+$stat3_num    = get_post_meta( get_the_ID(), 'rb_stat3_num', true ) ?: '100%';
+$stat3_lbl    = get_post_meta( get_the_ID(), 'rb_stat3_lbl', true ) ?: 'Cobertura y despachos a todo Chile';
+
+$mission      = get_post_meta( get_the_ID(), 'rb_mission', true ) ?: 'Confeccionar productos exclusivos que brinden una mayor durabilidad y calidad, resguardando la inversión tecnológica y la continuidad operativa de nuestros clientes en todo Chile.';
+$vision       = get_post_meta( get_the_ID(), 'rb_vision', true ) ?: 'Satisfacer los requerimientos especiales y exclusivos que demandan las operaciones de nuestros clientes, innovando en soluciones personalizadas tales como arneses corporales, soportes para grúas y valijas con compartimentos de seguridad satelital.';
+// ----------------------------
 ?>
+
 
 <main id="primary" class="site-main rb-about-page">
 
     <!-- Hero Institucional -->
     <section class="rb-hero-editorial">
-        <div class="rb-hero-editorial__bg" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/images/generated/fabricacion_1787702420725.jpg' ); ?>');"></div>
+        <div class="rb-hero-editorial__bg" style="background-image: url('<?php echo esc_url( $hero_bg ); ?>');"></div>
         <div class="rb-hero-editorial__overlay"></div>
         <div class="rb-container rb-hero-editorial__container">
             <div class="rb-hero-editorial__content">
-                <span class="rb-eyebrow rb-text-mono rb-text-cyan">TRAYECTORIA Y CONFECCIÓN NACIONAL</span>
-                <h1 class="rb-h1">Más de 28 Años Diseñando<br>Soluciones de Protección<br>y Seguridad</h1>
-                <p class="rb-hero-lead">Desde 2006, ROLBAG confecciona a medida fundas protectoras para tecnología móvil corporativa y valijas de seguridad para las principales operaciones logísticas de Chile.</p>
+                <span class="rb-eyebrow rb-text-mono rb-text-cyan"><?php echo esc_html( $hero_eyebrow ); ?></span>
+                <h1 class="rb-h1"><?php echo wp_kses_post( $hero_title ); ?></h1>
+                <p class="rb-hero-lead"><?php echo wp_kses_post( $hero_lead ); ?></p>
             </div>
         </div>
     </section>
@@ -31,35 +56,31 @@ get_header('landing');
             <div class="rb-about-editorial__grid">
                 <div class="rb-about-editorial__content-col">
                     <span class="rb-eyebrow rb-text-mono rb-text-accent">QUIÉNES SOMOS</span>
-                    <h2 class="rb-h2">Especialistas en Confección Técnica a Medida</h2>
+                    <h2 class="rb-h2"><?php echo wp_kses_post( $about_title ); ?></h2>
                     
-                    <p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por <strong>Rolando Álvarez</strong> en el año <strong>2006</strong> como un emprendimiento forjado tras décadas de experiencia en confección artesanal de calzado, bolsos y estuches de alta precisión.</p>
-                    
-                    <p class="rb-paragraph">Con la experiencia consolidada en el manejo de materiales sintéticos de alta resistencia, la empresa incursionó en el mercado corporativo mediante la fabricación de <strong>valijas de seguridad</strong> para transporte de valores y documentación confidencial, contando con la confianza de grandes organizaciones a nivel nacional como <strong>Cencosud, La Polar, Correos de Chile, Iron Mountain y FedEx</strong>, entre otras.</p>
-                    
-                    <p class="rb-paragraph">Motivados por los nuevos requerimientos tecnológicos de la industria y de nuestros clientes en bodegas y centros de distribución, expandimos nuestras líneas hacia la confección de <strong>fundas protectoras para terminales móviles, capturadores de datos, tablets e impresoras portátiles de uso industrial</strong>, desarrollando calces milimétricos que protegen equipos de alto costo frente a caídas, rayones y manipulación continua.</p>
+                    <?php echo wp_kses_post( $about_text ); ?>
 
                     <div class="rb-about-editorial__stats">
                         <div class="rb-stat-editorial">
-                            <span class="rb-stat-editorial__num">+28</span>
-                            <span class="rb-stat-editorial__label">Años de oficio y experiencia técnica</span>
+                            <span class="rb-stat-editorial__num"><?php echo esc_html( $stat1_num ); ?></span>
+                            <span class="rb-stat-editorial__label"><?php echo esc_html( $stat1_lbl ); ?></span>
                         </div>
                         <div class="rb-stat-editorial__divider"></div>
                         <div class="rb-stat-editorial">
-                            <span class="rb-stat-editorial__num">2006</span>
-                            <span class="rb-stat-editorial__label">Año de inicio de actividades corporativas</span>
+                            <span class="rb-stat-editorial__num"><?php echo esc_html( $stat2_num ); ?></span>
+                            <span class="rb-stat-editorial__label"><?php echo esc_html( $stat2_lbl ); ?></span>
                         </div>
                         <div class="rb-stat-editorial__divider"></div>
                         <div class="rb-stat-editorial">
-                            <span class="rb-stat-editorial__num">100%</span>
-                            <span class="rb-stat-editorial__label">Cobertura y despachos a todo Chile</span>
+                            <span class="rb-stat-editorial__num"><?php echo esc_html( $stat3_num ); ?></span>
+                            <span class="rb-stat-editorial__label"><?php echo esc_html( $stat3_lbl ); ?></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="rb-about-editorial__image-col">
                     <div class="rb-about-image-wrapper" style="aspect-ratio: 1 / 1; width: 100%; max-width: 480px; margin: 0 auto; background: #ffffff;">
-                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg' ); ?>" alt="Rolando Álvarez - Fundador de ROLBAG" class="rb-about-editorial__img" style="object-fit: cover; width: 100%; height: 100%; display: block;" />
+                        <img src="<?php echo esc_url( $about_img ); ?>" alt="Rolando Álvarez - Fundador de ROLBAG" class="rb-about-editorial__img" style="object-fit: cover; width: 100%; height: 100%; display: block;" />
                         <div class="rb-about-image-badge">
                             <span class="rb-about-image-badge__title">Rolando Álvarez</span>
                             <span class="rb-about-image-badge__subtitle">Fundador de ROLBAG</span>
@@ -83,13 +104,13 @@ get_header('landing');
                 <div class="rb-compat-card" style="padding: 32px 28px;">
                     <span class="rb-compat-cat">Compromiso Central</span>
                     <h3 class="rb-h3 rb-text-primary" style="margin: 12px 0;">Misión</h3>
-                    <p class="rb-text-muted" style="line-height: 1.6;">Confeccionar productos exclusivos que brinden una mayor durabilidad y calidad, resguardando la inversión tecnológica y la continuidad operativa de nuestros clientes en todo Chile.</p>
+                    <p class="rb-text-muted" style="line-height: 1.6;"><?php echo wp_kses_post( $mission ); ?></p>
                 </div>
 
                 <div class="rb-compat-card" style="padding: 32px 28px;">
                     <span class="rb-compat-cat">Proyección Técnica</span>
                     <h3 class="rb-h3 rb-text-primary" style="margin: 12px 0;">Visión</h3>
-                    <p class="rb-text-muted" style="line-height: 1.6;">Satisfacer los requerimientos especiales y exclusivos que demandan las operaciones de nuestros clientes, innovando en soluciones personalizadas tales como arneses corporales, soportes para grúas y valijas con compartimentos de seguridad satelital.</p>
+                    <p class="rb-text-muted" style="line-height: 1.6;"><?php echo wp_kses_post( $vision ); ?></p>
                 </div>
 
                 <div class="rb-compat-card" style="padding: 32px 28px;">

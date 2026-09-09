@@ -49,18 +49,49 @@ get_header('landing');
                         $card_slug = get_post_field( 'post_name', $post_id );
                         $card_img_url = '';
 
-                        if ( $card_slug === 'fundas-para-capturadores' ) {
-                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/capturadores/honeywell_ck65_lateral.webp';
-                        } elseif ( $card_slug === 'fundas-para-tablets' ) {
-                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/tablets/tablet_05.webp';
-                        } elseif ( $card_slug === 'fundas-para-impresoras' ) {
-                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/impresoras/impresora_01.webp';
-                        } elseif ( $card_slug === 'fundas-para-pos-moviles' ) {
-                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/pos_moviles/pos_02.webp';
-                        } elseif ( $card_slug === 'confecciones-especiales' ) {
-                            $card_img_url = get_template_directory_uri() . '/assets/images/galeria/confecciones_especiales/estructuras/1.png';
-                        } elseif ( $image ) {
-                            $card_img_url = get_template_directory_uri() . '/assets/images/generated/' . $image;
+                        // 1. Intentar usar la Imagen Destacada (Featured Image)
+                        if ( has_post_thumbnail( $post_id ) ) {
+                            $card_img_url = get_the_post_thumbnail_url( $post_id, 'large' );
+                        }
+
+                        // 2. Si no hay destacada, intentar obtener la primera imagen de la galería dinámica
+                        if ( empty($card_img_url) ) {
+                            $gallery_meta = get_post_meta( $post_id, 'rolbag_gallery', true );
+                            $dynamic_gallery_ids = array();
+                            if ( is_array( $gallery_meta ) ) {
+                                $dynamic_gallery_ids = $gallery_meta;
+                            } elseif ( is_string( $gallery_meta ) ) {
+                                $decoded = json_decode( $gallery_meta, true );
+                                if ( is_array( $decoded ) ) {
+                                    $dynamic_gallery_ids = $decoded;
+                                } else {
+                                    $dynamic_gallery_ids = array_filter( array_map('trim', explode(',', $gallery_meta)) );
+                                }
+                            }
+                            
+                            if ( count($dynamic_gallery_ids) > 0 ) {
+                                $first_img_id = reset($dynamic_gallery_ids);
+                                if ( is_numeric($first_img_id) ) {
+                                    $card_img_url = wp_get_attachment_image_url( $first_img_id, 'large' );
+                                }
+                            }
+                        }
+
+                        // 3. Fallback a hardcoded si sigue vacío (mientras migra)
+                        if ( empty($card_img_url) ) {
+                            if ( $card_slug === 'fundas-para-capturadores' ) {
+                                $card_img_url = get_template_directory_uri() . '/assets/images/galeria/capturadores/honeywell_ck65_lateral.webp';
+                            } elseif ( $card_slug === 'fundas-para-tablets' ) {
+                                $card_img_url = get_template_directory_uri() . '/assets/images/galeria/tablets/tablet_05.webp';
+                            } elseif ( $card_slug === 'fundas-para-impresoras' ) {
+                                $card_img_url = get_template_directory_uri() . '/assets/images/galeria/impresoras/impresora_01.webp';
+                            } elseif ( $card_slug === 'fundas-para-pos-moviles' ) {
+                                $card_img_url = get_template_directory_uri() . '/assets/images/galeria/pos_moviles/pos_02.webp';
+                            } elseif ( $card_slug === 'confecciones-especiales' ) {
+                                $card_img_url = get_template_directory_uri() . '/assets/images/galeria/confecciones_especiales/estructuras/1.png';
+                            } elseif ( $image ) {
+                                $card_img_url = get_template_directory_uri() . '/assets/images/generated/' . $image;
+                            }
                         }
                         ?>
                         <article class="rb-catalog-card">

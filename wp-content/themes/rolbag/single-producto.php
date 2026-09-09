@@ -56,113 +56,164 @@ $is_confecciones_especiales = ( $product_slug === 'confecciones-especiales' );
 $real_gallery = array();
 $special_galleries = array();
 
-if ( $product_slug === 'fundas-para-capturadores' ) {
-    $real_gallery = array(
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/honeywell_ck65_lateral.webp',
-            'title' => 'Funda para Capturador Honeywell CK65 - Vista Lateral'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/honeywell_ck65_frontal.webp',
-            'title' => 'Funda para Capturador Honeywell CK65 - Vista Frontal'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_frontal.webp',
-            'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Frontal'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_lateral.webp',
-            'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Lateral'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_frontal.webp',
-            'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Frontal'
-        ),
-        array(
-            'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_lateral.webp',
-            'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Lateral'
-        )
+// 1. INTENTAR LEER GALERÍA DINÁMICA (NUEVO MÉTODO AUTOADMINISTRABLE)
+$has_dynamic_gallery = false;
+
+// A. Si el usuario subió una Imagen Destacada (Featured Image), la usamos como la primera de la galería.
+if ( has_post_thumbnail( $post_id ) ) {
+    $real_gallery[] = array(
+        'url'   => get_the_post_thumbnail_url( $post_id, 'large' ),
+        'title' => get_the_title() . ' - Principal'
     );
-} elseif ( $product_slug === 'fundas-para-impresoras' ) {
-    $real_gallery = array(
-        array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_01.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Vista Frontal' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_02.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Vista Lateral' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_03.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Vista Posterior' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_04.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Detalle Superior' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_05.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Detalle Inferior' )
-    );
-} elseif ( $product_slug === 'fundas-para-pos-moviles' ) {
-    $real_gallery = array(
-        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_02.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Lateral' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_04.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Detalle Operativo' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_03.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Posterior' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_01.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Frontal' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_06.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Ángulo 45 Grados' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_05.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Detalle Ranura' )
-    );
-} elseif ( $product_slug === 'fundas-para-tablets' ) {
-    $real_gallery = array(
-        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_05.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Soporte Plegable' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_02.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Lateral' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_01.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Frontal' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_03.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Posterior' ),
-        array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_04.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Handstrap' )
-    );
-} elseif ( $is_confecciones_especiales ) {
-    $special_galleries = array(
-        'estructuras' => array(
-            'title' => 'ESTRUCTURAS ESPECIALES',
-            'desc'  => 'Fundas de alta rigidez estructural y sujeción reforzada para hardware especializado.',
-            'items' => array(
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/1.png', 'title' => 'Estructuras Especiales - Modelo 01' ),
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/2.png', 'title' => 'Estructuras Especiales - Modelo 02' ),
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/3.png', 'title' => 'Estructuras Especiales - Modelo 03' ),
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/4.png', 'title' => 'Estructuras Especiales - Modelo 04' ),
+    $has_dynamic_gallery = true; // Ya tenemos contenido propio, ignoramos el fallback hardcoded.
+}
+
+// B. Leer la Galería de Vistas Adicionales
+$gallery_meta = get_post_meta( $post_id, 'rolbag_gallery', true );
+$dynamic_gallery_ids = array();
+if ( is_array( $gallery_meta ) ) {
+    $dynamic_gallery_ids = $gallery_meta;
+} elseif ( is_string( $gallery_meta ) ) {
+    $decoded = json_decode( $gallery_meta, true );
+    if ( is_array( $decoded ) ) {
+        $dynamic_gallery_ids = $decoded;
+    } else {
+        $dynamic_gallery_ids = array_filter( array_map('trim', explode(',', $gallery_meta)) );
+    }
+}
+
+if ( ! $is_confecciones_especiales && count($dynamic_gallery_ids) > 0 ) {
+    foreach ( $dynamic_gallery_ids as $att_id ) {
+        if ( is_numeric($att_id) ) {
+            // Usamos tamaño 'large' o 'full' para que el zoom funcione bien
+            $img_url = wp_get_attachment_image_url( $att_id, 'large' );
+            if ( $img_url ) {
+                $real_gallery[] = array(
+                    'url'   => $img_url,
+                    'title' => get_the_title() . ' - Vista ' . (count($real_gallery) + 1)
+                );
+                $has_dynamic_gallery = true;
+            }
+        }
+    }
+}
+
+// 2. FALLBACK A LÓGICA ANTIGUA (Si no hay ni destacada ni galería dinámica)
+if ( ! $has_dynamic_gallery ) {
+    if ( $product_slug === 'fundas-para-capturadores' ) {
+        $real_gallery = array(
+            array(
+                'url'   => $theme_uri . '/assets/images/galeria/capturadores/honeywell_ck65_lateral.webp',
+                'title' => 'Funda para Capturador Honeywell CK65 - Vista Lateral'
             ),
-        ),
-        'wearables' => array(
-            'title' => 'SOPORTE DE MUÑECA (WEARABLES)',
-            'desc'  => 'Sistemas ergonómicos de sujeción para antebrazos y muñecas para operarios con manos libres.',
-            'items' => array(
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/1.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 01' ),
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/2.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 02' ),
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/3.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 03' ),
+            array(
+                'url'   => $theme_uri . '/assets/images/galeria/capturadores/honeywell_ck65_frontal.webp',
+                'title' => 'Funda para Capturador Honeywell CK65 - Vista Frontal'
             ),
-        ),
-        'radios' => array(
-            'title' => 'RADIOS Y COMUNICACION',
-            'desc'  => 'Fundas balísticas para radios portátiles VHF/UHF de faena, seguridad y transporte.',
-            'items' => array(
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/1.png', 'title' => 'Radios y Comunicación - Modelo 01' ),
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/2.png', 'title' => 'Radios y Comunicación - Modelo 02' ),
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/3.png', 'title' => 'Radios y Comunicación - Modelo 03' ),
+            array(
+                'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_frontal.webp',
+                'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Frontal'
             ),
-        ),
-        'equipos_especiales' => array(
-            'title' => 'EQUIPOS ESPECIALES',
-            'desc'  => 'Desarrollos personalizados exclusivos según muestra física o plano del fabricante.',
-            'items' => array(
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/1.png', 'title' => 'Equipos Especiales - Modelo 01' ),
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/2.png', 'title' => 'Equipos Especiales - Modelo 02' ),
-                array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/3.png', 'title' => 'Equipos Especiales - Modelo 03' ),
+            array(
+                'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_lateral.webp',
+                'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Lateral'
             ),
-        ),
-    );
-    // Portada del hero
-    $active_main_image = $special_galleries['estructuras']['items'][0]['url'];
-} else {
-    // Fallback general
-    $main_image_meta = get_post_meta( $post_id, 'rolbag_image', true );
-    if ( $main_image_meta ) {
-        $real_gallery[] = array(
-            'url'   => $theme_uri . '/assets/images/generated/' . $main_image_meta,
-            'title' => get_the_title()
+            array(
+                'url'   => $theme_uri . '/assets/images/galeria/capturadores/pistol_grip_frontal.webp',
+                'title' => 'Funda para Capturador con Pistol Grip Zebra MC9300 - Vista Frontal'
+            ),
+            array(
+                'url'   => $theme_uri . '/assets/images/galeria/capturadores/zebra_lateral.webp',
+                'title' => 'Funda para Capturador Zebra TC58 TC21 - Vista Lateral'
+            )
         );
+    } elseif ( $product_slug === 'fundas-para-impresoras' ) {
+        $real_gallery = array(
+            array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_01.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Vista Frontal' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_02.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Vista Lateral' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_03.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Vista Posterior' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_04.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Detalle Superior' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/impresoras/impresora_05.webp', 'title' => 'Funda para Impresora Portátil Bixolon Zebra - Detalle Inferior' )
+        );
+    } elseif ( $product_slug === 'fundas-para-pos-moviles' ) {
+        $real_gallery = array(
+            array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_02.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Lateral' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_04.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Detalle Operativo' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_03.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Posterior' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_01.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Vista Frontal' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_06.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Ángulo 45 Grados' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/pos_moviles/pos_05.webp', 'title' => 'Funda para POS Móvil Transbank SumUp - Detalle Ranura' )
+        );
+    } elseif ( $product_slug === 'fundas-para-tablets' ) {
+        $real_gallery = array(
+            array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_05.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Soporte Plegable' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_02.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Lateral' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_01.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Frontal' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_03.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Posterior' ),
+            array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_04.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Handstrap' )
+        );
+    } elseif ( $is_confecciones_especiales ) {
+        $special_galleries = array(
+            'estructuras' => array(
+                'title' => 'ESTRUCTURAS ESPECIALES',
+                'desc'  => 'Fundas de alta rigidez estructural y sujeción reforzada para hardware especializado.',
+                'items' => array(
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/1.png', 'title' => 'Estructuras Especiales - Modelo 01' ),
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/2.png', 'title' => 'Estructuras Especiales - Modelo 02' ),
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/3.png', 'title' => 'Estructuras Especiales - Modelo 03' ),
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/4.png', 'title' => 'Estructuras Especiales - Modelo 04' ),
+                ),
+            ),
+            'wearables' => array(
+                'title' => 'SOPORTE DE MUÑECA (WEARABLES)',
+                'desc'  => 'Sistemas ergonómicos de sujeción para antebrazos y muñecas para operarios con manos libres.',
+                'items' => array(
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/1.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 01' ),
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/2.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 02' ),
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/3.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 03' ),
+                ),
+            ),
+            'radios' => array(
+                'title' => 'RADIOS Y COMUNICACION',
+                'desc'  => 'Fundas balísticas para radios portátiles VHF/UHF de faena, seguridad y transporte.',
+                'items' => array(
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/1.png', 'title' => 'Radios y Comunicación - Modelo 01' ),
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/2.png', 'title' => 'Radios y Comunicación - Modelo 02' ),
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/3.png', 'title' => 'Radios y Comunicación - Modelo 03' ),
+                ),
+            ),
+            'equipos_especiales' => array(
+                'title' => 'EQUIPOS ESPECIALES',
+                'desc'  => 'Desarrollos personalizados exclusivos según muestra física o plano del fabricante.',
+                'items' => array(
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/1.png', 'title' => 'Equipos Especiales - Modelo 01' ),
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/2.png', 'title' => 'Equipos Especiales - Modelo 02' ),
+                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/3.png', 'title' => 'Equipos Especiales - Modelo 03' ),
+                ),
+            ),
+        );
+        // Portada del hero
+        $active_main_image = $special_galleries['estructuras']['items'][0]['url'];
+    } else {
+        // Fallback general
+        $main_image_meta = get_post_meta( $post_id, 'rolbag_image', true );
+        if ( $main_image_meta ) {
+            $real_gallery[] = array(
+                'url'   => $theme_uri . '/assets/images/generated/' . $main_image_meta,
+                'title' => get_the_title()
+            );
+        } elseif ( has_post_thumbnail() ) {
+            // Intenta usar la imagen destacada si existe
+            $real_gallery[] = array(
+                'url'   => get_the_post_thumbnail_url( $post_id, 'large' ),
+                'title' => get_the_title()
+            );
+        }
     }
 }
 
 if ( ! $is_confecciones_especiales ) {
-    $active_main_image = ! empty( $real_gallery ) ? $real_gallery[0]['url'] : '';
+    $active_main_image = ! empty( $real_gallery ) ? $real_gallery[0]['url'] : get_the_post_thumbnail_url( $post_id, 'large' );
 }
 
 $whatsapp = '569318360416';
