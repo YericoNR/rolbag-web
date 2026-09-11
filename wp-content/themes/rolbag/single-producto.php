@@ -56,6 +56,46 @@ $is_confecciones_especiales = ( $product_slug === 'confecciones-especiales' );
 $real_gallery = array();
 $special_galleries = array();
 
+
+// 3. GALERÍAS ESPECIALES POR SECCIÓN (NUEVO MÉTODO DINÁMICO)
+$special_meta_raw = get_post_meta( $post_id, 'rolbag_special_galleries', true );
+if ( is_array( $special_meta_raw ) ) {
+    $special_galleries_data = $special_meta_raw;
+} elseif ( is_string( $special_meta_raw ) && ! empty( $special_meta_raw ) ) {
+    $decoded_special = json_decode( $special_meta_raw, true );
+    $special_galleries_data = is_array( $decoded_special ) ? $decoded_special : array();
+} else {
+    $special_galleries_data = array();
+}
+
+$special_galleries = array();
+foreach ( $special_galleries_data as $idx => $section ) {
+    $items = array();
+    if ( ! empty( $section['images'] ) && is_array( $section['images'] ) ) {
+        foreach ( $section['images'] as $img_idx => $img_obj ) {
+            if ( ! empty( $img_obj['id'] ) ) {
+                $url = wp_get_attachment_image_url( $img_obj['id'], 'large' );
+                if ( $url ) {
+                    $img_caption = wp_get_attachment_caption( $img_obj['id'] );
+                    $display_title = ! empty( $img_caption ) ? $img_caption : ( ! empty( $section['title'] ) ? $section['title'] . ' #' . ($img_idx + 1) : 'Fotografía #' . ($img_idx + 1) );
+                    $items[] = array( 'url' => $url, 'title' => $section['title'], 'custom_title' => $display_title );
+                }
+            } elseif ( ! empty( $img_obj['url'] ) ) {
+                $display_title = ! empty( $section['title'] ) ? $section['title'] . ' #' . ($img_idx + 1) : 'Fotografía #' . ($img_idx + 1);
+                $items[] = array( 'url' => $img_obj['url'], 'title' => $section['title'], 'custom_title' => $display_title );
+            }
+        }
+    }
+    
+    $special_galleries['section_' . $idx] = array(
+        'title' => ! empty( $section['title'] ) ? $section['title'] : '',
+        'desc'  => ! empty( $section['desc'] ) ? $section['desc'] : '',
+        'items' => $items
+    );
+}
+$has_special_galleries = ! empty( $special_galleries );
+
+
 // 1. INTENTAR LEER GALERÍA DINÁMICA (NUEVO MÉTODO AUTOADMINISTRABLE)
 $has_dynamic_gallery = false;
 
@@ -82,7 +122,7 @@ if ( is_array( $gallery_meta ) ) {
     }
 }
 
-if ( ! $is_confecciones_especiales && count($dynamic_gallery_ids) > 0 ) {
+if ( count($dynamic_gallery_ids) > 0 ) {
     foreach ( $dynamic_gallery_ids as $att_id ) {
         if ( is_numeric($att_id) ) {
             // Usamos tamaño 'large' o 'full' para que el zoom funcione bien
@@ -152,48 +192,6 @@ if ( ! $has_dynamic_gallery ) {
             array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_03.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Vista Posterior' ),
             array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_04.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Handstrap' )
         );
-    } elseif ( $is_confecciones_especiales ) {
-        $special_galleries = array(
-            'estructuras' => array(
-                'title' => 'ESTRUCTURAS ESPECIALES',
-                'desc'  => 'Fundas de alta rigidez estructural y sujeción reforzada para hardware especializado.',
-                'items' => array(
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/1.png', 'title' => 'Estructuras Especiales - Modelo 01' ),
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/2.png', 'title' => 'Estructuras Especiales - Modelo 02' ),
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/3.png', 'title' => 'Estructuras Especiales - Modelo 03' ),
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/estructuras/4.png', 'title' => 'Estructuras Especiales - Modelo 04' ),
-                ),
-            ),
-            'wearables' => array(
-                'title' => 'SOPORTE DE MUÑECA (WEARABLES)',
-                'desc'  => 'Sistemas ergonómicos de sujeción para antebrazos y muñecas para operarios con manos libres.',
-                'items' => array(
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/1.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 01' ),
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/2.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 02' ),
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/wearables/3.png', 'title' => 'Soporte de Muñeca Wearable - Modelo 03' ),
-                ),
-            ),
-            'radios' => array(
-                'title' => 'RADIOS Y COMUNICACION',
-                'desc'  => 'Fundas balísticas para radios portátiles VHF/UHF de faena, seguridad y transporte.',
-                'items' => array(
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/1.png', 'title' => 'Radios y Comunicación - Modelo 01' ),
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/2.png', 'title' => 'Radios y Comunicación - Modelo 02' ),
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/radios/3.png', 'title' => 'Radios y Comunicación - Modelo 03' ),
-                ),
-            ),
-            'equipos_especiales' => array(
-                'title' => 'EQUIPOS ESPECIALES',
-                'desc'  => 'Desarrollos personalizados exclusivos según muestra física o plano del fabricante.',
-                'items' => array(
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/1.png', 'title' => 'Equipos Especiales - Modelo 01' ),
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/2.png', 'title' => 'Equipos Especiales - Modelo 02' ),
-                    array( 'url' => $theme_uri . '/assets/images/galeria/confecciones_especiales/equipos_especiales/3.png', 'title' => 'Equipos Especiales - Modelo 03' ),
-                ),
-            ),
-        );
-        // Portada del hero
-        $active_main_image = $special_galleries['estructuras']['items'][0]['url'];
     } else {
         // Fallback general
         $main_image_meta = get_post_meta( $post_id, 'rolbag_image', true );
@@ -212,9 +210,19 @@ if ( ! $has_dynamic_gallery ) {
     }
 }
 
-if ( ! $is_confecciones_especiales ) {
-    $active_main_image = ! empty( $real_gallery ) ? $real_gallery[0]['url'] : get_the_post_thumbnail_url( $post_id, 'large' );
+
+// Portada del hero
+if ( ! empty( $real_gallery ) ) {
+    $active_main_image = $real_gallery[0]['url'];
+} elseif ( has_post_thumbnail( $post_id ) ) {
+    $active_main_image = get_the_post_thumbnail_url( $post_id, 'large' );
+} elseif ( $has_special_galleries ) {
+    $first_section = reset($special_galleries);
+    $active_main_image = ! empty($first_section['items']) ? $first_section['items'][0]['url'] : '';
+} else {
+    $active_main_image = '';
 }
+
 
 $whatsapp = '569318360416';
 $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización para la línea: ' . get_the_title() );
@@ -238,7 +246,7 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
                 <div class="rb-product-gallery-col">
                     <div class="rb-product-main-img-wrap" style="background:#ffffff; border-radius:16px; border:1px solid #e2e8f0; padding:12px; display:flex; align-items:center; justify-content:center; height:480px; position:relative; box-shadow:0 8px 24px rgba(0,0,0,0.06); cursor:zoom-in;">
                         <?php if ( $active_main_image ) : ?>
-                            <img id="rb-main-view" src="<?php echo esc_url( $active_main_image ); ?>" alt="<?php echo esc_attr( ! empty( $real_gallery ) ? $real_gallery[0]['title'] : get_the_title() ); ?>" class="rb-product-main-img" style="max-height:456px; width:100%; height:100%; object-fit:contain; transition:opacity 0.25s ease;" data-gallery-group="<?php echo $is_confecciones_especiales ? 'estructuras' : 'main'; ?>" data-gallery-index="0" />
+                            <img id="rb-main-view" src="<?php echo esc_url( $active_main_image ); ?>" alt="<?php echo esc_attr( ! empty( $real_gallery ) ? $real_gallery[0]['title'] : get_the_title() ); ?>" class="rb-product-main-img" style="max-height:456px; width:100%; height:100%; object-fit:contain; transition:opacity 0.25s ease;" data-gallery-group="main" data-gallery-index="0" />
                             <span class="rb-zoom-hint" style="position:absolute; bottom:12px; right:12px; background:rgba(15,23,42,0.75); color:#fff; font-size:0.75rem; padding:4px 10px; border-radius:20px; display:flex; align-items:center; gap:5px; pointer-events:none; backdrop-filter:blur(4px);">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
                                 Click para ampliar
@@ -247,7 +255,7 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
                             <?php the_post_thumbnail( 'large', array( 'class' => 'rb-product-main-img', 'alt' => esc_attr( get_the_title() ) ) ); ?>
                         <?php endif; ?>
                     </div>
-                    <?php if ( ! $is_confecciones_especiales && ! empty( $real_gallery ) && count( $real_gallery ) > 1 ) : ?>
+                    <?php if ( ! empty( $real_gallery ) && count( $real_gallery ) > 1 ) : ?>
                         <div class="rb-product-thumbs" style="display:flex; gap:10px; margin-top:14px; overflow-x:auto; padding-bottom:6px;">
                             <?php foreach ( $real_gallery as $idx => $item ) : ?>
                                 <button type="button" class="rb-thumb-btn <?php echo ( $idx === 0 ) ? 'active' : ''; ?>" data-img="<?php echo esc_url( $item['url'] ); ?>" data-index="<?php echo $idx; ?>" aria-label="<?php echo esc_attr( $item['title'] ); ?>" style="flex:0 0 76px; height:76px; border-radius:10px; border:2px solid <?php echo ( $idx === 0 ) ? '#00a3e0' : '#e2e8f0'; ?>; background:#ffffff; padding:4px; cursor:pointer; transition:all 0.2s ease;">
@@ -299,7 +307,7 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
         </div>
     </section>
 
-    <?php if ( $is_confecciones_especiales && ! empty( $special_galleries ) ) : ?>
+    <?php if ( $has_special_galleries ) : ?>
         <!-- Galerías Separadas de Confecciones Especiales (Agrupadas por Carpeta Oficial) -->
         <section class="rb-section rb-special-galleries-section" style="background:#f8fafc; padding: 60px 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
             <div class="rb-container">
@@ -324,14 +332,14 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
                         <div class="rb-special-group-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:22px;">
                             <?php foreach ( $group['items'] as $item_idx => $img_item ) : ?>
                                 <div class="rb-special-card" data-gallery-group="<?php echo esc_attr( $group_key ); ?>" data-gallery-index="<?php echo $item_idx; ?>" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,0.04); cursor:pointer; transition:transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;">
-                                    <div class="rb-special-card__img-wrap" style="height:270px; padding:16px; display:flex; align-items:center; justify-content:center; position:relative; background:#ffffff;">
-                                        <img src="<?php echo esc_url( $img_item['url'] ); ?>" alt="<?php echo esc_attr( $img_item['title'] ); ?>" style="max-height:100%; max-width:100%; width:auto; height:auto; object-fit:contain; transition:transform 0.25s ease;" />
+                                    <div class="rb-special-card__img-wrap" style="aspect-ratio: 3 / 4; width: 100%; padding:0; display:flex; align-items:center; justify-content:center; position:relative; background:#f8fafc;">
+                                        <img src="<?php echo esc_url( $img_item['url'] ); ?>" alt="<?php echo esc_attr( $img_item['title'] ); ?>" style="width:100%; height:100%; object-fit:cover; transition:transform 0.25s ease;" />
                                         <span class="rb-card-zoom-badge" style="position:absolute; top:12px; right:12px; background:rgba(15,23,42,0.7); color:#fff; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
                                         </span>
                                     </div>
                                     <div class="rb-special-card__footer" style="padding:12px 18px; background:#f8fafc; border-top:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                                        <span style="font-size:0.88rem; font-weight:600; color:#1e293b;"><?php echo esc_html( $group['title'] ); ?> #<?php echo $item_idx + 1; ?></span>
+                                        <span style="font-size:0.88rem; font-weight:600; color:#1e293b;"><?php echo esc_html( ! empty( $img_item['custom_title'] ) ? $img_item['custom_title'] : $group['title'] . ' #' . ($item_idx + 1) ); ?></span>
                                         <span style="font-size:0.8rem; color:var(--color-brand-accent); font-weight:700;">Ampliar &rarr;</span>
                                     </div>
                                 </div>
@@ -576,16 +584,13 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
 document.addEventListener('DOMContentLoaded', function() {
     // 1. Estructura de Galerías Aisladas para Lightbox
     const allGalleries = {
-        <?php if ( $is_confecciones_especiales ) : ?>
-            <?php foreach ( $special_galleries as $gk => $grp ) : ?>
-                '<?php echo esc_js( $gk ); ?>': <?php echo json_encode( $grp['items'] ); ?>,
-            <?php endforeach; ?>
-        <?php else : ?>
-            'main': <?php echo json_encode( $real_gallery ); ?>,
-        <?php endif; ?>
+        'main': <?php echo json_encode( $real_gallery ); ?>,
+        <?php foreach ( $special_galleries as $gk => $grp ) : ?>
+            '<?php echo esc_js( $gk ); ?>': <?php echo json_encode( $grp['items'] ); ?>,
+        <?php endforeach; ?>
     };
 
-    let currentGalleryGroup = '<?php echo $is_confecciones_especiales ? 'estructuras' : 'main'; ?>';
+    let currentGalleryGroup = 'main';
     let currentImageIndex = 0;
 
     const lightbox = document.getElementById('rb-lightbox');
