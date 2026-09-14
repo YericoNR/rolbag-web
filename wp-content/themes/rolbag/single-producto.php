@@ -115,7 +115,6 @@ if ( has_post_thumbnail( $post_id ) ) {
         'url'   => get_the_post_thumbnail_url( $post_id, 'large' ),
         'title' => get_the_title() . ' - Principal'
     );
-    $has_dynamic_gallery = true; // Ya tenemos contenido propio, ignoramos el fallback hardcoded.
 }
 
 // B. Leer la Galería de Vistas Adicionales
