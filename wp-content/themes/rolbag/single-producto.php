@@ -144,6 +144,14 @@ if ( count($dynamic_gallery_ids) > 0 ) {
                 );
                 $has_dynamic_gallery = true;
             }
+        } elseif ( is_string($att_id) && !empty($att_id) ) {
+            // Soporte para nombres de archivo directos (ej. bento_candado_1787700534442.jpg)
+            $img_url = $theme_uri . '/assets/images/generated/' . $att_id;
+            $real_gallery[] = array(
+                'url'   => $img_url,
+                'title' => get_the_title() . ' - Vista ' . (count($real_gallery) + 1)
+            );
+            $has_dynamic_gallery = true;
         }
     }
 }
