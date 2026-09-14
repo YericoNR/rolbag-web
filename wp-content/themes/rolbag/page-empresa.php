@@ -11,7 +11,7 @@ get_header('landing');
 
 
 $hero_eyebrow = 'TRAYECTORIA Y CONFECCIÓN NACIONAL';
-$hero_title   = 'Más de 28 Años Diseñando<br>Soluciones de Protección<br>y Seguridad';
+$hero_title   = 'Más de 20 Años Diseñando<br>Soluciones de Protección<br>y Seguridad';
 $hero_lead    = 'Desde 2006, ROLBAG confecciona a medida fundas protectoras para tecnología móvil corporativa y valijas de seguridad para las principales operaciones logísticas de Chile.';
 $hero_bg      = get_template_directory_uri() . '/assets/images/generated/fabricacion_1787702420725.jpg';
 
@@ -21,7 +21,7 @@ $about_text   = '<p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por
 <p class="rb-paragraph">Motivados por los nuevos requerimientos tecnológicos de la industria y de nuestros clientes en bodegas y centros de distribución, expandimos nuestras líneas hacia la confección de <strong>fundas protectoras para terminales móviles, capturadores de datos, tablets e impresoras portátiles de uso industrial</strong>, desarrollando calces milimétricos que protegen equipos de alto costo frente a caídas, rayones y manipulación continua.</p>';
 $about_img    = get_template_directory_uri() . '/assets/images/rolando_alvarez.jpg';
 
-$stat1_num    = '+28';
+$stat1_num    = '+20';
 $stat1_lbl    = 'Años de oficio y experiencia técnica';
 $stat2_num    = '2006';
 $stat2_lbl    = 'Año de inicio de actividades corporativas';

@@ -20,7 +20,7 @@ $stat1_num    = '+300';
 $stat1_lbl    = 'Modelos a Medida';
 $stat2_num    = '100%';
 $stat2_lbl    = 'Confección Nacional';
-$stat3_num    = '+28';
+$stat3_num    = '+20';
 $stat3_lbl    = 'Años de Trayectoria';
 
 $about_title  = 'Confección Nacional y Desarrollo a Medida';
@@ -226,7 +226,7 @@ $about_img    = get_template_directory_uri() . '/assets/images/rolando_alvarez.j
                     <!-- Estadísticas -->
                     <div class="rb-about-editorial__stats">
                         <div class="rb-stat-editorial">
-                            <span class="rb-stat-editorial__num">+28</span>
+                            <span class="rb-stat-editorial__num">+20</span>
                             <span class="rb-stat-editorial__label">Años de experiencia en el rubro</span>
                         </div>
                         <div class="rb-stat-editorial__divider"></div>

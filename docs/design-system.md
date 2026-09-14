@@ -7,7 +7,7 @@ ROLBAG debe transmitir:
 - **Seguridad y Protección**
 - **Precisión Tecnológica**
 - **Fabricación Industrial B2B**
-- **Experiencia (28 años)**
+- **Experiencia (Más de 20 años)**
 
 La estética es corporativa, premium, industrial y tecnológica. El producto es siempre el protagonista. 
 

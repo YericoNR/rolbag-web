@@ -19,7 +19,7 @@ get_header('landing');
         <div class="rb-container rb-hero-editorial__container">
             <div class="rb-hero-editorial__content">
                 <span class="rb-eyebrow rb-text-mono rb-text-cyan">CONFECCIÓN NACIONAL DESDE 2006</span>
-                <h1 class="rb-h1">Más de 28 años de oficio protegiendo el hardware crítico de Chile</h1>
+                <h1 class="rb-h1">Más de 20 años de oficio protegiendo el hardware crítico de Chile</h1>
                 <p class="rb-hero-lead">Especialistas en el diseño y fabricación de fundas protectoras a medida, valijas de seguridad y accesorios industriales para terminales móviles y transporte de valores.</p>
             </div>
         </div>
@@ -45,7 +45,7 @@ get_header('landing');
                     <span class="rb-eyebrow rb-text-mono rb-text-accent">NUESTRO ORIGEN</span>
                     <h2 class="rb-h2">Tradición artesanal y evolución corporativa</h2>
                     
-                    <p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por Rolando Álvarez en el año 2006, consolidando una trayectoria de más de 28 años en el oficio de la confección técnica y artesanal de calzado, bolsos de trabajo y estuches de alta resistencia.</p>
+                    <p class="rb-paragraph"><strong>ROLBAG</strong> fue fundada por Rolando Álvarez en el año 2006, consolidando una trayectoria de más de 20 años en el oficio de la confección técnica y artesanal de calzado, bolsos de trabajo y estuches de alta resistencia.</p>
                     
                     <p class="rb-paragraph">La rigurosidad en las terminaciones y el conocimiento profundo de los materiales permitieron dar un salto natural hacia el sector corporativo, respondiendo a la necesidad crítica de empresas que buscaban resguardar la continuidad operativa de sus equipos móviles en terreno.</p>
                     
@@ -54,7 +54,7 @@ get_header('landing');
                     <!-- Estadísticas -->
                     <div class="rb-about-editorial__stats">
                         <div class="rb-stat-editorial">
-                            <span class="rb-stat-editorial__num">+28</span>
+                            <span class="rb-stat-editorial__num">+20</span>
                             <span class="rb-stat-editorial__label">Años de experiencia en confección</span>
                         </div>
                         <div class="rb-stat-editorial__divider"></div>
