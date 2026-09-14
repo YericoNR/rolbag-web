@@ -587,7 +587,7 @@ foreach ( $products_data as $p ) {
         update_post_meta( $post_id, 'rolbag_materiales', $p['materiales'] );
         update_post_meta( $post_id, 'rolbag_caracteristicas', $p['caracteristicas'] );
         update_post_meta( $post_id, 'rolbag_beneficios', $p['beneficios'] );
-        update_post_meta( $post_id, 'rolbag_brands_models', $p['brands_models'] );
+        update_post_meta( $post_id, 'rolbag_brands_models', wp_slash( wp_json_encode( $p['brands_models'], JSON_UNESCAPED_UNICODE ) ) );
         
         WP_CLI::success( "Metadatos y marcas/modelos guardados con éxito para: {$p['short_title']}" );
     } else {

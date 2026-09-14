@@ -33,9 +33,19 @@ $materiales = get_post_meta( $post_id, 'rolbag_materiales', true );
 
 // Marcas y Modelos
 $brands_models_meta = get_post_meta( $post_id, 'rolbag_brands_models', true );
-$brands_models = is_array( $brands_models_meta ) ? $brands_models_meta : json_decode( $brands_models_meta, true );
-if ( ! is_array( $brands_models ) ) {
-    $brands_models = array();
+$brands_models = array();
+if ( is_array( $brands_models_meta ) ) {
+    $brands_models = $brands_models_meta;
+} elseif ( is_string( $brands_models_meta ) && ! empty( $brands_models_meta ) ) {
+    $decoded = json_decode( $brands_models_meta, true );
+    if ( is_array( $decoded ) ) {
+        $brands_models = $decoded;
+    } else {
+        $decoded = json_decode( stripslashes( $brands_models_meta ), true );
+        if ( is_array( $decoded ) ) {
+            $brands_models = $decoded;
+        }
+    }
 }
 
 // Contar total de modelos compatibles
