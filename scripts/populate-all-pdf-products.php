@@ -31,7 +31,7 @@ $products_data = array(
         'caracteristicas' => array(
             'Confección a la medida exacta según la anatomía y comandos de cada equipo.',
             'Compatible para versiones con gatillo pistol grip y estándar sin pistol.',
-            'Correas de tela tejida de nylon cosidas a la funda, regulables para cintura o bandolera.',
+            'Correas de tela tejida de nylon cosidas a la funda, regulables para cintura, bandolera o morral.',
             'Materiales sintéticos impermeables resistentes al uso intensivo del área logística.',
             'Acceso total a pantalla táctil, teclado, gatillo y puertos de carga sin retirar la funda.',
             'Colores corporativos a elección del cliente.',
