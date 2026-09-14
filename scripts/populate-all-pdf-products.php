@@ -527,7 +527,7 @@ $products_data = array(
 
     array(
         'slug'            => 'candados-especiales',
-        'title'           => 'Candados de Seguridad Igualados y Amaestrados',
+        'title'           => 'Candados de Seguridad Odis Igualados y Amaestrados',
         'short_title'     => 'Candados de Seguridad',
         'image'           => 'bento_candado_1787700534442.jpg',
         'gallery'         => array(
@@ -535,26 +535,35 @@ $products_data = array(
             'hero_valija_3d_1787700281649.jpg',
             'ops_logistica_1787700573166.jpg',
         ),
-        'content'         => 'Sistemas de seguridad física industrial para custodia de valijas de seguridad, contenedores y bodegas. Proveemos candados de seguridad en sistemas igualados (una sola llave abre un conjunto de candados) y amaestrados (cada candado con su llave individual y una llave maestra para el supervisor).',
-        'materiales'      => 'Cuerpo de latón macizo resistente a la corrosión, grillete de acero endurecido cementado resistente al corte con sierra y cizalla, y cilindros de combinación de alta precisión.',
+        'content'         => 'Sistemas de seguridad física industrial para custodia de valijas de seguridad, contenedores y cortinas metálicas. Proveemos candados profesionales marca Odis de construcción robusta (cuerpo de bronce sólido o forjado) en sistemas igualados (una sola llave abre un conjunto de candados) y amaestrados (cada candado con su llave individual y una llave maestra para el supervisor).',
+        'materiales'      => 'Cuerpo de bronce sólido o forjado resistente a la corrosión, gancho de acero endurecido o acero al manganeso resistente al corte, y cilindros de combinación de 4 a 5 pines de alta precisión con sistema de cierre con traba de doble eslabón.',
         'caracteristicas' => array(
+            'Cuerpo de bronce sólido (línea 130/150) o bronce forjado (línea 300) para máxima durabilidad.',
+            'Gancho de acero endurecido o acero al manganeso, y modelos con hombro de protección.',
             'Sistemas Igualados (Keyed Alike): Misma llave abre todos los candados del lote asignado.',
             'Sistemas Amaestrados (Master Keyed): Llave individual para cada usuario y Llave Maestra para supervisión.',
-            'Grillete de acero templado de alta resistencia mecánica.',
             'Compatibilidad directa con las cremalleras y ojetes de las Valijas de Seguridad ROLBAG.',
-            'Juego de llaves de repuesto y control de duplicación.',
         ),
         'beneficios'      => array(
+            'Protección robusta para casilleros, rejas, portones, cortinas metálicas y valijas de seguridad.',
             'Simplifica el control de llaves y optimiza la operación logística en rutas de transporte.',
             'Permite supervisión jerárquica con llave maestra sin quitar la custodia al operario.',
-            'Complemento indispensable para las valijas de seguridad y transporte de documentación.',
+            'Garantía de 3 años a de por vida ante defectos de fabricación, dependiendo del modelo.',
         ),
         'brands_models'   => array(
+            'Línea Odis 130 y 150' => array(
+                'Odis 130' => 'Nivel de seguridad 2. Cuerpo de bronce sólido, gancho de acero endurecido, 4 pines. 30×28×14 mm.',
+                'Odis 150' => 'Nivel de seguridad 7. Cuerpo de bronce sólido, gancho de acero al manganeso, 5 pines. 50×41×17 mm.',
+            ),
+            'Línea Profesional Odis 300' => array(
+                'Odis 325 / 330' => 'Cuerpo de bronce forjado y gancho de acero endurecido.',
+                'Odis 340 / 345' => 'Cuerpo de bronce forjado y gancho de acero al manganeso.',
+                'Odis 350 / 360' => 'Bronce forjado y acero al manganeso, alta seguridad para exterior.',
+                'Odis 350S / 360S' => 'Modelo con hombro de protección para máxima resistencia al corte.',
+            ),
             'Sistemas de Cerrajería Disponibles' => array(
-                'Candados de Seguridad Igualados (Keyed Alike)' => 'Una misma llave maestra para todo el lote de candados. Ideal para flotas y un solo responsable.',
-                'Candados de Seguridad Amaestrados (Master Keyed)' => 'Llave individual por cada candado + Llave Maestra para el jefe de seguridad o supervisor.',
-                'Cilindros de Alta Precisión' => 'Mecanismo de pines de seguridad contra manipulación no autorizada.',
-                'Grilletes de Acero Cementado' => 'Máxima resistencia física al apalancamiento y cortes en ruta.',
+                'Candados Igualados (Keyed Alike)' => 'Configuración disponible para operar múltiples candados con la misma llave.',
+                'Candados Amaestrados (Master Keyed)' => 'Disponible en modelos seleccionados (ej. Odis 150, línea 300) para supervisión.',
             ),
         ),
     ),
