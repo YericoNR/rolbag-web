@@ -20,12 +20,6 @@ $products_data = array(
         'title'           => 'Fundas para Capturadores de Datos / Terminales Móviles',
         'short_title'     => 'Fundas para Capturadores',
         'image'           => 'bento_capturador_1787700291965.jpg',
-        'gallery'         => array(
-            'bento_capturador_1787700291965.jpg',
-            'capturador_detail.jpg',
-            'custom_solution_1787698415328.jpg',
-            'fabricacion_1787702420725.jpg',
-        ),
         'content'         => 'Funda protectora de alta duración confeccionada en material impermeable a la medida exacta de cada equipo. Permite una adecuada manipulación de comandos, botones, cámaras, lectores láser y puertos de conexión. Disponible con correa cosida a la funda y configuraciones compatibles para equipos con o sin gatillo pistol grip.',
         'materiales'      => 'Materiales sintéticos impermeables de alta resistencia mecánica (Nylon balístico / Cordura), estructuras reforzadas con láminas plásticas semirrígidas para rigidez, amortiguación interna de goma EVA de alta densidad y forro acolchado. Cintas tejidas de nylon de alta tenacidad con terminales y herrajes metálicos o plásticos de alta resistencia para ajuste ergonómico a la cintura o al hombro.',
         'caracteristicas' => array(
@@ -229,12 +223,6 @@ $products_data = array(
         'title'           => 'Fundas para Tablets de Uso Industrial',
         'short_title'     => 'Fundas para Tablets',
         'image'           => 'bento_tablet_1787700308321.jpg',
-        'gallery'         => array(
-            'bento_tablet_1787700308321.jpg',
-            'tablet_detail.jpg',
-            'ops_logistica_1787700573166.jpg',
-            'fabricacion_1787702420725.jpg',
-        ),
         'content'         => 'Funda protectora reforzada confeccionada con estructura interna de lámina plástica para rigidez y resguardo de la pantalla táctil en tablets corporativas y de uso rudo. Incorpora correa de hombro ajustable cosida a la funda, sistema de elástico de mano posterior (handstrap) y diseño anatómico que permite la manipulación de comandos, botones y puertos de conexión.',
         'materiales'      => 'Telas sintéticas impermeables de alta densidad y resistencia a la abrasión, estructura rígida de lámina plástica para protección de display, acolchado de espuma EVA de absorción de impactos, correa de tela tejida de nylon regulable cosida a los fuelles con herrajes plásticos de alta resistencia.',
         'caracteristicas' => array(
@@ -309,12 +297,6 @@ $products_data = array(
         'title'           => 'Fundas para Impresoras Portátiles',
         'short_title'     => 'Fundas para Impresoras',
         'image'           => 'bento_impresora_1787700478886.jpg',
-        'gallery'         => array(
-            'bento_impresora_1787700478886.jpg',
-            'impresora_detail.jpg',
-            'ops_logistica_1787700573166.jpg',
-            'fabricacion_1787702420725.jpg',
-        ),
         'content'         => 'Funda protectora confeccionada en material impermeable de alta duración, acorde a la forma de cada equipo, permitiendo una adecuada manipulación de sus comandos, botones y puertos de conexión. Opciones de uso: Correa de tela tejida de nylon (40mm) regulable con cierre tip-top plástico a la cintura, o correa de nylon (30mm) regulable con soporte acolchado de hombro.',
         'materiales'      => 'Materiales sintéticos impermeables de alta resistencia para uso logístico. Cintas tejidas de nylon (30mm y 40mm) con terminales y accesorios plásticos tipo tip-top o metálicos de alta durabilidad para regulación ergonómica.',
         'caracteristicas' => array(
@@ -410,12 +392,6 @@ $products_data = array(
         'title'           => 'Fundas para POS Móviles y Terminales de Pago',
         'short_title'     => 'Fundas para POS Móviles',
         'image'           => 'funda_pos_movil_principal.jpg',
-        'gallery'         => array(
-            'funda_pos_movil_principal.jpg',
-            'bento_capturador_1787700291965.jpg',
-            'custom_solution_1787698415328.jpg',
-            'fabricacion_1787702420725.jpg',
-        ),
         'content'         => 'Funda protectora de alta duración confeccionada en material impermeable según la anatomía y comandos de cada equipo POS móvil. Permite una adecuada manipulación de botones, lector de banda/chip, teclado táctil, ranura de impresión y puertos de conexión. Equipada con correa cosida a la funda y materiales sintéticos de máxima resistencia para uso intensivo en ruta, delivery y retail.',
         'materiales'      => 'Materiales sintéticos impermeables de alta duración, amortiguación interna de goma EVA de absorción, ventana de PVC transparente de alta resistencia para visualización de pantalla táctil y teclado sin entorpecer la digitación del cliente o la lectura contactless. Correas tejidas de nylon con terminales de regulación.',
         'caracteristicas' => array(
@@ -475,12 +451,6 @@ $products_data = array(
         'title'           => 'Valijas de Seguridad y Transporte',
         'short_title'     => 'Valijas de Seguridad',
         'image'           => 'hero_valija_3d_1787700281649.jpg',
-        'gallery'         => array(
-            'hero_valija_3d_1787700281649.jpg',
-            'operations_logistics_1787698432669.jpg',
-            'ops_logistica_1787700573166.jpg',
-            'fabricacion_1787702420725.jpg',
-        ),
         'content'         => 'Fabricación a distintas medidas según el volumen en litros que contemple el ancho, largo y alto. Diseñadas para resguardar el traslado seguro de documentación confidencial, valores, piezas de repuesto o productos terminados. Confeccionadas en tela Cordura de alta resistencia con estoperoles de protección, solapa de cuero reforzada, argollas metálicas y ventanilla transparente con broche para etiqueta. Empleadas por grandes empresas como Cencosud, La Polar, Correos de Chile, Iron Mountain y FedEx.',
         'materiales'      => 'Confeccionada con tela Cordura de alta resistencia mecánica a la tracción y abrasión. Tela exterior impermeable y forro interior impermeable. Estoperoles metálicos para proteger la base del desgaste por fricción. Ventanilla transparente con broche para asegurar etiqueta/folio de destino. Solapa y correa de cuero reforzada. 1 porta candado y 4 argollas metálicas de seguridad (3 en valijas sobre). Manilla superior de goma (hasta 48 litros) o manilla plástica reforzada con pletina interior metálica fijada con remache (>48 litros). Colores a elección e impresión de logotipo IL-4C optativo.',
         'caracteristicas' => array(
@@ -530,11 +500,6 @@ $products_data = array(
         'title'           => 'Candados de Seguridad Odis Igualados y Amaestrados',
         'short_title'     => 'Candados de Seguridad',
         'image'           => 'bento_candado_1787700534442.jpg',
-        'gallery'         => array(
-            'bento_candado_1787700534442.jpg',
-            'hero_valija_3d_1787700281649.jpg',
-            'ops_logistica_1787700573166.jpg',
-        ),
         'content'         => 'Sistemas de seguridad física industrial para custodia de valijas de seguridad, contenedores y cortinas metálicas. Proveemos candados profesionales marca Odis de construcción robusta (cuerpo de bronce sólido o forjado) en sistemas igualados (una sola llave abre un conjunto de candados) y amaestrados (cada candado con su llave individual y una llave maestra para el supervisor).',
         'materiales'      => 'Cuerpo de bronce sólido o forjado resistente a la corrosión, gancho de acero endurecido o acero al manganeso resistente al corte, y cilindros de combinación de 4 a 5 pines de alta precisión con sistema de cierre con traba de doble eslabón.',
         'caracteristicas' => array(
@@ -592,7 +557,6 @@ foreach ( $products_data as $p ) {
     if ( ! is_wp_error( $post_id ) ) {
         update_post_meta( $post_id, 'rolbag_short_title', $p['short_title'] );
         update_post_meta( $post_id, 'rolbag_image', $p['image'] );
-        update_post_meta( $post_id, 'rolbag_gallery', $p['gallery'] );
         update_post_meta( $post_id, 'rolbag_materiales', $p['materiales'] );
         update_post_meta( $post_id, 'rolbag_caracteristicas', $p['caracteristicas'] );
         update_post_meta( $post_id, 'rolbag_beneficios', $p['beneficios'] );
