@@ -227,7 +227,7 @@ $products_data = array(
         'materiales'      => 'Telas sintéticas impermeables de alta densidad y resistencia a la abrasión, estructura rígida de lámina plástica para protección de display, acolchado de espuma EVA de absorción de impactos, correa de tela tejida de nylon regulable cosida a los fuelles con herrajes plásticos de alta resistencia.',
         'caracteristicas' => array(
             'Estructuración con lámina plástica interna para protección contra golpes directos en pantalla.',
-            'Correa de tela tejida de nylon regulable cosida a la funda para transporte en bandolera.',
+            'Correa de tela tejida de nylon regulable cosida a la funda para transporte en cintura, bandolera o morral.',
             'Acceso directo a botones de encendido, volumen, cámara y puertos de carga USB/cradle.',
             'Materiales sintéticos impermeables resistentes a condiciones ambientales de logística y bodega.',
             'Opciones de personalización con elástico de mano (handstrap) trasero y colores a elección.',
@@ -396,7 +396,7 @@ $products_data = array(
         'materiales'      => 'Materiales sintéticos impermeables de alta duración, amortiguación interna de goma EVA de absorción, ventana de PVC transparente de alta resistencia para visualización de pantalla táctil y teclado sin entorpecer la digitación del cliente o la lectura contactless. Correas tejidas de nylon con terminales de regulación.',
         'caracteristicas' => array(
             'Confección a la medida exacta de terminales POS móviles (Sunmi, PAX, Castles, TUU).',
-            'Correa de nylon cosida a la funda, regulable para transporte en bandolera o cuello.',
+            'Correa de nylon cosida a la funda, regulable para transporte en cintura, bandolera o morral.',
             'Acceso total a lector de tarjetas magnéticas, chip EMV, contactless NFC e impresora térmica integrada.',
             'Materiales impermeables resistentes a caídas accidentales, polvo y derrames en faena.',
             'Colores corporativos y opciones de personalización con logo de empresa.',
