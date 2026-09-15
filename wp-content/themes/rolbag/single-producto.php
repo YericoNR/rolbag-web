@@ -28,6 +28,21 @@ if ( ! is_array( $beneficios ) && ! empty( $beneficios_meta ) ) {
     $beneficios = array_filter( array_map( 'trim', explode( "\n", str_replace( "\r", "", $beneficios_meta ) ) ) );
 }
 
+// Highlights Rápidos
+$highlights_meta = get_post_meta( $post_id, 'rolbag_highlights', true );
+$highlights = is_array( $highlights_meta ) ? $highlights_meta : json_decode( $highlights_meta, true );
+if ( ! is_array( $highlights ) && ! empty( $highlights_meta ) ) {
+    $highlights = array_filter( array_map( 'trim', explode( "\n", str_replace( "\r", "", $highlights_meta ) ) ) );
+}
+// Set default highlights if none are provided
+if ( empty( $highlights ) ) {
+    $highlights = array(
+        '<strong>Fabricación:</strong> Confección nacional a medida en taller propio',
+        '<strong>Tiempo para modelos nuevos:</strong> 48 horas para muestra física de aprobación',
+        '<strong>Cobertura:</strong> Despachos a todas las regiones de Chile'
+    );
+}
+
 // Materiales
 $materiales = get_post_meta( $post_id, 'rolbag_materiales', true );
 
@@ -301,15 +316,11 @@ $wa_msg = urlencode( 'Hola ROLBAG, quisiera solicitar asesoría y cotización pa
                     </div>
 
                     <div class="rb-product-highlights">
-                        <div class="rb-highlight-item">
-                            <strong>Fabricación:</strong> Confección nacional a medida en taller propio
-                        </div>
-                        <div class="rb-highlight-item">
-                            <strong>Tiempo para modelos nuevos:</strong> 48 horas para muestra física de aprobación
-                        </div>
-                        <div class="rb-highlight-item">
-                            <strong>Cobertura:</strong> Despachos a todas las regiones de Chile
-                        </div>
+                        <?php foreach ( $highlights as $highlight ) : ?>
+                            <div class="rb-highlight-item">
+                                <?php echo wp_kses_post( $highlight ); ?>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
 
                     <div class="rb-product-actions">

@@ -156,6 +156,11 @@ function rolbag_render_producto_meta_box( $post ) {
     $benef_arr  = is_string($benef_meta) ? json_decode( $benef_meta, true ) : (is_array($benef_meta) ? $benef_meta : array());
     $benef_text = is_array( $benef_arr ) ? implode( "\n", $benef_arr ) : (is_string($benef_meta) ? $benef_meta : '');
 
+    // Highlights (JSON o array a texto por líneas)
+    $highlights_meta = get_post_meta( $post->ID, 'rolbag_highlights', true );
+    $highlights_arr  = is_string($highlights_meta) ? json_decode( $highlights_meta, true ) : (is_array($highlights_meta) ? $highlights_meta : array());
+    $highlights_text = is_array( $highlights_arr ) ? implode( "\n", $highlights_arr ) : (is_string($highlights_meta) ? $highlights_meta : '');
+
     // Marcas y Modelos (JSON)
     $brands_meta = get_post_meta( $post->ID, 'rolbag_brands_models', true );
     if ( is_array( $brands_meta ) ) {
@@ -318,6 +323,12 @@ function rolbag_render_producto_meta_box( $post ) {
             <label for="rolbag_materiales"><?php _e( 'Materiales y Confección Técnica', 'rolbag-core' ); ?></label>
             <textarea id="rolbag_materiales" name="rolbag_materiales" rows="3"><?php echo esc_textarea( $materiales ); ?></textarea>
             <p class="rolbag-admin-desc"><?php _e( 'Descripción de telas sintéticas, capas amortiguadoras EVA, PVC y herrajes.', 'rolbag-core' ); ?></p>
+        </div>
+
+        <div class="rolbag-admin-field">
+            <label for="rolbag_highlights"><?php _e( 'Destacados Rápidos (Highlights) - 1 por línea', 'rolbag-core' ); ?></label>
+            <textarea id="rolbag_highlights" name="rolbag_highlights" rows="3"><?php echo esc_textarea( $highlights_text ); ?></textarea>
+            <p class="rolbag-admin-desc"><?php _e( 'Escribe un destacado por renglón. Puedes usar HTML como &lt;strong&gt;Texto:&lt;/strong&gt; para resaltar.', 'rolbag-core' ); ?></p>
         </div>
 
         <div class="rolbag-admin-grid">
@@ -674,6 +685,14 @@ function rolbag_save_producto_meta( $post_id ) {
         $raw = sanitize_textarea_field( $_POST['rolbag_beneficios'] );
         $lines = array_filter( array_map( 'trim', explode( "\n", str_replace( "\r", "", $raw ) ) ) );
         update_post_meta( $post_id, 'rolbag_beneficios', wp_json_encode( array_values( $lines ), JSON_UNESCAPED_UNICODE ) );
+    }
+
+    // Highlights
+    if ( isset( $_POST['rolbag_highlights'] ) ) {
+        // We use wp_kses_post instead of sanitize_textarea_field because we want to allow <strong> tags.
+        $raw = wp_kses_post( $_POST['rolbag_highlights'] );
+        $lines = array_filter( array_map( 'trim', explode( "\n", str_replace( "\r", "", $raw ) ) ) );
+        update_post_meta( $post_id, 'rolbag_highlights', wp_json_encode( array_values( $lines ), JSON_UNESCAPED_UNICODE ) );
     }
 
     // Marcas y Modelos
