@@ -123,16 +123,9 @@ $has_special_galleries = ! empty( $special_galleries );
 
 // 1. INTENTAR LEER GALERÍA DINÁMICA (NUEVO MÉTODO AUTOADMINISTRABLE)
 $has_dynamic_gallery = false;
+$dynamic_items = array();
 
-// A. Si el usuario subió una Imagen Destacada (Featured Image), la usamos como la primera de la galería.
-if ( has_post_thumbnail( $post_id ) ) {
-    $real_gallery[] = array(
-        'url'   => get_the_post_thumbnail_url( $post_id, 'large' ),
-        'title' => get_the_title() . ' - Principal'
-    );
-}
-
-// B. Leer la Galería de Vistas Adicionales
+// Leer la Galería de Vistas Adicionales
 $gallery_meta = get_post_meta( $post_id, 'rolbag_gallery', true );
 $dynamic_gallery_ids = array();
 if ( is_array( $gallery_meta ) ) {
@@ -152,25 +145,25 @@ if ( count($dynamic_gallery_ids) > 0 ) {
             // Usamos tamaño 'large' o 'full' para que el zoom funcione bien
             $img_url = wp_get_attachment_image_url( $att_id, 'large' );
             if ( $img_url ) {
-                $real_gallery[] = array(
+                $dynamic_items[] = array(
                     'url'   => $img_url,
-                    'title' => get_the_title() . ' - Vista ' . (count($real_gallery) + 1)
+                    'title' => get_the_title() . ' - Vista ' . (count($dynamic_items) + 1)
                 );
                 $has_dynamic_gallery = true;
             }
         } elseif ( is_string($att_id) && !empty($att_id) ) {
             // Soporte para nombres de archivo directos (ej. bento_candado_1787700534442.jpg)
             $img_url = $theme_uri . '/assets/images/generated/' . $att_id;
-            $real_gallery[] = array(
+            $dynamic_items[] = array(
                 'url'   => $img_url,
-                'title' => get_the_title() . ' - Vista ' . (count($real_gallery) + 1)
+                'title' => get_the_title() . ' - Vista ' . (count($dynamic_items) + 1)
             );
             $has_dynamic_gallery = true;
         }
     }
 }
 
-// 2. FALLBACK A LÓGICA ANTIGUA (Si no hay ni destacada ni galería dinámica)
+// 2. FALLBACK A LÓGICA ANTIGUA (Si no hay galería dinámica configurada)
 if ( ! $has_dynamic_gallery ) {
     if ( $product_slug === 'fundas-para-capturadores' ) {
         $real_gallery = array(
@@ -225,20 +218,45 @@ if ( ! $has_dynamic_gallery ) {
             array( 'url' => $theme_uri . '/assets/images/galeria/tablets/tablet_04.webp', 'title' => 'Funda para Tablet Industrial Samsung Zebra - Handstrap' )
         );
     } else {
-        // Fallback general
+        // Fallback general para productos sin galería: mostrar solo 1 imagen principal
+        $main_image_meta = get_post_meta( $post_id, 'rolbag_image', true );
+        if ( $main_image_meta ) {
+            $real_gallery = array(
+                array(
+                    'url'   => $theme_uri . '/assets/images/generated/' . $main_image_meta,
+                    'title' => get_the_title()
+                )
+            );
+        } elseif ( has_post_thumbnail() ) {
+            // Intenta usar la imagen destacada si existe
+            $real_gallery = array(
+                array(
+                    'url'   => get_the_post_thumbnail_url( $post_id, 'large' ),
+                    'title' => get_the_title()
+                )
+            );
+        }
+    }
+} else {
+    // Si HAY galería dinámica configurada
+    // 1. Imagen principal
+    if ( has_post_thumbnail( $post_id ) ) {
+        $real_gallery[] = array(
+            'url'   => get_the_post_thumbnail_url( $post_id, 'large' ),
+            'title' => get_the_title() . ' - Principal'
+        );
+    } else {
         $main_image_meta = get_post_meta( $post_id, 'rolbag_image', true );
         if ( $main_image_meta ) {
             $real_gallery[] = array(
                 'url'   => $theme_uri . '/assets/images/generated/' . $main_image_meta,
-                'title' => get_the_title()
-            );
-        } elseif ( has_post_thumbnail() ) {
-            // Intenta usar la imagen destacada si existe
-            $real_gallery[] = array(
-                'url'   => get_the_post_thumbnail_url( $post_id, 'large' ),
-                'title' => get_the_title()
+                'title' => get_the_title() . ' - Principal'
             );
         }
+    }
+    // 2. Vistas adicionales
+    foreach ( $dynamic_items as $item ) {
+        $real_gallery[] = $item;
     }
 }
 

@@ -400,12 +400,27 @@ function rolbag_render_producto_meta_box( $post ) {
                 html += '</div>';
                 
                 html += '<div class="rb-models-container">';
-                if(models && models.length > 0) {
-                    models.forEach(function(model) {
-                        html += getModelRowHtml(model);
-                    });
+                if (models) {
+                    if (Array.isArray(models)) {
+                        if (models.length > 0) {
+                            models.forEach(function(model) {
+                                html += getModelRowHtml(model, '');
+                            });
+                        } else {
+                            html += getModelRowHtml('', '');
+                        }
+                    } else if (typeof models === 'object') {
+                        var keys = Object.keys(models);
+                        if (keys.length > 0) {
+                            keys.forEach(function(modelName) {
+                                html += getModelRowHtml(modelName, models[modelName]);
+                            });
+                        } else {
+                            html += getModelRowHtml('', '');
+                        }
+                    }
                 } else {
-                    html += getModelRowHtml('');
+                    html += getModelRowHtml('', '');
                 }
                 html += '</div>';
                 
@@ -415,8 +430,13 @@ function rolbag_render_producto_meta_box( $post ) {
                 container.append(html);
             }
             
-            function getModelRowHtml(val) {
-                return '<div class="rb-model-row"><input type="text" class="rb-model-name" value="'+escapeHtml(val)+'" placeholder="Nombre del Modelo (ej: TC52)" /><button type="button" class="rb-remove-model" title="Eliminar modelo">&times;</button></div>';
+            function getModelRowHtml(name, desc) {
+                var nameVal = name ? escapeHtml(name) : '';
+                var descVal = desc ? escapeHtml(desc) : '';
+                return '<div class="rb-model-row" style="display:flex; gap:10px; margin-bottom:5px; align-items:center;">' +
+                       '<input type="text" class="rb-model-name" value="'+nameVal+'" placeholder="Nombre (ej: TC52)" style="flex:1;" />' +
+                       '<input type="text" class="rb-model-desc" value="'+descVal+'" placeholder="Descripción breve (opcional)" style="flex:2;" />' +
+                       '<button type="button" class="rb-remove-model" title="Eliminar modelo">&times;</button></div>';
             }
             
             function escapeHtml(text) {
@@ -429,12 +449,15 @@ function rolbag_render_producto_meta_box( $post ) {
                 $('.rb-brand-card').each(function(){
                     var brandName = $(this).find('.rb-brand-name').val().trim();
                     if(brandName) {
-                        var models = [];
-                        $(this).find('.rb-model-name').each(function(){
-                            var modelName = $(this).val().trim();
-                            if(modelName) models.push(modelName);
+                        var modelsObj = {};
+                        $(this).find('.rb-model-row').each(function(){
+                            var modelName = $(this).find('.rb-model-name').val().trim();
+                            var modelDesc = $(this).find('.rb-model-desc').val().trim();
+                            if(modelName) {
+                                modelsObj[modelName] = modelDesc;
+                            }
                         });
-                        data[brandName] = models;
+                        data[brandName] = modelsObj;
                     }
                 });
                 hiddenInput.val(JSON.stringify(data));
@@ -443,13 +466,13 @@ function rolbag_render_producto_meta_box( $post ) {
             // Events
             $('#rolbag-add-brand-btn').click(function(e){
                 e.preventDefault();
-                addBrandUI('', ['']);
+                addBrandUI('', null);
                 updateHiddenInput();
             });
             
             container.on('click', '.rb-add-model-btn', function(e){
                 e.preventDefault();
-                $(this).siblings('.rb-models-container').append(getModelRowHtml(''));
+                $(this).siblings('.rb-models-container').append(getModelRowHtml('', ''));
                 updateHiddenInput();
             });
             
@@ -466,7 +489,7 @@ function rolbag_render_producto_meta_box( $post ) {
                 var modelsContainer = $(this).closest('.rb-models-container');
                 $(this).closest('.rb-model-row').remove();
                 if(modelsContainer.find('.rb-model-row').length === 0) {
-                    modelsContainer.append(getModelRowHtml(''));
+                    modelsContainer.append(getModelRowHtml('', ''));
                 }
                 updateHiddenInput();
             });
